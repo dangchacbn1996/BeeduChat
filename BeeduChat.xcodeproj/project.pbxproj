@@ -18,6 +18,8 @@
 		F055067B22D0320100D5E511 /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055067A22D0320100D5E511 /* UIViewEx.swift */; };
 		F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055067C22D0328D00D5E511 /* StackViewEx.swift */; };
 		F055068A22D06EC500D5E511 /* NewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055068922D06EC500D5E511 /* NewFeedViewController.swift */; };
+		F055068C22D092C600D5E511 /* NewsSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055068B22D092C600D5E511 /* NewsSubViewController.swift */; };
+		F055068E22D0AD7400D5E511 /* CommentSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055068D22D0AD7400D5E511 /* CommentSubViewController.swift */; };
 		F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9DD22CF926500E351C7 /* AppDelegate.swift */; };
 		F083A9E022CF926500E351C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9DF22CF926500E351C7 /* ViewController.swift */; };
 		F083A9E322CF926500E351C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F083A9E122CF926500E351C7 /* Main.storyboard */; };
@@ -60,6 +62,8 @@
 		F055067A22D0320100D5E511 /* UIViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
 		F055067C22D0328D00D5E511 /* StackViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewEx.swift; sourceTree = "<group>"; };
 		F055068922D06EC500D5E511 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewFeedViewController.swift; path = ../Chat/Controller/NewFeedViewController.swift; sourceTree = "<group>"; };
+		F055068B22D092C600D5E511 /* NewsSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSubViewController.swift; sourceTree = "<group>"; };
+		F055068D22D0AD7400D5E511 /* CommentSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentSubViewController.swift; sourceTree = "<group>"; };
 		F083A9DA22CF926500E351C7 /* BeeduChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeduChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F083A9DD22CF926500E351C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F083A9DF22CF926500E351C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				F055068922D06EC500D5E511 /* NewFeedViewController.swift */,
+				F055068B22D092C600D5E511 /* NewsSubViewController.swift */,
+				F055068D22D0AD7400D5E511 /* CommentSubViewController.swift */,
 			);
 			path = Newfeed;
 			sourceTree = "<group>";
@@ -485,12 +491,14 @@
 			files = (
 				F055068A22D06EC500D5E511 /* NewFeedViewController.swift in Sources */,
 				F055067922D031E100D5E511 /* UITextFieldEx.swift in Sources */,
+				F055068C22D092C600D5E511 /* NewsSubViewController.swift in Sources */,
 				F083A9E022CF926500E351C7 /* ViewController.swift in Sources */,
 				B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */,
 				F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */,
 				F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */,
 				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,
 				F055067722D0306A00D5E511 /* Constant.swift in Sources */,
+				F055068E22D0AD7400D5E511 /* CommentSubViewController.swift in Sources */,
 				F055067B22D0320100D5E511 /* UIViewEx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

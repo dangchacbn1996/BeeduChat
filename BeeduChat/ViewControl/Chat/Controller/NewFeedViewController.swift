@@ -17,18 +17,19 @@ class NewFeedViewController: UIViewController {
     var btnMore = UIButton()
     var lbClass = UILabel(text: "Lớp Fox", textColor: Constant.text.color.black, font: nil)
     var lbSubClass = UILabel(text: "@fox.class", textColor: Constant.text.color.black, font: nil)
-    var stackMain = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 0, design: nil)
     
 //    var newView = UIView(background: UIColor.white, corner: 0, border: 0, borderColor: nil, design: nil)
+    var scrollMain = UIScrollView()
+    var stackMain = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 0, design: nil)
     var stackNew = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 8, design: nil)
-    var avatar = UIButton()
+    var avatar = UIButton(background: .clear, corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil)
     var tfNew = UITextField(text: "", placeholder: "Viết gì đó cho cả lớp", textColor: Constant.text.color.black, font: nil)
 //    var tvNew = UITextView()
     var btnLibrary = UIButton()
     
     var tableView = UITableView()
     var commentView = UIView()
-    var avatarComent = UIImageView()
+    var avatarComent = UIImageView(background: .clear, corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil)
     var tfComment = UITextField(text: "", placeholder: "Viết bình luận", textColor: Constant.text.color.black, font: nil)
     
     
@@ -65,7 +66,7 @@ extension NewFeedViewController{
          * Menu         Class       noti more *
          **************************************
         */
-        navigationView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 8, design: nil)) { (stackNavi) -> (Void) in
+        navigationView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)) { (stackNavi) -> (Void) in
             stackNavi.snp.makeConstraints({ (maker) in
                 maker.center.equalToSuperview()
                 maker.height.equalToSuperview().offset(-Constant.size.padingAround)
@@ -75,15 +76,21 @@ extension NewFeedViewController{
             //Btn menu
             (stackNavi as! UIStackView).addArrangedSubview(self.btnMenu)
             self.btnMenu.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(self.btnMenu.snp_width)
+                maker.width.equalTo(self.btnMenu.snp.height)
                 maker.height.equalTo(Constant.size.iconNormal)
             })
-            self.btnMenu.backgroundColor = UIColor.blue
+            self.btnMenu.setImage(UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnMenu.contentMode = .scaleAspectFit
+//            self.btnMenu.backgroundColor = UIColor.blue
             
             //Ten lop
-            (stackNavi as! UIStackView).addArrangedSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil), design: { (stackClass) -> (Void) in
+            (stackNavi as! UIStackView).addArrangedSubview(UIView())
+            
+            self.navigationView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil), design: { (stackClass) -> (Void) in
                 stackClass.snp.makeConstraints({ (maker) in
-                    maker.height.equalToSuperview().multipliedBy(1)
+                    maker.center.equalToSuperview()
+//                    maker.height.equalToSuperview()
+                    
                 })
                 (stackClass as! UIStackView).addArrangedSubview(self.lbClass)
                 (stackClass as! UIStackView).addArrangedSubview(self.lbSubClass)
@@ -92,18 +99,20 @@ extension NewFeedViewController{
             //Btn noti
             (stackNavi as! UIStackView).addArrangedSubview(self.btnNoti)
             self.btnNoti.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(self.btnMenu.snp_width)
+                maker.width.equalTo(self.btnNoti.snp.height).multipliedBy(0.7)
                 maker.height.equalTo(Constant.size.iconNormal)
             })
-            self.btnNoti.backgroundColor = UIColor.orange
+            self.btnNoti.setImage(UIImage(named: "ic_noti")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnNoti.contentMode = .scaleAspectFit
             
             //Btn more
             (stackNavi as! UIStackView).addArrangedSubview(self.btnMore)
             self.btnMore.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(self.btnMenu.snp.width)
+                maker.width.equalTo(self.btnMore.snp.height).multipliedBy(0.7)
                 maker.height.equalTo(Constant.size.iconNormal)
             })
-            self.btnMore.backgroundColor = UIColor.green
+            self.btnMore.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnMore.contentMode = .scaleAspectFit
         }
         
         /* Separate
@@ -119,10 +128,18 @@ extension NewFeedViewController{
         }
         
         
-        self.view.addSubview(stackMain)
-        stackMain.snp.makeConstraints { (maker) in
+        self.view.addSubview(scrollMain)
+        
+
+        scrollMain.snp.makeConstraints { (maker) in
             maker.centerX.width.bottom.equalTo(self.view.safeAreaLayoutGuide)
-            maker.top.equalTo(self.view.subviews[self.view.subviews.firstIndex(of: self.stackMain)! - 1].snp.top)
+            maker.top.equalTo(self.view.subviews[self.view.subviews.firstIndex(of: self.scrollMain)! - 1].snp.top)
+        }
+        
+        self.scrollMain.addSubview(stackMain)
+        stackMain.snp.makeConstraints { (maker) in
+            maker.leading.trailing.top.bottom.equalToSuperview()
+            maker.width.equalToSuperview()
         }
         stackMain.addArrangedSubview(stackNew)
         
@@ -146,7 +163,8 @@ extension NewFeedViewController{
                 maker.top.centerX.width.equalToSuperview()
                 maker.height.equalTo(self.avatar.snp.width)
             })
-            self.avatar.backgroundColor = UIColor.orange
+            self.avatar.contentMode = .scaleAspectFit
+            self.avatar.setImage(UIImage(named: "ic_ava"), for: .normal)
         }
         
         stackNew.addArrangedSubview(tfNew)
@@ -168,7 +186,8 @@ extension NewFeedViewController{
                 maker.top.centerX.width.equalToSuperview()
                 maker.height.equalTo(Constant.size.iconNormal)
             })
-            self.btnLibrary.backgroundColor = UIColor.orange
+            self.btnLibrary.contentMode = .scaleAspectFit
+            self.btnLibrary.setImage(UIImage(named: "ic_photo"), for: .normal)
         }
         
         /* Separate
@@ -183,7 +202,10 @@ extension NewFeedViewController{
             separate.backgroundColor = Constant.color.separate
         }
         
-        stackMain.addArrangedSubview(tableView)
+        let content = NewsSubViewController()
+        self.addChild(content)
+        content.didMove(toParent: self)
+        self.stackMain.addArrangedSubview(content.view)
         
         stackMain.addArrangedSubview(commentView)
         commentView.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
@@ -200,7 +222,7 @@ extension NewFeedViewController{
             self.avatarComent.snp.makeConstraints({ (maker) in
                 maker.width.equalTo(self.avatarComent.snp.height)
             })
-            self.avatarComent.backgroundColor = UIColor.orange
+            self.avatarComent.image = UIImage(named: "ic_ava")
             (stackComment as! UIStackView).addArrangedSubview(
                 UIView(background: UIColor.gray.withAlphaComponent(0.4), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil),
                 design: { (container) -> (Void) in
