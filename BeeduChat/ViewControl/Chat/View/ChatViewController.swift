@@ -24,6 +24,10 @@ class ChatViewController: UIViewController {
     var txtSearch = UITextField(background: .clear, corner: 0, border: 0, borderColor: .clear, design: nil)
     var ceparateView = UIView()
     var historyView = UIView()
+    var NortificationView = UIView()
+    var lblNortification = UILabel()
+    var tbvNortification = UITableView()
+    var tbvCellNoritfication = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +42,7 @@ extension ChatViewController{
         addCeparate()
         UISearchBar()
         UIHisContactBar()
+        UINortification()
     }
     //NavBar
     func UINavBar(){
@@ -48,7 +53,7 @@ extension ChatViewController{
             maker.top.equalTo(self.view.safeAreaLayoutGuide)
             maker.centerX.equalToSuperview()
             maker.width.equalToSuperview().offset(-32)
-            maker.height.equalTo(48)
+            maker.height.equalTo(40)
         }
         //        navigationView.backgroundColor = UIColor.blue
         // add stack view to navigationView
@@ -106,7 +111,7 @@ extension ChatViewController{
             maker.top.equalTo(ceparateView.snp_bottom).offset(16)
             maker.centerX.equalTo(navigationView.snp_centerX)
         }
-        searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: 60, border: 1, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
+        searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
             srcView.snp.makeConstraints({ (maker) in
                 maker.height.equalToSuperview()
                 maker.width.equalToSuperview()
@@ -143,13 +148,48 @@ extension ChatViewController{
             maker.centerX.equalTo(navigationView.snp_centerX)
         }
 //        historyView.backgroundColor = UIColor.red
-        historyView.addSubview(UITableView(background: UIColor.red, corner: 0, border: 0, borderColor: .clear, design: nil)) { (tbvHistory) -> (Void) in
-            tbvHistory.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(4)
+//        var clvHistory: UICollectionView!
+//        let layout = UICollectionViewFlowLayout()
+//        clvHistory = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        layout.scrollDirection = .horizontal
+        historyView.addSubview(UIView(background: UIColor.red, corner: 0, border: 0, borderColor: .clear, design: nil)) { (clvHistory) -> (Void) in
+            clvHistory.snp.makeConstraints({ (maker) in
+                maker.height.equalTo(48)
                 maker.width.equalToSuperview()
                 maker.center.equalToSuperview()
             })
+//        clvHistory.snp.makeConstraints({ (maker) in
+//            maker.height.equalTo(48)
+//            maker.width.equalToSuperview()
+//            maker.center.equalToSuperview()
+//        })
         }
+    }
+    func UINortification(){
+        self.view.addSubview(NortificationView)
+        NortificationView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(56)
+            maker.width.equalTo(navigationView.snp_width)
+            maker.top.equalTo(historyView.snp_bottom).offset(16)
+            maker.centerX.equalTo(historyView.snp_centerX)
+        }
+        NortificationView.backgroundColor = UIColor.red
+        NortificationView.addSubview(lblNortification)
+        lblNortification.snp.makeConstraints { (maker) in
+            maker.top.left.equalToSuperview()
+        }
+        lblNortification.text = "Thông báo"
+        lblNortification.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+        NortificationView.addSubview(tbvNortification)
+        tbvNortification.snp.makeConstraints { (maker) in
+            maker.top.equalTo(lblNortification.snp_bottom).offset(8)
+            maker.left.equalToSuperview()
+            maker.height.equalTo(48)
+            maker.width.equalToSuperview()
+        }
+        
+        tbvNortification.backgroundColor = UIColor.green
+        
     }
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(
