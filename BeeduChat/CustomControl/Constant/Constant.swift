@@ -10,6 +10,19 @@ import UIKit
 
 struct Constant {
     
+    struct size {
+        static let iconNormal : CGFloat = 32
+        static let avatarNormal : CGFloat = 36
+        static let naviHeight = Constant.size.iconNormal + Constant.size.padingAround
+        static let pading : CGFloat = 16
+        static let padingAround = 2 * Constant.size.pading
+    }
+    
+    struct color {
+        static let separate = UIColor.gray
+        static let naviBack = UIColor.white
+    }
+    
     struct text {
         struct color {
             static let black = UIColor.black
