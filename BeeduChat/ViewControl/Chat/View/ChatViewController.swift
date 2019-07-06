@@ -11,13 +11,24 @@ import SnapKit
 
 class ChatViewController: UIViewController {
     //khoi tao cac thanh phan giao dien
-    var navigationView = UIView();
-    var stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 1, design: nil)
-    var menuButtonView = UIView();
-    var mainTitleView = UIView();
-    var subTitleView = UIView();
-    var contactView = UIView();
-    var detailView = UIView();
+    var navigationView = UIView()
+    var stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 5, design: nil)
+    var stackViewTitle = UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil)
+    var btnMenu = UIButton()
+    var lblClass = UILabel(text: "Lớp Bambi", textColor: Constant.text.color.black, font: nil)
+    var lblSubClass = UILabel(text: "@bambi05", textColor: Constant.text.color.gray, font: nil)
+    var btnContact = UIButton()
+    var btnOption = UIButton()
+    var searchView = UIView()
+    var btnSearch = UIButton(background: .clear, corner: 0, border: 0, borderColor: .clear, design: nil)
+    var txtSearch = UITextField(background: .clear, corner: 0, border: 0, borderColor: .clear, design: nil)
+    var ceparateView = UIView()
+    var historyView = UIView()
+    var NortificationView = UIView()
+    var lblNortification = UILabel()
+    var tbvNortification = UITableView()
+    var tbvCellNoritfication = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI();
@@ -27,28 +38,165 @@ class ChatViewController: UIViewController {
 }
 extension ChatViewController{
     func setupUI() {
+        UINavBar()
+        addCeparate()
+        UISearchBar()
+        UIHisContactBar()
+        UINortification()
+    }
+    //NavBar
+    func UINavBar(){
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.isHidden = true
         self.view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
-            maker.top.right.left.equalTo(self.view.safeAreaLayoutGuide)
-            maker.height.equalTo(48)
+            maker.top.equalTo(self.view.safeAreaLayoutGuide)
+            maker.centerX.equalToSuperview()
+            maker.width.equalToSuperview().offset(-32)
+            maker.height.equalTo(40)
         }
-        navigationView.backgroundColor = UIColor.blue
+        //        navigationView.backgroundColor = UIColor.blue
         // add stack view to navigationView
         navigationView.addSubview(stackView)
         stackView.snp.makeConstraints { (maker) in
-            maker.top.right.bottom.left.equalToSuperview()
+            maker.center.height.equalToSuperview()
+            maker.width.equalToSuperview()
         }
-        //add menuView to stackView
-        stackView.addArrangedSubview(menuButtonView)
-        menuButtonView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(menuButtonView.snp_width)
+        //add button menu to stackView
+        stackView.addArrangedSubview(self.btnMenu)
+        btnMenu.snp.makeConstraints { (maker) in
+            maker.height.equalTo(btnMenu.snp_width)
+            maker.height.equalToSuperview().multipliedBy(0.8)
         }
-        //add mainTitle to stackView
-        stackView.addArrangedSubview(mainTitleView)
-//        mainTitleView.snp.makeConstraints { (maker) in
-//            <#code#>
-//        }
+        btnMenu.backgroundColor = UIColor.blue
+        //add stackviewTitiale
+        stackView.addArrangedSubview(stackViewTitle)
+        stackViewTitle.snp.makeConstraints { (maker) in
+            maker.height.equalToSuperview().multipliedBy(1)
+        }
+        //add lable class name
+        stackViewTitle.addArrangedSubview(lblClass)
+        stackViewTitle.addArrangedSubview(lblSubClass)
+        //add button contact
+        stackView.addArrangedSubview(btnContact)
+        btnContact.snp.makeConstraints { (maker) in
+            maker.height.equalTo(btnContact.snp_width)
+            maker.height.equalToSuperview().multipliedBy(0.8)
+        }
+        btnContact.backgroundColor = UIColor.orange
+        //add button Option
+        stackView.addArrangedSubview(btnOption)
+        btnOption.snp.makeConstraints { (maker) in
+            maker.height.equalTo(btnOption.snp_width)
+            maker.height.equalToSuperview().multipliedBy(0.8)
+        }
+        btnOption.backgroundColor = UIColor.green
+        //add ceparate
+    }
+    func addCeparate(){
+        self.view.addSubview(ceparateView)
+        ceparateView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(1)
+            maker.width.equalToSuperview()
+            maker.top.equalTo(navigationView.snp_bottom).offset(16)
+            maker.centerX.equalToSuperview()
+        }
+        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+    }    //SearchBar
+    func UISearchBar(){
+        self.view.addSubview(searchView)
+        searchView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(navigationView.snp_height)
+            maker.width.equalTo(navigationView.snp_width)
+            maker.top.equalTo(ceparateView.snp_bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp_centerX)
+        }
+        searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
+            srcView.snp.makeConstraints({ (maker) in
+                maker.height.equalToSuperview()
+                maker.width.equalToSuperview()
+                maker.center.equalToSuperview()
+            })
+            //add button search
+            srcView.addSubview(self.btnSearch)
+            self.btnSearch.snp.makeConstraints({ (maker) in
+//                maker.left.equalToSuperview()
+                maker.height.equalTo(self.btnSearch.snp_width)
+                maker.height.equalToSuperview().multipliedBy(0.7)
+                maker.centerY.equalToSuperview()
+                maker.left.equalToSuperview().offset(8)
+                
+            })
+            self.btnSearch.backgroundColor = UIColor.red
+            //add text field
+            srcView.addSubview(self.txtSearch)
+            self.txtSearch.snp.makeConstraints({ (maker) in
+                maker.height.equalToSuperview().multipliedBy(0.7)
+                maker.centerY.equalToSuperview()
+                maker.left.equalTo(self.btnSearch.snp.right).offset(8)
+                maker.right.equalToSuperview().offset(-8)
+            })
+            self.txtSearch.placeholder = "Tìm kiếm"
+        }
+    }
+    func UIHisContactBar(){
+        self.view.addSubview(historyView)
+        historyView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(searchView.snp_height)
+            maker.width.equalTo(searchView.snp_width)
+            maker.top.equalTo(searchView.snp_bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp_centerX)
+        }
+//        historyView.backgroundColor = UIColor.red
+//        var clvHistory: UICollectionView!
+//        let layout = UICollectionViewFlowLayout()
+//        clvHistory = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        layout.scrollDirection = .horizontal
+        historyView.addSubview(UIView(background: UIColor.red, corner: 0, border: 0, borderColor: .clear, design: nil)) { (clvHistory) -> (Void) in
+            clvHistory.snp.makeConstraints({ (maker) in
+                maker.height.equalTo(48)
+                maker.width.equalToSuperview()
+                maker.center.equalToSuperview()
+            })
+//        clvHistory.snp.makeConstraints({ (maker) in
+//            maker.height.equalTo(48)
+//            maker.width.equalToSuperview()
+//            maker.center.equalToSuperview()
+//        })
+        }
+    }
+    func UINortification(){
+        self.view.addSubview(NortificationView)
+        NortificationView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(56)
+            maker.width.equalTo(navigationView.snp_width)
+            maker.top.equalTo(historyView.snp_bottom).offset(16)
+            maker.centerX.equalTo(historyView.snp_centerX)
+        }
+        NortificationView.backgroundColor = UIColor.red
+        NortificationView.addSubview(lblNortification)
+        lblNortification.snp.makeConstraints { (maker) in
+            maker.top.left.equalToSuperview()
+        }
+        lblNortification.text = "Thông báo"
+        lblNortification.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+        NortificationView.addSubview(tbvNortification)
+        tbvNortification.snp.makeConstraints { (maker) in
+            maker.top.equalTo(lblNortification.snp_bottom).offset(8)
+            maker.left.equalToSuperview()
+            maker.height.equalTo(48)
+            maker.width.equalToSuperview()
+        }
+        
+        tbvNortification.backgroundColor = UIColor.green
+        
+    }
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
