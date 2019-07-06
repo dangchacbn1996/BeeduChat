@@ -59,7 +59,7 @@
 		F055067822D031E100D5E511 /* UITextFieldEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldEx.swift; sourceTree = "<group>"; };
 		F055067A22D0320100D5E511 /* UIViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
 		F055067C22D0328D00D5E511 /* StackViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewEx.swift; sourceTree = "<group>"; };
-		F055068922D06EC500D5E511 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedViewController.swift; sourceTree = "<group>"; };
+		F055068922D06EC500D5E511 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewFeedViewController.swift; path = ../Chat/Controller/NewFeedViewController.swift; sourceTree = "<group>"; };
 		F083A9DA22CF926500E351C7 /* BeeduChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeduChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F083A9DD22CF926500E351C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F083A9DF22CF926500E351C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +187,7 @@
 		F055068022D0560F00D5E511 /* Newfeed */ = {
 			isa = PBXGroup;
 			children = (
+				F055068922D06EC500D5E511 /* NewFeedViewController.swift */,
 			);
 			path = Newfeed;
 			sourceTree = "<group>";
@@ -202,7 +203,6 @@
 		F055068222D0562400D5E511 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F055068922D06EC500D5E511 /* NewFeedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

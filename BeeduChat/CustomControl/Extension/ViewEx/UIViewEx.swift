@@ -13,6 +13,11 @@ extension UIView {
     convenience init(background : UIColor, corner : CGFloat, border : CGFloat, borderColor : UIColor?, design : ((UIView) -> (Void))?) {
         self.init()
         self.backgroundColor = background
+        self.clipsToBounds = true
+        self.layer.cornerRadius = corner
+        self.layer.borderWidth = border
+        self.layer.borderColor = borderColor?.cgColor
+        design?(self)
 //        self.clipToBounds = true
     }
     

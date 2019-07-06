@@ -9,9 +9,10 @@
 import UIKit
 
 extension UITextField {
-    convenience init(text : String, textColor : UIColor, font : UIFont?) {
+    convenience init(text : String, placeholder : String, textColor : UIColor, font : UIFont?) {
         self.init()
         self.text = text
+        self.placeholder = placeholder
         self.textColor = textColor
         self.font = font ?? Constant.text.font.normal
     }
