@@ -1,0 +1,831 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		58EA5EF4FE3407A7E3057528 /* Pods_BeeduChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B54110165F78A01A98F2F9B /* Pods_BeeduChatUITests.framework */; };
+		7833C66DF09D4C36113FA500 /* Pods_BeeduChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF2CB97F93AE80B95FB388 /* Pods_BeeduChatTests.framework */; };
+		B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85EB75422D05BFD000EE476 /* ChatViewController.swift */; };
+		B85EB75722D05D73000EE476 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85EB75622D05D73000EE476 /* SnapKit.framework */; };
+		D2EF5E0407B0B0A8EEC7373C /* Pods_BeeduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7737D01FA70EC4022476426D /* Pods_BeeduChat.framework */; };
+		F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055067322D02FD400D5E511 /* UILabelEx.swift */; };
+		F055067722D0306A00D5E511 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055067622D0306A00D5E511 /* Constant.swift */; };
+		F055067922D031E100D5E511 /* UITextFieldEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055067822D031E100D5E511 /* UITextFieldEx.swift */; };
+		F055067B22D0320100D5E511 /* UIViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055067A22D0320100D5E511 /* UIViewEx.swift */; };
+		F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055067C22D0328D00D5E511 /* StackViewEx.swift */; };
+		F055068A22D06EC500D5E511 /* NewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055068922D06EC500D5E511 /* NewFeedViewController.swift */; };
+		F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9DD22CF926500E351C7 /* AppDelegate.swift */; };
+		F083A9E022CF926500E351C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9DF22CF926500E351C7 /* ViewController.swift */; };
+		F083A9E322CF926500E351C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F083A9E122CF926500E351C7 /* Main.storyboard */; };
+		F083A9E522CF926700E351C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F083A9E422CF926700E351C7 /* Assets.xcassets */; };
+		F083A9E822CF926700E351C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F083A9E622CF926700E351C7 /* LaunchScreen.storyboard */; };
+		F083A9F322CF926700E351C7 /* BeeduChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9F222CF926700E351C7 /* BeeduChatTests.swift */; };
+		F083A9FE22CF926700E351C7 /* BeeduChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F083A9EF22CF926700E351C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F083A9D222CF926500E351C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F083A9D922CF926500E351C7;
+			remoteInfo = BeeduChat;
+		};
+		F083A9FA22CF926700E351C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F083A9D222CF926500E351C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F083A9D922CF926500E351C7;
+			remoteInfo = BeeduChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B54110165F78A01A98F2F9B /* Pods_BeeduChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56BA173BE907BF921285B037 /* Pods-BeeduChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.release.xcconfig"; sourceTree = "<group>"; };
+		59A7CDD07700A2C3E4200BCB /* Pods-BeeduChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChat.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChat/Pods-BeeduChat.debug.xcconfig"; sourceTree = "<group>"; };
+		7737D01FA70EC4022476426D /* Pods_BeeduChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B85EB75422D05BFD000EE476 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		B85EB75622D05D73000EE476 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA1A4AE96C2DCBF8ED89D2AC /* Pods-BeeduChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.release.xcconfig"; sourceTree = "<group>"; };
+		D28D5F622648F070661C5ED5 /* Pods-BeeduChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChat.release.xcconfig"; path = "Target Support Files/Pods-BeeduChat/Pods-BeeduChat.release.xcconfig"; sourceTree = "<group>"; };
+		D2AF2CB97F93AE80B95FB388 /* Pods_BeeduChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F055067322D02FD400D5E511 /* UILabelEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelEx.swift; sourceTree = "<group>"; };
+		F055067622D0306A00D5E511 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		F055067822D031E100D5E511 /* UITextFieldEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldEx.swift; sourceTree = "<group>"; };
+		F055067A22D0320100D5E511 /* UIViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewEx.swift; sourceTree = "<group>"; };
+		F055067C22D0328D00D5E511 /* StackViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewEx.swift; sourceTree = "<group>"; };
+		F055068922D06EC500D5E511 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedViewController.swift; sourceTree = "<group>"; };
+		F083A9DA22CF926500E351C7 /* BeeduChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeduChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F083A9DD22CF926500E351C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F083A9DF22CF926500E351C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F083A9E222CF926500E351C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F083A9E422CF926700E351C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F083A9E722CF926700E351C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F083A9E922CF926700E351C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F083A9EE22CF926700E351C7 /* BeeduChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeeduChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F083A9F222CF926700E351C7 /* BeeduChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeduChatTests.swift; sourceTree = "<group>"; };
+		F083A9F422CF926700E351C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F083A9F922CF926700E351C7 /* BeeduChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeeduChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeduChatUITests.swift; sourceTree = "<group>"; };
+		F083A9FF22CF926700E351C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FCC45BE1F22661A51EC76144 /* Pods-BeeduChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F083A9D722CF926500E351C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B85EB75722D05D73000EE476 /* SnapKit.framework in Frameworks */,
+				D2EF5E0407B0B0A8EEC7373C /* Pods_BeeduChat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F083A9EB22CF926700E351C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7833C66DF09D4C36113FA500 /* Pods_BeeduChatTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F083A9F622CF926700E351C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58EA5EF4FE3407A7E3057528 /* Pods_BeeduChatUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4FD6E1F4EA905CD24E711305 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59A7CDD07700A2C3E4200BCB /* Pods-BeeduChat.debug.xcconfig */,
+				D28D5F622648F070661C5ED5 /* Pods-BeeduChat.release.xcconfig */,
+				F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */,
+				CA1A4AE96C2DCBF8ED89D2AC /* Pods-BeeduChatTests.release.xcconfig */,
+				FCC45BE1F22661A51EC76144 /* Pods-BeeduChatUITests.debug.xcconfig */,
+				56BA173BE907BF921285B037 /* Pods-BeeduChatUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		ECD097AB32CCF5E82C812701 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B85EB75622D05D73000EE476 /* SnapKit.framework */,
+				7737D01FA70EC4022476426D /* Pods_BeeduChat.framework */,
+				D2AF2CB97F93AE80B95FB388 /* Pods_BeeduChatTests.framework */,
+				4B54110165F78A01A98F2F9B /* Pods_BeeduChatUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F055067022D02FAF00D5E511 /* CustomControl */ = {
+			isa = PBXGroup;
+			children = (
+				F055067522D0305B00D5E511 /* Constant */,
+				F055067122D02FBE00D5E511 /* Extension */,
+			);
+			path = CustomControl;
+			sourceTree = "<group>";
+		};
+		F055067122D02FBE00D5E511 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F055067222D02FC500D5E511 /* ViewEx */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F055067222D02FC500D5E511 /* ViewEx */ = {
+			isa = PBXGroup;
+			children = (
+				F055067322D02FD400D5E511 /* UILabelEx.swift */,
+				F055067822D031E100D5E511 /* UITextFieldEx.swift */,
+				F055067A22D0320100D5E511 /* UIViewEx.swift */,
+				F055067C22D0328D00D5E511 /* StackViewEx.swift */,
+			);
+			path = ViewEx;
+			sourceTree = "<group>";
+		};
+		F055067522D0305B00D5E511 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				F055067622D0306A00D5E511 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		F055067E22D055FE00D5E511 /* ViewControl */ = {
+			isa = PBXGroup;
+			children = (
+				F055068022D0560F00D5E511 /* Newfeed */,
+				F055067F22D0560700D5E511 /* Chat */,
+			);
+			path = ViewControl;
+			sourceTree = "<group>";
+		};
+		F055067F22D0560700D5E511 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F055068222D0562400D5E511 /* Controller */,
+				F055068122D0562000D5E511 /* View */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F055068022D0560F00D5E511 /* Newfeed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Newfeed;
+			sourceTree = "<group>";
+		};
+		F055068122D0562000D5E511 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B85EB75422D05BFD000EE476 /* ChatViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F055068222D0562400D5E511 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F055068922D06EC500D5E511 /* NewFeedViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F083A9D122CF926500E351C7 = {
+			isa = PBXGroup;
+			children = (
+				F083A9DC22CF926500E351C7 /* BeeduChat */,
+				F083A9F122CF926700E351C7 /* BeeduChatTests */,
+				F083A9FC22CF926700E351C7 /* BeeduChatUITests */,
+				F083A9DB22CF926500E351C7 /* Products */,
+				4FD6E1F4EA905CD24E711305 /* Pods */,
+				ECD097AB32CCF5E82C812701 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F083A9DB22CF926500E351C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F083A9DA22CF926500E351C7 /* BeeduChat.app */,
+				F083A9EE22CF926700E351C7 /* BeeduChatTests.xctest */,
+				F083A9F922CF926700E351C7 /* BeeduChatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F083A9DC22CF926500E351C7 /* BeeduChat */ = {
+			isa = PBXGroup;
+			children = (
+				F055067E22D055FE00D5E511 /* ViewControl */,
+				F055067022D02FAF00D5E511 /* CustomControl */,
+				F083A9DD22CF926500E351C7 /* AppDelegate.swift */,
+				F083A9DF22CF926500E351C7 /* ViewController.swift */,
+				F083A9E122CF926500E351C7 /* Main.storyboard */,
+				F083A9E422CF926700E351C7 /* Assets.xcassets */,
+				F083A9E622CF926700E351C7 /* LaunchScreen.storyboard */,
+				F083A9E922CF926700E351C7 /* Info.plist */,
+			);
+			path = BeeduChat;
+			sourceTree = "<group>";
+		};
+		F083A9F122CF926700E351C7 /* BeeduChatTests */ = {
+			isa = PBXGroup;
+			children = (
+				F083A9F222CF926700E351C7 /* BeeduChatTests.swift */,
+				F083A9F422CF926700E351C7 /* Info.plist */,
+			);
+			path = BeeduChatTests;
+			sourceTree = "<group>";
+		};
+		F083A9FC22CF926700E351C7 /* BeeduChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */,
+				F083A9FF22CF926700E351C7 /* Info.plist */,
+			);
+			path = BeeduChatUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F083A9D922CF926500E351C7 /* BeeduChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F083AA0222CF926700E351C7 /* Build configuration list for PBXNativeTarget "BeeduChat" */;
+			buildPhases = (
+				1C1469E8B01EF33F08585806 /* [CP] Check Pods Manifest.lock */,
+				F083A9D622CF926500E351C7 /* Sources */,
+				F083A9D722CF926500E351C7 /* Frameworks */,
+				F083A9D822CF926500E351C7 /* Resources */,
+				C66EEE200B5535260008E711 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeeduChat;
+			productName = BeeduChat;
+			productReference = F083A9DA22CF926500E351C7 /* BeeduChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F083A9ED22CF926700E351C7 /* BeeduChatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F083AA0522CF926700E351C7 /* Build configuration list for PBXNativeTarget "BeeduChatTests" */;
+			buildPhases = (
+				55B8EC8D747F45CCB69E27A0 /* [CP] Check Pods Manifest.lock */,
+				F083A9EA22CF926700E351C7 /* Sources */,
+				F083A9EB22CF926700E351C7 /* Frameworks */,
+				F083A9EC22CF926700E351C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F083A9F022CF926700E351C7 /* PBXTargetDependency */,
+			);
+			name = BeeduChatTests;
+			productName = BeeduChatTests;
+			productReference = F083A9EE22CF926700E351C7 /* BeeduChatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F083A9F822CF926700E351C7 /* BeeduChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F083AA0822CF926700E351C7 /* Build configuration list for PBXNativeTarget "BeeduChatUITests" */;
+			buildPhases = (
+				5C59BB03463F9AECBF9F7CD3 /* [CP] Check Pods Manifest.lock */,
+				F083A9F522CF926700E351C7 /* Sources */,
+				F083A9F622CF926700E351C7 /* Frameworks */,
+				F083A9F722CF926700E351C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F083A9FB22CF926700E351C7 /* PBXTargetDependency */,
+			);
+			name = BeeduChatUITests;
+			productName = BeeduChatUITests;
+			productReference = F083A9F922CF926700E351C7 /* BeeduChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F083A9D222CF926500E351C7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Ngo Dang Chac";
+				TargetAttributes = {
+					F083A9D922CF926500E351C7 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					F083A9ED22CF926700E351C7 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = F083A9D922CF926500E351C7;
+					};
+					F083A9F822CF926700E351C7 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = F083A9D922CF926500E351C7;
+					};
+				};
+			};
+			buildConfigurationList = F083A9D522CF926500E351C7 /* Build configuration list for PBXProject "BeeduChat" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F083A9D122CF926500E351C7;
+			productRefGroup = F083A9DB22CF926500E351C7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F083A9D922CF926500E351C7 /* BeeduChat */,
+				F083A9ED22CF926700E351C7 /* BeeduChatTests */,
+				F083A9F822CF926700E351C7 /* BeeduChatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F083A9D822CF926500E351C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F083A9E822CF926700E351C7 /* LaunchScreen.storyboard in Resources */,
+				F083A9E522CF926700E351C7 /* Assets.xcassets in Resources */,
+				F083A9E322CF926500E351C7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F083A9EC22CF926700E351C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F083A9F722CF926700E351C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C1469E8B01EF33F08585806 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeeduChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55B8EC8D747F45CCB69E27A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeeduChatTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C59BB03463F9AECBF9F7CD3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeeduChatUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C66EEE200B5535260008E711 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeeduChat/Pods-BeeduChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeeduChat/Pods-BeeduChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeeduChat/Pods-BeeduChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F083A9D622CF926500E351C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F055068A22D06EC500D5E511 /* NewFeedViewController.swift in Sources */,
+				F055067922D031E100D5E511 /* UITextFieldEx.swift in Sources */,
+				F083A9E022CF926500E351C7 /* ViewController.swift in Sources */,
+				B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */,
+				F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */,
+				F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */,
+				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,
+				F055067722D0306A00D5E511 /* Constant.swift in Sources */,
+				F055067B22D0320100D5E511 /* UIViewEx.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F083A9EA22CF926700E351C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F083A9F322CF926700E351C7 /* BeeduChatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F083A9F522CF926700E351C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F083A9FE22CF926700E351C7 /* BeeduChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F083A9F022CF926700E351C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F083A9D922CF926500E351C7 /* BeeduChat */;
+			targetProxy = F083A9EF22CF926700E351C7 /* PBXContainerItemProxy */;
+		};
+		F083A9FB22CF926700E351C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F083A9D922CF926500E351C7 /* BeeduChat */;
+			targetProxy = F083A9FA22CF926700E351C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F083A9E122CF926500E351C7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F083A9E222CF926500E351C7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F083A9E622CF926700E351C7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F083A9E722CF926700E351C7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F083AA0022CF926700E351C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F083AA0122CF926700E351C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F083AA0322CF926700E351C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59A7CDD07700A2C3E4200BCB /* Pods-BeeduChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAV54K8DD5;
+				INFOPLIST_FILE = BeeduChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DCPC.BeeduChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F083AA0422CF926700E351C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D28D5F622648F070661C5ED5 /* Pods-BeeduChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SAV54K8DD5;
+				INFOPLIST_FILE = BeeduChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DCPC.BeeduChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F083AA0622CF926700E351C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q6SH2UL982;
+				INFOPLIST_FILE = BeeduChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DCPC.BeeduChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeeduChat.app/BeeduChat";
+			};
+			name = Debug;
+		};
+		F083AA0722CF926700E351C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA1A4AE96C2DCBF8ED89D2AC /* Pods-BeeduChatTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q6SH2UL982;
+				INFOPLIST_FILE = BeeduChatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DCPC.BeeduChatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeeduChat.app/BeeduChat";
+			};
+			name = Release;
+		};
+		F083AA0922CF926700E351C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCC45BE1F22661A51EC76144 /* Pods-BeeduChatUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q6SH2UL982;
+				INFOPLIST_FILE = BeeduChatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DCPC.BeeduChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BeeduChat;
+			};
+			name = Debug;
+		};
+		F083AA0A22CF926700E351C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56BA173BE907BF921285B037 /* Pods-BeeduChatUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q6SH2UL982;
+				INFOPLIST_FILE = BeeduChatUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DCPC.BeeduChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BeeduChat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F083A9D522CF926500E351C7 /* Build configuration list for PBXProject "BeeduChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F083AA0022CF926700E351C7 /* Debug */,
+				F083AA0122CF926700E351C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F083AA0222CF926700E351C7 /* Build configuration list for PBXNativeTarget "BeeduChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F083AA0322CF926700E351C7 /* Debug */,
+				F083AA0422CF926700E351C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F083AA0522CF926700E351C7 /* Build configuration list for PBXNativeTarget "BeeduChatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F083AA0622CF926700E351C7 /* Debug */,
+				F083AA0722CF926700E351C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F083AA0822CF926700E351C7 /* Build configuration list for PBXNativeTarget "BeeduChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F083AA0922CF926700E351C7 /* Debug */,
+				F083AA0A22CF926700E351C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F083A9D222CF926500E351C7 /* Project object */;
+}
