@@ -28,6 +28,9 @@ class ChatViewController: UIViewController {
     var lblNortification = UILabel()
     var tbvNortification = UITableView()
     var tbvCellNoritfication = UITableView()
+    var chatView = UIView()
+    var tbvChat = UITableView()
+    var lblChat = UILabel(text: "Chat", textColor: UIColor.black, font: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,7 @@ extension ChatViewController{
         UISearchBar()
         UIHisContactBar()
         UINortification()
+        UIChat()
     }
     //NavBar
     func UINavBar(){
@@ -68,8 +72,10 @@ extension ChatViewController{
             maker.height.equalTo(btnMenu.snp_width)
             maker.height.equalToSuperview().multipliedBy(0.8)
         }
-        btnMenu.backgroundColor = UIColor.blue
-        //add stackviewTitiale
+        self.btnMenu.setImage(UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.btnMenu.contentMode = .scaleAspectFit
+//        btnMenu.backgroundColor = UIColor.blue
+        //add stackview Tittle lalbe
         stackView.addArrangedSubview(stackViewTitle)
         stackViewTitle.snp.makeConstraints { (maker) in
             maker.height.equalToSuperview().multipliedBy(1)
@@ -83,14 +89,18 @@ extension ChatViewController{
             maker.height.equalTo(btnContact.snp_width)
             maker.height.equalToSuperview().multipliedBy(0.8)
         }
-        btnContact.backgroundColor = UIColor.orange
+        self.btnContact.setImage(UIImage(named: "ic_noti")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.btnContact.contentMode = .scaleAspectFit
+//        btnContact.backgroundColor = UIColor.orange
         //add button Option
         stackView.addArrangedSubview(btnOption)
         btnOption.snp.makeConstraints { (maker) in
             maker.height.equalTo(btnOption.snp_width)
             maker.height.equalToSuperview().multipliedBy(0.8)
         }
-        btnOption.backgroundColor = UIColor.green
+        self.btnOption.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.btnOption.contentMode = .scaleAspectFit
+//        btnOption.backgroundColor = UIColor.green
         //add ceparate
     }
     func addCeparate(){
@@ -189,6 +199,30 @@ extension ChatViewController{
         }
         
         tbvNortification.backgroundColor = UIColor.green
+        
+    }
+    func UIChat(){
+        self.view.addSubview(chatView)
+        chatView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(NortificationView).offset(32)
+            maker.width.equalTo(NortificationView.snp.width)
+            maker.top.equalTo(NortificationView.snp.bottom)
+            maker.centerX.equalTo(NortificationView.snp.centerX)
+        }
+        chatView.backgroundColor = UIColor.red
+        chatView.addSubview(lblChat)
+        lblChat.snp.makeConstraints { (maker) in
+            maker.top.left.equalToSuperview()
+        }
+        lblChat.text = "Chat"
+        lblChat.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+        chatView.addSubview(tbvChat)
+        tbvChat.snp.makeConstraints { (maker) in
+            maker.height.equalToSuperview()
+            maker.width.equalToSuperview()
+            maker.centerX.equalToSuperview()
+            maker.top.equalTo(lblChat.snp.bottom)
+        }
         
     }
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
