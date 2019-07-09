@@ -80,6 +80,7 @@ extension NewFeedViewController{
                 maker.height.equalTo(Constant.size.iconNormal)
             })
             self.btnMenu.setImage(UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnMenu.tintColor = Constant.color.iconColor
             self.btnMenu.contentMode = .scaleAspectFit
 //            self.btnMenu.backgroundColor = UIColor.blue
             
@@ -99,19 +100,21 @@ extension NewFeedViewController{
             //Btn noti
             (stackNavi as! UIStackView).addArrangedSubview(self.btnNoti)
             self.btnNoti.snp.makeConstraints({ (maker) in
-                maker.width.equalTo(self.btnNoti.snp.height).multipliedBy(0.7)
+                maker.width.equalTo(self.btnNoti.snp.height).multipliedBy(0.8)
                 maker.height.equalTo(Constant.size.iconNormal)
             })
             self.btnNoti.setImage(UIImage(named: "ic_noti")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnNoti.tintColor = Constant.color.iconColor
             self.btnNoti.contentMode = .scaleAspectFit
             
             //Btn more
             (stackNavi as! UIStackView).addArrangedSubview(self.btnMore)
             self.btnMore.snp.makeConstraints({ (maker) in
-                maker.width.equalTo(self.btnMore.snp.height).multipliedBy(0.7)
+                maker.width.equalTo(self.btnMore.snp.height).multipliedBy(0.8)
                 maker.height.equalTo(Constant.size.iconNormal)
             })
             self.btnMore.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnMore.tintColor = Constant.color.iconColor
             self.btnMore.contentMode = .scaleAspectFit
         }
         
@@ -178,7 +181,7 @@ extension NewFeedViewController{
         
         stackNew.addArrangedSubview(UIView()) { (viewLib) -> (Void) in
             viewLib.snp.makeConstraints({ (maker) in
-                maker.width.equalTo(self.stackNew.subviews[0].snp.width)
+                maker.width.equalTo(self.stackNew.subviews[0].snp.width).multipliedBy(0.7)
                 maker.height.equalToSuperview().offset(-32)
             })
             viewLib.addSubview(self.btnLibrary)
@@ -187,7 +190,8 @@ extension NewFeedViewController{
                 maker.height.equalTo(Constant.size.iconNormal)
             })
             self.btnLibrary.contentMode = .scaleAspectFit
-            self.btnLibrary.setImage(UIImage(named: "ic_photo"), for: .normal)
+            self.btnLibrary.setImage(UIImage(named: "ic_photo")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnLibrary.tintColor = Constant.color.iconColor
         }
         
         /* Separate
