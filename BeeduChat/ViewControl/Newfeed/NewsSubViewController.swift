@@ -25,13 +25,12 @@ extension NewsSubViewController {
     func setupUI() {
         self.view.addSubview(stackMain)
         stackMain.snp.makeConstraints { (maker) in
-            maker.center.size.equalToSuperview()
+            maker.bottom.centerX.width.equalToSuperview()
+            maker.top.equalToSuperview().offset(-16)
         }
-        setupNew()
         stackMain.addArrangedSubview(stackNew)
-//        stackNew.snp.makeConstraints { (maker) in
-//            maker.height.equalTo(Constant.size.avatarNormal + 32)
-//        }
+        setupNew()
+
         stackMain.addArrangedSubview(UIView()) { (separate) -> (Void) in
             separate.backgroundColor = Constant.color.separate
             separate.snp.makeConstraints({ (maker) in
@@ -49,22 +48,14 @@ extension NewsSubViewController {
             maker.height.equalTo(Constant.size.avatarNormal)
         }
         
-        stackHead.addArrangedSubview(
-        UIButton(background: .clear, corner: Constant.size.avatarNormal / 2, border: 0, borderColor: .clear, design: nil)) { (btnAva) -> (Void) in
-            btnAva.snp.makeConstraints({ (maker) in
-                maker.width.equalTo(btnAva.snp.height)
-                maker.height.equalTo(Constant.size.avatarNormal)
-            })
-            (btnAva as! UIButton).setImage(UIImage(named: "ic_ava"), for: .normal)
-            btnAva.contentMode = .scaleAspectFit
-        }
+        stackHead.addArrangedSubview(ReuseForms.btnAvatar())
         
         stackHead.addArrangedSubview(UIView()) { (viewInfo) -> (Void) in
             viewInfo.snp.makeConstraints({ (maker) in
                 maker.height.equalToSuperview()
             })
             //0
-            viewInfo.addSubview(UILabel(text: "Catherine", textColor: Constant.text.color.black, font: nil), design: { (lbUser) -> (Void) in
+            viewInfo.addSubview(UILabel(text: "Co Huong", textColor: Constant.text.color.black, font: nil), design: { (lbUser) -> (Void) in
                 lbUser.snp.makeConstraints({ (maker) in
                     maker.leading.top.trailing.equalToSuperview()
                     maker.height.equalTo(Constant.size.avatarNormal / 2)
@@ -80,7 +71,7 @@ extension NewsSubViewController {
             })
             //2
             viewInfo.addSubview(UIView(), design: { (separate) -> (Void) in
-                separate.backgroundColor = Constant.text.color.gray
+                separate.backgroundColor = Constant.color.separate
                 separate.snp.makeConstraints({ (maker) in
                     maker.width.equalTo(1)
                     maker.leading.equalTo(viewInfo.subviews[1].snp.trailing).offset(4)
@@ -102,7 +93,7 @@ extension NewsSubViewController {
                 maker.width.equalTo(btnNote.snp.height)
                 maker.width.equalTo(Constant.size.iconNormal)
             })
-            btnNote.backgroundColor = UIColor.blue
+            btnNote.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
         }
         
         stackHead.addArrangedSubview(UIButton()) { (btnMore) -> (Void) in
@@ -110,7 +101,7 @@ extension NewsSubViewController {
                 maker.width.equalTo(btnMore.snp.height)
                 maker.width.equalTo(Constant.size.iconNormal)
             })
-            btnMore.backgroundColor = UIColor.blue
+            btnMore.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
         }
         
         self.stackNew.addArrangedSubview(stackHead)
@@ -173,7 +164,7 @@ extension NewsSubViewController {
         stackComment.isLayoutMarginsRelativeArrangement = true
         stackComment.addArrangedSubview(UILabel(text: " Xem thêm bình luận khác", textColor: Constant.text.color.gray, font: nil), design: nil)
         stackComment.snp.makeConstraints { (maker) in
-            maker.height.equalTo(100)
+            maker.height.equalTo(150)
         }
         stackComment.addArrangedSubview(UITableView())
     }

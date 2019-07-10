@@ -12,6 +12,9 @@ import SnapKit
 class NewFeedViewController: UIViewController {
     
     var navigationView = UIView(background: Constant.color.naviBack, corner: 0, border: 0, borderColor: UIColor.gray, design: nil)
+    var naviConstraint : NSLayoutConstraint!
+    var naviLastOffset : CGFloat = 0
+    var naviLastHeight : CGFloat = Constant.size.naviHeight
     var btnMenu = UIButton()
     var btnNoti = UIButton()
     var btnMore = UIButton()
@@ -22,14 +25,14 @@ class NewFeedViewController: UIViewController {
     var scrollMain = UIScrollView()
     var stackMain = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 0, design: nil)
     var stackNew = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 8, design: nil)
-    var avatar = UIButton(background: .clear, corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil)
+    var avatar = ReuseForms.btnAvatar()
     var tfNew = UITextField(text: "", placeholder: "Viết gì đó cho cả lớp", textColor: Constant.text.color.black, font: nil)
 //    var tvNew = UITextView()
     var btnLibrary = UIButton()
     
     var tableView = UITableView()
     var commentView = UIView()
-    var avatarComent = UIImageView(background: .clear, corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil)
+    var avatarComent = ReuseForms.imageAvatar()
     var tfComment = UITextField(text: "", placeholder: "Viết bình luận", textColor: Constant.text.color.black, font: nil)
     
     
@@ -58,8 +61,10 @@ extension NewFeedViewController{
         //        navigationView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
         navigationView.snp.makeConstraints { (maker) in
             maker.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
-            maker.height.equalTo(Constant.size.naviHeight)
+//            maker.height.equalTo(Constant.size.naviHeight)
         }
+        naviConstraint = navigationView.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
+        naviConstraint.isActive = true
         
         /* Navigation
          **************************************
@@ -130,13 +135,41 @@ extension NewFeedViewController{
             separate.backgroundColor = Constant.color.separate
         }
         
+        self.view.addSubview(commentView)
+        commentView.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
+        commentView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(Constant.size.avatarNormal + 16)
+//            maker.top.equalTo(self.stackMain.snp.bottom)
+            maker.width.centerX.bottom.equalTo(self.view.safeAreaLayoutGuide)
+        }
+        commentView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackComment) -> (Void) in
+            stackComment.snp.makeConstraints({ (maker) in
+                maker.center.equalToSuperview()
+                maker.height.equalToSuperview().offset(-16)
+                maker.width.equalToSuperview().offset(-32)
+            })
+            (stackComment as! UIStackView).addArrangedSubview(self.avatarComent)
+            
+            (stackComment as! UIStackView).addArrangedSubview(
+                UIView(background: UIColor.gray.withAlphaComponent(0.4), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil),
+                design: { (container) -> (Void) in
+                    container.addSubview(self.tfComment)
+                    self.tfComment.snp.makeConstraints({ (maker) in
+                        maker.center.equalToSuperview()
+                        maker.size.equalToSuperview().offset(-16)
+                    })
+            })
+        }
         
         self.view.addSubview(scrollMain)
-        
-
+        scrollMain.delegate = self
+        scrollMain.showsVerticalScrollIndicator = false
+        scrollMain.bounces = false
+//        scrollMain.bouncesZoom = false
         scrollMain.snp.makeConstraints { (maker) in
-            maker.centerX.width.bottom.equalTo(self.view.safeAreaLayoutGuide)
-            maker.top.equalTo(self.view.subviews[self.view.subviews.firstIndex(of: self.scrollMain)! - 1].snp.top)
+            maker.centerX.width.equalToSuperview()
+            maker.bottom.equalTo(commentView.snp.top)
+            maker.top.equalTo(self.view.subviews[self.view.subviews.firstIndex(of: self.scrollMain)! - 2].snp.bottom)
         }
         
         self.scrollMain.addSubview(stackMain)
@@ -164,10 +197,7 @@ extension NewFeedViewController{
             viewAvatar.addSubview(self.avatar)
             self.avatar.snp.makeConstraints({ (maker) in
                 maker.top.centerX.width.equalToSuperview()
-                maker.height.equalTo(self.avatar.snp.width)
             })
-            self.avatar.contentMode = .scaleAspectFit
-            self.avatar.setImage(UIImage(named: "ic_ava"), for: .normal)
         }
         
         stackNew.addArrangedSubview(tfNew)
@@ -197,45 +227,69 @@ extension NewFeedViewController{
         /* Separate
          **************************************
          */
-        self.view.addSubview(UIView()) { (separate) -> (Void) in
-            separate.snp.makeConstraints({ (maker) in
-                maker.centerX.width.equalToSuperview()
-                maker.top.equalTo(self.stackNew.snp.bottom).offset(1)
-                maker.height.equalTo(1)
-            })
+        self.stackMain.addArrangedSubview(UIView()) { (separate) -> (Void) in
             separate.backgroundColor = Constant.color.separate
+            separate.snp.makeConstraints({ (maker) in
+                maker.width.equalToSuperview()
+                maker.height.equalTo(8)
+            })
         }
         
         let content = NewsSubViewController()
         self.addChild(content)
         content.didMove(toParent: self)
         self.stackMain.addArrangedSubview(content.view)
+    }
+    
+    func setupNewFeed(){
         
-        stackMain.addArrangedSubview(commentView)
-        commentView.backgroundColor = UIColor.gray.withAlphaComponent(0.1)
-        commentView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(Constant.size.avatarNormal + 16)
+    }
+}
+
+extension NewFeedViewController : UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        naviLastOffset = scrollView.contentOffset.y
+        naviLastHeight = naviConstraint.constant
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
+        
+        var newHeight = naviLastHeight + distance
+        print("Scroll----------------")
+        print("ScrollHeight: \(naviConstraint.constant)")
+        print("ScrollDistance  : \(distance)")
+        print("ScrollNewHeight: \(newHeight)")
+        if (newHeight > Constant.size.naviHeight){
+            newHeight = Constant.size.naviHeight
+        } else if (newHeight < 0){
+            newHeight = 0
+        } else {
+//            scrollView.contentOffset.y = 0
         }
-        commentView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackComment) -> (Void) in
-            stackComment.snp.makeConstraints({ (maker) in
-                maker.center.equalToSuperview()
-                maker.height.equalToSuperview().offset(-16)
-                maker.width.equalToSuperview().offset(-32)
-            })
-            (stackComment as! UIStackView).addArrangedSubview(self.avatarComent)
-            self.avatarComent.snp.makeConstraints({ (maker) in
-                maker.width.equalTo(self.avatarComent.snp.height)
-            })
-            self.avatarComent.image = UIImage(named: "ic_ava")
-            (stackComment as! UIStackView).addArrangedSubview(
-                UIView(background: UIColor.gray.withAlphaComponent(0.4), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil),
-                design: { (container) -> (Void) in
-                    container.addSubview(self.tfComment)
-                    self.tfComment.snp.makeConstraints({ (maker) in
-                        maker.center.equalToSuperview()
-                        maker.size.equalToSuperview().offset(-16)
-                    })
-            })
+        naviConstraint.constant = newHeight
+        var alpha = newHeight / Constant.size.naviHeight
+        if (alpha < 0) {
+            alpha = 0
         }
+        if (alpha > 1) {
+            alpha = 1
+        }
+        navigationView.alpha = alpha
+//        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
+//        print("ScrollChange: \(distance)")
+//        let newHeaderViewHeight: CGFloat = naviConstraint.constant + distance
+//        naviLastOffset = scrollView.contentOffset.y
+//        print("ScrollUpdate: \(naviLastOffset)")
+//        if newHeaderViewHeight > Constant.size.naviHeight {
+//            naviConstraint.constant = Constant.size.naviHeight
+//        } else if newHeaderViewHeight < 0 {
+//            naviConstraint.constant = 0
+//        } else {
+//            naviConstraint.constant = newHeaderViewHeight
+//            scrollView.contentOffset.y = 0 // block scroll view
+//        }
+//
     }
 }
