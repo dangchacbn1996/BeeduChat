@@ -29,6 +29,8 @@
 		F083A9E822CF926700E351C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F083A9E622CF926700E351C7 /* LaunchScreen.storyboard */; };
 		F083A9F322CF926700E351C7 /* BeeduChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9F222CF926700E351C7 /* BeeduChatTests.swift */; };
 		F083A9FE22CF926700E351C7 /* BeeduChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */; };
+		F0F9669022D4F4DE003A2409 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9668F22D4F4DE003A2409 /* NewPostViewController.swift */; };
+		F0F9669222D4F97A003A2409 /* UIButtonEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9669122D4F97A003A2409 /* UIButtonEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		F083A9F922CF926700E351C7 /* BeeduChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeeduChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeduChatUITests.swift; sourceTree = "<group>"; };
 		F083A9FF22CF926700E351C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0F9668F22D4F4DE003A2409 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		F0F9669122D4F97A003A2409 /* UIButtonEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonEx.swift; sourceTree = "<group>"; };
 		F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FCC45BE1F22661A51EC76144 /* Pods-BeeduChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +166,7 @@
 				F055067822D031E100D5E511 /* UITextFieldEx.swift */,
 				F055067A22D0320100D5E511 /* UIViewEx.swift */,
 				F055067C22D0328D00D5E511 /* StackViewEx.swift */,
+				F0F9669122D4F97A003A2409 /* UIButtonEx.swift */,
 			);
 			path = ViewEx;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 		F055067E22D055FE00D5E511 /* ViewControl */ = {
 			isa = PBXGroup;
 			children = (
+				F0F9668E22D4F4A9003A2409 /* New Group */,
 				F055068022D0560F00D5E511 /* Newfeed */,
 				F055067F22D0560700D5E511 /* Chat */,
 			);
@@ -272,6 +278,14 @@
 				F083A9FF22CF926700E351C7 /* Info.plist */,
 			);
 			path = BeeduChatUITests;
+			sourceTree = "<group>";
+		};
+		F0F9668E22D4F4A9003A2409 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				F0F9668F22D4F4DE003A2409 /* NewPostViewController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,8 +512,10 @@
 				F055068A22D06EC500D5E511 /* NewFeedViewController.swift in Sources */,
 				F055067922D031E100D5E511 /* UITextFieldEx.swift in Sources */,
 				F055068C22D092C600D5E511 /* NewsSubViewController.swift in Sources */,
+				F0F9669022D4F4DE003A2409 /* NewPostViewController.swift in Sources */,
 				F083A9E022CF926500E351C7 /* ViewController.swift in Sources */,
 				B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */,
+				F0F9669222D4F97A003A2409 /* UIButtonEx.swift in Sources */,
 				F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */,
 				F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */,
 				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,
