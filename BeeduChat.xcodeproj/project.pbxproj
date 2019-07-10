@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		536970EE22D59AC200D9C504 /* ReuseForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536970ED22D59AC200D9C504 /* ReuseForms.swift */; };
 		58EA5EF4FE3407A7E3057528 /* Pods_BeeduChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B54110165F78A01A98F2F9B /* Pods_BeeduChatUITests.framework */; };
 		7833C66DF09D4C36113FA500 /* Pods_BeeduChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF2CB97F93AE80B95FB388 /* Pods_BeeduChatTests.framework */; };
 		B84710D722D37BDE007328A9 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710D622D37BDD007328A9 /* ReportViewController.swift */; };
 		B84710D922D37F98007328A9 /* DetailMessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710D822D37F98007328A9 /* DetailMessViewController.swift */; };
+		B84710DB22D4D292007328A9 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710DA22D4D292007328A9 /* CreateGroupViewController.swift */; };
+		B84710DD22D4DACD007328A9 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710DC22D4DACD007328A9 /* NewGroupViewController.swift */; };
+		B84710DF22D61CE9007328A9 /* ChooseRecvViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710DE22D61CE9007328A9 /* ChooseRecvViewController.swift */; };
+		B84710E122D62537007328A9 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710E022D62537007328A9 /* ContactViewController.swift */; };
 		B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85EB75422D05BFD000EE476 /* ChatViewController.swift */; };
 		B85EB75722D05D73000EE476 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85EB75622D05D73000EE476 /* SnapKit.framework */; };
 		D2EF5E0407B0B0A8EEC7373C /* Pods_BeeduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7737D01FA70EC4022476426D /* Pods_BeeduChat.framework */; };
@@ -52,11 +57,16 @@
 
 /* Begin PBXFileReference section */
 		4B54110165F78A01A98F2F9B /* Pods_BeeduChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		536970ED22D59AC200D9C504 /* ReuseForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseForms.swift; sourceTree = "<group>"; };
 		56BA173BE907BF921285B037 /* Pods-BeeduChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		59A7CDD07700A2C3E4200BCB /* Pods-BeeduChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChat.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChat/Pods-BeeduChat.debug.xcconfig"; sourceTree = "<group>"; };
 		7737D01FA70EC4022476426D /* Pods_BeeduChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84710D622D37BDD007328A9 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		B84710D822D37F98007328A9 /* DetailMessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMessViewController.swift; sourceTree = "<group>"; };
+		B84710DA22D4D292007328A9 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		B84710DC22D4DACD007328A9 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
+		B84710DE22D61CE9007328A9 /* ChooseRecvViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRecvViewController.swift; sourceTree = "<group>"; };
+		B84710E022D62537007328A9 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		B85EB75422D05BFD000EE476 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B85EB75622D05D73000EE476 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1A4AE96C2DCBF8ED89D2AC /* Pods-BeeduChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +139,14 @@
 				56BA173BE907BF921285B037 /* Pods-BeeduChatUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		536970EC22D59AB500D9C504 /* ReuseForms */ = {
+			isa = PBXGroup;
+			children = (
+				536970ED22D59AC200D9C504 /* ReuseForms.swift */,
+			);
+			path = ReuseForms;
 			sourceTree = "<group>";
 		};
 		ECD097AB32CCF5E82C812701 /* Frameworks */ = {
@@ -214,6 +232,10 @@
 				B85EB75422D05BFD000EE476 /* ChatViewController.swift */,
 				B84710D622D37BDD007328A9 /* ReportViewController.swift */,
 				B84710D822D37F98007328A9 /* DetailMessViewController.swift */,
+				B84710DA22D4D292007328A9 /* CreateGroupViewController.swift */,
+				B84710DC22D4DACD007328A9 /* NewGroupViewController.swift */,
+				B84710DE22D61CE9007328A9 /* ChooseRecvViewController.swift */,
+				B84710E022D62537007328A9 /* ContactViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +272,7 @@
 		F083A9DC22CF926500E351C7 /* BeeduChat */ = {
 			isa = PBXGroup;
 			children = (
+				536970EC22D59AB500D9C504 /* ReuseForms */,
 				F055067E22D055FE00D5E511 /* ViewControl */,
 				F055067022D02FAF00D5E511 /* CustomControl */,
 				F083A9DD22CF926500E351C7 /* AppDelegate.swift */,
@@ -515,11 +538,15 @@
 				F0F9669022D4F4DE003A2409 /* NewPostViewController.swift in Sources */,
 				F083A9E022CF926500E351C7 /* ViewController.swift in Sources */,
 				B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */,
-				F0F9669222D4F97A003A2409 /* UIButtonEx.swift in Sources */,
+				B84710E122D62537007328A9 /* ContactViewController.swift in Sources */,
 				F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */,
+				536970EE22D59AC200D9C504 /* ReuseForms.swift in Sources */,
 				F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */,
 				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,
+				B84710DB22D4D292007328A9 /* CreateGroupViewController.swift in Sources */,
+				B84710DF22D61CE9007328A9 /* ChooseRecvViewController.swift in Sources */,
 				B84710D722D37BDE007328A9 /* ReportViewController.swift in Sources */,
+				B84710DD22D4DACD007328A9 /* NewGroupViewController.swift in Sources */,
 				F055067722D0306A00D5E511 /* Constant.swift in Sources */,
 				F055068E22D0AD7400D5E511 /* CommentSubViewController.swift in Sources */,
 				B84710D922D37F98007328A9 /* DetailMessViewController.swift in Sources */,
@@ -636,6 +663,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -690,6 +718,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -700,7 +729,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SAV54K8DD5;
+				DEVELOPMENT_TEAM = Q6SH2UL982;
 				INFOPLIST_FILE = BeeduChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -719,7 +748,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SAV54K8DD5;
+				DEVELOPMENT_TEAM = Q6SH2UL982;
 				INFOPLIST_FILE = BeeduChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

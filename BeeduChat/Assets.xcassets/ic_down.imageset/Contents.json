@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "green-abstract-ecology-globe-backround-29484656.jpg",
+      "filename" : "ic_down.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "round_keyboard_arrow_down_black_18dp.png",
       "scale" : "2x"
     },
     {

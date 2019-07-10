@@ -7,7 +7,7 @@ target 'BeeduChat' do
 
   # Pods for BeeduChat
 
-  pod 'SnapKit'
+  pod 'SnapKit', '~> 5.0.0'
 
   target 'BeeduChatTests' do
     inherit! :search_paths
