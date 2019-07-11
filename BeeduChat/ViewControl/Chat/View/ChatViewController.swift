@@ -145,6 +145,8 @@ extension ChatViewController{
                 
             })
 //            self.btnSearch.backgroundColor = UIColor.red
+            self.btnSearch.setImage(UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnSearch.contentMode = .scaleAspectFit
             //add text field
             srcView.addSubview(self.txtSearch)
             self.txtSearch.snp.makeConstraints({ (maker) in
