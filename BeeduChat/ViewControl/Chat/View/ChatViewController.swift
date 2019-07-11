@@ -34,7 +34,12 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI();
+        setupUI()
+        tbvChat.delegate = self
+        tbvChat.dataSource = self
+        tbvChat.register(ChatGeneralCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
+        tbvChat.tableFooterView = UIView()
+        tbvChat.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         // Do any additional setup after loading the view.
     }
 
@@ -111,7 +116,7 @@ extension ChatViewController{
             maker.top.equalTo(navigationView.snp_bottom).offset(16)
             maker.centerX.equalToSuperview()
         }
-        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+//        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
     }    //SearchBar
     func UISearchBar(){
         self.view.addSubview(searchView)
@@ -137,7 +142,7 @@ extension ChatViewController{
                 maker.left.equalToSuperview().offset(8)
                 
             })
-            self.btnSearch.backgroundColor = UIColor.red
+//            self.btnSearch.backgroundColor = UIColor.red
             //add text field
             srcView.addSubview(self.txtSearch)
             self.txtSearch.snp.makeConstraints({ (maker) in
@@ -198,18 +203,18 @@ extension ChatViewController{
             maker.width.equalToSuperview()
         }
         
-        tbvNortification.backgroundColor = UIColor.green
+//        tbvNortification.backgroundColor = UIColor.green
         
     }
     func UIChat(){
         self.view.addSubview(chatView)
         chatView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(NortificationView).offset(32)
             maker.width.equalTo(NortificationView.snp.width)
             maker.top.equalTo(NortificationView.snp.bottom)
+            maker.bottom.equalToSuperview()
             maker.centerX.equalTo(NortificationView.snp.centerX)
         }
-        chatView.backgroundColor = UIColor.red
+//        chatView.backgroundColor = UIColor.red
         chatView.addSubview(lblChat)
         lblChat.snp.makeConstraints { (maker) in
             maker.top.left.equalToSuperview()
@@ -218,7 +223,7 @@ extension ChatViewController{
         lblChat.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         chatView.addSubview(tbvChat)
         tbvChat.snp.makeConstraints { (maker) in
-            maker.height.equalToSuperview()
+            maker.bottom.equalToSuperview()
             maker.width.equalToSuperview()
             maker.centerX.equalToSuperview()
             maker.top.equalTo(lblChat.snp.bottom)
@@ -233,4 +238,31 @@ extension ChatViewController{
             alpha: CGFloat(1.0)
         )
     }
+}
+
+extension ChatViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constant.size.avatarNormal + 32
+    }
+}
+
+extension ChatViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ChatGeneralCell.identify, for: indexPath) as! ChatGeneralCell
+        if (indexPath.row % 2 == 0) {
+            cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Contentdjwakjdnjkbawjkdbjkbjknwjkanjkebdjkbjkndjknjkjkkjwankjn", isRead: false)
+        } else {
+            cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Content", isRead: true)
+        }
+        return cell
+    }
+    
 }

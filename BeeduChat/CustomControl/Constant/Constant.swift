@@ -32,13 +32,28 @@ struct Constant {
         }
         
         struct font {
-            static let small = UIFont(name: "Helvetica Neue", size: Constant.text.size.small)
-            static let normal = UIFont(name: "Helvetica Neue", size: Constant.text.size.normal)
-            static let large = UIFont(name: "Helvetica Neue", size: Constant.text.size.large)
 //            static let small = UIFont.systemFont(ofSize: Constant.text.size.small)
-            
-//            static let normal = UIFont.systemFont(ofSize: Constant.text.size.normal)
-//            static let large = UIFont.systemFont(ofSize: Constant.text.size.large)
+            static let small = UIFont(name: "Helvetica", size: Constant.text.size.small)
+            static let normal = UIFont(name: "Helvetica", size: Constant.text.size.normal)
+            static let large = UIFont(name: "Helvetica", size: Constant.text.size.large)
+            static func customFont(size : CGFloat, weight : Constant.text.font.weight) -> (UIFont) {
+                return UIFont(name: "Helvetica-\(weight.rawValue)", size: size) ?? UIFont(name: "Helvetica", size: size)!
+            }
+            enum weight : String {
+                case Regular = "Regular"
+                case Bold = "Bold"
+                case Bold_Italic = "Bold Italic"
+                case Condensed_Black = "Condensed Black"
+                case Condensed_Bold = "Condensed Bold"
+                case Italic = "Italic"
+                case Light_Italic = "Light Italic"
+                case Medium = "Medium"
+                case Medium_Italic = "Medium Italic"
+                case Thin = "Thin"
+                case Thin_Italic = "Thin Italic"
+                case UltraLight = "UltraLight"
+                case UltraLight_Italic = "UltraLight Italic"
+            }
         }
         
         struct size {

@@ -25,6 +25,21 @@ class ReuseForms {
         return avatar
     }
     
+    static func imageAvatar(_ image : UIImage?) -> (UIImageView){
+        let avatar = UIImageView()
+        avatar.contentMode = .scaleAspectFit
+        avatar.image = image ?? UIImage(named: "ic_ava")
+        avatar.clipsToBounds = true
+        avatar.layer.cornerRadius = Constant.size.avatarNormal / 2
+        avatar.snp.makeConstraints { (maker) in
+            maker.width.equalTo(avatar.snp.height)
+            maker.height.equalTo(Constant.size.avatarNormal)
+        }
+        avatar.layer.borderWidth = 1
+        avatar.layer.borderColor = Constant.color.separate.cgColor
+        return avatar
+    }
+    
     static func btnAvatar() -> (UIButton){
         let avatar = UIButton()
         avatar.contentMode = .scaleAspectFit
