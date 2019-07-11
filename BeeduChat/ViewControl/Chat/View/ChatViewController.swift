@@ -20,7 +20,7 @@ class ChatViewController: UIViewController {
     var btnContact = UIButton()
     var btnOption = UIButton()
     var searchView = UIView()
-    var btnSearch = UIButton(background: .clear, corner: 0, border: 0, borderColor: .clear, design: nil)
+    var btnSearch = UIButton(background: .clear, height: nil, ratioHW: nil, corner: 0, border: 0, borderColor: .clear, design: nil)
     var txtSearch = UITextField(background: .clear, corner: 0, border: 0, borderColor: .clear, design: nil)
     var ceparateView = UIView()
     var historyView = UIView()
@@ -37,9 +37,11 @@ class ChatViewController: UIViewController {
         setupUI()
         tbvChat.delegate = self
         tbvChat.dataSource = self
-        tbvChat.register(ChatGeneralCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
+//        tbvChat.register(ChatGeneralCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
+        tbvChat.register(CommentCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
         tbvChat.tableFooterView = UIView()
-        tbvChat.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        tbvChat.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tbvChat.separatorStyle = .none
         // Do any additional setup after loading the view.
     }
 
@@ -242,7 +244,8 @@ extension ChatViewController{
 
 extension ChatViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constant.size.avatarNormal + 32
+//        return Constant.size.avatarNormal + 32
+        return UITableView.automaticDimension
     }
 }
 
@@ -257,10 +260,11 @@ extension ChatViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatGeneralCell.identify, for: indexPath) as! ChatGeneralCell
+        cell.selectionStyle = .none
         if (indexPath.row % 2 == 0) {
-            cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Contentdjwakjdnjkbawjkdbjkbjknwjkanjkebdjkbjkndjknjkjkkjwankjn", isRead: false)
+            cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Swinging in the backyard\nPull up in your fast car\nWhistling my name", isRead: true)
         } else {
-            cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Content", isRead: true)
+            cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Content", isRead: false)
         }
         return cell
     }

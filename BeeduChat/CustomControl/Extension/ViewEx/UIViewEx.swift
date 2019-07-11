@@ -7,10 +7,30 @@
 //
 
 import UIKit
+import SnapKit
 
 extension UIView {
     
-    convenience init(background : UIColor, corner : CGFloat, border : CGFloat, borderColor : UIColor?, design : ((UIView) -> (Void))?) {
+    convenience init(background : UIColor, height : CGFloat?, ratioHW : CGFloat?, corner : CGFloat, border : CGFloat, borderColor : UIColor?, design : ((UIView) -> (Void))?) {
+        self.init()
+        self.backgroundColor = background
+        self.clipsToBounds = true
+        self.layer.cornerRadius = corner
+        self.layer.borderWidth = border
+        self.layer.borderColor = borderColor?.cgColor
+        self.snp.makeConstraints { (maker) in
+            if (height != nil) {
+                maker.height.equalTo(height!)
+            }
+            if (ratioHW != nil) {
+                maker.width.equalTo(self.snp.height).multipliedBy(ratioHW!)
+            }
+        }
+        design?(self)
+//        self.clipToBounds = true
+    }
+    
+    convenience init(background: UIColor, corner: CGFloat, border: CGFloat, borderColor: UIColor?, design: ((UIView) -> (Void))?) {
         self.init()
         self.backgroundColor = background
         self.clipsToBounds = true
@@ -18,7 +38,6 @@ extension UIView {
         self.layer.borderWidth = border
         self.layer.borderColor = borderColor?.cgColor
         design?(self)
-//        self.clipToBounds = true
     }
     
     func addSubview(_ view : UIView, design : ((UIView) -> (Void))?) {

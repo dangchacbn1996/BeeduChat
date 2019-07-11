@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5316C58922D6EFF900F10A1B /* ChatGeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5316C58822D6EFF900F10A1B /* ChatGeneralCell.swift */; };
+		532C4D1A22D7293100ED38CD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C4D1922D7293100ED38CD /* CommentCell.swift */; };
+		532C4D1C22D72B0A00ED38CD /* UIButtonEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C4D1B22D72B0A00ED38CD /* UIButtonEx.swift */; };
+		532C4D1E22D72C9400ED38CD /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C4D1D22D72C9400ED38CD /* UIColorEx.swift */; };
 		536970EE22D59AC200D9C504 /* ReuseForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536970ED22D59AC200D9C504 /* ReuseForms.swift */; };
 		58EA5EF4FE3407A7E3057528 /* Pods_BeeduChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B54110165F78A01A98F2F9B /* Pods_BeeduChatUITests.framework */; };
 		7833C66DF09D4C36113FA500 /* Pods_BeeduChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF2CB97F93AE80B95FB388 /* Pods_BeeduChatTests.framework */; };
@@ -57,6 +60,9 @@
 /* Begin PBXFileReference section */
 		4B54110165F78A01A98F2F9B /* Pods_BeeduChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5316C58822D6EFF900F10A1B /* ChatGeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGeneralCell.swift; sourceTree = "<group>"; };
+		532C4D1922D7293100ED38CD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		532C4D1B22D72B0A00ED38CD /* UIButtonEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonEx.swift; sourceTree = "<group>"; };
+		532C4D1D22D72C9400ED38CD /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		536970ED22D59AC200D9C504 /* ReuseForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseForms.swift; sourceTree = "<group>"; };
 		56BA173BE907BF921285B037 /* Pods-BeeduChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		59A7CDD07700A2C3E4200BCB /* Pods-BeeduChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChat.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChat/Pods-BeeduChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +153,14 @@
 			path = ReuseCell;
 			sourceTree = "<group>";
 		};
+		532C4D1822D728E100ED38CD /* ReuseCell */ = {
+			isa = PBXGroup;
+			children = (
+				532C4D1922D7293100ED38CD /* CommentCell.swift */,
+			);
+			path = ReuseCell;
+			sourceTree = "<group>";
+		};
 		536970EC22D59AB500D9C504 /* ReuseForms */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +204,8 @@
 				F055067822D031E100D5E511 /* UITextFieldEx.swift */,
 				F055067A22D0320100D5E511 /* UIViewEx.swift */,
 				F055067C22D0328D00D5E511 /* StackViewEx.swift */,
+				532C4D1B22D72B0A00ED38CD /* UIButtonEx.swift */,
+				532C4D1D22D72C9400ED38CD /* UIColorEx.swift */,
 			);
 			path = ViewEx;
 			sourceTree = "<group>";
@@ -223,6 +239,7 @@
 		F055068022D0560F00D5E511 /* Newfeed */ = {
 			isa = PBXGroup;
 			children = (
+				532C4D1822D728E100ED38CD /* ReuseCell */,
 				F055068922D06EC500D5E511 /* NewFeedViewController.swift */,
 				F055068B22D092C600D5E511 /* NewsSubViewController.swift */,
 				F055068D22D0AD7400D5E511 /* CommentSubViewController.swift */,
@@ -532,18 +549,21 @@
 				F055068A22D06EC500D5E511 /* NewFeedViewController.swift in Sources */,
 				F055067922D031E100D5E511 /* UITextFieldEx.swift in Sources */,
 				F055068C22D092C600D5E511 /* NewsSubViewController.swift in Sources */,
+				532C4D1C22D72B0A00ED38CD /* UIButtonEx.swift in Sources */,
 				5316C58922D6EFF900F10A1B /* ChatGeneralCell.swift in Sources */,
 				F083A9E022CF926500E351C7 /* ViewController.swift in Sources */,
 				B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */,
 				B84710E122D62537007328A9 /* ContactViewController.swift in Sources */,
 				F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */,
 				536970EE22D59AC200D9C504 /* ReuseForms.swift in Sources */,
+				532C4D1E22D72C9400ED38CD /* UIColorEx.swift in Sources */,
 				F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */,
 				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,
 				B84710DB22D4D292007328A9 /* CreateGroupViewController.swift in Sources */,
 				B84710DF22D61CE9007328A9 /* ChooseRecvViewController.swift in Sources */,
 				B84710D722D37BDE007328A9 /* ReportViewController.swift in Sources */,
 				B84710DD22D4DACD007328A9 /* NewGroupViewController.swift in Sources */,
+				532C4D1A22D7293100ED38CD /* CommentCell.swift in Sources */,
 				F055067722D0306A00D5E511 /* Constant.swift in Sources */,
 				F055068E22D0AD7400D5E511 /* CommentSubViewController.swift in Sources */,
 				B84710D922D37F98007328A9 /* DetailMessViewController.swift in Sources */,

@@ -13,6 +13,7 @@ struct Constant {
     struct size {
         static let iconNormal : CGFloat = 32
         static let avatarNormal : CGFloat = 36
+        static let avatarSmall : CGFloat = 24
         static let naviHeight = Constant.size.iconNormal + Constant.size.padingAround
         static let pading : CGFloat = 16
         static let padingAround = 2 * Constant.size.pading
@@ -22,6 +23,8 @@ struct Constant {
         static let separate = UIColor(red: 139/255, green: 148/255, blue: 159/255, alpha: 1.0)
         static let naviBack = UIColor.white
         static let iconColor = UIColor(red: 54/255, green: 54/255, blue: 54/255, alpha: 1.0)
+        static let btnTitle = UIColor(68, 138, 255)
+        static let commentBack = UIColor(238,238,238)
     }
     
     struct text {
@@ -33,9 +36,9 @@ struct Constant {
         
         struct font {
 //            static let small = UIFont.systemFont(ofSize: Constant.text.size.small)
-            static let small = UIFont(name: "Helvetica", size: Constant.text.size.small)
-            static let normal = UIFont(name: "Helvetica", size: Constant.text.size.normal)
-            static let large = UIFont(name: "Helvetica", size: Constant.text.size.large)
+            static let small = UIFont(name: "Helvetica", size: Constant.text.size.small)!
+            static let normal = UIFont(name: "Helvetica", size: Constant.text.size.normal)!
+            static let large = UIFont(name: "Helvetica", size: Constant.text.size.large)!
             static func customFont(size : CGFloat, weight : Constant.text.font.weight) -> (UIFont) {
                 return UIFont(name: "Helvetica-\(weight.rawValue)", size: size) ?? UIFont(name: "Helvetica", size: size)!
             }
@@ -57,7 +60,7 @@ struct Constant {
         }
         
         struct size {
-            static let small : CGFloat = 10
+            static let small : CGFloat = 12
             static let normal : CGFloat = 14
             static let large : CGFloat = 16
         }
