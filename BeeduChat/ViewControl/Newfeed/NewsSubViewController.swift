@@ -13,7 +13,7 @@ class NewsSubViewController : UIViewController {
     
     var stackMain = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 0, design: nil)
     var stackNew = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 8, design: nil)
-    var stackComment = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 8, design: nil)
+    var stackComment = UIStackView(axis: .vertical, distribution: .equalSpacing, alignment: .fill, spacing: 8, design: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,7 +120,7 @@ extension NewsSubViewController {
         
         stackNew.addArrangedSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackLike) -> (Void) in
             stackLike.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(Constant.text.font.normal?.lineHeight ?? 16)
+                maker.height.equalTo(Constant.text.font.normal.lineHeight ?? 16)
             })
             
             (stackLike as! UIStackView).addArrangedSubview(UIView(), design: { (viewLike) -> (Void) in
@@ -143,7 +143,7 @@ extension NewsSubViewController {
         
         stackNew.addArrangedSubview(UIStackView(axis: .horizontal, distribution: .fillEqually, alignment: .fill, spacing: 8, design: nil)) { (stackAction) -> (Void) in
             stackAction.snp.makeConstraints({ (maker) in
-                maker.height.equalTo((Constant.text.font.normal?.lineHeight ?? 16) * 1.5)
+                maker.height.equalTo((Constant.text.font.normal.lineHeight ?? 16) * 1.5)
             })
             (stackAction as! UIStackView).addArrangedSubview(
                 UILabel(text: "Thích", textColor: Constant.text.color.black, font: nil), design: { (lbLike) -> (Void) in
@@ -163,9 +163,16 @@ extension NewsSubViewController {
         stackComment.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         stackComment.isLayoutMarginsRelativeArrangement = true
         stackComment.addArrangedSubview(UILabel(text: " Xem thêm bình luận khác", textColor: Constant.text.color.gray, font: nil), design: nil)
-        stackComment.snp.makeConstraints { (maker) in
-            maker.height.equalTo(150)
+//        stackComment.snp.makeConstraints { (maker) in
+//            maker.height.equalTo(550)
+//        }
+        
+        let content = CommentSubViewController()
+        self.addChild(content)
+        content.didMove(toParent: self)
+        stackComment.addArrangedSubview(content.view)
+        content.view.snp.makeConstraints { (maker) in
+            maker.height.equalTo(content.tableComment.contentSize.height)
         }
-        stackComment.addArrangedSubview(UITableView())
     }
 }

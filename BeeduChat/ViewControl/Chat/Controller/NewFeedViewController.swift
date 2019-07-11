@@ -11,7 +11,7 @@ import SnapKit
 
 class NewFeedViewController: UIViewController {
     
-    var navigationView = UIView(background: Constant.color.naviBack, corner: 0, border: 0, borderColor: UIColor.gray, design: nil)
+    var navigationView = UIView(background: Constant.color.naviBack, height: nil, ratioHW: nil, corner: 0, border: 0, borderColor: UIColor.gray, design: nil)
     var naviConstraint : NSLayoutConstraint!
     var naviLastOffset : CGFloat = 0
     var naviLastHeight : CGFloat = Constant.size.naviHeight
@@ -36,7 +36,7 @@ class NewFeedViewController: UIViewController {
     var tfComment = UITextField(text: "", placeholder: "Viết bình luận", textColor: Constant.text.color.black, font: nil)
     
     
-    var newFeedView = UIView(background: UIColor.white, corner: 0, border: 0, borderColor: nil, design: nil)
+    var newFeedView = UIView(background: UIColor.white, height: nil, ratioHW: nil, corner: 0, border: 0, borderColor: nil, design: nil)
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -151,7 +151,7 @@ extension NewFeedViewController{
             (stackComment as! UIStackView).addArrangedSubview(self.avatarComent)
             
             (stackComment as! UIStackView).addArrangedSubview(
-                UIView(background: UIColor.gray.withAlphaComponent(0.4), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil),
+                UIView(background: UIColor.gray.withAlphaComponent(0.4), height: nil, ratioHW: nil, corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil),
                 design: { (container) -> (Void) in
                     container.addSubview(self.tfComment)
                     self.tfComment.snp.makeConstraints({ (maker) in
