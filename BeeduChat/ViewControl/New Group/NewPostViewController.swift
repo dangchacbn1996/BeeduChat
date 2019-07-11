@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class NewPostViewController : UIViewController {
     
@@ -21,8 +22,13 @@ class NewPostViewController : UIViewController {
 extension NewPostViewController {
     func setupUI(){
         self.view.backgroundColor = Constant.color.naviBack
-        self.view.addSubview(UIView()) { (navi) -> (Void) in
-            navi.addSubview(UIButton(), design: <#T##((UIView) -> (Void))?##((UIView) -> (Void))?##(UIView) -> (Void)#>)
-        }
+//        self.view.addSubview(UIView()) { (navi) -> (Void) in
+//            navi.addSubview(UIButton(title : "Huỷ", font : Constant.font.normal , titleColor : Constant.color.buttonText, color : UIColor.clear), design: { (button) -> (Void) in
+//                button.snp.makeConstraint { (maker) -> (Void) in
+//                    maker.snp.leading.equalToSuperview().offset(16)
+//                    maker.top.bottom.equalToSuperview()
+//                }
+//            })
+//        }
     }
 }

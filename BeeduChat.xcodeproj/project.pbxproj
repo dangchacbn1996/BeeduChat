@@ -34,8 +34,8 @@
 		F083A9E822CF926700E351C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F083A9E622CF926700E351C7 /* LaunchScreen.storyboard */; };
 		F083A9F322CF926700E351C7 /* BeeduChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9F222CF926700E351C7 /* BeeduChatTests.swift */; };
 		F083A9FE22CF926700E351C7 /* BeeduChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */; };
+		F0A3693922D6496F007E7529 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3693822D6496F007E7529 /* UIColorEx.swift */; };
 		F0F9669022D4F4DE003A2409 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9668F22D4F4DE003A2409 /* NewPostViewController.swift */; };
-		F0F9669222D4F97A003A2409 /* UIButtonEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9669122D4F97A003A2409 /* UIButtonEx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +93,7 @@
 		F083A9F922CF926700E351C7 /* BeeduChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeeduChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeduChatUITests.swift; sourceTree = "<group>"; };
 		F083A9FF22CF926700E351C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0A3693822D6496F007E7529 /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		F0F9668F22D4F4DE003A2409 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		F0F9669122D4F97A003A2409 /* UIButtonEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonEx.swift; sourceTree = "<group>"; };
 		F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +186,7 @@
 				F055067A22D0320100D5E511 /* UIViewEx.swift */,
 				F055067C22D0328D00D5E511 /* StackViewEx.swift */,
 				F0F9669122D4F97A003A2409 /* UIButtonEx.swift */,
+				F0A3693822D6496F007E7529 /* UIColorEx.swift */,
 			);
 			path = ViewEx;
 			sourceTree = "<group>";
@@ -540,6 +542,7 @@
 				B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */,
 				B84710E122D62537007328A9 /* ContactViewController.swift in Sources */,
 				F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */,
+				F0A3693922D6496F007E7529 /* UIColorEx.swift in Sources */,
 				536970EE22D59AC200D9C504 /* ReuseForms.swift in Sources */,
 				F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */,
 				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,

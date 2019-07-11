@@ -9,7 +9,10 @@
 import UIKit
 
 extension UIButton {
-    convenience init(title : String, font : UIFont, titleColor : UIColor, color : String) {
-        <#statements#>
+    convenience init(title : String, font : UIFont, titleColor : UIColor, color : UIColor) {
+        self.init()
+        self.setTitle(title : title, forState: .normal)
+        self.setTitleColor(color : titleColor, forState: .normal)
+        self.setBackgroundColor(color : color, forState: .normal)
     }
 }

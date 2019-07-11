@@ -22,6 +22,7 @@ struct Constant {
         static let separate = UIColor(red: 139/255, green: 148/255, blue: 159/255, alpha: 1.0)
         static let naviBack = UIColor.white
         static let iconColor = UIColor(red: 54/255, green: 54/255, blue: 54/255, alpha: 1.0)
+        static let buttonText = UIColor(130, 177, 255)
     }
     
     struct text {
