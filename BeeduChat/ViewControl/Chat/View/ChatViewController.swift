@@ -38,8 +38,9 @@ class ChatViewController: UIViewController {
         tbvChat.delegate = self
         tbvChat.dataSource = self
 //        tbvChat.register(ChatGeneralCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
-        tbvChat.register(CommentCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
+        tbvChat.register(ChatGeneralCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
         tbvChat.tableFooterView = UIView()
+        tbvChat.tableHeaderView = UIView()
 //        tbvChat.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tbvChat.separatorStyle = .none
         // Do any additional setup after loading the view.
@@ -115,10 +116,10 @@ extension ChatViewController{
         ceparateView.snp.makeConstraints { (maker) in
             maker.height.equalTo(1)
             maker.width.equalToSuperview()
-            maker.top.equalTo(navigationView.snp_bottom).offset(16)
+            maker.top.equalTo(navigationView.snp_bottom)
             maker.centerX.equalToSuperview()
         }
-//        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
     }    //SearchBar
     func UISearchBar(){
         self.view.addSubview(searchView)

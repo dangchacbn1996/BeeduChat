@@ -19,6 +19,7 @@
 		B84710DD22D4DACD007328A9 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710DC22D4DACD007328A9 /* NewGroupViewController.swift */; };
 		B84710DF22D61CE9007328A9 /* ChooseRecvViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710DE22D61CE9007328A9 /* ChooseRecvViewController.swift */; };
 		B84710E122D62537007328A9 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710E022D62537007328A9 /* ContactViewController.swift */; };
+		B84710E322D77AE7007328A9 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710E222D77AE7007328A9 /* ReportCell.swift */; };
 		B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85EB75422D05BFD000EE476 /* ChatViewController.swift */; };
 		B85EB75722D05D73000EE476 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85EB75622D05D73000EE476 /* SnapKit.framework */; };
 		D2EF5E0407B0B0A8EEC7373C /* Pods_BeeduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7737D01FA70EC4022476426D /* Pods_BeeduChat.framework */; };
@@ -73,6 +74,7 @@
 		B84710DC22D4DACD007328A9 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		B84710DE22D61CE9007328A9 /* ChooseRecvViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRecvViewController.swift; sourceTree = "<group>"; };
 		B84710E022D62537007328A9 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		B84710E222D77AE7007328A9 /* ReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
 		B85EB75422D05BFD000EE476 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B85EB75622D05D73000EE476 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1A4AE96C2DCBF8ED89D2AC /* Pods-BeeduChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				5316C58822D6EFF900F10A1B /* ChatGeneralCell.swift */,
+				B84710E222D77AE7007328A9 /* ReportCell.swift */,
 			);
 			path = ReuseCell;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,
 				B84710DB22D4D292007328A9 /* CreateGroupViewController.swift in Sources */,
 				B84710DF22D61CE9007328A9 /* ChooseRecvViewController.swift in Sources */,
+				B84710E322D77AE7007328A9 /* ReportCell.swift in Sources */,
 				B84710D722D37BDE007328A9 /* ReportViewController.swift in Sources */,
 				B84710DD22D4DACD007328A9 /* NewGroupViewController.swift in Sources */,
 				532C4D1A22D7293100ED38CD /* CommentCell.swift in Sources */,

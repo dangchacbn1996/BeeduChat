@@ -22,6 +22,7 @@ class ReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupUI()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -79,5 +80,31 @@ extension ReportViewController{
             maker.height.width.centerX.equalToSuperview()
         }
         tbvContent.backgroundColor = UIColor.blue
+    }
+}
+extension ReportViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //        return Constant.size.avatarNormal + 32
+        return UITableView.automaticDimension
+    }
+}
+extension ReportViewController : UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReportCell.identifier, for: indexPath) as! ReportCell
+        cell.selectionStyle = .none
+        if (indexPath.row % 2 == 0) {
+            cell.data = ReportCellModel(title: "Đã đọc", subTitle: "Có 2 người đã xem", iconStt: UIImage(named: "ic_ava"), percent: "10%", btnAction: UIImage(named: "ic_left"))
+        } else {
+            cell.data = ReportCellModel(title: "Đã đọc", subTitle: "Có 2 người đã xem", iconStt: UIImage(named: "ic_ava"), percent: "10%", btnAction: UIImage(named: "ic_left"))
+        }
+        return cell
     }
 }
