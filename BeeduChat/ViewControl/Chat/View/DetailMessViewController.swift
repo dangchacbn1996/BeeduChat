@@ -22,6 +22,12 @@ class DetailMessViewController: UIViewController {
         super.viewDidLoad()
         SetupUI()
         // Do any additional setup after loading the view.
+        tbvContent.delegate = self
+        tbvContent.dataSource = self
+        tbvContent.register(DetailMessageCell.self, forCellReuseIdentifier: DetailMessageCell.identify)
+        tbvContent.tableFooterView = UIView()
+        tbvContent.tableHeaderView = UIView()
+        tbvContent.separatorStyle = .none
     }
 
 }
@@ -51,7 +57,7 @@ extension DetailMessViewController{
         //add button menu to stackView
         stackView.addArrangedSubview(self.btnMenu)
         btnMenu.snp.makeConstraints { (maker) in
-            maker.height.equalTo(btnMenu.snp_width)
+            maker.height.equalTo(btnMenu.snp.width)
             maker.height.equalToSuperview().multipliedBy(0.8)
         }
         self.btnMenu.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -70,14 +76,39 @@ extension DetailMessViewController{
         self.view.addSubview(contentView)
         contentView.snp.makeConstraints { (maker) in
             maker.height.equalToSuperview()
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(navigationView.snp_bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp_centerX)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(navigationView.snp.bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp.centerX)
         }
         contentView.addSubview(tbvContent)
         tbvContent.snp.makeConstraints { (maker) in
             maker.height.width.centerX.equalToSuperview()
         }
         tbvContent.backgroundColor = UIColor.blue
+    }
+}
+
+extension DetailMessViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+extension DetailMessViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailMessageCell.identify, for: indexPath) as! DetailMessageCell
+        cell.selectionStyle = .none
+        if(indexPath.row % 2 == 0){
+            cell.data = DetailMessageCellModel(avatar: UIImage(named: "ic_ava"), nameID: "Bố Trường Giang")
+        }
+        else{
+            cell.data = DetailMessageCellModel(avatar: UIImage(named: "ic_ava"), nameID: "Bố Thế Tân")
+        }
+        return cell
     }
 }

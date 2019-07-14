@@ -19,7 +19,7 @@ struct CommentGeneralModel {
 
 class CommentCell : UITableViewCell {
     static let identify = "CommentCell"
-    var imAvatar = ReuseForms.imageAvatar(nil)
+    var imAvatar = ReuseForms.imageBig(nil)
     var lbTime = UILabel(text: "", textColor: Constant.text.color.gray, font: Constant.text.font.small)
     var lbUser = UILabel(text: "",
                          textColor: Constant.text.color.black,

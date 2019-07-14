@@ -22,7 +22,12 @@ class ReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupUI()
-        
+        tbvContent.dataSource = self
+        tbvContent.delegate = self
+        tbvContent.register(ReportCell.self, forCellReuseIdentifier: ReportCell.identifier)
+        tbvContent.tableFooterView = UIView()
+        tbvContent.tableHeaderView = UIView()
+        tbvContent.separatorStyle = .singleLine
         // Do any additional setup after loading the view.
     }
 
@@ -52,34 +57,44 @@ extension ReportViewController{
         //add button menu to stackView
         stackView.addArrangedSubview(self.btnMenu)
         btnMenu.snp.makeConstraints { (maker) in
-            maker.height.equalTo(btnMenu.snp_width)
+            maker.height.equalTo(btnMenu.snp.width)
             maker.height.equalToSuperview().multipliedBy(0.8)
         }
         self.btnMenu.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.btnMenu.contentMode = .scaleAspectFit
+        self.btnMenu.tintColor = Constant.color.iconColor
         //        btnMenu.backgroundColor = UIColor.blue
+        
         //add stackview Tittle lalbe
-        stackView.addArrangedSubview(stackviewTitle)
-        stackviewTitle.snp.makeConstraints { (maker) in
-            maker.height.equalToSuperview().multipliedBy(1)
-        }
-        //add lable class name
-        stackviewTitle.addArrangedSubview(lblClass)
-        stackviewTitle.addArrangedSubview(lblSubClass)
+        stackView.addArrangedSubview(UIView())
+        
+        self.navigationView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil),design: {(stackClass) -> (Void) in
+            stackClass.snp.makeConstraints({ (maker) in
+                maker.center.equalToSuperview()
+            })
+            self.lblClass.font = Constant.text.font.customFont(size: Constant.text.size.large, weight: .Bold)
+            (stackClass as! UIStackView).addArrangedSubview(self.lblClass)
+            (stackClass as! UIStackView).addArrangedSubview(self.lblSubClass)
+        })
+//        stackviewTitle.snp.makeConstraints { (maker) in
+//            maker.height.equalToSuperview().multipliedBy(1)
+//        }
+//        //add lable class name
+//        stackviewTitle.addArrangedSubview(lblClass)
+//        stackviewTitle.addArrangedSubview(lblSubClass)
     }
     func UIContent(){
         self.view.addSubview(contentView)
         contentView.snp.makeConstraints { (maker) in
             maker.height.equalToSuperview()
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(navigationView.snp_bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp_centerX)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(navigationView.snp.bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp.centerX)
         }
         contentView.addSubview(tbvContent)
         tbvContent.snp.makeConstraints { (maker) in
             maker.height.width.centerX.equalToSuperview()
         }
-        tbvContent.backgroundColor = UIColor.blue
     }
 }
 extension ReportViewController : UITableViewDelegate{
@@ -101,9 +116,9 @@ extension ReportViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: ReportCell.identifier, for: indexPath) as! ReportCell
         cell.selectionStyle = .none
         if (indexPath.row % 2 == 0) {
-            cell.data = ReportCellModel(title: "Đã đọc", subTitle: "Có 2 người đã xem", iconStt: UIImage(named: "ic_ava"), percent: "10%", btnAction: UIImage(named: "ic_left"))
+            cell.data = ReportCellModel(title: "Đã đọc", subTitle: "Có 2 người đã xem", iconStt: UIImage(named: "checked"), percent: "10%", btnAction: UIImage(named: "ic_right"))
         } else {
-            cell.data = ReportCellModel(title: "Đã đọc", subTitle: "Có 2 người đã xem", iconStt: UIImage(named: "ic_ava"), percent: "10%", btnAction: UIImage(named: "ic_left"))
+            cell.data = ReportCellModel(title: "Đã đọc", subTitle: "Có 2 người đã xem", iconStt: UIImage(named: "check"), percent: "10%", btnAction: UIImage(named: "ic_right"))
         }
         return cell
     }

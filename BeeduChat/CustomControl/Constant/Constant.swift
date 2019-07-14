@@ -17,6 +17,7 @@ struct Constant {
         static let naviHeight = Constant.size.iconNormal + Constant.size.padingAround
         static let pading : CGFloat = 16
         static let padingAround = 2 * Constant.size.pading
+        static let avatarBig : CGFloat = 64
     }
     
     struct color {

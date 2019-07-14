@@ -15,8 +15,6 @@ struct ReportCellModel {
     var iconStt : UIImage? = nil
     var percent : String = ""
     var btnAction : UIImage? = nil
-    
-    
 }
 
 class ReportCell: UITableViewCell {
@@ -35,17 +33,20 @@ class ReportCell: UITableViewCell {
     static let identifier = "ReportCell"
     var lblTitle = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.normal)
     var lblSubTitle = UILabel(text: "", textColor: Constant.text.color.gray, font: Constant.text.font.normal)
-    var btnStt = ReuseForms.imageAvatar(nil)
+    var btnStt = ReuseForms.imageAvatarSmall(nil)
     var lblPercent = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.normal)
-    var btnAct = ReuseForms.imageAvatar()
+    var btnAct = UIButton()
     var stackViewTitle = UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .leading, spacing: 0, design: nil)
-    var stackViewStatus = UIStackView(axis: .horizontal, distribution: .fillEqually, alignment: .leading, spacing: 0, design: nil)
+    var stackViewStatus = UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .leading, spacing: 0, design: nil)
     
     var data : ReportCellModel = ReportCellModel(){
         didSet{
             if(self.data.iconStt != nil){
                 btnStt.image = self.data.iconStt
             }
+            self.btnAct.setImage(UIImage(named: "ic_right")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnAct.tintColor = Constant.color.iconColor
+            self.btnAct.contentMode = .scaleAspectFit
             lblTitle.text = self.data.title
             lblSubTitle.text = self.data.subTitle
             lblPercent.text = self.data.percent
