@@ -12,6 +12,7 @@ import SnapKit
 class NewPostViewController : UIViewController {
     
     var userInfoView : UIView!
+    var tablePost = UITableView()
     
     override func viewDidLoad() {
         setupUI()
@@ -19,16 +20,31 @@ class NewPostViewController : UIViewController {
     
 }
 
+extension NewPostViewController : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewPostCell.identify, for: indexPath)
+        cell.selectionStyle = .none
+        return cell
+    }
+}
+
 extension NewPostViewController {
     func setupUI(){
         self.view.backgroundColor = Constant.color.naviBack
-//        self.view.addSubview(UIView()) { (navi) -> (Void) in
-//            navi.addSubview(UIButton(title : "Huỷ", font : Constant.font.normal , titleColor : Constant.color.buttonText, color : UIColor.clear), design: { (button) -> (Void) in
-//                button.snp.makeConstraint { (maker) -> (Void) in
-//                    maker.snp.leading.equalToSuperview().offset(16)
-//                    maker.top.bottom.equalToSuperview()
-//                }
-//            })
-//        }
+        self.navigationController?.navigationBar.isHidden = true
+        PostView.navigationView(parent: self.view)
+        self.view.addSubview(tablePost)
+        tablePost.snp.makeConstraints { (maker) in
+            maker.leading.trailing.bottom.equalToSuperview()
+            maker.top.equalTo(self.view.subviews[1].snp.bottom)
+        }
+        tablePost.delegate = self
+        tablePost.dataSource = self
+        tablePost.separatorStyle = .none
+        tablePost.register(NewPostCell.self, forCellReuseIdentifier: NewPostCell.identify)
     }
 }

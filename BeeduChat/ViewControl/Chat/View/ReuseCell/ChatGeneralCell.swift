@@ -59,14 +59,11 @@ class ChatGeneralCell : UITableViewCell {
 
 extension ChatGeneralCell {
     func setupUI(){
-//        self.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
-//        self.snp.makeConstraints { (maker) in
-//            maker.height.equalTo(Constant.size.avatarNormal + 32)
-//        }
         self.addSubview(imAvatar)
         imAvatar.snp.makeConstraints({ (maker) in
             maker.leading.equalToSuperview()
             maker.centerY.equalToSuperview()
+            maker.height.equalToSuperview().offset(-16)
         })
         
         

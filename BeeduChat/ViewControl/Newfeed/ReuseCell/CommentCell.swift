@@ -52,7 +52,7 @@ class CommentCell : UITableViewCell {
                 }
             } else {
                 imAvatar.snp.makeConstraints { (maker) in
-                    maker.leading.equalToSuperview().offset(8)
+                    maker.leading.equalToSuperview()
                 }
             }
             if (self.data.content.count > self.data.name.count) {
