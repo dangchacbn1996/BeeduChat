@@ -11,18 +11,17 @@ import SnapKit
 
 class PostView {
     
-    static func navigationView(parent : UIView){
+    static func navigationView(parent : UIView, lbTitle : UILabel, lbSubTitle : UILabel, btnMenu : UIButton, btnFunction : UIButton, btnMore : UIButton, actionMenu : UIGestureRecognizer?, actionNotifi : UIGestureRecognizer?, actionMore : UIGestureRecognizer?){
         let navigationView = UIView(background: Constant.color.naviBack, height: nil, ratioHW: nil, corner: 0, border: 0, borderColor: UIColor.gray, design: nil)
         var naviConstraint : NSLayoutConstraint!
-        var btnMenu = UIButton()
-        var btnNoti = UIButton()
-        var btnMore = UIButton()
-        var lbClass = UILabel(text: "Lớp Fox", textColor: Constant.text.color.black, font: nil)
-        var lbSubClass = UILabel(text: "@fox.class", textColor: Constant.text.color.black, font: nil)
+//        let btnMenu = UIButton()
+//        let btnFunction = UIButton()
+//        let btnMore = UIButton()
+//        let lbTitle = UILabel(text: title, textColor: Constant.text.color.black, font: nil)
+//        let lbSubTitle = UILabel(text: subTitle, textColor: Constant.text.color.black, font: nil)
         parent.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
             maker.top.left.right.equalTo(parent.safeAreaLayoutGuide)
-            //            maker.height.equalTo(Constant.size.naviHeight)
         }
         naviConstraint = navigationView.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
         naviConstraint.isActive = true
@@ -48,6 +47,9 @@ class PostView {
             btnMenu.setImage(UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
             btnMenu.tintColor = Constant.color.iconColor
             btnMenu.contentMode = .scaleAspectFit
+            if (actionMenu != nil) {
+                btnMenu.addGestureRecognizer(actionMenu!)
+            }
             //            self.btnMenu.backgroundColor = UIColor.blue
             
             //Ten lop
@@ -59,19 +61,22 @@ class PostView {
                     //                    maker.height.equalToSuperview()
                     
                 })
-                (stackClass as! UIStackView).addArrangedSubview(lbClass)
-                (stackClass as! UIStackView).addArrangedSubview(lbSubClass)
+                (stackClass as! UIStackView).addArrangedSubview(lbTitle)
+                (stackClass as! UIStackView).addArrangedSubview(lbSubTitle)
             })
             
             //Btn noti
-            (stackNavi as! UIStackView).addArrangedSubview(btnNoti)
-            btnNoti.snp.makeConstraints({ (maker) in
-                maker.width.equalTo(btnNoti.snp.height).multipliedBy(0.8)
+            (stackNavi as! UIStackView).addArrangedSubview(btnFunction)
+            btnFunction.snp.makeConstraints({ (maker) in
+                maker.width.equalTo(btnFunction.snp.height).multipliedBy(0.8)
                 maker.height.equalTo(Constant.size.iconNormal)
             })
-            btnNoti.setImage(UIImage(named: "ic_noti")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            btnNoti.tintColor = Constant.color.iconColor
-            btnNoti.contentMode = .scaleAspectFit
+            btnFunction.setImage(UIImage(named: "ic_noti")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            btnFunction.tintColor = Constant.color.iconColor
+            btnFunction.contentMode = .scaleAspectFit
+            if (actionNotifi != nil) {
+                btnFunction.addGestureRecognizer(actionNotifi!)
+            }
             
             //Btn more
             (stackNavi as! UIStackView).addArrangedSubview(btnMore)
@@ -82,6 +87,9 @@ class PostView {
             btnMore.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
             btnMore.tintColor = Constant.color.iconColor
             btnMore.contentMode = .scaleAspectFit
+            if (actionMore != nil) {
+                btnMore.addGestureRecognizer(actionMore!)
+            }
         }
         
         /* Separate

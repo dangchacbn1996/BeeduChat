@@ -11,6 +11,11 @@ import SnapKit
 
 class NewPostViewController : UIViewController {
     
+    let btnMenu = UIButton()
+    let btnFunction = UIButton()
+    let btnMore = UIButton()
+    let lbTitle = UILabel(text: "Lớp Fox", textColor: Constant.text.color.black, font: nil)
+    let lbSubTitle = UILabel(text: "@fox.class", textColor: Constant.text.color.black, font: nil)
     var userInfoView : UIView!
     var tablePost = UITableView()
     
@@ -36,7 +41,8 @@ extension NewPostViewController {
     func setupUI(){
         self.view.backgroundColor = Constant.color.naviBack
         self.navigationController?.navigationBar.isHidden = true
-        PostView.navigationView(parent: self.view)
+//        PostView.navigationView(parent: self.view)
+        PostView.navigationView(parent: self.view, lbTitle: lbTitle, lbSubTitle: lbSubTitle, btnMenu: btnMenu, btnFunction: btnFunction, btnMore: btnMore, actionMenu: nil, actionNotifi: nil, actionMore: nil)
         self.view.addSubview(tablePost)
         tablePost.snp.makeConstraints { (maker) in
             maker.leading.trailing.bottom.equalToSuperview()
