@@ -11,6 +11,7 @@ import SnapKit
 
 class ChatViewController: UIViewController {
     //khoi tao cac thanh phan giao dien
+    var naviConstraint : NSLayoutConstraint!
     var navigationView = UIView()
     var stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 5, design: nil)
     var stackViewTitle = UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil)
@@ -31,6 +32,8 @@ class ChatViewController: UIViewController {
     var chatView = UIView()
     var tbvChat = UITableView()
     var lblChat = UILabel(text: "Chat", textColor: UIColor.black, font: nil)
+//    var clvHistory = UICollectionView(frame: .zero)
+//    var scrvHistory = UIScrollView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +45,14 @@ class ChatViewController: UIViewController {
         tbvChat.tableFooterView = UIView()
         tbvChat.tableHeaderView = UIView()
 //        tbvChat.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tbvChat.separatorStyle = .none
+        tbvChat.separatorStyle = .singleLine
         // Do any additional setup after loading the view.
+        tbvNortification.register(ChatGeneralCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
+        tbvNortification.tableFooterView = UIView()
+        tbvNortification.tableHeaderView = UIView()
+        tbvNortification.separatorStyle = .singleLine
+        tbvNortification.delegate = self
+        tbvNortification.dataSource = self
     }
 
 }
@@ -60,63 +69,80 @@ extension ChatViewController{
     func UINavBar(){
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.isHidden = true
+        
         self.view.addSubview(navigationView)
+        //        navigationView.dropShadow(scale : true)
+        //        navigationView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
         navigationView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(self.view.safeAreaLayoutGuide)
-            maker.centerX.equalToSuperview()
-            maker.width.equalToSuperview().offset(-32)
-            maker.height.equalTo(40)
+            maker.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
+            //            maker.height.equalTo(Constant.size.naviHeight)
         }
-        //        navigationView.backgroundColor = UIColor.blue
-        // add stack view to navigationView
-        navigationView.addSubview(stackView)
-        stackView.snp.makeConstraints { (maker) in
-            maker.center.height.equalToSuperview()
-            maker.width.equalToSuperview()
+        naviConstraint = navigationView.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
+        naviConstraint.isActive = true
+        
+        /* Navigation
+         **************************************
+         * Menu         Class       noti more *
+         **************************************
+         */
+        navigationView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)) { (stackNavi) -> (Void) in
+            stackNavi.snp.makeConstraints({ (maker) in
+                maker.center.equalToSuperview()
+                maker.height.equalToSuperview().offset(-Constant.size.padingAround)
+                maker.width.equalToSuperview().offset(-Constant.size.padingAround)
+            })
+            
+            //Btn menu
+            (stackNavi as! UIStackView).addArrangedSubview(self.btnMenu)
+            self.btnMenu.snp.makeConstraints({ (maker) in
+                maker.width.equalTo(self.btnMenu.snp.height)
+                maker.height.equalTo(Constant.size.iconNormal)
+            })
+            self.btnMenu.setImage(UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnMenu.tintColor = Constant.color.iconColor
+            self.btnMenu.contentMode = .scaleAspectFit
+            //            self.btnMenu.backgroundColor = UIColor.blue
+            
+            //Ten lop
+            (stackNavi as! UIStackView).addArrangedSubview(UIView())
+            
+            self.navigationView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil), design: { (stackClass) -> (Void) in
+                stackClass.snp.makeConstraints({ (maker) in
+                    maker.center.equalToSuperview()
+                    //                    maker.height.equalToSuperview()
+                    
+                })
+                (stackClass as! UIStackView).addArrangedSubview(self.lblClass)
+                (stackClass as! UIStackView).addArrangedSubview(self.lblSubClass)
+            })
+            
+            //Btn noti
+            (stackNavi as! UIStackView).addArrangedSubview(self.btnContact)
+            self.btnContact.snp.makeConstraints({ (maker) in
+                maker.width.equalTo(self.btnContact.snp.height).multipliedBy(0.8)
+                maker.height.equalTo(Constant.size.iconNormal)
+            })
+            self.btnContact.setImage(UIImage(named: "ic_contact")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnContact.tintColor = Constant.color.iconColor
+            self.btnContact.contentMode = .scaleAspectFit
+            
+            //Btn more
+            (stackNavi as! UIStackView).addArrangedSubview(self.btnOption)
+            self.btnOption.snp.makeConstraints({ (maker) in
+                maker.width.equalTo(self.btnOption.snp.height).multipliedBy(0.8)
+                maker.height.equalTo(Constant.size.iconNormal)
+            })
+            self.btnOption.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnOption.tintColor = Constant.color.iconColor
+            self.btnOption.contentMode = .scaleAspectFit
         }
-        //add button menu to stackView
-        stackView.addArrangedSubview(self.btnMenu)
-        btnMenu.snp.makeConstraints { (maker) in
-            maker.height.equalTo(btnMenu.snp_width)
-            maker.height.equalToSuperview().multipliedBy(0.8)
-        }
-        self.btnMenu.setImage(UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.btnMenu.contentMode = .scaleAspectFit
-//        btnMenu.backgroundColor = UIColor.blue
-        //add stackview Tittle lalbe
-        stackView.addArrangedSubview(stackViewTitle)
-        stackViewTitle.snp.makeConstraints { (maker) in
-            maker.height.equalToSuperview().multipliedBy(1)
-        }
-        //add lable class name
-        stackViewTitle.addArrangedSubview(lblClass)
-        stackViewTitle.addArrangedSubview(lblSubClass)
-        //add button contact
-        stackView.addArrangedSubview(btnContact)
-        btnContact.snp.makeConstraints { (maker) in
-            maker.height.equalTo(btnContact.snp_width)
-            maker.height.equalToSuperview().multipliedBy(0.8)
-        }
-        self.btnContact.setImage(UIImage(named: "ic_noti")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.btnContact.contentMode = .scaleAspectFit
-//        btnContact.backgroundColor = UIColor.orange
-        //add button Option
-        stackView.addArrangedSubview(btnOption)
-        btnOption.snp.makeConstraints { (maker) in
-            maker.height.equalTo(btnOption.snp_width)
-            maker.height.equalToSuperview().multipliedBy(0.8)
-        }
-        self.btnOption.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.btnOption.contentMode = .scaleAspectFit
-//        btnOption.backgroundColor = UIColor.green
-        //add ceparate
     }
     func addCeparate(){
         self.view.addSubview(ceparateView)
         ceparateView.snp.makeConstraints { (maker) in
             maker.height.equalTo(1)
             maker.width.equalToSuperview()
-            maker.top.equalTo(navigationView.snp_bottom)
+            maker.top.equalTo(navigationView.snp.bottom)
             maker.centerX.equalToSuperview()
         }
         ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
@@ -124,12 +150,12 @@ extension ChatViewController{
     func UISearchBar(){
         self.view.addSubview(searchView)
         searchView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(navigationView.snp_height)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(ceparateView.snp_bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp_centerX)
+            maker.height.equalTo(navigationView.snp.height).offset(-24)
+            maker.width.equalTo(navigationView.snp.width).offset(-32)
+            maker.top.equalTo(ceparateView.snp.bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp.centerX)
         }
-        searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
+        searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: Constant.color.separate, design: nil)) { (srcView) -> (Void) in
             srcView.snp.makeConstraints({ (maker) in
                 maker.height.equalToSuperview()
                 maker.width.equalToSuperview()
@@ -139,21 +165,22 @@ extension ChatViewController{
             srcView.addSubview(self.btnSearch)
             self.btnSearch.snp.makeConstraints({ (maker) in
 //                maker.left.equalToSuperview()
-                maker.height.equalTo(self.btnSearch.snp_width)
-                maker.height.equalToSuperview().multipliedBy(0.7)
+                maker.width.equalTo(self.btnSearch.snp.height)
+                maker.height.equalToSuperview()
                 maker.centerY.equalToSuperview()
                 maker.left.equalToSuperview().offset(8)
                 
             })
 //            self.btnSearch.backgroundColor = UIColor.red
             self.btnSearch.setImage(UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            self.btnSearch.contentMode = .scaleAspectFit
+            self.btnSearch.tintColor = Constant.color.iconColor
+            self.btnSearch.contentMode = .scaleToFill
             //add text field
             srcView.addSubview(self.txtSearch)
             self.txtSearch.snp.makeConstraints({ (maker) in
                 maker.height.equalToSuperview().multipliedBy(0.7)
                 maker.centerY.equalToSuperview()
-                maker.left.equalTo(self.btnSearch.snp.right).offset(8)
+                maker.left.equalTo(self.btnSearch.snp.right)
                 maker.right.equalToSuperview().offset(-8)
             })
             self.txtSearch.placeholder = "Tìm kiếm"
@@ -162,38 +189,33 @@ extension ChatViewController{
     func UIHisContactBar(){
         self.view.addSubview(historyView)
         historyView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(searchView.snp_height)
-            maker.width.equalTo(searchView.snp_width)
-            maker.top.equalTo(searchView.snp_bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp_centerX)
+            maker.height.equalTo(searchView.snp.height)
+            maker.width.equalTo(searchView.snp.width)
+            maker.top.equalTo(searchView.snp.bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp.centerX)
         }
-//        historyView.backgroundColor = UIColor.red
-//        var clvHistory: UICollectionView!
-//        let layout = UICollectionViewFlowLayout()
-//        clvHistory = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        layout.scrollDirection = .horizontal
-        historyView.addSubview(UIView(background: UIColor.red, corner: 0, border: 0, borderColor: .clear, design: nil)) { (clvHistory) -> (Void) in
-            clvHistory.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(48)
-                maker.width.equalToSuperview()
-                maker.center.equalToSuperview()
-            })
-//        clvHistory.snp.makeConstraints({ (maker) in
+        historyView.backgroundColor = UIColor.green
+//        historyView.addSubview(scrvHistory)
+//        scrvHistory.snp.makeConstraints{ (maker) in
 //            maker.height.equalTo(48)
 //            maker.width.equalToSuperview()
 //            maker.center.equalToSuperview()
-//        })
-        }
+//        }
+//        scrvHistory.addSubview(clvHistory)
+//        clvHistory.snp.makeConstraints { (maker) in
+//            maker.height.width.centerX.centerY.equalToSuperview()
+//        }
+//        clvHistory.backgroundColor = UIColor.green
     }
     func UINortification(){
         self.view.addSubview(NortificationView)
         NortificationView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(56)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(historyView.snp_bottom).offset(16)
-            maker.centerX.equalTo(historyView.snp_centerX)
+            maker.height.equalTo(80)
+            maker.width.equalTo(navigationView.snp.width).offset(-32)
+            maker.top.equalTo(historyView.snp.bottom).offset(16)
+            maker.centerX.equalTo(historyView.snp.centerX)
         }
-        NortificationView.backgroundColor = UIColor.red
+//        NortificationView.backgroundColor = UIColor.red
         NortificationView.addSubview(lblNortification)
         lblNortification.snp.makeConstraints { (maker) in
             maker.top.left.equalToSuperview()
@@ -202,9 +224,9 @@ extension ChatViewController{
         lblNortification.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         NortificationView.addSubview(tbvNortification)
         tbvNortification.snp.makeConstraints { (maker) in
-            maker.top.equalTo(lblNortification.snp_bottom).offset(8)
+            maker.top.equalTo(lblNortification.snp.bottom).offset(8)
             maker.left.equalToSuperview()
-            maker.height.equalTo(48)
+            maker.height.equalTo(80)
             maker.width.equalToSuperview()
         }
         
@@ -215,7 +237,7 @@ extension ChatViewController{
         self.view.addSubview(chatView)
         chatView.snp.makeConstraints { (maker) in
             maker.width.equalTo(NortificationView.snp.width)
-            maker.top.equalTo(NortificationView.snp.bottom)
+            maker.top.equalTo(NortificationView.snp.bottom).offset(40)
             maker.bottom.equalToSuperview()
             maker.centerX.equalTo(NortificationView.snp.centerX)
         }
@@ -254,7 +276,12 @@ extension ChatViewController : UITableViewDelegate {
 
 extension ChatViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if tableView == tbvNortification {
+            return 1
+        }
+        else {
+            return 5
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -262,14 +289,26 @@ extension ChatViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ChatGeneralCell.identify, for: indexPath) as! ChatGeneralCell
-        cell.selectionStyle = .none
-        if (indexPath.row % 2 == 0) {
-            cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Swinging in the backyard\nPull up in your fast car\nWhistling my name", isRead: true)
-        } else {
-            cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Content", isRead: false)
+        if tableView == tbvNortification {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChatGeneralCell.identify, for: indexPath) as! ChatGeneralCell
+            cell.selectionStyle = .none
+            if (indexPath.row % 2 == 0) {
+                cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "Lớp  ", time: "12:30", content: "Thông báo", isRead: true)
+            } else {
+                cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "Lớp  ", time: "12:30", content: "Thông báo", isRead: true)
+            }
+            return cell
         }
-        return cell
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChatGeneralCell.identify, for: indexPath) as! ChatGeneralCell
+            cell.selectionStyle = .none
+            if (indexPath.row % 2 == 0) {
+                cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Swinging in the backyard\nPull up in your fast car\nWhistling my name", isRead: true)
+            } else {
+                cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "User", time: "12:30", content: "Content", isRead: false)
+            }
+            return cell
+        }
     }
     
 }

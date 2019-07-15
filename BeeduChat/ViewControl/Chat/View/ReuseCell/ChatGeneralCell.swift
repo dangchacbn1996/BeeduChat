@@ -20,7 +20,7 @@ struct ChatGeneralModel {
 class ChatGeneralCell : UITableViewCell {
     
     static let identify = "ChatGeneralCell"
-    var imAvatar = ReuseForms.imageAvatar(nil)
+    var imAvatar = ReuseForms.imageBig()
     var lbTime = UILabel(text: "", textColor: Constant.text.color.gray, font: Constant.text.font.small)
     var lbUser = UILabel(text: "",
                          textColor: Constant.text.color.black,
