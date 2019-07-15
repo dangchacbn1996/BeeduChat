@@ -32,7 +32,7 @@ class NewPostCell : UITableViewCell {
                 maker.top.centerX.width.equalToSuperview()
                 maker.height.equalToSuperview().offset(-8)
             })
-            contentBack.addSubview(PostView.addPost(), design: { (post) -> (Void) in
+            contentBack.addSubview(PostView.newPost(), design: { (post) -> (Void) in
                 post.snp.makeConstraints({ (maker) in
                     maker.center.size.equalToSuperview()
                 })

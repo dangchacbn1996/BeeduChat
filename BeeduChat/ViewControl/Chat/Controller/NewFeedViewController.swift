@@ -11,15 +11,16 @@ import SnapKit
 
 class NewFeedViewController: UIViewController {
     
-    var navigationView = UIView(background: Constant.color.naviBack, height: nil, ratioHW: nil, corner: 0, border: 0, borderColor: UIColor.gray, design: nil)
-    var naviConstraint : NSLayoutConstraint!
-    var naviLastOffset : CGFloat = 0
-    var naviLastHeight : CGFloat = Constant.size.naviHeight
+//    var navigationView = UIView(background: Constant.color.naviBack, height: nil, ratioHW: nil, corner: 0, border: 0, borderColor: UIColor.gray, design: nil)
+//    var naviConstraint : NSLayoutConstraint!
+//    var naviLastOffset : CGFloat = 0
+//    var naviLastHeight : CGFloat = Constant.size.naviHeight
     var btnMenu = UIButton()
     var btnNoti = UIButton()
     var btnMore = UIButton()
     var lbClass = UILabel(text: "Lớp Fox", textColor: Constant.text.color.black, font: nil)
     var lbSubClass = UILabel(text: "@fox.class", textColor: Constant.text.color.black, font: nil)
+    
     
 //    var newView = UIView(background: UIColor.white, corner: 0, border: 0, borderColor: nil, design: nil)
     var scrollMain = UIScrollView()
@@ -56,7 +57,7 @@ extension NewFeedViewController{
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.isHidden = true
         
-        self.view.addSubview(navigationView)
+        PostView.navigationView(parent: self.view, lbTitle: lbClass, lbSubTitle: lbSubClass, btnMenu: btnMenu, btnFunction: btnNoti, btnMore: btnMore, actionMenu: nil, actionNotifi: nil, actionMore: nil)
 //        navigationView.dropShadow(scale : true)
         //        navigationView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
         
@@ -86,22 +87,24 @@ extension NewFeedViewController{
             })
         }
         
-        self.view.addSubview(scrollMain)
-        scrollMain.delegate = self
-        scrollMain.showsVerticalScrollIndicator = false
-        scrollMain.bounces = false
+//        self.view.addSubview(scrollMain)
+//        scrollMain.delegate = self
+//        scrollMain.showsVerticalScrollIndicator = false
+//        scrollMain.bounces = false
 //        scrollMain.bouncesZoom = false
-        scrollMain.snp.makeConstraints { (maker) in
+        self.view.addSubview(stackMain)
+        stackMain.snp.makeConstraints { (maker) in
             maker.centerX.width.equalToSuperview()
             maker.bottom.equalTo(commentView.snp.top)
-            maker.top.equalTo(self.view.subviews[self.view.subviews.firstIndex(of: self.scrollMain)! - 2].snp.bottom)
+//            maker.top.equalTo(self.view.subviews[self.view.subviews.firstIndex(of: self.scrollMain)! - 2].snp.bottom)
+            maker.top.equalTo(self.view.subviews.first!.snp.bottom)
         }
         
-        self.scrollMain.addSubview(stackMain)
-        stackMain.snp.makeConstraints { (maker) in
-            maker.leading.trailing.top.bottom.equalToSuperview()
-            maker.width.equalToSuperview()
-        }
+//        self.scrollMain.addSubview(stackMain)
+//        stackMain.snp.makeConstraints { (maker) in
+//            maker.leading.trailing.top.bottom.equalToSuperview()
+//            maker.width.equalToSuperview()
+//        }
         stackMain.addArrangedSubview(stackNew)
         
         /* New view
@@ -160,6 +163,8 @@ extension NewFeedViewController{
             })
         }
         
+        self.stackMain.addArrangedSubview(PostView.newPost())
+        
         let content = NewsSubViewController()
         self.addChild(content)
         content.didMove(toParent: self)
@@ -171,50 +176,50 @@ extension NewFeedViewController{
     }
 }
 
-extension NewFeedViewController : UIScrollViewDelegate {
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        naviLastOffset = scrollView.contentOffset.y
-        naviLastHeight = naviConstraint.constant
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
-        
-        var newHeight = naviLastHeight + distance
-        print("Scroll----------------")
-        print("ScrollHeight: \(naviConstraint.constant)")
-        print("ScrollDistance  : \(distance)")
-        print("ScrollNewHeight: \(newHeight)")
-        if (newHeight > Constant.size.naviHeight){
-            newHeight = Constant.size.naviHeight
-        } else if (newHeight < 0){
-            newHeight = 0
-        } else {
-//            scrollView.contentOffset.y = 0
-        }
-        naviConstraint.constant = newHeight
-        var alpha = newHeight / Constant.size.naviHeight
-        if (alpha < 0) {
-            alpha = 0
-        }
-        if (alpha > 1) {
-            alpha = 1
-        }
-        navigationView.alpha = alpha
-//        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
-//        print("ScrollChange: \(distance)")
-//        let newHeaderViewHeight: CGFloat = naviConstraint.constant + distance
-//        naviLastOffset = scrollView.contentOffset.y
-//        print("ScrollUpdate: \(naviLastOffset)")
-//        if newHeaderViewHeight > Constant.size.naviHeight {
-//            naviConstraint.constant = Constant.size.naviHeight
-//        } else if newHeaderViewHeight < 0 {
-//            naviConstraint.constant = 0
-//        } else {
-//            naviConstraint.constant = newHeaderViewHeight
-//            scrollView.contentOffset.y = 0 // block scroll view
-//        }
+//extension NewFeedViewController : UIScrollViewDelegate {
 //
-    }
-}
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        naviLastOffset = scrollView.contentOffset.y
+//        naviLastHeight = naviConstraint.constant
+//    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
+//
+//        var newHeight = naviLastHeight + distance
+//        print("Scroll----------------")
+//        print("ScrollHeight: \(naviConstraint.constant)")
+//        print("ScrollDistance  : \(distance)")
+//        print("ScrollNewHeight: \(newHeight)")
+//        if (newHeight > Constant.size.naviHeight){
+//            newHeight = Constant.size.naviHeight
+//        } else if (newHeight < 0){
+//            newHeight = 0
+//        } else {
+////            scrollView.contentOffset.y = 0
+//        }
+//        naviConstraint.constant = newHeight
+//        var alpha = newHeight / Constant.size.naviHeight
+//        if (alpha < 0) {
+//            alpha = 0
+//        }
+//        if (alpha > 1) {
+//            alpha = 1
+//        }
+//        navigationView.alpha = alpha
+////        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
+////        print("ScrollChange: \(distance)")
+////        let newHeaderViewHeight: CGFloat = naviConstraint.constant + distance
+////        naviLastOffset = scrollView.contentOffset.y
+////        print("ScrollUpdate: \(naviLastOffset)")
+////        if newHeaderViewHeight > Constant.size.naviHeight {
+////            naviConstraint.constant = Constant.size.naviHeight
+////        } else if newHeaderViewHeight < 0 {
+////            naviConstraint.constant = 0
+////        } else {
+////            naviConstraint.constant = newHeaderViewHeight
+////            scrollView.contentOffset.y = 0 // block scroll view
+////        }
+////
+//    }
+//}

@@ -29,7 +29,7 @@ extension NewsSubViewController {
             maker.top.equalToSuperview().offset(-16)
         }
         stackMain.addArrangedSubview(stackNew)
-        stackMain.addArrangedSubview(PostView.addPost())
+        stackMain.addArrangedSubview(PostView.newPost())
 
         stackMain.addArrangedSubview(UIView()) { (separate) -> (Void) in
             separate.backgroundColor = Constant.color.separate

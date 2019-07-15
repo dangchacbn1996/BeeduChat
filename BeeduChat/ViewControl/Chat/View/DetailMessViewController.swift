@@ -100,7 +100,7 @@ extension DetailMessViewController{
             maker.top.equalTo(navigationView.snp.bottom)
             maker.centerX.equalToSuperview()
         }
-        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+//        ceparateView.backgrounrdColor = UIColorFromRGB(rgbValue: 0x363636)
     }
 }
 

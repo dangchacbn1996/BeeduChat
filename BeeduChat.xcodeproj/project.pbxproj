@@ -44,7 +44,7 @@
 		F09B18C122D9A07300ECC6D4 /* NewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09B18C022D9A07300ECC6D4 /* NewPostCell.swift */; };
 		F09B18C322D9A0E700ECC6D4 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09B18C222D9A0E700ECC6D4 /* PostView.swift */; };
 		F0A3693922D6496F007E7529 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3693822D6496F007E7529 /* UIColorEx.swift */; };
-		F0FFBE5322D9B72E00FAAD8F /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9668F22D4F4DE003A2409 /* NewPostViewController.swift */; };
+		F0FFBE5322D9B72E00FAAD8F /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9668F22D4F4DE003A2409 /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,7 @@
 		F09B18C022D9A07300ECC6D4 /* NewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostCell.swift; sourceTree = "<group>"; };
 		F09B18C222D9A0E700ECC6D4 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		F0A3693822D6496F007E7529 /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
-		F0F9668F22D4F4DE003A2409 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		F0F9668F22D4F4DE003A2409 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FCC45BE1F22661A51EC76144 /* Pods-BeeduChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -357,7 +357,7 @@
 		F0F9668E22D4F4A9003A2409 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				F0F9668F22D4F4DE003A2409 /* NewPostViewController.swift */,
+				F0F9668F22D4F4DE003A2409 /* PostViewController.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -607,7 +607,7 @@
 				532C4D1A22D7293100ED38CD /* CommentCell.swift in Sources */,
 				F055067722D0306A00D5E511 /* Constant.swift in Sources */,
 				F055068E22D0AD7400D5E511 /* CommentSubViewController.swift in Sources */,
-				F0FFBE5322D9B72E00FAAD8F /* NewPostViewController.swift in Sources */,
+				F0FFBE5322D9B72E00FAAD8F /* PostViewController.swift in Sources */,
 				B84710D922D37F98007328A9 /* DetailMessViewController.swift in Sources */,
 				F09B18C322D9A0E700ECC6D4 /* PostView.swift in Sources */,
 				F055067B22D0320100D5E511 /* UIViewEx.swift in Sources */,

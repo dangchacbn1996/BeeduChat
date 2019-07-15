@@ -46,7 +46,7 @@ class PostView {
             })
             btnMenu.setImage(UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
             btnMenu.tintColor = Constant.color.iconColor
-            btnMenu.contentMode = .scaleAspectFit
+            btnMenu.imageView?.contentMode = .scaleAspectFit
             if (actionMenu != nil) {
                 btnMenu.addGestureRecognizer(actionMenu!)
             }
@@ -73,7 +73,7 @@ class PostView {
             })
             btnFunction.setImage(UIImage(named: "ic_noti")?.withRenderingMode(.alwaysTemplate), for: .normal)
             btnFunction.tintColor = Constant.color.iconColor
-            btnFunction.contentMode = .scaleAspectFit
+            btnFunction.imageView?.contentMode = .scaleAspectFit
             if (actionNotifi != nil) {
                 btnFunction.addGestureRecognizer(actionNotifi!)
             }
@@ -86,7 +86,7 @@ class PostView {
             })
             btnMore.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
             btnMore.tintColor = Constant.color.iconColor
-            btnMore.contentMode = .scaleAspectFit
+            btnMore.imageView?.contentMode = .scaleAspectFit
             if (actionMore != nil) {
                 btnMore.addGestureRecognizer(actionMore!)
             }
@@ -105,7 +105,7 @@ class PostView {
         }
     }
     
-    static func addPost() -> (UIView){
+    static func newPost() -> (UIView){
         let stackNew = UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 8, design: nil)
         let stackHead = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)
         stackNew.addArrangedSubview(stackHead)
