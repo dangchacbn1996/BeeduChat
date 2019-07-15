@@ -18,6 +18,7 @@ class ReportViewController: UIViewController {
     var lblSubClass = UILabel(text: "Gửi cho 20 người", textColor: Constant.text.color.gray, font: nil)
     var contentView = UIView()
     var tbvContent = UITableView()
+    var ceparateView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class ReportViewController: UIViewController {
 extension ReportViewController{
     func SetupUI(){
         UINavBar()
+        addCeparate()
         UIContent()
     }
     func UINavBar(){
@@ -83,6 +85,16 @@ extension ReportViewController{
 //        stackviewTitle.addArrangedSubview(lblClass)
 //        stackviewTitle.addArrangedSubview(lblSubClass)
     }
+    func addCeparate(){
+        self.view.addSubview(ceparateView)
+        ceparateView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(1)
+            maker.width.equalToSuperview()
+            maker.top.equalTo(navigationView.snp.bottom)
+            maker.centerX.equalToSuperview()
+        }
+        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+    }
     func UIContent(){
         self.view.addSubview(contentView)
         contentView.snp.makeConstraints { (maker) in
@@ -96,11 +108,19 @@ extension ReportViewController{
             maker.height.width.centerX.equalToSuperview()
         }
     }
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
 }
 extension ReportViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //        return Constant.size.avatarNormal + 32
-        return UITableView.automaticDimension
+                return Constant.size.avatarNormal + 32
+//        return UITableView.automaticDimension
     }
 }
 extension ReportViewController : UITableViewDataSource{

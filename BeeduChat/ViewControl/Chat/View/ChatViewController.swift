@@ -146,7 +146,8 @@ extension ChatViewController{
             maker.centerX.equalToSuperview()
         }
         ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
-    }    //SearchBar
+    }
+    //SearchBar
     func UISearchBar(){
         self.view.addSubview(searchView)
         searchView.snp.makeConstraints { (maker) in

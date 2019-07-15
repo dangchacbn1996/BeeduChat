@@ -18,6 +18,7 @@ class DetailMessViewController: UIViewController {
     var lblSubClass = UILabel(text: "Có 2 người xem", textColor: Constant.text.color.gray, font: nil)
     var contentView = UIView()
     var tbvContent = UITableView()
+    var ceparateView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupUI()
@@ -27,7 +28,7 @@ class DetailMessViewController: UIViewController {
         tbvContent.register(DetailMessageCell.self, forCellReuseIdentifier: DetailMessageCell.identify)
         tbvContent.tableFooterView = UIView()
         tbvContent.tableHeaderView = UIView()
-        tbvContent.separatorStyle = .none
+        tbvContent.separatorStyle = .singleLine
     }
 
 }
@@ -35,6 +36,7 @@ class DetailMessViewController: UIViewController {
 extension DetailMessViewController{
     func SetupUI(){
         UINavBar()
+        addCeparate()
         UIContent()
     }
     func UINavBar(){
@@ -62,15 +64,19 @@ extension DetailMessViewController{
         }
         self.btnMenu.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.btnMenu.contentMode = .scaleAspectFit
+        self.btnMenu.tintColor = Constant.color.iconColor
         //        btnMenu.backgroundColor = UIColor.blue
         //add stackview Tittle lalbe
-        stackView.addArrangedSubview(stackviewTitle)
-        stackviewTitle.snp.makeConstraints { (maker) in
-            maker.height.equalToSuperview().multipliedBy(1)
-        }
-        //add lable class name
-        stackviewTitle.addArrangedSubview(lblClass)
-        stackviewTitle.addArrangedSubview(lblSubClass)
+        //add stackview Tittle lalbe
+        stackView.addArrangedSubview(UIView())
+        self.navigationView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil),design: {(stackClass) -> (Void) in
+            stackClass.snp.makeConstraints({ (maker) in
+                maker.center.equalToSuperview()
+            })
+            self.lblClass.font = Constant.text.font.customFont(size: Constant.text.size.large, weight: .Bold)
+            (stackClass as! UIStackView).addArrangedSubview(self.lblClass)
+            (stackClass as! UIStackView).addArrangedSubview(self.lblSubClass)
+        })
     }
     func UIContent(){
         self.view.addSubview(contentView)
@@ -84,18 +90,29 @@ extension DetailMessViewController{
         tbvContent.snp.makeConstraints { (maker) in
             maker.height.width.centerX.equalToSuperview()
         }
-        tbvContent.backgroundColor = UIColor.blue
+//        tbvContent.backgroundColor = UIColor.blue
+    }
+    func addCeparate(){
+        self.view.addSubview(ceparateView)
+        ceparateView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(1)
+            maker.width.equalToSuperview()
+            maker.top.equalTo(navigationView.snp.bottom)
+            maker.centerX.equalToSuperview()
+        }
+        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
     }
 }
 
 extension DetailMessViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+//        return UITableView.automaticDimension
+        return Constant.size.avatarNormal + 32
     }
 }
 extension DetailMessViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 5
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
