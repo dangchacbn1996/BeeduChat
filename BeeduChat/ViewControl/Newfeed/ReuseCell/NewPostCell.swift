@@ -13,7 +13,6 @@ class NewPostCell : UITableViewCell {
     
     static let identify = "NewPostCell"
     
-    var view : NewsSubViewController!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

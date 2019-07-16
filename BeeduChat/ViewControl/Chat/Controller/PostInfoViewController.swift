@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class NewFeedViewController: UIViewController {
+class PostInfoViewController: UIViewController {
     
 //    var navigationView = UIView(background: Constant.color.naviBack, height: nil, ratioHW: nil, corner: 0, border: 0, borderColor: UIColor.gray, design: nil)
 //    var naviConstraint : NSLayoutConstraint!
@@ -45,7 +45,7 @@ class NewFeedViewController: UIViewController {
     
 }
 
-extension NewFeedViewController{
+extension PostInfoViewController{
     
     /************
     *   navi    *
@@ -165,7 +165,7 @@ extension NewFeedViewController{
         
         self.stackMain.addArrangedSubview(PostView.newPost())
         
-        let content = NewsSubViewController()
+        let content = CommentViewController()
         self.addChild(content)
         content.didMove(toParent: self)
         self.stackMain.addArrangedSubview(content.view)

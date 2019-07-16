@@ -9,6 +9,7 @@ target 'BeeduChat' do
 
   pod 'SnapKit', '~> 5.0.0'
   pod 'MessageKit'
+  pod 'IQKeyboardManager'
 
   target 'BeeduChatTests' do
     inherit! :search_paths

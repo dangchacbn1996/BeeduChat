@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class NewPostViewController : UIViewController {
+class NewFeedViewController : UIViewController {
     
     var naviConstraint : NSLayoutConstraint!
     var naviLastOffset : CGFloat = 0
@@ -28,7 +28,7 @@ class NewPostViewController : UIViewController {
     
 }
 
-extension NewPostViewController : UIScrollViewDelegate {
+extension NewFeedViewController : UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         naviLastOffset = scrollView.contentOffset.y
@@ -76,7 +76,7 @@ extension NewPostViewController : UIScrollViewDelegate {
     }
 }
 
-extension NewPostViewController : UITableViewDataSource, UITableViewDelegate {
+extension NewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 100
     }
@@ -88,7 +88,7 @@ extension NewPostViewController : UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension NewPostViewController {
+extension NewFeedViewController {
     func setupUI(){
         self.view.backgroundColor = Constant.color.naviBack
         self.navigationController?.navigationBar.isHidden = true

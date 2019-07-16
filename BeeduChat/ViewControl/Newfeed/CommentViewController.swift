@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class NewsSubViewController : UIViewController {
+class CommentViewController : UIViewController {
     
     var stackMain = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 0, design: nil)
     var stackNew = UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 8, design: nil)
@@ -21,7 +21,7 @@ class NewsSubViewController : UIViewController {
     }
 }
 
-extension NewsSubViewController {
+extension CommentViewController {
     func setupUI() {
         self.view.addSubview(stackMain)
         stackMain.snp.makeConstraints { (maker) in
