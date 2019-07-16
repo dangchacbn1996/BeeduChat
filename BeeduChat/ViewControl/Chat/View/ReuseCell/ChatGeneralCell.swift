@@ -70,18 +70,18 @@ extension ChatGeneralCell {
         self.addSubview(lbTime)
         lbTime.snp.makeConstraints({ (maker) in
             maker.trailing.equalToSuperview()
-            maker.bottom.equalTo(self.imAvatar.snp.bottom)
+            maker.top.equalTo(self.imAvatar.snp.top)
         })
         lbTime.setContentHuggingPriority(UILayoutPriority(252), for: .horizontal)
         
-        self.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .leading, spacing: 4, design: nil)) { (stackView) -> (Void) in
+        self.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .leading, spacing: -12, design: nil)) { (stackView) -> (Void) in
             stackView.snp.makeConstraints({ (maker) in
                 maker.centerY.equalToSuperview()
                 maker.height.equalTo(self.imAvatar.snp.height)
                 maker.leading.equalTo(self.imAvatar.snp.trailing).offset(8)
                 maker.trailing.equalTo(self.lbTime.snp.leading).offset(-8)
             })
-            stackView.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+            stackView.setContentHuggingPriority(UILayoutPriority(rawValue: 40), for: .horizontal)
             (stackView as! UIStackView).addArrangedSubview(self.lbUser, design: nil)
             print(self.lbUser.font.fontDescriptor)
             (stackView as! UIStackView).addArrangedSubview(self.lbContent, design: nil)

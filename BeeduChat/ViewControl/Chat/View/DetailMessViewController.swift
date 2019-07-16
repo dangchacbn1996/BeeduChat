@@ -47,7 +47,7 @@ extension DetailMessViewController{
             maker.top.equalTo(self.view.safeAreaLayoutGuide)
             maker.centerX.equalToSuperview()
             maker.width.equalToSuperview().offset(-32)
-            maker.height.equalTo(40)
+            maker.height.equalTo(50)
         }
         //        navigationView.backgroundColor = UIColor.blue
         // add stack view to navigationView
@@ -100,14 +100,22 @@ extension DetailMessViewController{
             maker.top.equalTo(navigationView.snp.bottom)
             maker.centerX.equalToSuperview()
         }
-//        ceparateView.backgrounrdColor = UIColorFromRGB(rgbValue: 0x363636)
+        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+    }
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
 
 extension DetailMessViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
-        return Constant.size.avatarNormal + 32
+        return Constant.size.rowHeightChat
     }
 }
 extension DetailMessViewController: UITableViewDataSource{

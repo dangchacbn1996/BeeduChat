@@ -67,10 +67,10 @@ extension ContactViewController{
     func UISearchBar(){
         self.view.addSubview(searchView)
         searchView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(navigationView.snp_height)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(navigationView.snp_bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp_centerX)
+            maker.height.equalTo(navigationView.snp.height)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(navigationView.snp.bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp.centerX)
         }
         searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
             srcView.snp.makeConstraints({ (maker) in
@@ -82,7 +82,7 @@ extension ContactViewController{
             srcView.addSubview(self.btnSearch)
             self.btnSearch.snp.makeConstraints({ (maker) in
                 //                maker.left.equalToSuperview()
-                maker.height.equalTo(self.btnSearch.snp_width)
+                maker.height.equalTo(self.btnSearch.snp.width)
                 maker.height.equalToSuperview().multipliedBy(0.7)
                 maker.centerY.equalToSuperview()
                 maker.left.equalToSuperview().offset(8)
@@ -104,9 +104,9 @@ extension ContactViewController{
         self.view.addSubview(contentView)
         contentView.snp.makeConstraints { (maker) in
             maker.height.equalTo(56)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(searchView.snp_bottom).offset(16)
-            maker.centerX.equalTo(searchView.snp_centerX)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(searchView.snp.bottom).offset(16)
+            maker.centerX.equalTo(searchView.snp.centerX)
         }
         contentView.backgroundColor = UIColor.red
         contentView.addSubview(lblContent)
@@ -129,7 +129,7 @@ extension ContactViewController{
         lblAdd.text = "Thêm"
         contentView.addSubview(tbvContent)
         tbvContent.snp.makeConstraints { (maker) in
-            maker.top.equalTo(lblContent.snp_bottom).offset(8)
+            maker.top.equalTo(lblContent.snp.bottom).offset(8)
             maker.left.equalToSuperview()
             maker.height.equalTo(48)
             maker.width.equalToSuperview()

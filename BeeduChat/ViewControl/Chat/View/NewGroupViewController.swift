@@ -55,7 +55,7 @@ extension NewGroupViewController{
         //add button menu to stackView
         stackView.addArrangedSubview(self.btnBack)
         btnBack.snp.makeConstraints { (maker) in
-            maker.height.equalTo(btnBack.snp_width)
+            maker.height.equalTo(btnBack.snp.width)
             maker.height.equalToSuperview().multipliedBy(0.8)
         }
         self.btnBack.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -73,10 +73,10 @@ extension NewGroupViewController{
     func UISearchBar(){
         self.view.addSubview(searchView)
         searchView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(navigationView.snp_height)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(navigationView.snp_bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp_centerX)
+            maker.height.equalTo(navigationView.snp.height)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(navigationView.snp.bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp.centerX)
         }
         searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
             srcView.snp.makeConstraints({ (maker) in

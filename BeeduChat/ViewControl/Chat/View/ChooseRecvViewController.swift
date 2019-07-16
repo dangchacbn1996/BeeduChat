@@ -77,10 +77,10 @@ extension ChooseRecvViewController{
     func UISearchBar(){
         self.view.addSubview(searchView)
         searchView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(navigationView.snp_height)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(navigationView.snp_bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp_centerX)
+            maker.height.equalTo(navigationView.snp.height)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(navigationView.snp.bottom).offset(16)
+            maker.centerX.equalTo(navigationView.snp.centerX)
         }
         searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
             srcView.snp.makeConstraints({ (maker) in
@@ -92,7 +92,7 @@ extension ChooseRecvViewController{
             srcView.addSubview(self.btnSearch)
             self.btnSearch.snp.makeConstraints({ (maker) in
                 //                maker.left.equalToSuperview()
-                maker.height.equalTo(self.btnSearch.snp_width)
+                maker.height.equalTo(self.btnSearch.snp.width)
                 maker.height.equalToSuperview().multipliedBy(0.7)
                 maker.centerY.equalToSuperview()
                 maker.left.equalToSuperview().offset(8)
@@ -114,9 +114,9 @@ extension ChooseRecvViewController{
         self.view.addSubview(SendAllView)
         SendAllView.snp.makeConstraints { (maker) in
             maker.height.equalTo(56)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(searchView.snp_bottom).offset(16)
-            maker.centerX.equalTo(searchView.snp_centerX)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(searchView.snp.bottom).offset(16)
+            maker.centerX.equalTo(searchView.snp.centerX)
         }
         SendAllView.backgroundColor = UIColor.red
         SendAllView.addSubview(lblSendAll)
@@ -127,7 +127,7 @@ extension ChooseRecvViewController{
         lblSendAll.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         SendAllView.addSubview(tbvSendAll)
         tbvSendAll.snp.makeConstraints { (maker) in
-            maker.top.equalTo(lblSendAll.snp_bottom).offset(8)
+            maker.top.equalTo(lblSendAll.snp.bottom).offset(8)
             maker.left.equalToSuperview()
             maker.height.equalTo(48)
             maker.width.equalToSuperview()
@@ -140,9 +140,9 @@ extension ChooseRecvViewController{
         self.view.addSubview(sendGroupView)
         sendGroupView.snp.makeConstraints { (maker) in
             maker.height.equalTo(56)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(SendAllView.snp_bottom).offset(16)
-            maker.centerX.equalTo(SendAllView.snp_centerX)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(SendAllView.snp.bottom).offset(16)
+            maker.centerX.equalTo(SendAllView.snp.centerX)
         }
         sendGroupView.backgroundColor = UIColor.red
         sendGroupView.addSubview(lblSendGroup)
@@ -160,7 +160,7 @@ extension ChooseRecvViewController{
         lblAdd.text = "Thêm"
         sendGroupView.addSubview(tbvSendGroup)
         tbvSendGroup.snp.makeConstraints { (maker) in
-            maker.top.equalTo(lblSendGroup.snp_bottom).offset(8)
+            maker.top.equalTo(lblSendGroup.snp.bottom).offset(8)
             maker.left.equalToSuperview()
             maker.height.equalTo(48)
             maker.width.equalToSuperview()
@@ -173,9 +173,9 @@ extension ChooseRecvViewController{
         self.view.addSubview(sendPrivateView)
         sendPrivateView.snp.makeConstraints { (maker) in
             maker.height.equalTo(56)
-            maker.width.equalTo(navigationView.snp_width)
-            maker.top.equalTo(sendGroupView.snp_bottom).offset(16)
-            maker.centerX.equalTo(sendGroupView.snp_centerX)
+            maker.width.equalTo(navigationView.snp.width)
+            maker.top.equalTo(sendGroupView.snp.bottom).offset(16)
+            maker.centerX.equalTo(sendGroupView.snp.centerX)
         }
         sendPrivateView.backgroundColor = UIColor.red
         sendPrivateView.addSubview(lblSendPrivate)
@@ -186,7 +186,7 @@ extension ChooseRecvViewController{
         lblSendPrivate.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         SendAllView.addSubview(tbvSendPrivate)
         tbvSendPrivate.snp.makeConstraints { (maker) in
-            maker.top.equalTo(lblSendPrivate.snp_bottom).offset(8)
+            maker.top.equalTo(lblSendPrivate.snp.bottom).offset(8)
             maker.left.equalToSuperview()
             maker.height.equalTo(48)
             maker.width.equalToSuperview()

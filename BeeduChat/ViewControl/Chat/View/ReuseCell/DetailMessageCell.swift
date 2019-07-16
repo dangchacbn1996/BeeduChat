@@ -28,7 +28,7 @@ class DetailMessageCell: UITableViewCell {
     }
     
     static let identify = "DetailMessageCell"
-    var imgAvatar = ReuseForms.imageBig(nil)
+    var imgAvatar = ReuseForms.imageBig()
     var lblUser = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.normal)
     var data : DetailMessageCellModel = DetailMessageCellModel() {
         didSet{
@@ -54,6 +54,7 @@ extension DetailMessageCell{
         imgAvatar.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.centerY.equalToSuperview()
+            maker.height.equalToSuperview().offset(-16)
         }
         self.addSubview(lblUser)
         lblUser.snp.makeConstraints { (maker) in

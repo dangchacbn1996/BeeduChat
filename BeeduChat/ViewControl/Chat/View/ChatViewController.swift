@@ -270,8 +270,8 @@ extension ChatViewController{
 
 extension ChatViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return Constant.size.avatarNormal + 32
-        return UITableView.automaticDimension
+        return Constant.size.rowHeightChat
+//        return UITableView.automaticDimension
     }
 }
 
