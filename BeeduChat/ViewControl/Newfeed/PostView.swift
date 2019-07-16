@@ -11,18 +11,9 @@ import SnapKit
 
 class PostView {
     
-    static func navigationView(parent : UIView, lbTitle : UILabel, lbSubTitle : UILabel, btnMenu : UIButton, btnFunction : UIButton, btnMore : UIButton, actionMenu : UIGestureRecognizer?, actionNotifi : UIGestureRecognizer?, actionMore : UIGestureRecognizer?){
+    static func navigationView(lbTitle : UILabel, lbSubTitle : UILabel, btnMenu : UIButton, btnFunction : UIButton, btnMore : UIButton, actionMenu : UIGestureRecognizer?, actionNotifi : UIGestureRecognizer?, actionMore : UIGestureRecognizer?) -> (UIView){
         let navigationView = UIView(background: Constant.color.naviBack, height: nil, ratioHW: nil, corner: 0, border: 0, borderColor: UIColor.gray, design: nil)
         var naviConstraint : NSLayoutConstraint!
-//        let btnMenu = UIButton()
-//        let btnFunction = UIButton()
-//        let btnMore = UIButton()
-//        let lbTitle = UILabel(text: title, textColor: Constant.text.color.black, font: nil)
-//        let lbSubTitle = UILabel(text: subTitle, textColor: Constant.text.color.black, font: nil)
-        parent.addSubview(navigationView)
-        navigationView.snp.makeConstraints { (maker) in
-            maker.top.left.right.equalTo(parent.safeAreaLayoutGuide)
-        }
         naviConstraint = navigationView.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
         naviConstraint.isActive = true
         
@@ -31,7 +22,12 @@ class PostView {
          * Menu         Class       noti more *
          **************************************
          */
-        navigationView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)) { (stackNavi) -> (Void) in
+        let infoView = UIView()
+        navigationView.addSubview(infoView)
+        infoView.snp.makeConstraints { (maker) in
+            maker.center.size.equalToSuperview()
+        }
+        infoView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)) { (stackNavi) -> (Void) in
             stackNavi.snp.makeConstraints({ (maker) in
                 maker.center.equalToSuperview()
                 maker.height.equalToSuperview().offset(-Constant.size.padingAround)
@@ -55,10 +51,9 @@ class PostView {
             //Ten lop
             (stackNavi as! UIStackView).addArrangedSubview(UIView())
             
-            navigationView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil), design: { (stackClass) -> (Void) in
+            infoView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil), design: { (stackClass) -> (Void) in
                 stackClass.snp.makeConstraints({ (maker) in
                     maker.center.equalToSuperview()
-                    //                    maker.height.equalToSuperview()
                     
                 })
                 (stackClass as! UIStackView).addArrangedSubview(lbTitle)
@@ -95,19 +90,26 @@ class PostView {
         /* Separate
          **************************************
          */
-        parent.addSubview(UIView()) { (separate) -> (Void) in
+        navigationView.addSubview(UIView()) { (separate) -> (Void) in
             separate.snp.makeConstraints({ (maker) in
                 maker.centerX.width.equalToSuperview()
-                maker.top.equalTo(navigationView.snp.bottom).offset(1)
-                maker.height.equalTo(1)
+                maker.bottom.equalTo(navigationView.snp.bottom)
+                maker.height.equalTo(Constant.size.separatorHeight)
             })
             separate.backgroundColor = Constant.color.separate
         }
+        
+        return navigationView
     }
     
-    static func newPost() -> (UIView){
+    static func postInfo() -> (UIView){
+        let newView = UIView()
         let stackNew = UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 8, design: nil)
         let stackHead = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)
+        newView.addSubview(stackNew)
+        stackNew.snp.makeConstraints { (maker) in
+            maker.center.size.equalToSuperview()
+        }
         stackNew.addArrangedSubview(stackHead)
         stackHead.snp.makeConstraints { (maker) in
             maker.height.equalTo(Constant.size.avatarNormal)
@@ -139,7 +141,7 @@ class PostView {
             viewInfo.addSubview(UIView(), design: { (separate) -> (Void) in
                 separate.backgroundColor = Constant.color.separate
                 separate.snp.makeConstraints({ (maker) in
-                    maker.width.equalTo(1)
+                    maker.width.equalTo(Constant.size.separatorHeight)
                     maker.leading.equalTo(viewInfo.subviews[1].snp.trailing).offset(4)
                     maker.centerY.equalTo(viewInfo.subviews[1].snp.centerY)
                     maker.height.equalTo((viewInfo.subviews[1] as! UILabel).font.lineHeight)
@@ -214,7 +216,7 @@ class PostView {
         
         stackNew.addArrangedSubview(UIView()) { (separate) -> (Void) in
             separate.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(1)
+                maker.height.equalTo(Constant.size.separatorHeight)
                 maker.width.equalToSuperview().offset(-16)
             })
             separate.backgroundColor = Constant.color.separate
@@ -264,5 +266,58 @@ class PostView {
         stackNew.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         stackNew.isLayoutMarginsRelativeArrangement = true
         return stackNew
+    }
+    
+    static func newPost() -> (UIView){
+        let stackNew = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 8, design: nil)
+        let avatar = ReuseForms.btnAvatar()
+        let tfNew = UITextField(text: "", placeholder: "Viết gì đó cho cả lớp", textColor: Constant.text.color.black, font: nil)
+//        let tvNew = UITextView()
+        let btnLibrary = UIButton()
+        let viewContainer = UIView()
+        viewContainer.snp.makeConstraints { (maker) in
+            maker.height.equalTo(Constant.size.avatarNormal + 32)
+        }
+        viewContainer.addSubview(stackNew)
+        stackNew.snp.makeConstraints { (maker) in
+            maker.center.size.equalToSuperview()
+        }
+        stackNew.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        stackNew.isLayoutMarginsRelativeArrangement = true
+        stackNew.addArrangedSubview(UIView()) { (viewAvatar) -> (Void) in
+            viewAvatar.snp.makeConstraints({ (maker) in
+                maker.width.equalTo(Constant.size.avatarNormal)
+                maker.height.equalToSuperview().offset(-16)
+            })
+            viewAvatar.addSubview(avatar)
+            avatar.snp.makeConstraints({ (maker) in
+                maker.top.centerX.width.equalToSuperview()
+            })
+        }
+        
+        stackNew.addArrangedSubview(tfNew)
+        //        tvNew.textColor = Constant.text.color.black
+        //
+        //        tvNew.text = "Viết gì đó cho cả lớp"
+        //        tfNew.
+        //        stackNew.snp.makeConstraints { (maker) in
+        //            maker.height.greaterThanOrEqualTo(self.tvNew.snp.height)
+        //        }
+        
+        stackNew.addArrangedSubview(UIView()) { (viewLib) -> (Void) in
+            viewLib.snp.makeConstraints({ (maker) in
+                maker.width.equalTo(stackNew.subviews[0].snp.width).multipliedBy(0.7)
+                maker.height.equalToSuperview().offset(-32)
+            })
+            viewLib.addSubview(btnLibrary)
+            btnLibrary.snp.makeConstraints({ (maker) in
+                maker.top.centerX.width.equalToSuperview()
+                maker.height.equalTo(Constant.size.iconNormal)
+            })
+            btnLibrary.contentMode = .scaleAspectFit
+            btnLibrary.setImage(UIImage(named: "ic_photo")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            btnLibrary.tintColor = Constant.color.iconColor
+        }
+        return viewContainer
     }
 }

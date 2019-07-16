@@ -21,11 +21,15 @@ class NewFeedViewController : UIViewController {
     let lbSubTitle = UILabel(text: "@fox.class", textColor: Constant.text.color.black, font: nil)
     var userInfoView : UIView!
     var tablePost = UITableView()
+    var navigationView : UIView!
     
     override func viewDidLoad() {
         setupUI()
     }
     
+    @objc func scrollNew(){
+        tablePost.setContentOffset(.zero, animated: true)
+    }
 }
 
 extension NewFeedViewController : UIScrollViewDelegate {
@@ -45,8 +49,8 @@ extension NewFeedViewController : UIScrollViewDelegate {
         print("ScrollNewHeight: \(newHeight)")
         if (newHeight > Constant.size.naviHeight){
             newHeight = Constant.size.naviHeight
-        } else if (newHeight < 0){
-            newHeight = 0
+        } else if (newHeight < 1){
+            newHeight = 1
         } else {
             //            scrollView.contentOffset.y = 0
         }
@@ -58,51 +62,57 @@ extension NewFeedViewController : UIScrollViewDelegate {
         if (alpha > 1) {
             alpha = 1
         }
-        self.view.subviews[0].alpha = alpha
-        //        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
-        //        print("ScrollChange: \(distance)")
-        //        let newHeaderViewHeight: CGFloat = naviConstraint.constant + distance
-        //        naviLastOffset = scrollView.contentOffset.y
-        //        print("ScrollUpdate: \(naviLastOffset)")
-        //        if newHeaderViewHeight > Constant.size.naviHeight {
-        //            naviConstraint.constant = Constant.size.naviHeight
-        //        } else if newHeaderViewHeight < 0 {
-        //            naviConstraint.constant = 0
-        //        } else {
-        //            naviConstraint.constant = newHeaderViewHeight
-        //            scrollView.contentOffset.y = 0 // block scroll view
-        //        }
-        //
+        self.navigationView.subviews[0].alpha = alpha
+        self.navigationView.subviews[1].alpha = 1 - alpha
     }
 }
 
 extension NewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewPostCell.identify, for: indexPath)
+        if (indexPath.row == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewPostCell.identify, for: indexPath)
+            cell.selectionStyle = .none
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostInfoCell.identify, for: indexPath)
         cell.selectionStyle = .none
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row != 0){
+            let viewInfo = PostInfoViewController()
+            self.present(viewInfo, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension NewFeedViewController {
     func setupUI(){
         self.view.backgroundColor = Constant.color.naviBack
         self.navigationController?.navigationBar.isHidden = true
-        PostView.navigationView(parent: self.view, lbTitle: lbTitle, lbSubTitle: lbSubTitle, btnMenu: btnMenu, btnFunction: btnFunction, btnMore: btnMore, actionMenu: nil, actionNotifi: nil, actionMore: nil)
+        navigationView = PostView.navigationView(lbTitle: lbTitle, lbSubTitle: lbSubTitle, btnMenu: btnMenu, btnFunction: btnFunction, btnMore: btnMore, actionMenu: UITapGestureRecognizer(target: self, action: #selector(scrollNew)), actionNotifi: nil, actionMore: nil)
+        self.view.addSubview(navigationView)
+        navigationView.snp.makeConstraints { (maker) in
+            maker.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
+        }
+        navigationView.subviews[1].alpha = 0
         naviConstraint = self.view.subviews[0].heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
         naviConstraint.isActive = true
         self.view.addSubview(tablePost)
         tablePost.snp.makeConstraints { (maker) in
             maker.leading.trailing.bottom.equalToSuperview()
-            maker.top.equalTo(self.view.subviews[1].snp.bottom)
+            maker.top.equalTo(self.view.subviews[0].snp.bottom)
         }
         tablePost.delegate = self
         tablePost.dataSource = self
         tablePost.separatorStyle = .none
+        tablePost.register(PostInfoCell.self, forCellReuseIdentifier: PostInfoCell.identify)
         tablePost.register(NewPostCell.self, forCellReuseIdentifier: NewPostCell.identify)
     }
 }

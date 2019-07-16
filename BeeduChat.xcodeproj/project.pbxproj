@@ -41,8 +41,9 @@
 		F083A9F322CF926700E351C7 /* BeeduChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9F222CF926700E351C7 /* BeeduChatTests.swift */; };
 		F083A9FE22CF926700E351C7 /* BeeduChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */; };
 		F09B18BF22D99B4600ECC6D4 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09B18BE22D99B4600ECC6D4 /* UIColorEx.swift */; };
-		F09B18C122D9A07300ECC6D4 /* NewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09B18C022D9A07300ECC6D4 /* NewPostCell.swift */; };
+		F09B18C122D9A07300ECC6D4 /* PostInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09B18C022D9A07300ECC6D4 /* PostInfoCell.swift */; };
 		F09B18C322D9A0E700ECC6D4 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09B18C222D9A0E700ECC6D4 /* PostView.swift */; };
+		F0A173F722DE4194000E0B71 /* NewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A173F622DE4194000E0B71 /* NewPostCell.swift */; };
 		F0A3693922D6496F007E7529 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3693822D6496F007E7529 /* UIColorEx.swift */; };
 		F0FFBE5322D9B72E00FAAD8F /* NewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9668F22D4F4DE003A2409 /* NewFeedViewController.swift */; };
 /* End PBXBuildFile section */
@@ -109,8 +110,9 @@
 		F083A9FD22CF926700E351C7 /* BeeduChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeduChatUITests.swift; sourceTree = "<group>"; };
 		F083A9FF22CF926700E351C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F09B18BE22D99B4600ECC6D4 /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
-		F09B18C022D9A07300ECC6D4 /* NewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostCell.swift; sourceTree = "<group>"; };
+		F09B18C022D9A07300ECC6D4 /* PostInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoCell.swift; sourceTree = "<group>"; };
 		F09B18C222D9A0E700ECC6D4 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		F0A173F622DE4194000E0B71 /* NewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostCell.swift; sourceTree = "<group>"; };
 		F0A3693822D6496F007E7529 /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		F0F9668F22D4F4DE003A2409 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedViewController.swift; sourceTree = "<group>"; };
 		F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,7 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				532C4D1922D7293100ED38CD /* CommentCell.swift */,
-				F09B18C022D9A07300ECC6D4 /* NewPostCell.swift */,
+				F09B18C022D9A07300ECC6D4 /* PostInfoCell.swift */,
+				F0A173F622DE4194000E0B71 /* NewPostCell.swift */,
 			);
 			path = ReuseCell;
 			sourceTree = "<group>";
@@ -588,11 +591,12 @@
 				F055068C22D092C600D5E511 /* CommentViewController.swift in Sources */,
 				532C4D1C22D72B0A00ED38CD /* UIButtonEx.swift in Sources */,
 				5316C58922D6EFF900F10A1B /* ChatGeneralCell.swift in Sources */,
-				F09B18C122D9A07300ECC6D4 /* NewPostCell.swift in Sources */,
+				F09B18C122D9A07300ECC6D4 /* PostInfoCell.swift in Sources */,
 				F083A9E022CF926500E351C7 /* ViewController.swift in Sources */,
 				B85EB75522D05BFD000EE476 /* ChatViewController.swift in Sources */,
 				B84710E122D62537007328A9 /* ContactViewController.swift in Sources */,
 				F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */,
+				F0A173F722DE4194000E0B71 /* NewPostCell.swift in Sources */,
 				F0A3693922D6496F007E7529 /* UIColorEx.swift in Sources */,
 				536970EE22D59AC200D9C504 /* ReuseForms.swift in Sources */,
 				F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */,

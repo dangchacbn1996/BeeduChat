@@ -19,6 +19,7 @@ struct Constant {
         static let padingAround = 2 * Constant.size.pading
         static let avatarBig : CGFloat = 64
         static let rowHeightChat : CGFloat = 77
+        static let separatorHeight : CGFloat = 0.3
     }
     
     struct color {

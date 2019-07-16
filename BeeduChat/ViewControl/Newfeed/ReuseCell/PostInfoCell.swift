@@ -9,9 +9,10 @@
 import UIKit
 import SnapKit
 
-class NewPostCell : UITableViewCell {
+class PostInfoCell : UITableViewCell {
     
-    static let identify = "NewPostCell"
+    static let identify = "PostInfoCell"
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,7 +31,7 @@ class NewPostCell : UITableViewCell {
                 maker.top.centerX.width.equalToSuperview()
                 maker.height.equalToSuperview().offset(-8)
             })
-            contentBack.addSubview(PostView.newPost(), design: { (post) -> (Void) in
+            contentBack.addSubview(PostView.postInfo(), design: { (post) -> (Void) in
                 post.snp.makeConstraints({ (maker) in
                     maker.center.size.equalToSuperview()
                 })
