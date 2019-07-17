@@ -24,12 +24,8 @@ class PostInfoViewController: UIViewController {
     
 //    var newView = UIView(background: UIColor.white, corner: 0, border: 0, borderColor: nil, design: nil)
     var scrollMain = UIScrollView()
-    var stackMain = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 0, design: nil)
-    var stackNew = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 8, design: nil)
-//    var avatar = ReuseForms.btnAvatar()
-//    var tfNew = UITextField(text: "", placeholder: "Viết gì đó cho cả lớp", textColor: Constant.text.color.black, font: nil)
-////    var tvNew = UITextView()
-//    var btnLibrary = UIButton()
+    var stackMain = UIStackView(axis: .vertical, distribution: .equalSpacing, alignment: .fill, spacing: 0, design: nil)
+//    var stackNew = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 8, design: nil)
     
     var tableView = UITableView()
     var commentView = UIView()
@@ -41,10 +37,14 @@ class PostInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        let edgeGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
+        edgeGes.edges = .left
+        self.view.addGestureRecognizer(edgeGes)
     }
     
     @objc func goBack(){
-        self.dismiss(animated: true, completion: nil)
+        Constant.animationTo(view : self, type : .dismiss)
+        self.dismiss(animated: false, completion: nil)
     }
 }
 
@@ -66,19 +66,25 @@ extension PostInfoViewController{
         navigationView.snp.makeConstraints { (maker) in
             maker.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
         }
-        self.view.addSubview(stackMain)
+        self.view.addSubview(scrollMain)
         self.view.addSubview(commentView)
+        scrollMain.snp.makeConstraints { (maker) in
+            maker.leading.trailing.equalToSuperview()
+            maker.top.equalTo(navigationView.snp.bottom)
+            maker.bottom.equalTo(commentView.snp.top)
+            maker.width.equalToSuperview()
+        }
         commentView.snp.makeConstraints { (maker) in
             maker.height.equalTo(Constant.size.avatarNormal + 16)
             maker.width.centerX.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
+        scrollMain.addSubview(stackMain)
         stackMain.snp.makeConstraints { (maker) in
-            maker.centerX.width.equalToSuperview()
-            maker.bottom.equalTo(commentView.snp.top)
-            maker.top.equalTo(self.navigationView.snp.bottom)
+            maker.top.leading.trailing.bottom.equalToSuperview()
+            maker.width.equalToSuperview()
         }
+        scrollMain.contentSize = stackMain.intrinsicContentSize
         commentView.backgroundColor = UIColor.white
-//        commentView.dropShadow()
         commentView.layer.shadowColor = UIColor.gray.cgColor
         commentView.layer.shadowOpacity = 0.5
         commentView.layer.shadowOffset = CGSize(width: 0, height: -1)
@@ -107,27 +113,34 @@ extension PostInfoViewController{
         * Avatar  Text                  pic *
         *************************************
         */
-        stackMain.addArrangedSubview(PostView.newPost())
+
         /* Separate
          **************************************
          */
-        self.stackMain.addArrangedSubview(UIView()) { (separate) -> (Void) in
-            separate.backgroundColor = Constant.color.separate
-            separate.snp.makeConstraints({ (maker) in
-                maker.width.equalToSuperview()
-                maker.height.equalTo(8)
+        let contentView = PostView.postInfo()
+        self.stackMain.addArrangedSubview(UIView()) { (view) -> (Void) in
+            view.addSubview(contentView)
+            contentView.snp.makeConstraints({ (maker) in
+                maker.bottom.equalToSuperview()
+                maker.leading.trailing.top.equalToSuperview()
             })
         }
-        let contentView = PostView.postInfo()
-        self.stackMain.addArrangedSubview(contentView)
+        
+        self.stackMain.addArrangedSubview(UIView()) { (separateView) -> (Void) in
+            separateView.addSubview(UIView(), design: { (separate) -> (Void) in
+                separate.backgroundColor = Constant.color.separate
+                separate.snp.makeConstraints({ (maker) in
+                    maker.width.centerX.equalToSuperview()
+                    maker.top.equalToSuperview().offset(4)
+                    maker.height.equalTo(Constant.size.separatorHeight)
+                })
+            })
+        }
         
         let content = CommentViewController()
         self.addChild(content)
         content.didMove(toParent: self)
         self.stackMain.addArrangedSubview(content.view)
-    }
-    
-    func setupNewFeed(){
-        
+//        content.view.frame.size = content.tableComment.contentSize
     }
 }

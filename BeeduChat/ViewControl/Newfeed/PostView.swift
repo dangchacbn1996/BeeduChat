@@ -104,11 +104,12 @@ class PostView {
     
     static func postInfo() -> (UIView){
         let newView = UIView()
-        let stackNew = UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 8, design: nil)
+        let stackNew = UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 4, design: nil)
         let stackHead = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)
         newView.addSubview(stackNew)
         stackNew.snp.makeConstraints { (maker) in
-            maker.center.size.equalToSuperview()
+            maker.bottom.centerX.width.equalToSuperview()
+            maker.top.equalToSuperview().offset(16)
         }
         stackNew.addArrangedSubview(stackHead)
         stackHead.snp.makeConstraints { (maker) in
@@ -222,50 +223,68 @@ class PostView {
             separate.backgroundColor = Constant.color.separate
         }
         
-        stackNew.addArrangedSubview(UIStackView(axis: .horizontal, distribution: .fillEqually, alignment: .fill, spacing: 8, design: nil)) { (stackAction) -> (Void) in
-            stackAction.snp.makeConstraints({ (maker) in
-                maker.height.equalTo((Constant.text.font.normal.lineHeight ?? 16) * 1.5)
-                maker.width.equalToSuperview().offset(-16)
+        stackNew.addArrangedSubview(UIView()) { (separator) -> (Void) in
+            separator.snp.makeConstraints({ (maker) in
+                maker.height.equalTo(Constant.size.separatorHeight)
             })
-            
-            
-
-//            (stackAction as! UIStackView).addArrangedSubview(UIStackView(axis: .horizontal, distribution: ., alignment: .fill, spacing: 0, design: nil), design: { (stackLike) -> (Void) in
-//                (stackLike as! UIStackView).addArrangedSubview(
-//                    UIImageView(image: UIImage(named: "ic_like"), highlightedImage: nil), design: { (imvLike) -> (Void) in
-//                        imvLike.tintColor = Constant.text.color.black
-//                        imvLike.contentMode = .scaleAspectFit
-//                })
-//                (stackLike as! UIStackView).addArrangedSubview(
-//                    UILabel(text: "Thích", textColor: Constant.text.color.black, font: nil), design: { (lbLike) -> (Void) in
-//                        (lbLike as! UILabel).textAlignment = .center
-//                })
-//            })
-//
-//            (stackAction as! UIStackView).addArrangedSubview(UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .fill, spacing: 0, design: nil), design: { (stackLike) -> (Void) in
-//                (stackLike as! UIStackView).addArrangedSubview(
-//                    UIImageView(image: UIImage(named: "ic_like"), highlightedImage: nil), design: { (imvLike) -> (Void) in
-//                        imvLike.tintColor = Constant.text.color.black
-//                        imvLike.contentMode = .scaleAspectFit
-//                })
-//                (stackLike as! UIStackView).addArrangedSubview(
-//                    UILabel(text: "Thích", textColor: Constant.text.color.black, font: nil), design: { (lbLike) -> (Void) in
-//                        (lbLike as! UILabel).textAlignment = .center
-//                })
-//            })
-//            (stackAction as! UIStackView).addArrangedSubview(
-//                UILabel(text: "Thích", textColor: Constant.text.color.black, font: nil), design: { (lbLike) -> (Void) in
-//                    (lbLike as! UILabel).textAlignment = .center
-//            })
-//            (stackAction as! UIStackView).addArrangedSubview(
-//                UILabel(text: "Bình luận", textColor: Constant.text.color.black, font: nil), design: { (lbComment) -> (Void) in
-//                    (lbComment as! UILabel).textAlignment = .center
-//            })
+            separator.backgroundColor = Constant.color.separate
         }
         
-        stackNew.layoutMargins = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
-        stackNew.isLayoutMarginsRelativeArrangement = true
-        return stackNew
+        stackNew.addArrangedSubview(UIView()) { (viewAction) -> (Void) in
+            viewAction.snp.makeConstraints({ (maker) in
+                maker.height.equalTo(Constant.text.font.normal.lineHeight * 1.5)
+                maker.width.equalToSuperview().offset(-16)
+            })
+            viewAction.addSubview(UIView(), design: { (viewLike) -> (Void) in
+                viewLike.snp.makeConstraints({ (maker) in
+                    maker.leading.top.bottom.equalToSuperview()
+                    maker.width.equalToSuperview().multipliedBy(0.5)
+                })
+                viewLike.addSubview(UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .center, spacing: 4, design: nil), design: { (stackLike) -> (Void) in
+                    stackLike.snp.makeConstraints({ (maker) in
+                        maker.center.equalToSuperview()
+                        maker.height.lessThanOrEqualToSuperview()
+                    })
+                    (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_like")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
+                        imgLike.snp.makeConstraints({ (maker) in
+                            maker.height.equalTo(Constant.text.font.normal.lineHeight)
+                        })
+                        imgLike.tintColor = Constant.text.color.gray
+                        imgLike.contentMode = .scaleAspectFit
+                    })
+                    (stackLike as! UIStackView).addArrangedSubview(UILabel(text: "Thích", textColor: Constant.text.color.gray, font: Constant.text.font.customFont(size: Constant.text.size.normal, weight: .Medium)))
+                })
+            })
+//            viewAction.addSubview(UIView(), design: { (separator) -> (Void) in
+//                separator.backgroundColor = Constant.color.separate
+//                separator.snp.makeConstraints({ (maker) in
+//                    maker.height.equalToSuperview().multipliedBy(0.8)
+//                    maker.width.equalTo(Constant.size.separatorHeight)
+//                    maker.center.equalToSuperview()
+//                })
+//            })
+            viewAction.addSubview(UIView(), design: { (viewLike) -> (Void) in
+                viewLike.snp.makeConstraints({ (maker) in
+                    maker.trailing.top.bottom.equalToSuperview()
+                    maker.width.equalToSuperview().multipliedBy(0.5)
+                })
+                viewLike.addSubview(UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .center, spacing: 4, design: nil), design: { (stackLike) -> (Void) in
+                    stackLike.snp.makeConstraints({ (maker) in
+                        maker.center.equalToSuperview()
+                        maker.height.lessThanOrEqualToSuperview()
+                    })
+                    (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_comment")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
+                        imgLike.snp.makeConstraints({ (maker) in
+                            maker.height.equalTo(Constant.text.font.normal.lineHeight)
+                        })
+                        imgLike.tintColor = Constant.text.color.gray
+                        imgLike.contentMode = .scaleAspectFit
+                    })
+                    (stackLike as! UIStackView).addArrangedSubview(UILabel(text: "Bình luận", textColor: Constant.text.color.gray, font: Constant.text.font.customFont(size: Constant.text.size.normal, weight: .Medium)))
+                })
+            })
+        }
+        return newView
     }
     
     static func newPost() -> (UIView){

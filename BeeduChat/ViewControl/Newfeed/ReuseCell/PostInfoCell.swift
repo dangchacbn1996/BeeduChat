@@ -28,12 +28,13 @@ class PostInfoCell : UITableViewCell {
         self.addSubview(UIView()) { (contentBack) -> (Void) in
             contentBack.backgroundColor = Constant.color.postBack
             contentBack.snp.makeConstraints({ (maker) in
-                maker.top.centerX.width.equalToSuperview()
+                maker.top.centerX.width.height.equalToSuperview()
                 maker.height.equalToSuperview().offset(-8)
             })
             contentBack.addSubview(PostView.postInfo(), design: { (post) -> (Void) in
                 post.snp.makeConstraints({ (maker) in
-                    maker.center.size.equalToSuperview()
+                    maker.top.leading.trailing.equalToSuperview()
+                    maker.bottom.equalToSuperview().offset(-8)
                 })
             })
         }

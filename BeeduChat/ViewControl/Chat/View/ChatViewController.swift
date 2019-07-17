@@ -44,6 +44,7 @@ class ChatViewController: UIViewController {
         tbvChat.register(ChatGeneralCell.self, forCellReuseIdentifier: ChatGeneralCell.identify)
         tbvChat.tableFooterView = UIView()
         tbvChat.tableHeaderView = UIView()
+        tbvChat.showsVerticalScrollIndicator = false
 //        tbvChat.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tbvChat.separatorStyle = .singleLine
         // Do any additional setup after loading the view.
@@ -53,6 +54,14 @@ class ChatViewController: UIViewController {
         tbvNortification.separatorStyle = .singleLine
         tbvNortification.delegate = self
         tbvNortification.dataSource = self
+        let edgeGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
+        edgeGes.edges = .left
+        self.view.addGestureRecognizer(edgeGes)
+    }
+    
+    @objc func goBack(){
+        Constant.animationTo(view : self, type : .dismiss)
+        self.dismiss(animated: false, completion: nil)
     }
 
 }

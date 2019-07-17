@@ -30,6 +30,13 @@ class NewFeedViewController : UIViewController {
     @objc func scrollNew(){
         tablePost.setContentOffset(.zero, animated: true)
     }
+    
+    @objc func openMessenge(){
+        let viewInfo = ChatViewController()
+        viewInfo.modalPresentationStyle = .overFullScreen
+        self.view.window!.layer.add(Constant.rightToLeftTrans(), forKey: kCATransition)
+        self.present(viewInfo, animated: false, completion: nil)
+    }
 }
 
 extension NewFeedViewController : UIScrollViewDelegate {
@@ -86,7 +93,10 @@ extension NewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row != 0){
             let viewInfo = PostInfoViewController()
-            self.present(viewInfo, animated: true, completion: nil)
+            viewInfo.modalPresentationStyle = .overFullScreen
+//            self.view.window!.layer.add(Constant.rightToLeftTrans(), forKey: kCATransition)
+            Constant.animationTo(view: self, type: .push)
+            self.present(viewInfo, animated: false, completion: nil)
         }
     }
     
@@ -96,7 +106,8 @@ extension NewFeedViewController {
     func setupUI(){
         self.view.backgroundColor = Constant.color.naviBack
         self.navigationController?.navigationBar.isHidden = true
-        navigationView = PostView.navigationView(lbTitle: lbTitle, lbSubTitle: lbSubTitle, btnMenu: btnMenu, btnFunction: btnFunction, btnMore: btnMore, actionMenu: UITapGestureRecognizer(target: self, action: #selector(scrollNew)), actionNotifi: nil, actionMore: nil)
+        navigationView = PostView.navigationView(lbTitle: lbTitle, lbSubTitle: lbSubTitle, btnMenu: btnMenu, btnFunction: btnFunction, btnMore: btnMore, actionMenu: UITapGestureRecognizer(target: self, action: #selector(scrollNew)), actionNotifi: nil, actionMore: UITapGestureRecognizer(target: self, action: #selector(openMessenge)))
+        self.btnMore.setImage(UIImage(named: "ic_mess")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
             maker.top.left.right.equalTo(self.view.safeAreaLayoutGuide)

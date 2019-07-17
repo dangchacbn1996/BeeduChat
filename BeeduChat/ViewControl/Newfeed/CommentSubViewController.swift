@@ -49,6 +49,12 @@ class CommentSubViewController: UIViewController {
         tableComment.separatorStyle = .none
     }
     
+    override func viewWillLayoutSubviews() {
+        tableComment.snp.makeConstraints { (maker) in
+            maker.height.equalTo(self.tableComment.contentSize.height)
+        }
+    }
+    
 }
 
 extension CommentSubViewController : UITableViewDataSource, UITableViewDelegate{

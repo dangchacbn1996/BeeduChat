@@ -19,7 +19,7 @@ struct Constant {
         static let padingAround = 2 * Constant.size.pading
         static let avatarBig : CGFloat = 64
         static let rowHeightChat : CGFloat = 77
-        static let separatorHeight : CGFloat = 0.3
+        static let separatorHeight : CGFloat = 0.5
     }
     
     struct color {
@@ -70,4 +70,39 @@ struct Constant {
         }
 
     }
+    
+    static func rightToLeftTrans() -> (CATransition){
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
+        return transition
+    }
+    
+    static func backLeftToRight() -> (CATransition){
+        let transition: CATransition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.reveal
+        transition.subtype = CATransitionSubtype.fromLeft
+        
+        return transition
+    }
+    
+    static func animationTo(view : UIViewController, type : AnimationType){
+        switch type {
+        case .push:
+            view.view.window!.layer.add(Constant.rightToLeftTrans(), forKey: nil)
+        case .dismiss:
+            view.view.window!.layer.add(Constant.backLeftToRight(), forKey: nil)
+        default:
+            return
+        }
+    }
+}
+
+enum AnimationType {
+    case push
+    case dismiss
 }
