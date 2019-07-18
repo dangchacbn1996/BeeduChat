@@ -199,12 +199,30 @@ extension ChatViewController{
     func UIHisContactBar(){
         self.view.addSubview(historyView)
         historyView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(searchView.snp.height)
+            maker.height.equalTo(UserChatCVC.cellSize.height)
             maker.width.equalTo(searchView.snp.width)
             maker.top.equalTo(searchView.snp.bottom).offset(16)
             maker.centerX.equalTo(navigationView.snp.centerX)
         }
         historyView.backgroundColor = UIColor.green
+        historyView.addSubview(UIScrollView(frame: .zero)) { (scrollView) -> (Void) in
+            scrollView.snp.makeConstraints({ (maker) in
+                maker.top.leading.trailing.bottom.equalToSuperview()
+                maker.height.width.equalToSuperview()
+            })
+            scrollView.addSubview(UICollectionView(frame: .zero, collectionViewLayout: CustomCollectionLayout()), design: { (collection) -> (Void) in
+                collection.snp.makeConstraints({ (maker) in
+                    maker.top.leading.trailing.bottom.equalToSuperview()
+                    maker.height.equalToSuperview()
+                    maker.width.equalTo(30 * UserChatCVC.cellSize.width)
+                })
+                collection.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+                (collection as! UICollectionView).delegate = self
+                (collection as! UICollectionView).dataSource = self
+                (collection as! UICollectionView).collectionViewLayout = UICollectionViewFlowLayout()
+                (collection as! UICollectionView).register(UserChatCVC.self, forCellWithReuseIdentifier: UserChatCVC.identify)
+            })
+        }
 //        historyView.addSubview(scrvHistory)
 //        scrvHistory.snp.makeConstraints{ (maker) in
 //            maker.height.equalTo(48)
@@ -274,6 +292,18 @@ extension ChatViewController{
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+}
+
+extension ChatViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let item = collectionView.dequeueReusableCell(withReuseIdentifier: UserChatCVC.identify, for: indexPath) as! UserChatCVC
+        item.backgroundColor = UIColor.white
+        return item
     }
 }
 

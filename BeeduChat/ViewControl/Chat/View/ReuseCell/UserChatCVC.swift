@@ -10,13 +10,12 @@ import UIKit
 
 class UserChatCVC: UICollectionViewCell {
     
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        setupUI()
-//    }
+    static let identify = "UserChatCVC"
+    static let cellSize = CGSize(width: Constant.size.avatarBig + 16, height: Constant.size.avatarBig + 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,12 +26,17 @@ class UserChatCVC: UICollectionViewCell {
 
 extension UserChatCVC {
     func setupUI(){
+        self.backgroundColor = UIColor.white
         self.addSubview(UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 4, design: nil)) { (stackMain) -> (Void) in
             stackMain.snp.makeConstraints({ (maker) in
                 maker.center.height.equalToSuperview()
                 maker.width.equalToSuperview().offset(-16)
             })
-            (stackMain as! UIStackView).addArrangedSubview(ReuseForms.imageBig())
+            (stackMain as! UIStackView).addArrangedSubview(ReuseForms.imageBig(), design: { (avatar) -> (Void) in
+                avatar.snp.makeConstraints({ (maker) in
+                    maker.height.width.equalTo(Constant.size.avatarBig)
+                })
+            })
             (stackMain as! UIStackView).addArrangedSubview(UILabel(text: "User", textColor: Constant.text.color.black, font: Constant.text.font.normal))
         }
     }

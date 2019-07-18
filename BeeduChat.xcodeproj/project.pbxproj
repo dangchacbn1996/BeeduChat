@@ -11,6 +11,7 @@
 		532C4D1A22D7293100ED38CD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C4D1922D7293100ED38CD /* CommentCell.swift */; };
 		532C4D1C22D72B0A00ED38CD /* UIButtonEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C4D1B22D72B0A00ED38CD /* UIButtonEx.swift */; };
 		536970EE22D59AC200D9C504 /* ReuseForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536970ED22D59AC200D9C504 /* ReuseForms.swift */; };
+		538928F022E02EFC007FF148 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538928EF22E02EFC007FF148 /* CustomCollectionViewLayout.swift */; };
 		53B053EA22DF4F04000D0F58 /* UserChatCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B053E922DF4F04000D0F58 /* UserChatCVC.swift */; };
 		58EA5EF4FE3407A7E3057528 /* Pods_BeeduChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B54110165F78A01A98F2F9B /* Pods_BeeduChatUITests.framework */; };
 		7833C66DF09D4C36113FA500 /* Pods_BeeduChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AF2CB97F93AE80B95FB388 /* Pods_BeeduChatTests.framework */; };
@@ -72,6 +73,7 @@
 		532C4D1922D7293100ED38CD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		532C4D1B22D72B0A00ED38CD /* UIButtonEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonEx.swift; sourceTree = "<group>"; };
 		536970ED22D59AC200D9C504 /* ReuseForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseForms.swift; sourceTree = "<group>"; };
+		538928EF22E02EFC007FF148 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		53B053E922DF4F04000D0F58 /* UserChatCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatCVC.swift; sourceTree = "<group>"; };
 		56BA173BE907BF921285B037 /* Pods-BeeduChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		59A7CDD07700A2C3E4200BCB /* Pods-BeeduChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChat.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChat/Pods-BeeduChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +195,14 @@
 			path = ReuseForms;
 			sourceTree = "<group>";
 		};
+		538928EE22E02EE2007FF148 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				538928EF22E02EFC007FF148 /* CustomCollectionViewLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		ECD097AB32CCF5E82C812701 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +293,7 @@
 		F055068122D0562000D5E511 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				538928EE22E02EE2007FF148 /* Layout */,
 				5316C58722D6EFD100F10A1B /* ReuseCell */,
 				B85EB75422D05BFD000EE476 /* ChatViewController.swift */,
 				B84710D622D37BDD007328A9 /* ReportViewController.swift */,
@@ -611,6 +622,7 @@
 				B84710E322D77AE7007328A9 /* ReportCell.swift in Sources */,
 				B84710D722D37BDE007328A9 /* ReportViewController.swift in Sources */,
 				B84710DD22D4DACD007328A9 /* NewGroupViewController.swift in Sources */,
+				538928F022E02EFC007FF148 /* CustomCollectionViewLayout.swift in Sources */,
 				B84710E522D98B71007328A9 /* DetailMessageCell.swift in Sources */,
 				532C4D1A22D7293100ED38CD /* CommentCell.swift in Sources */,
 				F055067722D0306A00D5E511 /* Constant.swift in Sources */,
