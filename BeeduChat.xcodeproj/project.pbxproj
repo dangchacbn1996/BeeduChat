@@ -24,10 +24,9 @@
 		B84710E322D77AE7007328A9 /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710E222D77AE7007328A9 /* ReportCell.swift */; };
 		B84710E522D98B71007328A9 /* DetailMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710E422D98B71007328A9 /* DetailMessageCell.swift */; };
 		B84710E722DCBCD9007328A9 /* DetailMessCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710E622DCBCD9007328A9 /* DetailMessCellTableViewCell.swift */; };
-		B84710E922E2C1CC007328A9 /* CreateGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710E822E2C1CC007328A9 /* CreateGroupCell.swift */; };
-		B84710EB22E2F321007328A9 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710EA22E2F321007328A9 /* ContactCell.swift */; };
+		B84710EE22E2FDC4007328A9 /* CreateGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710EC22E2FDC4007328A9 /* CreateGroupCell.swift */; };
+		B84710EF22E2FDC4007328A9 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710ED22E2FDC4007328A9 /* ContactCell.swift */; };
 		B85EB75522D05BFD000EE476 /* ChatManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85EB75422D05BFD000EE476 /* ChatManagerViewController.swift */; };
-	 	99ed3962fe33ca6d3329ee2d59f85419a2a895a1
 		B85EB75722D05D73000EE476 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85EB75622D05D73000EE476 /* SnapKit.framework */; };
 		D2EF5E0407B0B0A8EEC7373C /* Pods_BeeduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7737D01FA70EC4022476426D /* Pods_BeeduChat.framework */; };
 		F055067422D02FD400D5E511 /* UILabelEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F055067322D02FD400D5E511 /* UILabelEx.swift */; };
@@ -51,7 +50,6 @@
 		F0A173F722DE4194000E0B71 /* NewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A173F622DE4194000E0B71 /* NewPostCell.swift */; };
 		F0A3693922D6496F007E7529 /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3693822D6496F007E7529 /* UIColorEx.swift */; };
 		F0F8C60622E2D55000BD7070 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5E522E2D54E00BD7070 /* MockMessage.swift */; };
-		F0F8C60722E2D55000BD7070 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5E622E2D54E00BD7070 /* MockUser.swift */; };
 		F0F8C60822E2D55000BD7070 /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5E722E2D54E00BD7070 /* MockSocket.swift */; };
 		F0F8C60922E2D55000BD7070 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5E922E2D54E00BD7070 /* Lorem.swift */; };
 		F0F8C60A22E2D55000BD7070 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5EA22E2D54E00BD7070 /* SampleData.swift */; };
@@ -73,6 +71,7 @@
 		F0F8C61C22E2D55000BD7070 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C60022E2D54F00BD7070 /* SettingsViewController.swift */; };
 		F0F8C61D22E2D55000BD7070 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C60222E2D55000BD7070 /* BasicAudioController.swift */; };
 		F0F8C61F22E2D55000BD7070 /* CustomMessageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C60522E2D55000BD7070 /* CustomMessageFlowLayout.swift */; };
+		F0F8C62122E2ED4400BD7070 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C62022E2ED4400BD7070 /* MockUser.swift */; };
 		F0FFBE5322D9B72E00FAAD8F /* NewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9668F22D4F4DE003A2409 /* NewFeedViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,10 +112,9 @@
 		B84710E222D77AE7007328A9 /* ReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
 		B84710E422D98B71007328A9 /* DetailMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMessageCell.swift; sourceTree = "<group>"; };
 		B84710E622DCBCD9007328A9 /* DetailMessCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMessCellTableViewCell.swift; sourceTree = "<group>"; };
-		B84710E822E2C1CC007328A9 /* CreateGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupCell.swift; sourceTree = "<group>"; };
-		B84710EA22E2F321007328A9 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		B84710EC22E2FDC4007328A9 /* CreateGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupCell.swift; sourceTree = "<group>"; };
+		B84710ED22E2FDC4007328A9 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		B85EB75422D05BFD000EE476 /* ChatManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManagerViewController.swift; sourceTree = "<group>"; };
-		99ed3962fe33ca6d3329ee2d59f85419a2a895a1
 		B85EB75622D05D73000EE476 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1A4AE96C2DCBF8ED89D2AC /* Pods-BeeduChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		D28D5F622648F070661C5ED5 /* Pods-BeeduChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChat.release.xcconfig"; path = "Target Support Files/Pods-BeeduChat/Pods-BeeduChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 		F0A173F622DE4194000E0B71 /* NewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostCell.swift; sourceTree = "<group>"; };
 		F0A3693822D6496F007E7529 /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		F0F8C5E522E2D54E00BD7070 /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
-		F0F8C5E622E2D54E00BD7070 /* MockUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
 		F0F8C5E722E2D54E00BD7070 /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
 		F0F8C5E922E2D54E00BD7070 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
 		F0F8C5EA22E2D54E00BD7070 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
@@ -170,6 +167,7 @@
 		F0F8C60022E2D54F00BD7070 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F0F8C60222E2D55000BD7070 /* BasicAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
 		F0F8C60522E2D55000BD7070 /* CustomMessageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageFlowLayout.swift; sourceTree = "<group>"; };
+		F0F8C62022E2ED4400BD7070 /* MockUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
 		F0F9668F22D4F4DE003A2409 /* NewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedViewController.swift; sourceTree = "<group>"; };
 		F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FCC45BE1F22661A51EC76144 /* Pods-BeeduChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,13 +218,13 @@
 		5316C58722D6EFD100F10A1B /* ReuseCell */ = {
 			isa = PBXGroup;
 			children = (
+				B84710ED22E2FDC4007328A9 /* ContactCell.swift */,
+				B84710EC22E2FDC4007328A9 /* CreateGroupCell.swift */,
 				5316C58822D6EFF900F10A1B /* ChatGeneralCell.swift */,
 				B84710E222D77AE7007328A9 /* ReportCell.swift */,
 				B84710E422D98B71007328A9 /* DetailMessageCell.swift */,
 				B84710E622DCBCD9007328A9 /* DetailMessCellTableViewCell.swift */,
 				53B053E922DF4F04000D0F58 /* UserChatCVC.swift */,
-				B84710E822E2C1CC007328A9 /* CreateGroupCell.swift */,
-				B84710EA22E2F321007328A9 /* ContactCell.swift */,
 			);
 			path = ReuseCell;
 			sourceTree = "<group>";
@@ -447,7 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				F0F8C5E522E2D54E00BD7070 /* MockMessage.swift */,
-				F0F8C5E622E2D54E00BD7070 /* MockUser.swift */,
+				F0F8C62022E2ED4400BD7070 /* MockUser.swift */,
 				F0F8C5E722E2D54E00BD7070 /* MockSocket.swift */,
 			);
 			path = Models;
@@ -753,8 +751,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F055068A22D06EC500D5E511 /* PostInfoViewController.swift in Sources */,
-				B84710E922E2C1CC007328A9 /* CreateGroupCell.swift in Sources */,
 				53B053EA22DF4F04000D0F58 /* UserChatCVC.swift in Sources */,
+				F0F8C62122E2ED4400BD7070 /* MockUser.swift in Sources */,
 				F055067922D031E100D5E511 /* UITextFieldEx.swift in Sources */,
 				F055068C22D092C600D5E511 /* CommentViewController.swift in Sources */,
 				532C4D1C22D72B0A00ED38CD /* UIButtonEx.swift in Sources */,
@@ -779,7 +777,6 @@
 				F055067D22D0328D00D5E511 /* StackViewEx.swift in Sources */,
 				F09B18BF22D99B4600ECC6D4 /* UIColorEx.swift in Sources */,
 				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,
-				B84710EB22E2F321007328A9 /* ContactCell.swift in Sources */,
 				B84710DB22D4D292007328A9 /* CreateGroupViewController.swift in Sources */,
 				B84710DF22D61CE9007328A9 /* ChooseRecvViewController.swift in Sources */,
 				B84710E322D77AE7007328A9 /* ReportCell.swift in Sources */,
@@ -789,8 +786,8 @@
 				F0F8C61322E2D55000BD7070 /* CustomCell.swift in Sources */,
 				F0F8C61F22E2D55000BD7070 /* CustomMessageFlowLayout.swift in Sources */,
 				F0F8C61C22E2D55000BD7070 /* SettingsViewController.swift in Sources */,
+				B84710EF22E2FDC4007328A9 /* ContactCell.swift in Sources */,
 				B84710DD22D4DACD007328A9 /* NewGroupViewController.swift in Sources */,
-				F0F8C60722E2D55000BD7070 /* MockUser.swift in Sources */,
 				538928F022E02EFC007FF148 /* CustomCollectionViewLayout.swift in Sources */,
 				B84710E522D98B71007328A9 /* DetailMessageCell.swift in Sources */,
 				532C4D1A22D7293100ED38CD /* CommentCell.swift in Sources */,
@@ -804,6 +801,7 @@
 				B84710D922D37F98007328A9 /* DetailMessViewController.swift in Sources */,
 				F0F8C61522E2D55000BD7070 /* ChatViewController.swift in Sources */,
 				F09B18C322D9A0E700ECC6D4 /* PostView.swift in Sources */,
+				B84710EE22E2FDC4007328A9 /* CreateGroupCell.swift in Sources */,
 				F055067B22D0320100D5E511 /* UIViewEx.swift in Sources */,
 				B84710E722DCBCD9007328A9 /* DetailMessCellTableViewCell.swift in Sources */,
 			);
