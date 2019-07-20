@@ -313,7 +313,7 @@ extension ChatManagerViewController : UICollectionViewDelegate, UICollectionView
     }
 }
 
-extension ChatManagerViewController : UITableViewDataSource {
+extension ChatManagerViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tbvNortification {
             return 1

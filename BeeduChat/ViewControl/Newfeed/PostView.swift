@@ -205,7 +205,14 @@ class PostView {
             })
             
             (stackLike as! UIStackView).addArrangedSubview(UIView(), design: { (viewLike) -> (Void) in
-                viewLike.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
+//                viewLike.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
+                viewLike.addSubview(
+                    UILabel(text: "😄🤣❤️ 16", textColor: Constant.text.color.black, font: nil), design: { (lb) -> (Void) in
+                        lb.snp.makeConstraints({ (maker) in
+                            maker.leading.centerY.equalToSuperview()
+                            maker.height.lessThanOrEqualToSuperview()
+                        })
+                })
             })
             (stackLike as! UIStackView).addArrangedSubview(
                 UILabel(text: "18 bình luận", textColor: Constant.text.color.black, font: nil), design: { (viewLike) -> (Void) in
