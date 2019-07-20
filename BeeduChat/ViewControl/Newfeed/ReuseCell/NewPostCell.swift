@@ -23,7 +23,7 @@ class NewPostCell : UITableViewCell {
     }
     
     func setupUI(){
-        self.backgroundColor = Constant.color.separate
+        self.backgroundColor = Constant.color.separateNewFeed
         self.addSubview(UIView()) { (contentBack) -> (Void) in
             contentBack.backgroundColor = Constant.color.postBack
             contentBack.snp.makeConstraints({ (maker) in

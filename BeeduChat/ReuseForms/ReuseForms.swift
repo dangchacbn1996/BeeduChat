@@ -12,7 +12,7 @@ import SnapKit
 class ReuseForms {
     static func imageAvatar() -> (UIImageView){
         let avatar = UIImageView()
-        avatar.contentMode = .scaleAspectFit
+        avatar.contentMode = .scaleAspectFill
         avatar.image = UIImage(named: "ic_ava")
         avatar.clipsToBounds = true
         avatar.layer.cornerRadius = Constant.size.avatarNormal / 2
@@ -20,14 +20,14 @@ class ReuseForms {
             maker.width.equalTo(avatar.snp.height)
             maker.height.equalTo(Constant.size.avatarNormal)
         }
-        avatar.layer.borderWidth = 1
-        avatar.layer.borderColor = Constant.color.separate.cgColor
+//        avatar.layer.borderWidth = 1
+//        avatar.layer.borderColor = Constant.color.separate.cgColor
         return avatar
     }
     
     static func imageBig(_ image : UIImage?) -> (UIImageView){
         let avatar = UIImageView()
-        avatar.contentMode = .scaleAspectFit
+        avatar.contentMode = .scaleAspectFill
         avatar.image = image ?? UIImage(named: "ic_ava")
         avatar.clipsToBounds = true
         avatar.layer.cornerRadius = Constant.size.avatarNormal / 2
@@ -35,14 +35,14 @@ class ReuseForms {
             maker.width.equalTo(avatar.snp.height)
             maker.height.equalTo(Constant.size.avatarNormal)
         }
-        avatar.layer.borderWidth = 1
-        avatar.layer.borderColor = Constant.color.separate.cgColor
+//        avatar.layer.borderWidth = 1
+//        avatar.layer.borderColor = Constant.color.separate.cgColor
         return avatar
     }
     
     static func imageAvatarSmall(_ image : UIImage?) -> (UIImageView){
         let avatar = UIImageView()
-        avatar.contentMode = .scaleAspectFit
+        avatar.contentMode = .scaleAspectFill
         avatar.image = image ?? UIImage(named: "ic_ava")
         avatar.clipsToBounds = true
         avatar.layer.cornerRadius = Constant.size.avatarSmall / 2
@@ -50,14 +50,14 @@ class ReuseForms {
             maker.width.equalTo(avatar.snp.height)
             maker.height.equalTo(Constant.size.avatarSmall)
         }
-        avatar.layer.borderWidth = 1
-        avatar.layer.borderColor = Constant.color.separate.cgColor
+//        avatar.layer.borderWidth = 1
+//        avatar.layer.borderColor = Constant.color.separate.cgColor
         return avatar
     }
     
     static func btnAvatar() -> (UIButton){
         let avatar = UIButton()
-        avatar.contentMode = .scaleAspectFit
+        avatar.contentMode = .scaleAspectFill
         avatar.setImage(UIImage(named: "ic_ava"), for: .normal)
         avatar.snp.makeConstraints { (maker) in
             maker.width.equalTo(avatar.snp.height)
@@ -65,14 +65,14 @@ class ReuseForms {
         }
         avatar.clipsToBounds = true
         avatar.layer.cornerRadius = Constant.size.avatarNormal / 2
-        avatar.layer.borderWidth = 1
-        avatar.layer.borderColor = Constant.color.separate.cgColor
+//        avatar.layer.borderWidth = 1
+//        avatar.layer.borderColor = Constant.color.separate.cgColor
         return avatar
     }
     
     static func imageBig() -> (UIImageView){
         let avatar = UIImageView()
-        avatar.contentMode = .scaleAspectFit
+        avatar.contentMode = .scaleAspectFill
         avatar.image = UIImage(named: "ic_ava")
         avatar.clipsToBounds = true
         avatar.layer.cornerRadius = Constant.size.avatarBig / 2
@@ -80,8 +80,8 @@ class ReuseForms {
             maker.width.equalTo(avatar.snp.height)
             maker.height.equalTo(Constant.size.avatarBig)
         }
-        avatar.layer.borderWidth = 1
-        avatar.layer.borderColor = Constant.color.separate.cgColor
+//        avatar.layer.borderWidth = 1
+//        avatar.layer.borderColor = Constant.color.separate.cgColor
         return avatar
     }
 }
