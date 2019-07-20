@@ -57,11 +57,21 @@ class ChatManagerViewController: UIViewController {
         let edgeGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
         edgeGes.edges = .left
         self.view.addGestureRecognizer(edgeGes)
+        
+        let edgeContact = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goContact))
+        edgeContact.edges = .left
+        self.view.addGestureRecognizer(edgeContact)
     }
     
     @objc func goBack(){
         Constant.animationTo(view : self, type : .dismiss)
         self.dismiss(animated: false, completion: nil)
+    }
+    @objc func goContact(){
+        Constant.animationTo(view: self, type: .dismiss)
+        self.dismiss(animated: false, completion: nil)
+        var ContactView = UIViewController()
+        
     }
 
 }
@@ -134,16 +144,18 @@ extension ChatManagerViewController{
             self.btnContact.setImage(UIImage(named: "ic_contact")?.withRenderingMode(.alwaysTemplate), for: .normal)
             self.btnContact.tintColor = Constant.color.iconColor
             self.btnContact.contentMode = .scaleAspectFit
+            //su kien cho button
+            self.btnContact.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goContact)))
             
             //Btn more
-            (stackNavi as! UIStackView).addArrangedSubview(self.btnOption)
-            self.btnOption.snp.makeConstraints({ (maker) in
-                maker.width.equalTo(self.btnOption.snp.height).multipliedBy(0.8)
-                maker.height.equalTo(Constant.size.iconNormal)
-            })
-            self.btnOption.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            self.btnOption.tintColor = Constant.color.iconColor
-            self.btnOption.contentMode = .scaleAspectFit
+//            (stackNavi as! UIStackView).addArrangedSubview(self.btnOption)
+//            self.btnOption.snp.makeConstraints({ (maker) in
+//                maker.width.equalTo(self.btnOption.snp.height).multipliedBy(0.8)
+//                maker.height.equalTo(Constant.size.iconNormal)
+//            })
+//            self.btnOption.setImage(UIImage(named: "ic_more")?.withRenderingMode(.alwaysTemplate), for: .normal)
+//            self.btnOption.tintColor = Constant.color.iconColor
+//            self.btnOption.contentMode = .scaleAspectFit
         }
     }
     func addCeparate(){

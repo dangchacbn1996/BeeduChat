@@ -60,7 +60,8 @@ extension PostInfoViewController{
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.isHidden = true
         
-        navigationView = PostView.navigationView(lbTitle: lbClass, lbSubTitle: lbSubClass, btnMenu: btnMenu, btnFunction: btnNoti, btnMore: btnMore, actionMenu: UITapGestureRecognizer(target: self, action: #selector(goBack)), actionNotifi: nil, actionMore: nil)
+        navigationView = PostView.navigationView(lbTitle: lbClass, lbSubTitle: lbSubClass, btnMenu: btnMenu, btnFunction: btnNoti, btnMore: btnMore, actionMenu:
+            UITapGestureRecognizer(target: self, action: #selector(goBack)), actionNotifi: nil, actionMore: nil)
         btnMenu.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
