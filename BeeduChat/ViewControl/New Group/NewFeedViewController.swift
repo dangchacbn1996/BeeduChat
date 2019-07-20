@@ -32,7 +32,7 @@ class NewFeedViewController : UIViewController {
     }
     
     @objc func openMessenge(){
-        let viewInfo = ChatViewController()
+        let viewInfo = ChatManagerViewController()
         viewInfo.modalPresentationStyle = .overFullScreen
         self.view.window!.layer.add(Constant.rightToLeftTrans(), forKey: kCATransition)
         self.present(viewInfo, animated: false, completion: nil)

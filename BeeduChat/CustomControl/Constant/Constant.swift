@@ -25,6 +25,7 @@ struct Constant {
     struct color {
         static let postBack = UIColor.white
         static let separate = UIColor(red: 139/255, green: 148/255, blue: 159/255, alpha: 1.0)
+        static let separateNewFeed = UIColor(144,164,174)
         static let naviBack = UIColor.white
         static let iconColor = UIColor(red: 54/255, green: 54/255, blue: 54/255, alpha: 1.0)
         static let btnTitle = UIColor(68, 138, 255)

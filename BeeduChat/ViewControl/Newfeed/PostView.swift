@@ -195,7 +195,7 @@ class PostView {
                 maker.height.equalTo(ivPreview.snp.width).multipliedBy(0.75)
             })
             (ivPreview as! UIImageView).image = UIImage(named: "photo")
-            ivPreview.contentMode = .scaleAspectFit
+            ivPreview.contentMode = .scaleAspectFill
         }
         
         stackNew.addArrangedSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackLike) -> (Void) in
@@ -247,6 +247,7 @@ class PostView {
                     })
                     (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_like")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
                         imgLike.snp.makeConstraints({ (maker) in
+                            maker.width.equalTo(imgLike.snp.height)
                             maker.height.equalTo(Constant.text.font.normal.lineHeight)
                         })
                         imgLike.tintColor = Constant.text.color.gray
@@ -273,8 +274,9 @@ class PostView {
                         maker.center.equalToSuperview()
                         maker.height.lessThanOrEqualToSuperview()
                     })
-                    (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_comment")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
+                    (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_comment-1")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
                         imgLike.snp.makeConstraints({ (maker) in
+                            maker.width.equalTo(imgLike.snp.height)
                             maker.height.equalTo(Constant.text.font.normal.lineHeight)
                         })
                         imgLike.tintColor = Constant.text.color.gray
