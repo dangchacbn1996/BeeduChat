@@ -1,5 +1,5 @@
 //
-//  ContactCell.swift
+//  ChooseRecvCell.swift
 //  BeeduChat
 //
 //  Created by Pham Thang on 7/20/19.
@@ -8,15 +8,15 @@
 
 import UIKit
 import SnapKit
+import M13Checkbox
 
-struct ContactCellModel {
+struct ChooseRecvCellModel {
     var avatar : UIImage? = nil
     var name : String = ""
     var content : String = ""
-    
 }
 
-class ContactCell: UITableViewCell {
+class ChooseRecvCell: UITableViewCell {
     static let identify = "ContactCell"
     var imAvatar = ReuseForms.imageBig()
     var lbUser = UILabel(text: "",
@@ -27,17 +27,16 @@ class ContactCell: UITableViewCell {
     var lbContent = UILabel(text: "",
                             textColor: Constant.text.color.black,
                             font: Constant.text.font.normal)
-    var btnAction = UIButton()
-    var data : ContactCellModel = ContactCellModel(){
+    var btnAction = M13Checkbox(frame: .zero)
+    var data : ChooseRecvCellModel = ChooseRecvCellModel(){
         didSet{
-            if (self.data.avatar != nil){
+            if self.data.avatar != nil {
                 imAvatar.image = self.data.avatar
             }
             lbUser.text = self.data.name
             lbContent.text = self.data.content
         }
     }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -59,7 +58,7 @@ class ContactCell: UITableViewCell {
     }
 
 }
-extension ContactCell{
+extension ChooseRecvCell{
     func setupUI(){
         self.addSubview(imAvatar)
         imAvatar.snp.makeConstraints({ (maker) in
@@ -72,11 +71,11 @@ extension ContactCell{
         self.addSubview(btnAction)
         btnAction.snp.makeConstraints({ (maker) in
             maker.trailing.equalToSuperview()
-            maker.top.equalTo(self.imAvatar.snp.top)
+//            maker.top.equalTo(self.imAvatar.snp.top)
+            maker.centerY.equalTo(self.imAvatar.snp.centerY)
+            maker.width.equalTo(24)
+            maker.height.equalTo(btnAction.snp.width)
         })
-        self.btnAction.setImage(UIImage(named: "ic_wavehand")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.btnAction.tintColor = Constant.color.iconColor
-        self.btnAction.contentMode = .scaleToFill
         
         self.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .leading, spacing: -12, design: nil)) { (stackView) -> (Void) in
             stackView.snp.makeConstraints({ (maker) in

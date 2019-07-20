@@ -26,6 +26,7 @@
 		B84710E722DCBCD9007328A9 /* DetailMessCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710E622DCBCD9007328A9 /* DetailMessCellTableViewCell.swift */; };
 		B84710EE22E2FDC4007328A9 /* CreateGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710EC22E2FDC4007328A9 /* CreateGroupCell.swift */; };
 		B84710EF22E2FDC4007328A9 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710ED22E2FDC4007328A9 /* ContactCell.swift */; };
+		B84710F122E30AF7007328A9 /* ChooseRecvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84710F022E30AF7007328A9 /* ChooseRecvCell.swift */; };
 		B85EB75522D05BFD000EE476 /* ChatManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85EB75422D05BFD000EE476 /* ChatManagerViewController.swift */; };
 		B85EB75722D05D73000EE476 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85EB75622D05D73000EE476 /* SnapKit.framework */; };
 		D2EF5E0407B0B0A8EEC7373C /* Pods_BeeduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7737D01FA70EC4022476426D /* Pods_BeeduChat.framework */; };
@@ -114,6 +115,7 @@
 		B84710E622DCBCD9007328A9 /* DetailMessCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMessCellTableViewCell.swift; sourceTree = "<group>"; };
 		B84710EC22E2FDC4007328A9 /* CreateGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupCell.swift; sourceTree = "<group>"; };
 		B84710ED22E2FDC4007328A9 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		B84710F022E30AF7007328A9 /* ChooseRecvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRecvCell.swift; sourceTree = "<group>"; };
 		B85EB75422D05BFD000EE476 /* ChatManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManagerViewController.swift; sourceTree = "<group>"; };
 		B85EB75622D05D73000EE476 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1A4AE96C2DCBF8ED89D2AC /* Pods-BeeduChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				B84710E422D98B71007328A9 /* DetailMessageCell.swift */,
 				B84710E622DCBCD9007328A9 /* DetailMessCellTableViewCell.swift */,
 				53B053E922DF4F04000D0F58 /* UserChatCVC.swift */,
+				B84710F022E30AF7007328A9 /* ChooseRecvCell.swift */,
 			);
 			path = ReuseCell;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				F083A9DE22CF926500E351C7 /* AppDelegate.swift in Sources */,
 				B84710DB22D4D292007328A9 /* CreateGroupViewController.swift in Sources */,
 				B84710DF22D61CE9007328A9 /* ChooseRecvViewController.swift in Sources */,
+				B84710F122E30AF7007328A9 /* ChooseRecvCell.swift in Sources */,
 				B84710E322D77AE7007328A9 /* ReportCell.swift in Sources */,
 				F0F8C61A22E2D55000BD7070 /* MessageContainerController.swift in Sources */,
 				F0F8C61D22E2D55000BD7070 /* BasicAudioController.swift in Sources */,

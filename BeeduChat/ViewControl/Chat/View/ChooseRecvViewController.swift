@@ -35,6 +35,12 @@ class ChooseRecvViewController: UIViewController {
 
         setupUI()
         // Do any additional setup after loading the view.
+        tbvSendAll.register(ChooseRecvCell.self, forCellReuseIdentifier: ChooseRecvCell.identify)
+        tbvSendAll.tableFooterView = UIView()
+        tbvSendAll.tableHeaderView = UIView()
+        tbvSendAll.separatorStyle = .singleLine
+        tbvSendAll.delegate = self
+        tbvSendAll.dataSource = self
     }
 }
 extension ChooseRecvViewController{
@@ -65,14 +71,15 @@ extension ChooseRecvViewController{
             maker.left.top.bottom.equalToSuperview()
         }
         lblTitle.text = "Chọn người nhận"
-        lblTitle.textColor = UIColorFromRGB(rgbValue: 0x9ca4ab)
-        lblTitle.font = lblTitle.font.withSize(40)
+        lblTitle.textColor = Constant.text.color.black
+        lblTitle.font = lblTitle.font.withSize(32)
         stackView.addArrangedSubview(self.btnBack)
         btnBack.snp.makeConstraints { (maker) in
             maker.right.equalToSuperview()
         }
         self.btnBack.setImage(UIImage(named: "ic_cancel")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.btnBack.contentMode = .scaleAspectFit
+        self.btnBack.tintColor = Constant.color.iconColor
     }
     func UISearchBar(){
         self.view.addSubview(searchView)
@@ -98,7 +105,10 @@ extension ChooseRecvViewController{
                 maker.left.equalToSuperview().offset(8)
                 
             })
-            self.btnSearch.backgroundColor = UIColor.red
+//            self.btnSearch.backgroundColor = UIColor.red
+            self.btnSearch.setImage(UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnSearch.tintColor = Constant.color.iconColor
+            self.btnSearch.contentMode = .scaleToFill
             //add text field
             srcView.addSubview(self.txtSearch)
             self.txtSearch.snp.makeConstraints({ (maker) in
@@ -113,12 +123,12 @@ extension ChooseRecvViewController{
     func UISendAll(){
         self.view.addSubview(SendAllView)
         SendAllView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(56)
+            maker.height.equalTo(160)
             maker.width.equalTo(navigationView.snp.width)
             maker.top.equalTo(searchView.snp.bottom).offset(16)
             maker.centerX.equalTo(searchView.snp.centerX)
         }
-        SendAllView.backgroundColor = UIColor.red
+//        SendAllView.backgroundColor = UIColor.red
         SendAllView.addSubview(lblSendAll)
         lblSendAll.snp.makeConstraints { (maker) in
             maker.top.left.equalToSuperview()
@@ -129,11 +139,11 @@ extension ChooseRecvViewController{
         tbvSendAll.snp.makeConstraints { (maker) in
             maker.top.equalTo(lblSendAll.snp.bottom).offset(8)
             maker.left.equalToSuperview()
-            maker.height.equalTo(48)
+            maker.height.equalToSuperview()
             maker.width.equalToSuperview()
         }
         
-        tbvSendAll.backgroundColor = UIColor.green
+//        tbvSendAll.backgroundColor = UIColor.green
         
     }
     func UISendGroup(){
@@ -202,5 +212,29 @@ extension ChooseRecvViewController{
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+}
+extension ChooseRecvViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constant.size.rowHeightChat
+    }
+}
+extension ChooseRecvViewController : UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ChooseRecvCell.identify, for: indexPath) as! ChooseRecvCell
+        cell.selectionStyle = .none
+        if (indexPath.row % 2 == 0)
+        {
+            cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+        }else{
+            cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+        }
+        return cell
     }
 }

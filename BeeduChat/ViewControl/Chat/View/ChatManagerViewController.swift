@@ -68,9 +68,10 @@ class ChatManagerViewController: UIViewController {
         self.dismiss(animated: false, completion: nil)
     }
     @objc func goContact(){
-        Constant.animationTo(view: self, type: .dismiss)
-        self.dismiss(animated: false, completion: nil)
-        var ContactView = UIViewController()
+        let viewContact = ContactViewController()
+        viewContact.modalPresentationStyle = .overFullScreen
+        self.view.window!.layer.add(Constant.rightToLeftTrans(), forKey: kCATransition)
+        self.present(viewContact, animated: false, completion: nil)
         
     }
 
