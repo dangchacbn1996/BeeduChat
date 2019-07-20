@@ -22,11 +22,16 @@ class ContactViewController: UIViewController {
     var btnDown = UIButton()
     var lblAdd = UILabel()
     var tbvContent = UITableView()
-    var tbvCellContent = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         // Do any additional setup after loading the view.
+        tbvContent.register(ContactCell.self, forCellReuseIdentifier: ContactCell.identify)
+        tbvContent.tableFooterView = UIView()
+        tbvContent.tableHeaderView = UIView()
+        tbvContent.separatorStyle = .singleLine
+        tbvContent.delegate = self
+        tbvContent.dataSource = self
     }
 }
 extension ContactViewController{
@@ -55,14 +60,15 @@ extension ContactViewController{
             maker.left.top.bottom.equalToSuperview()
         }
         lblTitle.text = "Danh bạ"
-        lblTitle.textColor = UIColorFromRGB(rgbValue: 0x9ca4ab)
-        lblTitle.font = lblTitle.font.withSize(40)
+        lblTitle.textColor = Constant.text.color.black
+        lblTitle.font = lblTitle.font.withSize(32)
         stackView.addArrangedSubview(self.btnBack)
         btnBack.snp.makeConstraints { (maker) in
             maker.right.equalToSuperview()
         }
         self.btnBack.setImage(UIImage(named: "ic_cancel")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.btnBack.contentMode = .scaleAspectFit
+        self.btnBack.tintColor = Constant.color.iconColor
     }
     func UISearchBar(){
         self.view.addSubview(searchView)
@@ -88,7 +94,10 @@ extension ContactViewController{
                 maker.left.equalToSuperview().offset(8)
                 
             })
-            self.btnSearch.backgroundColor = UIColor.red
+//            self.btnSearch.backgroundColor = UIColor.red
+            self.btnSearch.setImage(UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.btnSearch.tintColor = Constant.color.iconColor
+            self.btnSearch.contentMode = .scaleToFill
             //add text field
             srcView.addSubview(self.txtSearch)
             self.txtSearch.snp.makeConstraints({ (maker) in
@@ -103,12 +112,12 @@ extension ContactViewController{
     func UIContent(){
         self.view.addSubview(contentView)
         contentView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(56)
+            maker.height.equalToSuperview()
             maker.width.equalTo(navigationView.snp.width)
             maker.top.equalTo(searchView.snp.bottom).offset(16)
             maker.centerX.equalTo(searchView.snp.centerX)
         }
-        contentView.backgroundColor = UIColor.red
+//        contentView.backgroundColor = UIColor.red
         contentView.addSubview(lblContent)
         lblContent.snp.makeConstraints { (maker) in
             maker.top.left.equalToSuperview()
@@ -117,21 +126,23 @@ extension ContactViewController{
         lblContent.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
         contentView.addSubview(btnDown)
         btnDown.snp.makeConstraints { (maker) in
-            maker.right.equalTo(lblContent.snp.right)
+            maker.left.equalTo(lblContent.snp.right)
         }
         self.btnDown.setImage(UIImage(named: "ic_down")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.btnDown.contentMode = .scaleAspectFit
+        self.btnDown.tintColor = Constant.color.iconColor
         contentView.addSubview(lblAdd)
         lblAdd.snp.makeConstraints { (maker) in
-            maker.top.right.equalToSuperview()
+            maker.right.equalToSuperview()
         }
         lblAdd.textColor = UIColorFromRGB(rgbValue: 0x4a658d)
         lblAdd.text = "Thêm"
+        lblAdd.font = UIFont(name:"HelveticaNeue", size: 14)
         contentView.addSubview(tbvContent)
         tbvContent.snp.makeConstraints { (maker) in
             maker.top.equalTo(lblContent.snp.bottom).offset(8)
             maker.left.equalToSuperview()
-            maker.height.equalTo(48)
+            maker.height.equalToSuperview()
             maker.width.equalToSuperview()
         }
         
@@ -145,5 +156,29 @@ extension ContactViewController{
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+}
+extension ContactViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constant.size.rowHeightChat
+    }
+}
+extension ContactViewController : UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.identify, for: indexPath) as! ContactCell
+        cell.selectionStyle = .none
+        if (indexPath.row % 2 == 0)
+        {
+            cell.data = ContactCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Tú Anh", content: "Phụ huynh")
+        }else{
+            cell.data = ContactCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+        }
+        return cell
     }
 }
