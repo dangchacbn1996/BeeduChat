@@ -41,6 +41,20 @@ class ChooseRecvViewController: UIViewController {
         tbvSendAll.separatorStyle = .singleLine
         tbvSendAll.delegate = self
         tbvSendAll.dataSource = self
+        
+        tbvSendGroup.register(ChooseRecvCell.self, forCellReuseIdentifier: ChooseRecvCell.identify)
+        tbvSendGroup.tableHeaderView = UIView()
+        tbvSendGroup.tableFooterView = UIView()
+        tbvSendGroup.separatorStyle = .singleLine
+        tbvSendGroup.delegate = self
+        tbvSendGroup.dataSource = self
+        
+        tbvSendPrivate.register(ChooseRecvCell.self, forCellReuseIdentifier: ChooseRecvCell.identify)
+        tbvSendPrivate.tableHeaderView = UIView()
+        tbvSendPrivate.tableFooterView = UIView()
+        tbvSendPrivate.separatorStyle = .singleLine
+        tbvSendPrivate.delegate = self
+        tbvSendPrivate.dataSource = self
     }
 }
 extension ChooseRecvViewController{
@@ -149,12 +163,12 @@ extension ChooseRecvViewController{
     func UISendGroup(){
         self.view.addSubview(sendGroupView)
         sendGroupView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(56)
+            maker.height.equalTo(160)
             maker.width.equalTo(navigationView.snp.width)
-            maker.top.equalTo(SendAllView.snp.bottom).offset(16)
+            maker.top.equalTo(SendAllView.snp.bottom).offset(32)
             maker.centerX.equalTo(SendAllView.snp.centerX)
         }
-        sendGroupView.backgroundColor = UIColor.red
+//        sendGroupView.backgroundColor = UIColor.red
         sendGroupView.addSubview(lblSendGroup)
         lblSendGroup.snp.makeConstraints { (maker) in
             maker.top.left.equalToSuperview()
@@ -172,24 +186,24 @@ extension ChooseRecvViewController{
         tbvSendGroup.snp.makeConstraints { (maker) in
             maker.top.equalTo(lblSendGroup.snp.bottom).offset(8)
             maker.left.equalToSuperview()
-            maker.height.equalTo(48)
+            maker.height.equalToSuperview()
             maker.width.equalToSuperview()
         }
         
-        tbvSendGroup.backgroundColor = UIColor.green
+//        tbvSendGroup.backgroundColor = UIColor.green
         
     }
     func UISendPrivate(){
         self.view.addSubview(sendPrivateView)
         sendPrivateView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(56)
+            maker.height.equalToSuperview()
             maker.width.equalTo(navigationView.snp.width)
-            maker.top.equalTo(sendGroupView.snp.bottom).offset(16)
+            maker.top.equalTo(sendGroupView.snp.bottom).offset(32)
             maker.centerX.equalTo(sendGroupView.snp.centerX)
         }
-        sendPrivateView.backgroundColor = UIColor.red
+//        sendPrivateView.backgroundColor = UIColor.red
         sendPrivateView.addSubview(lblSendPrivate)
-        lblSendAll.snp.makeConstraints { (maker) in
+        lblSendPrivate.snp.makeConstraints { (maker) in
             maker.top.left.equalToSuperview()
         }
         lblSendPrivate.text = "Gửi cá nhân"
@@ -198,11 +212,11 @@ extension ChooseRecvViewController{
         tbvSendPrivate.snp.makeConstraints { (maker) in
             maker.top.equalTo(lblSendPrivate.snp.bottom).offset(8)
             maker.left.equalToSuperview()
-            maker.height.equalTo(48)
+            maker.height.equalToSuperview()
             maker.width.equalToSuperview()
         }
         
-        tbvSendPrivate.backgroundColor = UIColor.green
+//        tbvSendPrivate.backgroundColor = UIColor.green
         
     }
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
@@ -224,17 +238,44 @@ extension ChooseRecvViewController : UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if tableView == tbvSendAll || tableView == tbvSendGroup
+            {return 2}
+        else{
+        return 5}
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ChooseRecvCell.identify, for: indexPath) as! ChooseRecvCell
-        cell.selectionStyle = .none
-        if (indexPath.row % 2 == 0)
-        {
-            cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
-        }else{
-            cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+        if tableView == tbvSendAll {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChooseRecvCell.identify, for: indexPath) as! ChooseRecvCell
+            cell.selectionStyle = .none
+            if (indexPath.row % 2 == 0)
+            {
+                cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+            }else{
+                cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+            }
+            return cell
         }
-        return cell
+        else if tableView == tbvSendGroup {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChooseRecvCell.identify, for: indexPath) as! ChooseRecvCell
+            cell.selectionStyle = .none
+            if (indexPath.row % 2 == 0)
+            {
+                cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+            }else{
+                cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+            }
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChooseRecvCell.identify, for: indexPath) as! ChooseRecvCell
+            cell.selectionStyle = .none
+            if (indexPath.row % 2 == 0)
+            {
+                cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+            }else{
+                cell.data = ChooseRecvCellModel(avatar: UIImage(named: "ic_ava"), name: "Bố Thế Tân", content: "Phụ huynh")
+            }
+            return cell
+        }
     }
 }

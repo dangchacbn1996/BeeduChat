@@ -76,6 +76,10 @@ extension ChooseRecvCell{
             maker.width.equalTo(24)
             maker.height.equalTo(btnAction.snp.width)
         })
+        btnAction.tintColor = UIColor.green
+        btnAction.stateChangeAnimation = .bounce(.fill)
+        btnAction.secondaryCheckmarkTintColor = .white
+        btnAction.checkmarkLineWidth = 2
         
         self.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .leading, spacing: -12, design: nil)) { (stackView) -> (Void) in
             stackView.snp.makeConstraints({ (maker) in
