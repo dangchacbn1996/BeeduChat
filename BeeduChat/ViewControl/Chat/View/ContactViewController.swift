@@ -32,6 +32,15 @@ class ContactViewController: UIViewController {
         tbvContent.separatorStyle = .singleLine
         tbvContent.delegate = self
         tbvContent.dataSource = self
+        //su kien
+        
+        let edgeGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
+        edgeGes.edges = .left
+        self.view.addGestureRecognizer(edgeGes)
+    }
+    @objc func goBack(){
+        Constant.animationTo(view: self, type: .dismiss)
+        self.dismiss(animated: false, completion: nil)
     }
 }
 extension ContactViewController{
@@ -69,6 +78,7 @@ extension ContactViewController{
         self.btnBack.setImage(UIImage(named: "ic_cancel")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.btnBack.contentMode = .scaleAspectFit
         self.btnBack.tintColor = Constant.color.iconColor
+        self.btnBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goBack)))
     }
     func UISearchBar(){
         self.view.addSubview(searchView)

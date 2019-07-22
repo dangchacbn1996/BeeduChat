@@ -22,4 +22,6 @@ target 'BeeduChat' do
     # Pods for testing
   end
 
+  pod 'M13Checkbox'
+
 end
