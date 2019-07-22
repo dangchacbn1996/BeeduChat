@@ -93,8 +93,7 @@ extension NewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row != 0){
             let viewInfo = PostInfoViewController()
-            viewInfo.modalPresentationStyle = .overFullScreen
-//            self.view.window!.layer.add(Constant.rightToLeftTrans(), forKey: kCATransition)
+//            viewInfo.modalPresentationStyle = .overFullScreen
             Constant.animationTo(view: self, type: .push)
             self.present(viewInfo, animated: false, completion: nil)
         }

@@ -200,7 +200,7 @@ class PostView {
         
         stackNew.addArrangedSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackLike) -> (Void) in
             stackLike.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(Constant.text.font.normal.lineHeight ?? 16)
+                maker.height.equalTo(Constant.text.font.normal.lineHeight * 1.5)
                 maker.width.equalToSuperview().offset(-16)
             })
             
@@ -299,7 +299,8 @@ class PostView {
     static func newPost() -> (UIView){
         let stackNew = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 8, design: nil)
         let avatar = ReuseForms.btnAvatar()
-        let tfNew = UITextField(text: "", placeholder: "Viết gì đó cho cả lớp", textColor: Constant.text.color.black, font: nil)
+        let buttonNew = UIButton(title: "Viết gì đó cho cả lớp", font: Constant.text.font.normal, titleColor: Constant.text.color.black, backColor: .clear, action: nil)
+//        let tfNew = UITextField(text: "", placeholder: "Viết gì đó cho cả lớp", textColor: Constant.text.color.black, font: nil)
 //        let tvNew = UITextView()
         let btnLibrary = UIButton()
         let viewContainer = UIView()
@@ -323,7 +324,7 @@ class PostView {
             })
         }
         
-        stackNew.addArrangedSubview(tfNew)
+        stackNew.addArrangedSubview(buttonNew)
         //        tvNew.textColor = Constant.text.color.black
         //
         //        tvNew.text = "Viết gì đó cho cả lớp"
