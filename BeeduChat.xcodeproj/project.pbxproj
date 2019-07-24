@@ -74,6 +74,7 @@
 		F0F8C62122E2ED4400BD7070 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C62022E2ED4400BD7070 /* MockUser.swift */; };
 		F0F8C62522E74B6500BD7070 /* TNBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C62422E74B6500BD7070 /* TNBaseViewController.swift */; };
 		F0F8C62722E771C500BD7070 /* TNPostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C62622E771C500BD7070 /* TNPostInfoViewController.swift */; };
+		F0FEB9BD22E8C3CC00D16B07 /* FixedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEB9BC22E8C3CC00D16B07 /* FixedData.swift */; };
 		F0FFBE5322D9B72E00FAAD8F /* TNNewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F9668F22D4F4DE003A2409 /* TNNewFeedViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -173,6 +174,7 @@
 		F0F8C62422E74B6500BD7070 /* TNBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNBaseViewController.swift; sourceTree = "<group>"; };
 		F0F8C62622E771C500BD7070 /* TNPostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TNPostInfoViewController.swift; path = BeeduChat/TechNiChat/Control/ChatForm/Controller/TNPostInfoViewController.swift; sourceTree = SOURCE_ROOT; };
 		F0F9668F22D4F4DE003A2409 /* TNNewFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TNNewFeedViewController.swift; path = "../New Group/TNNewFeedViewController.swift"; sourceTree = "<group>"; };
+		F0FEB9BC22E8C3CC00D16B07 /* FixedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedData.swift; sourceTree = "<group>"; };
 		F98B981A678A9295738D3D14 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FCC45BE1F22661A51EC76144 /* Pods-BeeduChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -285,6 +287,7 @@
 				536970EC22D59AB500D9C504 /* ReuseForms */,
 				F055067522D0305B00D5E511 /* Constant */,
 				F055067122D02FBE00D5E511 /* Extension */,
+				F0FEB9BC22E8C3CC00D16B07 /* FixedData.swift */,
 			);
 			path = Ultils;
 			sourceTree = "<group>";
@@ -800,6 +803,7 @@
 				F0F8C61922E2D55000BD7070 /* LaunchViewController.swift in Sources */,
 				B84710D922D37F98007328A9 /* DetailMessViewController.swift in Sources */,
 				F0F8C61522E2D55000BD7070 /* ChatViewController.swift in Sources */,
+				F0FEB9BD22E8C3CC00D16B07 /* FixedData.swift in Sources */,
 				F09B18C322D9A0E700ECC6D4 /* TNPostView.swift in Sources */,
 				B84710EE22E2FDC4007328A9 /* TNCreateGroupCell.swift in Sources */,
 				F055067B22D0320100D5E511 /* UIViewEx.swift in Sources */,

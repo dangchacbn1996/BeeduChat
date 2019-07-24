@@ -12,7 +12,26 @@ import SnapKit
 class TNPostInfoCell : UITableViewCell {
     
     static let identify = "TNPostInfoCell"
-    
+    var data : TNPostInfoModel = TNPostInfoModel() {
+        didSet {
+            self.subviews.forEach { (sub) in
+                sub.removeFromSuperview()
+            }
+            self.addSubview(UIView()) { (contentBack) -> (Void) in
+                contentBack.backgroundColor = Constant.color.postBack
+                contentBack.snp.makeConstraints({ (maker) in
+                    maker.top.centerX.width.height.equalToSuperview()
+                    maker.height.equalToSuperview().offset(-8)
+                })
+                contentBack.addSubview(TNPostView.postView(self.data), design: { (post) -> (Void) in
+                    post.snp.makeConstraints({ (maker) in
+                        maker.top.leading.trailing.equalToSuperview()
+                        maker.bottom.equalToSuperview().offset(-8)
+                    })
+                })
+            }
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,18 +44,18 @@ class TNPostInfoCell : UITableViewCell {
     
     func setupUI(){
         self.backgroundColor = Constant.color.separateNewFeed
-        self.addSubview(UIView()) { (contentBack) -> (Void) in
-            contentBack.backgroundColor = Constant.color.postBack
-            contentBack.snp.makeConstraints({ (maker) in
-                maker.top.centerX.width.height.equalToSuperview()
-                maker.height.equalToSuperview().offset(-8)
-            })
-            contentBack.addSubview(TNPostView.postInfo(), design: { (post) -> (Void) in
-                post.snp.makeConstraints({ (maker) in
-                    maker.top.leading.trailing.equalToSuperview()
-                    maker.bottom.equalToSuperview().offset(-8)
-                })
-            })
-        }
+//        self.addSubview(UIView()) { (contentBack) -> (Void) in
+//            contentBack.backgroundColor = Constant.color.postBack
+//            contentBack.snp.makeConstraints({ (maker) in
+//                maker.top.centerX.width.height.equalToSuperview()
+//                maker.height.equalToSuperview().offset(-8)
+//            })
+//            contentBack.addSubview(TNPostView.postInfo(), design: { (post) -> (Void) in
+//                post.snp.makeConstraints({ (maker) in
+//                    maker.top.leading.trailing.equalToSuperview()
+//                    maker.bottom.equalToSuperview().offset(-8)
+//                })
+//            })
+//        }
     }
 }

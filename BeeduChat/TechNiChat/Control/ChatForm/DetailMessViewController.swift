@@ -44,7 +44,12 @@ extension DetailMessViewController{
         self.navigationController?.navigationBar.isHidden = true
         self.view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(self.view.safeAreaLayoutGuide)
+            if #available(iOS 11.0, *) {
+                maker.top.equalTo(self.view.safeAreaLayoutGuide)
+            } else {
+                maker.top.equalToSuperview().offset(UIApplication.shared.statusBarFrame.height)
+            }
+            
             maker.centerX.equalToSuperview()
             maker.width.equalToSuperview().offset(-32)
             maker.height.equalTo(50)
