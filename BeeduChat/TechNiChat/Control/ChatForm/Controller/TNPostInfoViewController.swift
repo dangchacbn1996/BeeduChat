@@ -67,7 +67,7 @@ extension TNPostInfoViewController{
         }
         commentView.snp.makeConstraints { (maker) in
             maker.height.equalTo(Constant.size.avatarNormal + 16)
-            maker.width.centerX.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            maker.width.centerX.bottom.equalTo(self.view)
         }
         scrollMain.addSubview(stackMain)
         stackMain.snp.makeConstraints { (maker) in
