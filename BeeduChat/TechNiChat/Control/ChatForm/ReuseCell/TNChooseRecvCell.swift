@@ -37,7 +37,7 @@ class TNChooseRecvCell: UITableViewCell {
             lbContent.text = self.data.content
         }
     }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) { 
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
     }
