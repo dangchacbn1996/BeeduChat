@@ -77,7 +77,7 @@ extension TNChooseRecvViewController{
             maker.top.equalTo(self.view.safeAreaLayoutGuide)
             maker.centerX.equalToSuperview()
             maker.width.equalToSuperview().offset(-32)
-            maker.height.equalTo(40)
+            maker.height.equalTo(Constant.size.naviHeight)
         }
         navigationView.addSubview(stackView)
         stackView.snp.makeConstraints { (maker) in
@@ -90,7 +90,7 @@ extension TNChooseRecvViewController{
         }
         lblTitle.text = "Chọn người nhận"
         lblTitle.textColor = Constant.text.color.black
-        lblTitle.font = lblTitle.font.withSize(32)
+        lblTitle.font = lblTitle.font.withSize(24)
         stackView.addArrangedSubview(self.btnBack)
         btnBack.snp.makeConstraints { (maker) in
             maker.right.equalToSuperview()
@@ -103,9 +103,9 @@ extension TNChooseRecvViewController{
     func UISearchBar(){
         self.view.addSubview(searchView)
         searchView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(navigationView.snp.height)
+            maker.height.equalTo(navigationView.snp.height).offset(-16)
             maker.width.equalTo(navigationView.snp.width)
-            maker.top.equalTo(navigationView.snp.bottom).offset(16)
+            maker.top.equalTo(navigationView.snp.bottom)
             maker.centerX.equalTo(navigationView.snp.centerX)
         }
         searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
@@ -213,7 +213,7 @@ extension TNChooseRecvViewController{
         }
         lblSendPrivate.text = "Gửi cá nhân"
         lblSendPrivate.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
-        SendAllView.addSubview(tbvSendPrivate)
+        sendPrivateView.addSubview(tbvSendPrivate)
         tbvSendPrivate.snp.makeConstraints { (maker) in
             maker.top.equalTo(lblSendPrivate.snp.bottom).offset(8)
             maker.left.equalToSuperview()

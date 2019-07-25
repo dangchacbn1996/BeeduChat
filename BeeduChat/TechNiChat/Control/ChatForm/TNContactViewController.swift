@@ -57,7 +57,7 @@ extension TNContactViewController{
             maker.top.equalTo(self.view.safeAreaLayoutGuide)
             maker.centerX.equalToSuperview()
             maker.width.equalToSuperview().offset(-32)
-            maker.height.equalTo(40)
+            maker.height.equalTo(Constant.size.naviHeight)
         }
         navigationView.addSubview(stackView)
         stackView.snp.makeConstraints { (maker) in
@@ -70,7 +70,7 @@ extension TNContactViewController{
         }
         lblTitle.text = "Danh bạ"
         lblTitle.textColor = Constant.text.color.black
-        lblTitle.font = lblTitle.font.withSize(32)
+        lblTitle.font = lblTitle.font.withSize(24)
         stackView.addArrangedSubview(self.btnBack)
         btnBack.snp.makeConstraints { (maker) in
             maker.right.equalToSuperview()
@@ -79,13 +79,23 @@ extension TNContactViewController{
         self.btnBack.contentMode = .scaleAspectFit
         self.btnBack.tintColor = Constant.color.iconColor
         self.btnBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goBack)))
+        
+//        self.view.backgroundColor = UIColor.white
+//        self.navigationController?.navigationBar.isHidden = true
+//        naviBtnRight = btnBack
+//        naviBtnRight?.setImage(UIImage(named: "ic_cancel")?.withRenderingMode(.alwaysTemplate), for: .normal)
+//        naviBtnRight?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goBack)))
+//        naviLbTitle = UILabel(text: "Danh bạ", textColor: Constant.text.color.black, font: Constant.text.font.customFont(size: Constant.text.size.large, weight: .Bold))
+//        naviLbTitle?.snp.makeConstraints({ (maker) in
+//            maker.left.equalToSuperview().offset(Constant.size.padding)
+//        })
     }
     func UISearchBar(){
         self.view.addSubview(searchView)
         searchView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(navigationView.snp.height)
+            maker.height.equalTo(navigationView.snp.height).offset(-16)
             maker.width.equalTo(navigationView.snp.width)
-            maker.top.equalTo(navigationView.snp.bottom).offset(16)
+            maker.top.equalTo(navigationView.snp.bottom)
             maker.centerX.equalTo(navigationView.snp.centerX)
         }
         searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: UIColor.gray, design: nil)) { (srcView) -> (Void) in
