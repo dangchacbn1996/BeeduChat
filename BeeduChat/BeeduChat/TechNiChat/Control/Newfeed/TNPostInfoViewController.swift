@@ -70,8 +70,18 @@ class TNPostInfoViewController: TNBaseViewController {
         reloadData()
     }
     
+    @objc func tapEmoji(_ gesture : UITapGestureRecognizer){
+        let view = TNSeenUserViewController()
+        view.modalPresentationStyle = .overCurrentContext
+        self.present(view, animated: true, completion: nil)
+        view.data = FixedData.newFeedData[index].emotion
+    }
+    
     func reloadData(){
-        postInfoView = TNPostView.postView(FixedData.newFeedData[index], actAvatar: UITapGestureRecognizer(target: self, action: #selector(avatarTap(_:))), actLike: UITapGestureRecognizer(target: self, action: #selector(tapLike(_:))))
+        postInfoView = TNPostView.postView(FixedData.newFeedData[index],
+                                           actAvatar: UITapGestureRecognizer(target: self, action: #selector(avatarTap(_:))),
+                                           actLike: UITapGestureRecognizer(target: self, action: #selector(tapLike(_:))),
+                                           actEmoji: UITapGestureRecognizer(target: self, action: #selector(tapEmoji(_:))))
     }
     
     @objc func addComment(){

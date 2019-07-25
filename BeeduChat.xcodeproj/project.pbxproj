@@ -10,6 +10,7 @@
 		22719F42ED40EB490BAA416D /* Pods_BeeduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B464B773D0231856DE8CB0 /* Pods_BeeduChat.framework */; };
 		3C6FADE21AC9F3E9C4E28FCA /* Pods_BeeduChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DE160B549A5CC7002A01F5 /* Pods_BeeduChatTests.framework */; };
 		50D77C61D9ACD18827DF2046 /* Pods_BeeduChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFE642CAABE5E1153467201 /* Pods_BeeduChatUITests.framework */; };
+		F0ACB26C22E9FE8700DFE793 /* TNSeenUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */; };
 		F0F7419022E9B05A0028AB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7418F22E9B05A0028AB4F /* AppDelegate.swift */; };
 		F0F7419222E9B05A0028AB4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7419122E9B05A0028AB4F /* ViewController.swift */; };
 		F0F7419522E9B05A0028AB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F7419322E9B05A0028AB4F /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 		F0F7425E22E9B0860028AB4F /* LabelEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7421A22E9B0860028AB4F /* LabelEx.swift */; };
 		F0F7426622E9B2570028AB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0F7426522E9B2570028AB4F /* Assets.xcassets */; };
 		F0F7426A22E9CC7B0028AB4F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0F7426722E9CA190028AB4F /* Info.plist */; };
+		F0F7426F22E9FD5B0028AB4F /* TNSeenUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7426E22E9FD5B0028AB4F /* TNSeenUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,7 @@
 		A3E5506FCA1A73849627AEE9 /* Pods-BeeduChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatUITests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatUITests/Pods-BeeduChatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AEFE642CAABE5E1153467201 /* Pods_BeeduChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5DE160B549A5CC7002A01F5 /* Pods_BeeduChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSeenUserTVC.swift; sourceTree = "<group>"; };
 		F0F7418C22E9B05A0028AB4F /* BeeduChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeduChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F7418F22E9B05A0028AB4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0F7419122E9B05A0028AB4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 		F0F7426522E9B2570028AB4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../BeeduChat3/BeeduChat/TechNiChat/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		F0F7426722E9CA190028AB4F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0F7426922E9CA4E0028AB4F /* BeeduChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeeduChat.entitlements; sourceTree = "<group>"; };
+		F0F7426E22E9FD5B0028AB4F /* TNSeenUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSeenUserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +219,14 @@
 				AEFE642CAABE5E1153467201 /* Pods_BeeduChatUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0ACB26A22E9FE7800DFE793 /* ReuseCell */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */,
+			);
+			path = ReuseCell;
 			sourceTree = "<group>";
 		};
 		F0F7418322E9B05A0028AB4F = {
@@ -361,6 +373,7 @@
 		F0F741D422E9B0860028AB4F /* Newfeed */ = {
 			isa = PBXGroup;
 			children = (
+				F0F7426B22E9FCFD0028AB4F /* popup */,
 				F0F7421322E9B0860028AB4F /* TNNewFeedViewController.swift */,
 				F0F741D522E9B0860028AB4F /* ReuseCell */,
 				F0F741DA22E9B0860028AB4F /* TNPostView.swift */,
@@ -527,6 +540,15 @@
 				F0F7421A22E9B0860028AB4F /* LabelEx.swift */,
 			);
 			path = ExtensionView;
+			sourceTree = "<group>";
+		};
+		F0F7426B22E9FCFD0028AB4F /* popup */ = {
+			isa = PBXGroup;
+			children = (
+				F0ACB26A22E9FE7800DFE793 /* ReuseCell */,
+				F0F7426E22E9FD5B0028AB4F /* TNSeenUserViewController.swift */,
+			);
+			path = popup;
 			sourceTree = "<group>";
 		};
 		FD240F56C22A1786B87C644F /* Pods */ = {
@@ -798,6 +820,7 @@
 				F0F7424022E9B0860028AB4F /* MockSocket.swift in Sources */,
 				F0F7425A22E9B0860028AB4F /* TNCreateGroupViewController.swift in Sources */,
 				F0F7419222E9B05A0028AB4F /* ViewController.swift in Sources */,
+				F0F7426F22E9FD5B0028AB4F /* TNSeenUserViewController.swift in Sources */,
 				F0F7424122E9B0860028AB4F /* UIViewController+Extensions.swift in Sources */,
 				F0F7422422E9B0860028AB4F /* UILabelEx.swift in Sources */,
 				F0F7419022E9B05A0028AB4F /* AppDelegate.swift in Sources */,
@@ -813,6 +836,7 @@
 				F0F7423A22E9B0860028AB4F /* LaunchViewController.swift in Sources */,
 				F0F7425E22E9B0860028AB4F /* LabelEx.swift in Sources */,
 				F0F7422822E9B0860028AB4F /* Constant.swift in Sources */,
+				F0ACB26C22E9FE8700DFE793 /* TNSeenUserTVC.swift in Sources */,
 				F0F7422C22E9B0860028AB4F /* TNCommentCell.swift in Sources */,
 				F0F7424A22E9B0860028AB4F /* TNNewGroupViewController.swift in Sources */,
 				F0F7422722E9B0860028AB4F /* ReuseForms.swift in Sources */,

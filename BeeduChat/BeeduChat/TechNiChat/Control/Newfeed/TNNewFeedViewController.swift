@@ -87,13 +87,13 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         cell.actAvatar = UITapGestureRecognizer(target: self, action: #selector(avatarTap(_:)))
         cell.actLike = UITapGestureRecognizer(target: self, action: #selector(tapLike(_:)))
+        cell.actEmoji = UITapGestureRecognizer(target: self, action: #selector(tapEmoji(_:)))
         cell.data = FixedData.newFeedData[indexPath.row - 1]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row != 0){
-//            let viewInfo = TNPostInfoViewController(index : indexPath.row - 1)
             let viewInfo = TNPostInfoViewController.createInstance(index : indexPath.row - 1)
             Constant.animationTo(view: self, type: .push)
             self.present(viewInfo, animated: false, completion: nil)
@@ -124,6 +124,15 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    @objc func tapEmoji(_ gesture : UITapGestureRecognizer) {
+        let pos = gesture.location(in: self.tablePost)
+        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            let view = TNSeenUserViewController()
+            view.modalPresentationStyle = .overCurrentContext
+            self.present(view, animated: true, completion: nil)
+            view.data = FixedData.newFeedData[indexPath.row - 1].emotion
+        }
+    }
 }
 
 extension TNNewFeedViewController {

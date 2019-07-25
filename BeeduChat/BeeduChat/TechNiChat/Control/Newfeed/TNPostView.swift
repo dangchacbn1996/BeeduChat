@@ -30,7 +30,7 @@ struct TNEmotionModel {
 
 class TNPostView {
     
-    static func postView(_ post : TNPostInfoModel, actAvatar : UITapGestureRecognizer, actLike : UITapGestureRecognizer) -> (UIView){
+    static func postView(_ post : TNPostInfoModel, actAvatar : UITapGestureRecognizer?, actLike : UITapGestureRecognizer?, actEmoji : UITapGestureRecognizer?) -> (UIView){
         let newView = UIView()
         let stackNew = UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 4, design: nil)
         let stackHead = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)
@@ -46,7 +46,9 @@ class TNPostView {
         
         let avatar = UIButton()
         stackHead.addArrangedSubview(avatar)
-        avatar.addGestureRecognizer(actAvatar)
+        if (actAvatar != nil) {
+            avatar.addGestureRecognizer(actAvatar!)
+        }
         avatar.contentMode = .scaleAspectFill
         avatar.setImage(UIImage(named: post.userAvatar), for: .normal)
         avatar.snp.makeConstraints { (maker) in
@@ -147,6 +149,10 @@ class TNPostView {
                 maker.height.equalTo(Constant.text.font.normal.lineHeight * 1.5)
                 maker.width.equalToSuperview().offset(-16)
             })
+            if (actEmoji != nil) {
+                stackLike.isUserInteractionEnabled = true
+                stackLike.addGestureRecognizer(actEmoji!)
+            }
             
             (stackLike as! UIStackView).addArrangedSubview(UIView(), design: { (viewLike) -> (Void) in
                 viewLike.addSubview(UIImageView(image: UIImage(named: "emoji_like")), design: { (ivLike) -> (Void) in
@@ -264,7 +270,9 @@ class TNPostView {
                     
                     (stackLike as! UIStackView).addArrangedSubview(label)
                     stackLike.isUserInteractionEnabled = true
-                    stackLike.addGestureRecognizer(actLike)
+                    if (actLike != nil) {
+                        stackLike.addGestureRecognizer(actLike!)
+                    }
                 })
             })
             viewAction.addSubview(UIView(), design: { (viewLike) -> (Void) in
