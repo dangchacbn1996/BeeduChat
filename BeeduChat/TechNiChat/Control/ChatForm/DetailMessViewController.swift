@@ -47,7 +47,7 @@ extension DetailMessViewController{
             maker.top.equalTo(self.view.safeAreaLayoutGuide)
             maker.centerX.equalToSuperview()
             maker.width.equalToSuperview().offset(-32)
-            maker.height.equalTo(50)
+            maker.height.equalTo(Constant.size.naviHeight)
         }
         //        navigationView.backgroundColor = UIColor.blue
         // add stack view to navigationView
@@ -95,12 +95,12 @@ extension DetailMessViewController{
     func addCeparate(){
         self.view.addSubview(ceparateView)
         ceparateView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(1)
+            maker.height.equalTo(Constant.size.separatorHeight)
             maker.width.equalToSuperview()
             maker.top.equalTo(navigationView.snp.bottom)
             maker.centerX.equalToSuperview()
         }
-        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+        ceparateView.backgroundColor = Constant.color.separate
     }
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(

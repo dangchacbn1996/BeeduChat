@@ -36,6 +36,7 @@ struct Constant {
             static let black = UIColor(red: 54/255, green: 54/255, blue: 54/255, alpha: 1.0)
             //139,148,159
             static let gray = UIColor(red: 139/255, green: 148/255, blue: 159/255, alpha: 1.0)
+            static let blue = UIColor(red: 67/255, green: 113/255, blue: 184/255, alpha: 1.0)
         }
         
         struct font {

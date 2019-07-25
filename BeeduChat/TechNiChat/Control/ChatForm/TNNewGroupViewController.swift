@@ -9,10 +9,10 @@
 import UIKit
 import SnapKit
 
-class TNNewGroupViewController: UIViewController {
+class TNNewGroupViewController: TNBaseViewController {
 
     var naviConstraint : NSLayoutConstraint!
-    var navigationView = UIView()
+//    var navigationView = UIView()
     var stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 5, design: nil)
     var btnBack = UIButton()
     var lblTitle = UILabel(text: "Tạo nhóm", textColor: Constant.text.color.black, font: nil)
@@ -23,7 +23,7 @@ class TNNewGroupViewController: UIViewController {
     var btnSave = UILabel(text: "Tiếp tuc", textColor: UIColor.blue, font: nil)
     var contenView = UIView()
     var tbvContentView = UITableView()
-    var ceparateView = UIView()
+//    var ceparateView = UIView()
     var historyView = UIView()
     
     
@@ -40,91 +40,114 @@ class TNNewGroupViewController: UIViewController {
         tbvContentView.separatorStyle = .singleLine
         tbvContentView.delegate = self
         tbvContentView.dataSource = self
+        
+        let edgeGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
+        edgeGes.edges = .left
+        self.view.addGestureRecognizer(edgeGes)
+    }
+    @objc func goBack(){
+        Constant.animationTo(view : self, type : .dismiss)
+        self.dismiss(animated: false, completion: nil)
     }
 }
 
 extension TNNewGroupViewController{
     func setupUI(){
         UINavBar()
-        addCeparate()
+//        addCeparate()
         UISearchBar()
         UIHisContactBar()
         UIContentView()
     }
     func UINavBar(){
+//        self.view.backgroundColor = UIColor.white
+//        self.navigationController?.navigationBar.isHidden = true
+//
+//        self.view.addSubview(navigationView)
+//        //        navigationView.dropShadow(scale : true)
+//        //        navigationView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
+//        navigationView.snp.makeConstraints { (maker) in
+//            maker.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
+//            maker.width.equalToSuperview()
+//            //            maker.height.equalTo(Constant.size.naviHeight)
+//        }
+//        naviConstraint = navigationView.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
+//        naviConstraint.isActive = true
+//        /* Navigation
+//         **************************************
+//         * Menu         Class       noti more *
+//         **************************************
+//         */
+//        navigationView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)) { (stackNavi) -> (Void) in
+//            stackNavi.snp.makeConstraints({ (maker) in
+//                maker.center.equalToSuperview()
+//                maker.height.equalToSuperview().offset(-2 * Constant.size.padding)
+//                maker.width.equalToSuperview().offset(-2 * Constant.size.padding)
+//            })
+//            //Btn menu
+//            (stackNavi as! UIStackView).addArrangedSubview(self.btnBack)
+//            self.btnBack.snp.makeConstraints({ (maker) in
+//                maker.width.equalTo(self.btnBack.snp.height)
+//                maker.height.equalTo(Constant.size.btnIcon)
+//            })
+//            self.btnBack.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+//            self.btnBack.tintColor = Constant.color.iconColor
+//            self.btnBack.contentMode = .scaleAspectFit
+//            //            self.btnMenu.backgroundColor = UIColor.blue
+//
+//            //Ten lop
+//            (stackNavi as! UIStackView).addArrangedSubview(UIView())
+//
+//            self.navigationView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil), design: { (stackClass) -> (Void) in
+//                stackClass.snp.makeConstraints({ (maker) in
+//                    maker.center.equalToSuperview()
+//                    //                    maker.height.equalToSuperview()
+//
+//                })
+//                (stackClass as! UIStackView).addArrangedSubview(self.lblTitle)
+//                self.lblTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+//            })
+//            //Btn noti
+//            (stackNavi as! UIStackView).addArrangedSubview(self.btnSave)
+//            self.btnSave.snp.makeConstraints({ (maker) in
+////                maker.width.equalTo(self.btnSave.snp.height).multipliedBy(0.8)
+//                maker.height.equalTo(Constant.size.btnIcon)
+//            })
+//
+//        }
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.isHidden = true
+        naviBtnRight = UIButton(frame: .zero)
+        naviBtnRight!.setTitle("Tiếp tục", for: .normal)
+        naviBtnRight?.setTitleColor(Constant.text.color.blue, for: .normal)
+        naviBtnRight?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goBack)))
         
-        self.view.addSubview(navigationView)
-        //        navigationView.dropShadow(scale : true)
-        //        navigationView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
-        navigationView.snp.makeConstraints { (maker) in
-            maker.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
-            maker.width.equalToSuperview()
-            //            maker.height.equalTo(Constant.size.naviHeight)
-        }
-        naviConstraint = navigationView.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
-        naviConstraint.isActive = true
-        /* Navigation
-         **************************************
-         * Menu         Class       noti more *
-         **************************************
-         */
-        navigationView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)) { (stackNavi) -> (Void) in
-            stackNavi.snp.makeConstraints({ (maker) in
-                maker.center.equalToSuperview()
-                maker.height.equalToSuperview().offset(-2 * Constant.size.padding)
-                maker.width.equalToSuperview().offset(-2 * Constant.size.padding)
-            })
-            //Btn menu
-            (stackNavi as! UIStackView).addArrangedSubview(self.btnBack)
-            self.btnBack.snp.makeConstraints({ (maker) in
-                maker.width.equalTo(self.btnBack.snp.height)
-                maker.height.equalTo(Constant.size.btnIcon)
-            })
-            self.btnBack.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            self.btnBack.tintColor = Constant.color.iconColor
-            self.btnBack.contentMode = .scaleAspectFit
-            //            self.btnMenu.backgroundColor = UIColor.blue
-            
-            //Ten lop
-            (stackNavi as! UIStackView).addArrangedSubview(UIView())
-            
-            self.navigationView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil), design: { (stackClass) -> (Void) in
-                stackClass.snp.makeConstraints({ (maker) in
-                    maker.center.equalToSuperview()
-                    //                    maker.height.equalToSuperview()
-                    
-                })
-                (stackClass as! UIStackView).addArrangedSubview(self.lblTitle)
-                self.lblTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
-            })
-            //Btn noti
-            (stackNavi as! UIStackView).addArrangedSubview(self.btnSave)
-            self.btnSave.snp.makeConstraints({ (maker) in
-//                maker.width.equalTo(self.btnSave.snp.height).multipliedBy(0.8)
-                maker.height.equalTo(Constant.size.btnIcon)
-            })
-            
-        }
+        naviLbTitle = UILabel(text: "Tạo nhóm",
+                              textColor: Constant.text.color.black,
+                              font: Constant.text.font.customFont(
+                                size: Constant.text.size.large,
+                                weight: .Bold
+        ))
+        setNavigation(image: UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), leftAction: UITapGestureRecognizer(target: self, action: #selector(goBack)))
+        naviSeparate.alpha = 1
     }
-    func addCeparate(){
-        self.view.addSubview(ceparateView)
-        ceparateView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(1)
-            maker.width.equalToSuperview()
-            maker.top.equalTo(navigationView.snp.bottom)
-            maker.centerX.equalToSuperview()
-        }
-        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
-    }
+//    func addCeparate(){
+//        self.view.addSubview(ceparateView)
+//        ceparateView.snp.makeConstraints { (maker) in
+//            maker.height.equalTo(1)
+//            maker.width.equalToSuperview()
+//            maker.top.equalTo(navigation.snp.bottom)
+//            maker.centerX.equalToSuperview()
+//        }
+//        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+//    }
     func UISearchBar(){
         self.view.addSubview(searchView)
         searchView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(navigationView.snp.height).offset(-24)
-            maker.width.equalTo(navigationView.snp.width).offset(-32)
-            maker.top.equalTo(ceparateView.snp.bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp.centerX)
+            maker.height.equalTo(navigation.snp.height).offset(-24)
+            maker.width.equalTo(navigation.snp.width).offset(-32)
+            maker.top.equalTo(naviSeparate.snp.bottom).offset(16)
+            maker.centerX.equalTo(navigation.snp.centerX)
         }
         searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: Constant.color.separate, design: nil)) { (srcView) -> (Void) in
             srcView.snp.makeConstraints({ (maker) in
@@ -149,7 +172,7 @@ extension TNNewGroupViewController{
             maker.height.equalTo(TNUserChatCVC.cellSize.height)
             maker.width.equalTo(searchView.snp.width)
             maker.top.equalTo(searchView.snp.bottom).offset(16)
-            maker.centerX.equalTo(navigationView.snp.centerX)
+            maker.centerX.equalTo(navigation.snp.centerX)
         }
         historyView.backgroundColor = UIColor.green
         historyView.addSubview(UIScrollView(frame: .zero)) { (scrollView) -> (Void) in
@@ -186,7 +209,7 @@ extension TNNewGroupViewController{
         self.view.addSubview(contenView)
         contenView.snp.makeConstraints { (maker) in
             maker.height.equalToSuperview()
-            maker.width.equalTo(navigationView.snp.width).offset(-32)
+            maker.width.equalTo(navigation.snp.width).offset(-32)
             maker.top.equalTo(historyView.snp.bottom).offset(16)
             maker.centerX.equalTo(historyView.snp.centerX)
         }

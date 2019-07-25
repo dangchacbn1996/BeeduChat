@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class TNReportViewController: UIViewController {
+class TNReportViewController: TNBaseViewController {
     var navigationView = UIView()
     var stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 5, design: nil)
     var stackviewTitle = UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil)
@@ -22,19 +22,25 @@ class TNReportViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        SetupUI()
+        setupUI()
         tbvContent.dataSource = self
         tbvContent.delegate = self
         tbvContent.register(TNReportCell.self, forCellReuseIdentifier: TNReportCell.identifier)
         tbvContent.tableFooterView = UIView()
-        tbvContent.tableHeaderView = UIView()
         tbvContent.separatorStyle = .singleLine
         // Do any additional setup after loading the view.
+        let edgeGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
+        edgeGes.edges = .left
+        self.view.addGestureRecognizer(edgeGes)
+    }
+    @objc func goBack(){
+        Constant.animationTo(view : self, type : .dismiss)
+        self.dismiss(animated: false, completion: nil)
     }
 
 }
 extension TNReportViewController{
-    func SetupUI(){
+    func setupUI(){
         UINavBar()
         addCeparate()
         UIContent()
@@ -47,7 +53,7 @@ extension TNReportViewController{
             maker.top.equalTo(self.view.safeAreaLayoutGuide)
             maker.centerX.equalToSuperview()
             maker.width.equalToSuperview().offset(-32)
-            maker.height.equalTo(40)
+            maker.height.equalTo(Constant.size.naviHeight)
         }
         //        navigationView.backgroundColor = UIColor.blue
         // add stack view to navigationView
@@ -60,16 +66,17 @@ extension TNReportViewController{
         stackView.addArrangedSubview(self.btnMenu)
         btnMenu.snp.makeConstraints { (maker) in
             maker.height.equalTo(btnMenu.snp.width)
-            maker.height.equalToSuperview().multipliedBy(0.8)
+            maker.height.equalTo(Constant.size.btnIcon)
         }
         self.btnMenu.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.btnMenu.contentMode = .scaleAspectFit
         self.btnMenu.tintColor = Constant.color.iconColor
+        self.btnMenu.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goBack)))
         //        btnMenu.backgroundColor = UIColor.blue
-        
+
         //add stackview Tittle lalbe
         stackView.addArrangedSubview(UIView())
-        
+
         self.navigationView.addSubview(UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil),design: {(stackClass) -> (Void) in
             stackClass.snp.makeConstraints({ (maker) in
                 maker.center.equalToSuperview()
@@ -78,29 +85,40 @@ extension TNReportViewController{
             (stackClass as! UIStackView).addArrangedSubview(self.lblClass)
             (stackClass as! UIStackView).addArrangedSubview(self.lblSubClass)
         })
-//        stackviewTitle.snp.makeConstraints { (maker) in
-//            maker.height.equalToSuperview().multipliedBy(1)
-//        }
-//        //add lable class name
-//        stackviewTitle.addArrangedSubview(lblClass)
-//        stackviewTitle.addArrangedSubview(lblSubClass)
+        
+//        self.view.backgroundColor = UIColor.white
+//        self.navigationController?.navigationBar.isHidden = true
+//
+//        var Title = UILabel(text: "Gửi cho 20 người",
+//                              textColor: Constant.text.color.black,
+//                              font: Constant.text.font.customFont(
+//                                size: Constant.text.size.large,
+//                                weight: .Bold
+//        ))
+//        var subTitile = UILabel(text: "Gửi cho 20 người",
+//                               textColor: Constant.text.color.gray,
+//                               font: Constant.text.font.customFont(
+//                                size: Constant.text.size.small,
+//                                weight: .Thin        ))
+//        naviViewCenter?.addSubview(Title)
+//        naviViewCenter?.addSubview(subTitile)
     }
     func addCeparate(){
         self.view.addSubview(ceparateView)
         ceparateView.snp.makeConstraints { (maker) in
-            maker.height.equalTo(1)
+            maker.height.equalTo(Constant.size.separatorHeight)
             maker.width.equalToSuperview()
             maker.top.equalTo(navigationView.snp.bottom)
             maker.centerX.equalToSuperview()
         }
-        ceparateView.backgroundColor = UIColorFromRGB(rgbValue: 0x363636)
+        ceparateView.backgroundColor = Constant.color.separate
     }
     func UIContent(){
         self.view.addSubview(contentView)
         contentView.snp.makeConstraints { (maker) in
             maker.height.equalToSuperview()
             maker.width.equalTo(navigationView.snp.width)
-            maker.top.equalTo(navigationView.snp.bottom).offset(16)
+            maker.top.equalTo(navigationView.snp.bottom).offset(4)
             maker.centerX.equalTo(navigationView.snp.centerX)
         }
         contentView.addSubview(tbvContent)

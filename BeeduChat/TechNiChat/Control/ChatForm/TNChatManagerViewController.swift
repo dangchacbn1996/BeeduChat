@@ -30,6 +30,7 @@ class TNChatManagerViewController: TNBaseViewController {
     var tbvChat = UITableView()
     var lblChat = UILabel(text: "Chat", textColor: UIColor.black, font: nil)
     var btnCreateChat : UIButton!
+    var ceparateView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +136,7 @@ extension TNChatManagerViewController : UICollectionViewDelegate, UICollectionVi
 extension TNChatManagerViewController{
     func setupUI() {
         UINavBar()
+        addCeparate()
         UISearchBar()
         UIHisContactBar()
         UINortification()
@@ -149,15 +151,24 @@ extension TNChatManagerViewController{
         naviBtnRight = UIButton(frame: .zero)
         naviBtnRight!.setImage(UIImage(named: "ic_contact")?.withRenderingMode(.alwaysTemplate), for: .normal)
         naviBtnRight?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goContact)))
-        naviLbTitle = UILabel(text: "Messenger",
+        naviLbTitle = UILabel(text: "Tin nhắn",
                               textColor: Constant.text.color.black,
                               font: Constant.text.font.customFont(
                                 size: Constant.text.size.large,
                                 weight: .Bold
         ))
-        setNavigation(image: UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), leftAction: UITapGestureRecognizer(target: self, action: #selector(goBack)))
+        setNavigation(image: UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), leftAction: UITapGestureRecognizer(target: self, action: #selector(goBack)))
     }
-    
+    func addCeparate(){
+        self.view.addSubview(ceparateView)
+        ceparateView.snp.makeConstraints { (maker) in
+            maker.height.equalTo(Constant.size.separatorHeight)
+            maker.width.equalToSuperview()
+            maker.top.equalTo(navigation.snp.bottom)
+            maker.centerX.equalToSuperview()
+        }
+        ceparateView.backgroundColor = Constant.color.separate
+    }
     //SearchBar
     func UISearchBar(){
         self.view.addSubview(searchView)

@@ -53,7 +53,6 @@
 		F0F8C60822E2D55000BD7070 /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5E722E2D54E00BD7070 /* MockSocket.swift */; };
 		F0F8C60922E2D55000BD7070 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5E922E2D54E00BD7070 /* Lorem.swift */; };
 		F0F8C60A22E2D55000BD7070 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5EA22E2D54E00BD7070 /* SampleData.swift */; };
-		F0F8C60D22E2D55000BD7070 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F8C5ED22E2D54F00BD7070 /* LaunchScreen.storyboard */; };
 		F0F8C60E22E2D55000BD7070 /* sound2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F0F8C5EF22E2D54F00BD7070 /* sound2.m4a */; };
 		F0F8C60F22E2D55000BD7070 /* sound1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F0F8C5F022E2D54F00BD7070 /* sound1.m4a */; };
 		F0F8C61022E2D55000BD7070 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F8C5F222E2D54F00BD7070 /* UIViewController+Extensions.swift */; };
@@ -151,7 +150,6 @@
 		F0F8C5E722E2D54E00BD7070 /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
 		F0F8C5E922E2D54E00BD7070 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
 		F0F8C5EA22E2D54E00BD7070 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
-		F0F8C5ED22E2D54F00BD7070 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0F8C5EF22E2D54F00BD7070 /* sound2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound2.m4a; sourceTree = "<group>"; };
 		F0F8C5F022E2D54F00BD7070 /* sound1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound1.m4a; sourceTree = "<group>"; };
 		F0F8C5F222E2D54F00BD7070 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -418,7 +416,6 @@
 				F0F8C60122E2D55000BD7070 /* AudioController */,
 				F0F8C5E822E2D54E00BD7070 /* Data Generation */,
 				F0F8C5F122E2D54F00BD7070 /* Extensions */,
-				F0F8C5ED22E2D54F00BD7070 /* LaunchScreen.storyboard */,
 				F0F8C60422E2D55000BD7070 /* Layout */,
 				F0F8C5E422E2D54E00BD7070 /* Models */,
 				F0F8C5F422E2D54F00BD7070 /* Settings+UserDefaults.swift */,
@@ -636,7 +633,6 @@
 				F0F8C60F22E2D55000BD7070 /* sound1.m4a in Resources */,
 				F0F8C60E22E2D55000BD7070 /* sound2.m4a in Resources */,
 				F083A9E522CF926700E351C7 /* Assets.xcassets in Resources */,
-				F0F8C60D22E2D55000BD7070 /* LaunchScreen.storyboard in Resources */,
 				F083A9E322CF926500E351C7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
