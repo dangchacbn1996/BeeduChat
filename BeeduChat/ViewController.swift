@@ -10,12 +10,12 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-
+    
     func setupUI(){
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(UILabel(text: "Adc", textColor: UIColor.blue, font: nil)) { (label) -> (Void) in

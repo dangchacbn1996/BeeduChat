@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  BeeduChat
 //
-//  Created by Ngo Dang Chac on 7/5/19.
+//  Created by Ngo Dang Chac on 7/25/19.
 //  Copyright © 2019 Ngo Dang Chac. All rights reserved.
 //
 
