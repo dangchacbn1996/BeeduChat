@@ -11,9 +11,10 @@ import Foundation
 enum TNEmoji : String{
     case like = "emoji_like"
     case haha = "emoji_haha"
+    case wow = "emoji_wow"
+    case cry = "emoji_sad"
     case angry = "emoji_angry"
     case heart = "emoji_heart"
-    case cry = "emoji_cry"
 }
 
 enum TNIcon : String {

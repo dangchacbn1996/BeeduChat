@@ -10,6 +10,7 @@
 		22719F42ED40EB490BAA416D /* Pods_BeeduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B464B773D0231856DE8CB0 /* Pods_BeeduChat.framework */; };
 		3C6FADE21AC9F3E9C4E28FCA /* Pods_BeeduChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DE160B549A5CC7002A01F5 /* Pods_BeeduChatTests.framework */; };
 		50D77C61D9ACD18827DF2046 /* Pods_BeeduChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFE642CAABE5E1153467201 /* Pods_BeeduChatUITests.framework */; };
+		539A8DE022EAA1DF00BD75B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */; };
 		F0ACB26C22E9FE8700DFE793 /* TNSeenUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */; };
 		F0F7419022E9B05A0028AB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7418F22E9B05A0028AB4F /* AppDelegate.swift */; };
 		F0F7419222E9B05A0028AB4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7419122E9B05A0028AB4F /* ViewController.swift */; };
@@ -75,7 +76,6 @@
 		F0F7425A22E9B0860028AB4F /* TNCreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7421122E9B0860028AB4F /* TNCreateGroupViewController.swift */; };
 		F0F7425B22E9B0860028AB4F /* TNNewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7421322E9B0860028AB4F /* TNNewFeedViewController.swift */; };
 		F0F7425E22E9B0860028AB4F /* LabelEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7421A22E9B0860028AB4F /* LabelEx.swift */; };
-		F0F7426622E9B2570028AB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0F7426522E9B2570028AB4F /* Assets.xcassets */; };
 		F0F7426A22E9CC7B0028AB4F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0F7426722E9CA190028AB4F /* Info.plist */; };
 		F0F7426F22E9FD5B0028AB4F /* TNSeenUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7426E22E9FD5B0028AB4F /* TNSeenUserViewController.swift */; };
 /* End PBXBuildFile section */
@@ -100,6 +100,7 @@
 /* Begin PBXFileReference section */
 		42B464B773D0231856DE8CB0 /* Pods_BeeduChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523DC3FDE4DBAAB7FE649423 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7373D4B9B309B286A68C2E11 /* Pods-BeeduChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChat.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChat/Pods-BeeduChat.debug.xcconfig"; sourceTree = "<group>"; };
 		7470B431115AB13A560DB880 /* Pods-BeeduChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.release.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		77AC8634AA3BF5F3AFF3999D /* Pods-BeeduChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChat.release.xcconfig"; path = "Target Support Files/Pods-BeeduChat/Pods-BeeduChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,7 +178,6 @@
 		F0F7421122E9B0860028AB4F /* TNCreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNCreateGroupViewController.swift; sourceTree = "<group>"; };
 		F0F7421322E9B0860028AB4F /* TNNewFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TNNewFeedViewController.swift; sourceTree = "<group>"; };
 		F0F7421A22E9B0860028AB4F /* LabelEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelEx.swift; sourceTree = "<group>"; };
-		F0F7426522E9B2570028AB4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../BeeduChat3/BeeduChat/TechNiChat/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		F0F7426722E9CA190028AB4F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0F7426922E9CA4E0028AB4F /* BeeduChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeeduChat.entitlements; sourceTree = "<group>"; };
 		F0F7426E22E9FD5B0028AB4F /* TNSeenUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSeenUserViewController.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 		F0F741D122E9B0860028AB4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F0F7426522E9B2570028AB4F /* Assets.xcassets */,
+				539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -374,8 +374,8 @@
 			isa = PBXGroup;
 			children = (
 				F0F7426B22E9FCFD0028AB4F /* popup */,
-				F0F7421322E9B0860028AB4F /* TNNewFeedViewController.swift */,
 				F0F741D522E9B0860028AB4F /* ReuseCell */,
+				F0F7421322E9B0860028AB4F /* TNNewFeedViewController.swift */,
 				F0F741DA22E9B0860028AB4F /* TNPostView.swift */,
 				F0F741DB22E9B0860028AB4F /* TNCommentViewController.swift */,
 				F0F741DC22E9B0860028AB4F /* TNCommentSubViewController.swift */,
@@ -681,7 +681,7 @@
 				F0F7419A22E9B05B0028AB4F /* LaunchScreen.storyboard in Resources */,
 				F0F7424422E9B0860028AB4F /* sound1.m4a in Resources */,
 				F0F7424322E9B0860028AB4F /* sound2.m4a in Resources */,
-				F0F7426622E9B2570028AB4F /* Assets.xcassets in Resources */,
+				539A8DE022EAA1DF00BD75B9 /* Assets.xcassets in Resources */,
 				F0F7419522E9B05A0028AB4F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

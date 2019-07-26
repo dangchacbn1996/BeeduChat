@@ -129,7 +129,7 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
         if let indexPath = self.tablePost.indexPathForRow(at: pos) {
             let view = TNSeenUserViewController()
             view.modalPresentationStyle = .overCurrentContext
-            self.present(view, animated: true, completion: nil)
+            self.present(view, animated: false, completion: nil)
             view.data = FixedData.newFeedData[indexPath.row - 1].emotion
         }
     }

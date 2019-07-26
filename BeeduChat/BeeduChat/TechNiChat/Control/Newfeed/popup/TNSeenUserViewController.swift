@@ -15,6 +15,9 @@ class TNSeenUserViewController : TNBaseViewController {
     private var scrollView : UIScrollView!
     private var tableSeen : UITableView!
     private var stackType = UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .fill, spacing: 2, design: nil)
+    private let contentRatio : CGFloat = 1.8
+    private var contentPos : [CGFloat] = []
+    private var startScrollY : CGFloat = 0
     var data : [TNEmotionModel] = [] {
         didSet{
             stackType.arrangedSubviews.forEach { (sub) in
@@ -66,12 +69,21 @@ class TNSeenUserViewController : TNBaseViewController {
         tableSeen.delegate = self
         tableSeen.tableFooterView = UIView()
         scrollView.delegate = self
+        scrollView.bounces = false
+        scrollView.alwaysBounceVertical = false
+        scrollView.showsVerticalScrollIndicator = false
         tableSeen.register(TNSeenUserTVC.self, forCellReuseIdentifier: TNSeenUserTVC.identify)
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        scrollView.
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        contentPos = [scrollView.contentSize.height * (contentRatio - 1) / contentRatio,
+                      scrollView.contentSize.height * ((contentRatio - 1) / 2) / contentRatio,
+                      0]
+        print("EndDraging: \(contentPos)")
+        print("EndDraging: Top: \(((contentPos[0] + contentPos[1]) / 2))")
+        print("EndDraging: Middle: \((contentPos[1]) / 2)")
+        scrollView.setContentOffset(CGPoint(x: 0, y: contentPos[1]), animated: true)
+    }
     
     @objc func filterData(_ gesture : UIGestureRecognizer) {
         stackType.arrangedSubviews.forEach { (sub) in
@@ -91,23 +103,55 @@ class TNSeenUserViewController : TNBaseViewController {
 }
 
 extension TNSeenUserViewController : UIScrollViewDelegate {
-//    scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        contentView.subviews[0].alpha = 0.2 + (scrollView.contentOffset.y / (scrollView.contentSize.height / 2))
-        if (scrollView.contentOffset.y <= 0) {
-            self.dismiss(animated: false, completion: nil)
+        let yOffset = scrollView.contentOffset.y
+        let isScrollUp = yOffset > startScrollY
+        
+        if scrollView == self.scrollView {
+            if yOffset >= contentPos[0] && isScrollUp
         }
+        
+//        if scrollView == self.scrollView {
+//            if yOffset >= contentPos[0] && tableSeen.contentOffset.y <= 0 {
+//                scrollView.isScrollEnabled = false
+//                tableSeen.isScrollEnabled = true
+//            }
+//            contentView.subviews[0].alpha = scrollView.contentOffset.y / (scrollView.contentSize.height / contentRatio)
+//            if (scrollView.contentOffset.y <= 0) {
+//                self.dismiss(animated: false, completion: nil)
+//            }
+//        }
+//
+//        if scrollView == self.tableSeen {
+//            print("tableOffset: \(isScrollUp)")
+//            print("tableOffset: \(yOffset)")
+//            print("tableOffset:-------------")
+//            if yOffset <= 0 && isScrollUp == false {
+//                self.scrollView.isScrollEnabled = true
+//                self.tableSeen.isScrollEnabled = false
+//            }
+//        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        if (scrollView == self.tableSeen) {
+            startScrollY = scrollView.contentOffset.y
+//        }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("Scroll: \(scrollView.contentOffset.y)")
-//        if (scrollView.contentOffset.y < scrollView.contentSize.height / 4) {
-//            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-//        } else if (scrollView.contentOffset.y <= scrollView.contentSize.height / 2) {
-//            scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentSize.height / 2), animated: true)
-//        }
+        print("EndDraging: \(scrollView.contentOffset.y)")
+//        scrollView.sc
+        if (scrollView == self.scrollView) {
+            if (scrollView.contentOffset.y > ((contentPos[0] + contentPos[1]) / 2)) {
+                scrollView.setContentOffset(CGPoint(x: 0, y: contentPos[0]), animated: true)
+            } else if (scrollView.contentOffset.y < (contentPos[1]) / 2){
+                scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            } else {
+                scrollView.setContentOffset(CGPoint(x: 0, y: contentPos[1]), animated: true)
+            }
+        }
     }
-//    scrollView
 }
 
 extension TNSeenUserViewController : UITableViewDataSource, UITableViewDelegate{
@@ -145,7 +189,7 @@ extension TNSeenUserViewController {
         contentView.snp.makeConstraints { (maker) in
             maker.top.leading.trailing.bottom.equalToSuperview()
             maker.width.equalToSuperview()
-            maker.height.equalTo(self.view.snp.height).multipliedBy(2)
+            maker.height.equalTo(self.view.snp.height).multipliedBy(1.8)
         }
         viewContainer = UIView()
         viewContainer.backgroundColor = .white
@@ -153,8 +197,8 @@ extension TNSeenUserViewController {
             back.snp.makeConstraints({ (maker) in
                 maker.top.centerX.width.equalToSuperview()
             })
-            back.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-            back.alpha = 0.2
+            back.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+            back.alpha = 0
         }
         contentView.addSubview(viewContainer)
         viewContainer.snp.makeConstraints { (maker) in
@@ -162,6 +206,17 @@ extension TNSeenUserViewController {
             maker.top.equalTo(contentView.subviews[0].snp.bottom)
             maker.centerX.width.equalToSuperview()
             maker.bottom.equalToSuperview()
+        }
+        self.contentView.addSubview(UIView()) { (indicator) -> (Void) in
+            indicator.snp.makeConstraints({ (maker) in
+                maker.centerX.equalToSuperview()
+                maker.height.equalTo(6)
+                maker.width.equalToSuperview().multipliedBy(0.3)
+                maker.bottom.equalTo(self.viewContainer.snp.top).offset(-6)
+            })
+            indicator.clipsToBounds = true
+            indicator.layer.cornerRadius = 3
+            indicator.backgroundColor = .white
         }
         tableSeen = UITableView()
         self.viewContainer.addSubview(stackType)
@@ -190,7 +245,7 @@ extension TNSeenUserViewController {
         view.snp.makeConstraints { (maker) in
             maker.width.greaterThanOrEqualTo(56)
         }
-        view.addSubview(UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .center, spacing: 2, design: nil)) { (stack) -> (Void) in
+        view.addSubview(UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .center, spacing: 4, design: nil)) { (stack) -> (Void) in
             stack.snp.makeConstraints({ (maker) in
                 maker.center.height.equalToSuperview()
                 maker.width.lessThanOrEqualToSuperview()

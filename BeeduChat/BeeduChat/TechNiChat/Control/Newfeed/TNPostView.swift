@@ -106,8 +106,7 @@ class TNPostView {
                 maker.width.equalTo(btnNote.snp.height).multipliedBy(0.7)
                 maker.width.equalTo(Constant.size.btnIcon)
             })
-            (btnNote as! UIButton).setImage(UIImage(named: "ic_star")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            (btnNote as! UIButton).tintColor = Constant.color.btnTitle
+            (btnNote as! UIButton).setImage(UIImage(named: "ic_pin"), for: .normal)
             (btnNote as! UIButton).imageView?.contentMode = .scaleAspectFit
         }
         
@@ -116,8 +115,7 @@ class TNPostView {
                 maker.width.equalTo(btnMore.snp.height).multipliedBy(0.7)
                 maker.width.equalTo(Constant.size.btnIcon)
             })
-            (btnMore as! UIButton).setImage(UIImage(named: "ic_more_horizon")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            (btnMore as! UIButton).tintColor = Constant.color.iconColor
+            (btnMore as! UIButton).setImage(UIImage(named: "ic_more_horizon"), for: .normal)
             (btnMore as! UIButton).imageView?.contentMode = .scaleAspectFit
         }
         
@@ -131,12 +129,13 @@ class TNPostView {
             lbPreview.snp.makeConstraints({ (maker) in
                 maker.width.equalToSuperview().offset(-16)
             })
+            print("Line: \((lbPreview as! UILabel).calculateMaxLines())")
         }
         
         if (post.image.count > 0) {
             stackNew.addArrangedSubview(UIImageView()) { (ivPreview) -> (Void) in
                 ivPreview.snp.makeConstraints({ (maker) in
-                    maker.width.equalToSuperview()
+                    maker.width.equalToSuperview().offset(-16)
                     maker.height.equalTo(ivPreview.snp.width).multipliedBy(0.75)
                 })
                 (ivPreview as! UIImageView).image = UIImage(named: post.image[0])
