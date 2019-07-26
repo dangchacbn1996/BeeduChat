@@ -107,9 +107,9 @@ extension TNSeenUserViewController : UIScrollViewDelegate {
         let yOffset = scrollView.contentOffset.y
         let isScrollUp = yOffset > startScrollY
         
-        if scrollView == self.scrollView {
-            if yOffset >= contentPos[0] && isScrollUp
-        }
+//        if scrollView == self.scrollView {
+//            if yOffset >= contentPos[0] && isScrollUp
+//        }
         
 //        if scrollView == self.scrollView {
 //            if yOffset >= contentPos[0] && tableSeen.contentOffset.y <= 0 {

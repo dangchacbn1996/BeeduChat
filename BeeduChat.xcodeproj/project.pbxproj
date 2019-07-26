@@ -12,6 +12,7 @@
 		50D77C61D9ACD18827DF2046 /* Pods_BeeduChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFE642CAABE5E1153467201 /* Pods_BeeduChatUITests.framework */; };
 		539A8DE022EAA1DF00BD75B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */; };
 		F0ACB26C22E9FE8700DFE793 /* TNSeenUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */; };
+		F0F6C2E122EB775600CDA83C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6C2E022EB775600CDA83C /* MainViewController.swift */; };
 		F0F7419022E9B05A0028AB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7418F22E9B05A0028AB4F /* AppDelegate.swift */; };
 		F0F7419222E9B05A0028AB4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7419122E9B05A0028AB4F /* ViewController.swift */; };
 		F0F7419522E9B05A0028AB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F7419322E9B05A0028AB4F /* Main.storyboard */; };
@@ -109,6 +110,7 @@
 		AEFE642CAABE5E1153467201 /* Pods_BeeduChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5DE160B549A5CC7002A01F5 /* Pods_BeeduChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSeenUserTVC.swift; sourceTree = "<group>"; };
+		F0F6C2E022EB775600CDA83C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F0F7418C22E9B05A0028AB4F /* BeeduChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeduChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F7418F22E9B05A0028AB4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0F7419122E9B05A0028AB4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				F0F7419122E9B05A0028AB4F /* ViewController.swift */,
 				F0F7419322E9B05A0028AB4F /* Main.storyboard */,
 				F0F7419822E9B05B0028AB4F /* LaunchScreen.storyboard */,
+				F0F6C2E022EB775600CDA83C /* MainViewController.swift */,
 			);
 			path = BeeduChat;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 			files = (
 				F0F7424F22E9B0860028AB4F /* TNDetailMessCellTableViewCell.swift in Sources */,
 				F0F7424C22E9B0860028AB4F /* TNChooseRecvCell.swift in Sources */,
+				F0F6C2E122EB775600CDA83C /* MainViewController.swift in Sources */,
 				F0F7422A22E9B0860028AB4F /* FixedData.swift in Sources */,
 				F0F7423522E9B0860028AB4F /* CustomMessageFlowLayout.swift in Sources */,
 				F0F7424E22E9B0860028AB4F /* TNReportCell.swift in Sources */,

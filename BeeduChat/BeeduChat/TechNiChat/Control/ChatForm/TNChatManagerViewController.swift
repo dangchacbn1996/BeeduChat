@@ -135,6 +135,9 @@ extension TNChatManagerViewController : UICollectionViewDelegate, UICollectionVi
 /*  SetupUI */
 extension TNChatManagerViewController{
     func setupUI() {
+        self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarItem.title = "Messenger"
         UINavBar()
         addCeparate()
         UISearchBar()
@@ -146,8 +149,6 @@ extension TNChatManagerViewController{
     
     //NavBar
     func UINavBar(){
-        self.view.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.isHidden = true
         naviBtnRight = UIButton(frame: .zero)
         naviBtnRight!.setImage(UIImage(named: "ic_contact")?.withRenderingMode(.alwaysTemplate), for: .normal)
         naviBtnRight?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goContact)))

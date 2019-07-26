@@ -139,7 +139,8 @@ extension TNNewFeedViewController {
     func setupUI(){
         self.view.backgroundColor = Constant.color.naviBack
         self.navigationController?.navigationBar.isHidden = true
-        
+        self.tabBarItem.title = "Bảng tin"
+//        self.tabBarItem.image = UIImage(named: "ic_library")
         naviBtnRight = UIButton(frame: .zero)
         naviBtnRight!.setImage(UIImage(named: "ic_mess")?.withRenderingMode(.alwaysTemplate), for: .normal)
         naviBtnRight?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openMessenge)))
