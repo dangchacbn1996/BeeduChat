@@ -38,6 +38,9 @@ struct Constant {
             //139,148,159
             static let gray = UIColor(red: 139/255, green: 148/255, blue: 159/255, alpha: 1.0)
             static let blue = UIColor(68, 138, 255)
+            static let angry = UIColor(198,40,40)
+            static let emote = UIColor(255,235,59)
+            static let heart = UIColor(255,61,0)
         }
         
         struct font {

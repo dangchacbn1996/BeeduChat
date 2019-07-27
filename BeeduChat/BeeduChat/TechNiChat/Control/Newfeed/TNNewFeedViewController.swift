@@ -93,12 +93,14 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: TNPostInfoCell.identify, for: indexPath) as! TNPostInfoCell
         cell.selectionStyle = .none
-        cell.actAvatar = UITapGestureRecognizer(target: self, action: #selector(avatarTap(_:)))
-        cell.actLike = UITapGestureRecognizer(target: self, action: #selector(tapLike(_:)))
-        cell.actEmoji = UITapGestureRecognizer(target: self, action: #selector(tapEmoji(_:)))
-        cell.actPin = UITapGestureRecognizer(target: self, action: #selector(pinCell(_:)))
+//        cell.ivAvatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarTap(_:))))
+//        cell.actAvatar =
+//        cell.actLike = UITapGestureRecognizer(target: self, action: #selector(tapLike(_:)))
+//        cell.actEmoji = UITapGestureRecognizer(target: self, action: #selector(tapEmoji(_:)))
+//        cell.actPin = UITapGestureRecognizer(target: self, action: #selector(pinCell(_:)))
         cell.isPin = pinList.contains(indexPath.row)
         cell.data = FixedData.newFeedData[indexPath.row - 1]
+        cell.delegate = self
         return cell
     }
     
@@ -109,16 +111,42 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
             self.present(viewInfo, animated: false, completion: nil)
         }
     }
-    
-    @objc func avatarTap(_ gesture : UITapGestureRecognizer){
-        let pos = gesture.location(in: self.tablePost)
-        let indexPath = self.tablePost.indexPathForRow(at: pos)
-        print("AvatarTap : \(indexPath?.row)")
-    }
-    
-    @objc func tapLike(_ gesture : UITapGestureRecognizer){
+}
+
+extension TNNewFeedViewController : TNPostInfoDelegate {
+    func actPostPin(_ gesture: UIGestureRecognizer) {
         let pos = gesture.location(in: self.tablePost)
         if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            var target = -1
+            for index in 0..<pinList.count {
+                if (pinList[index] == indexPath.row) {
+                    target = index
+                    break
+                }
+            }
+            if (target == -1) {
+                pinList.append(indexPath.row)
+            } else {
+                pinList.remove(at: target)
+            }
+            tablePost.reloadRows(at: [indexPath], with: .none)
+        }
+    }
+    
+    func actPostEmoji(_ gesture: UIGestureRecognizer) {
+        let pos = gesture.location(in: self.tablePost)
+        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            let view = TNSeenUserViewController()
+            view.modalPresentationStyle = .overCurrentContext
+            self.present(view, animated: false, completion: nil)
+            view.data = FixedData.newFeedData[indexPath.row - 1].emotion
+        }
+    }
+    
+    func actPostEmotion(_ gesture: UIGestureRecognizer) {
+        let pos = gesture.location(in: self.tablePost)
+        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            print("Post: \(indexPath.row)")
             var isActed = false
             for index in 0..<FixedData.newFeedData[indexPath.row - 1].emotion.count {
                 if (FixedData.newFeedData[indexPath.row - 1].emotion[index].userName == FixedData.user) {
@@ -134,33 +162,15 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    @objc func tapEmoji(_ gesture : UITapGestureRecognizer) {
-        let pos = gesture.location(in: self.tablePost)
-        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
-            let view = TNSeenUserViewController()
-            view.modalPresentationStyle = .overCurrentContext
-            self.present(view, animated: false, completion: nil)
-            view.data = FixedData.newFeedData[indexPath.row - 1].emotion
-        }
-    }
-    
-    @objc func pinCell(_ gesture : UITapGestureRecognizer) {
-        let pos = gesture.location(in: self.tablePost)
-        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
-            var target = -1
-            for index in 0..<pinList.count {
-                if (pinList[index] == indexPath.row) {
-                    target = index
-                    break
-                }
-            }
-            if (target == -1) {
-                pinList.append(indexPath.row)
-            } else {
-                pinList.remove(at: target)
-            }
-        }
-        tablePost.reloadData()
+    func actPostAvatar(_ gesture: UIGestureRecognizer) {
+        print("Pin avatar")
+//        let pos = gesture.location(in: self.tablePost)
+//        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+//            let view = TNSeenUserViewController()
+//            view.modalPresentationStyle = .overCurrentContext
+//            self.present(view, animated: false, completion: nil)
+//            view.data = FixedData.newFeedData[indexPath.row - 1].emotion
+//        }
     }
 }
 

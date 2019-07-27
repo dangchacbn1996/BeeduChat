@@ -137,27 +137,12 @@ class TNPostView {
         }
         
         if (post.image.count > 0) {
-//            let containerView = UIView(frame: CGRect(x:0,y:0,width:320,height:500))
-//            let imageView = UIImageView()
-//
-//            if let image = UIImage(named: "a_image") {
-//                let ratio = image.size.width / image.size.height
-//                if containerView.frame.width > containerView.frame.height {
-//                    let newHeight = containerView.frame.width / ratio
-////                    imageView.frame.size = CGSize(width: containerView.frame.width, height: newHeight)
-//                }
-//                else{
-//                    let newWidth = containerView.frame.height * ratio
-////                    imageView.frame.size = CGSize(width: newWidth, height: containerView.frame.height)
-//                }
-//            }
             stackNew.addArrangedSubview(UIImageView()) { (ivPreview) -> (Void) in
                 let image = UIImage(named: post.image[0])!
                 ivPreview.snp.makeConstraints({ (maker) in
                     maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
                     maker.height.equalTo(ivPreview.snp.width).multipliedBy(image.size.height / image.size.width)
                 })
-//                ivPreview.
                 (ivPreview as! UIImageView).image = image
                 ivPreview.contentMode = .scaleAspectFill
             }

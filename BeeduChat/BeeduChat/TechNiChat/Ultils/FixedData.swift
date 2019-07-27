@@ -65,10 +65,7 @@ struct FixedData {
                         content: "Tốc độ phá rừng Amazon ở Brazil đã gia tăng lên con số diện tích bằng 3 sân bóng đá trong mỗi phút, đẩy lá phổi lớn nhất của hành tinh vào tình trạng không thể phục hồi được nữa.",
                         image: [],
                         viewCount: 18,
-                        emotion: [
-                            TNEmotionModel(emote: .like, userName: "Jaden Smith", userAvatar: "user2"),
-                            TNEmotionModel(emote: .heart, userName: "Sky Ferreira", userAvatar: "user3"),
-                            TNEmotionModel(emote: .haha, userName: "Zendaya", userAvatar: "user5")],
+                        emotion: [],
                         comment: [
                             TNCommentModel(commentUser:
                                 TNCommentGeneralModel(avatar: UIImage(named: "user2"),
@@ -87,8 +84,8 @@ struct FixedData {
                         viewCount: 18,
                         emotion: [
                             TNEmotionModel(emote: .like, userName: "Jaden Smith", userAvatar: "user2"),
-                            TNEmotionModel(emote: .heart, userName: "Sky Ferreira", userAvatar: "user3"),
-                            TNEmotionModel(emote: .haha, userName: "Zendaya", userAvatar: "user5"),
+                            TNEmotionModel(emote: .like, userName: "Sky Ferreira", userAvatar: "user3"),
+                            TNEmotionModel(emote: .wow, userName: "Zendaya", userAvatar: "user5"),
                             TNEmotionModel(emote: .like, userName: "Lorde", userAvatar: "user8")],
                         comment: [
                             TNCommentModel(commentUser:
@@ -104,13 +101,13 @@ struct FixedData {
                         timePosted: "12:10",
                         userAvatar: "user1",
                         content: "Ngày hôm qua, 23/7 là ngày kỉ niệm 39 năm ngày người Việt Nam đầu tiên được bay vào vũ trụ. Ông là ai?",
-                        image: ["post1"],
+                        image: ["post3"],
                         viewCount: 18,
                         emotion: [
-                            TNEmotionModel(emote: .like, userName: "Jaden Smith", userAvatar: "user2"),
+                            TNEmotionModel(emote: .cry, userName: "Jaden Smith", userAvatar: "user2"),
                             TNEmotionModel(emote: .heart, userName: "Sky Ferreira", userAvatar: "user3"),
                             TNEmotionModel(emote: .haha, userName: "Zendaya", userAvatar: "user5"),
-                            TNEmotionModel(emote: .like, userName: "Lorde", userAvatar: "user8"),
+                            TNEmotionModel(emote: .wow, userName: "Lorde", userAvatar: "user8"),
                             TNEmotionModel(emote: .haha, userName: FixedData.user, userAvatar: FixedData.userAvatar)],
                         comment: [
                             TNCommentModel(commentUser:
@@ -126,7 +123,7 @@ struct FixedData {
                         timePosted: "12:10",
                         userAvatar: "user1",
                         content: "Ngày hôm qua, 23/7 là ngày kỉ niệm 39 năm ngày người Việt Nam đầu tiên được bay vào vũ trụ. Ông là ai?",
-                        image: ["post1"],
+                        image: ["post4"],
                         viewCount: 18,
                         emotion: [
                             TNEmotionModel(emote: .like, userName: "Jaden Smith", userAvatar: "user2"),
