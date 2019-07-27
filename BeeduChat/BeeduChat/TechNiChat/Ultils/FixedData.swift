@@ -63,7 +63,7 @@ struct FixedData {
                         timePosted: "11:50",
                         userAvatar: "user9",
                         content: "Tốc độ phá rừng Amazon ở Brazil đã gia tăng lên con số diện tích bằng 3 sân bóng đá trong mỗi phút, đẩy lá phổi lớn nhất của hành tinh vào tình trạng không thể phục hồi được nữa.",
-                        image: ["post1"],
+                        image: [],
                         viewCount: 18,
                         emotion: [
                             TNEmotionModel(emote: .like, userName: "Jaden Smith", userAvatar: "user2"),

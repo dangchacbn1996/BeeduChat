@@ -15,9 +15,10 @@ class TNPostInfoCell : UITableViewCell {
     var actLike : UITapGestureRecognizer!
     var actComment : UITapGestureRecognizer!
     var actAvatar : UITapGestureRecognizer!
-    var actPin : UITapGestureRecognizer!
+    var actPin : UITapGestureRecognizer?
     var actMore : UITapGestureRecognizer!
     var actEmoji : UITapGestureRecognizer!
+    var isPin = false
     
     var data : TNPostInfoModel = TNPostInfoModel() {
         didSet {
@@ -30,7 +31,7 @@ class TNPostInfoCell : UITableViewCell {
                     maker.top.centerX.width.height.equalToSuperview()
                     maker.height.equalToSuperview().offset(-8)
                 })
-                contentBack.addSubview(TNPostView.postView(self.data, actAvatar: self.actAvatar, actLike: self.actLike, actEmoji: self.actEmoji), design: { (post) -> (Void) in
+                contentBack.addSubview(TNPostView.postView(self.data, isPin: self.isPin, actPin: self.actPin, actAvatar: self.actAvatar, actLike: self.actLike, actEmoji: self.actEmoji), design: { (post) -> (Void) in
                     post.snp.makeConstraints({ (maker) in
                         maker.top.leading.trailing.equalToSuperview()
                         maker.bottom.equalToSuperview().offset(-8)

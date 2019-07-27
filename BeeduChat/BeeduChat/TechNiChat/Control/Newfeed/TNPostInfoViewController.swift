@@ -32,10 +32,6 @@ class TNPostInfoViewController: TNBaseViewController {
         return vc
     }
     
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -78,7 +74,7 @@ class TNPostInfoViewController: TNBaseViewController {
     }
     
     func reloadData(){
-        postInfoView = TNPostView.postView(FixedData.newFeedData[index],
+        postInfoView = TNPostView.postView(FixedData.newFeedData[index], isPin: true, actPin: nil,
                                            actAvatar: UITapGestureRecognizer(target: self, action: #selector(avatarTap(_:))),
                                            actLike: UITapGestureRecognizer(target: self, action: #selector(tapLike(_:))),
                                            actEmoji: UITapGestureRecognizer(target: self, action: #selector(tapEmoji(_:))))
@@ -113,23 +109,14 @@ extension TNPostInfoViewController{
         
         self.view.addSubview(stackMain)
         self.view.addSubview(commentView)
-//        scrollMain.snp.makeConstraints { (maker) in
-//            maker.leading.trailing.equalToSuperview()
-//            maker.top.equalTo(navigation.snp.bottom)
-//            maker.bottom.equalTo(commentView.snp.top)
-//            maker.width.equalToSuperview()
-//        }
         commentView.snp.makeConstraints { (maker) in
             maker.height.equalTo(Constant.size.avatarNormal + 16)
             maker.width.centerX.bottom.equalToSuperview()
         }
-//        scrollMain.addSubview(stackMain)
         stackMain.snp.makeConstraints { (maker) in
             maker.leading.trailing.equalToSuperview()
             maker.top.equalTo(navigation.snp.bottom)
             maker.bottom.equalTo(commentView.snp.top)
-//            maker.top.leading.trailing.bottom.equalToSuperview()
-//            maker.width.equalToSuperview()
         }
         commentView.backgroundColor = UIColor.white
         commentView.layer.shadowColor = UIColor.gray.cgColor

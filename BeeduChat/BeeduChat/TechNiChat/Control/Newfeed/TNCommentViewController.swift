@@ -52,7 +52,7 @@ extension TNCommentViewController {
     }
     
     func setupComment(){
-        stackComment.layoutMargins = UIEdgeInsets(top: 12, left: 8, bottom: 8, right: 8)
+        stackComment.layoutMargins = UIEdgeInsets(top: 12, left: Constant.size.paddingView, bottom: 8, right: Constant.size.paddingView)
         stackComment.isLayoutMarginsRelativeArrangement = true
         stackComment.addArrangedSubview(UILabel(text: " Xem thêm bình luận khác", textColor: Constant.text.color.gray, font: nil), design: nil)
 //        stackComment.snp.makeConstraints { (maker) in

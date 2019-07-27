@@ -30,18 +30,19 @@ struct TNEmotionModel {
 
 class TNPostView {
     
-    static func postView(_ post : TNPostInfoModel, actAvatar : UITapGestureRecognizer?, actLike : UITapGestureRecognizer?, actEmoji : UITapGestureRecognizer?) -> (UIView){
+    static func postView(_ post : TNPostInfoModel, isPin : Bool, actPin : UIGestureRecognizer?, actAvatar : UITapGestureRecognizer?, actLike : UIGestureRecognizer?, actEmoji : UITapGestureRecognizer?) -> (UIView){
         let newView = UIView()
         let stackNew = UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 4, design: nil)
         let stackHead = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)
         newView.addSubview(stackNew)
         stackNew.snp.makeConstraints { (maker) in
             maker.bottom.centerX.width.equalToSuperview()
-            maker.top.equalToSuperview().offset(16)
+            maker.top.equalToSuperview().offset(Constant.size.paddingView)
         }
         stackNew.addArrangedSubview(stackHead)
         stackHead.snp.makeConstraints { (maker) in
             maker.height.equalTo(Constant.size.avatarNormal)
+            maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
         }
         
         let avatar = UIButton()
@@ -106,7 +107,10 @@ class TNPostView {
                 maker.width.equalTo(btnNote.snp.height).multipliedBy(0.7)
                 maker.width.equalTo(Constant.size.btnIcon)
             })
-            (btnNote as! UIButton).setImage(UIImage(named: "ic_pin"), for: .normal)
+            (btnNote as! UIButton).setImage(UIImage(named: isPin ? "ic_pin_hover" : "ic_pin"), for: .normal)
+            if (actPin != nil) {
+                (btnNote as! UIButton).addGestureRecognizer(actPin!)
+            }
             (btnNote as! UIButton).imageView?.contentMode = .scaleAspectFit
         }
         
@@ -121,24 +125,40 @@ class TNPostView {
         
         stackNew.addArrangedSubview(stackHead)
         stackHead.snp.makeConstraints { (maker) in
-            maker.width.equalToSuperview().offset(-16)
+            maker.width.equalToSuperview().offset(-Constant.size.paddingView)
         }
         
         stackNew.addArrangedSubview(UILabel(text: post.content, textColor: Constant.text.color.black, font: nil)) { (lbPreview) -> (Void) in
             (lbPreview as! UILabel).numberOfLines = 0
             lbPreview.snp.makeConstraints({ (maker) in
-                maker.width.equalToSuperview().offset(-16)
+                maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
             })
             print("Line: \((lbPreview as! UILabel).calculateMaxLines())")
         }
         
         if (post.image.count > 0) {
+//            let containerView = UIView(frame: CGRect(x:0,y:0,width:320,height:500))
+//            let imageView = UIImageView()
+//
+//            if let image = UIImage(named: "a_image") {
+//                let ratio = image.size.width / image.size.height
+//                if containerView.frame.width > containerView.frame.height {
+//                    let newHeight = containerView.frame.width / ratio
+////                    imageView.frame.size = CGSize(width: containerView.frame.width, height: newHeight)
+//                }
+//                else{
+//                    let newWidth = containerView.frame.height * ratio
+////                    imageView.frame.size = CGSize(width: newWidth, height: containerView.frame.height)
+//                }
+//            }
             stackNew.addArrangedSubview(UIImageView()) { (ivPreview) -> (Void) in
+                let image = UIImage(named: post.image[0])!
                 ivPreview.snp.makeConstraints({ (maker) in
-                    maker.width.equalToSuperview().offset(-16)
-                    maker.height.equalTo(ivPreview.snp.width).multipliedBy(0.75)
+                    maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
+                    maker.height.equalTo(ivPreview.snp.width).multipliedBy(image.size.height / image.size.width)
                 })
-                (ivPreview as! UIImageView).image = UIImage(named: post.image[0])
+//                ivPreview.
+                (ivPreview as! UIImageView).image = image
                 ivPreview.contentMode = .scaleAspectFill
             }
         }
@@ -146,7 +166,7 @@ class TNPostView {
         stackNew.addArrangedSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackLike) -> (Void) in
             stackLike.snp.makeConstraints({ (maker) in
                 maker.height.equalTo(Constant.text.font.normal.lineHeight * 1.5)
-                maker.width.equalToSuperview().offset(-16)
+                maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
             })
             if (actEmoji != nil) {
                 stackLike.isUserInteractionEnabled = true
@@ -205,7 +225,7 @@ class TNPostView {
         stackNew.addArrangedSubview(UIView()) { (separate) -> (Void) in
             separate.snp.makeConstraints({ (maker) in
                 maker.height.equalTo(Constant.size.separatorHeight)
-                maker.width.equalToSuperview().offset(-16)
+                maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
             })
             separate.backgroundColor = Constant.color.separate
         }
@@ -220,7 +240,7 @@ class TNPostView {
         stackNew.addArrangedSubview(UIView()) { (viewAction) -> (Void) in
             viewAction.snp.makeConstraints({ (maker) in
                 maker.height.equalTo(Constant.text.font.normal.lineHeight * 1.5)
-                maker.width.equalToSuperview().offset(-16)
+                maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
             })
             viewAction.addSubview(UIView(), design: { (viewLike) -> (Void) in
                 viewLike.snp.makeConstraints({ (maker) in
@@ -284,7 +304,7 @@ class TNPostView {
                         maker.center.equalToSuperview()
                         maker.height.lessThanOrEqualToSuperview()
                     })
-                    (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_comment-1")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
+                    (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_comment")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
                         imgLike.snp.makeConstraints({ (maker) in
                             maker.width.equalTo(imgLike.snp.height)
                             maker.height.equalTo(Constant.text.font.normal.lineHeight)
@@ -299,10 +319,10 @@ class TNPostView {
         return newView
     }
     
-    static func newPost() -> (UIView){
+    static func newPost(actAvatar : UIGestureRecognizer?, actNew : UIGestureRecognizer?, actPic : UIGestureRecognizer?) -> (UIView){
         let viewContainer = UIView()
         viewContainer.snp.makeConstraints { (maker) in
-            maker.height.equalTo(Constant.size.avatarNormal + 16)
+            maker.height.equalTo(Constant.size.avatarNormal + Constant.size.paddingView)
         }
         
         let stackNew = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 8, design: nil)
@@ -310,14 +330,20 @@ class TNPostView {
         stackNew.snp.makeConstraints { (maker) in
             maker.center.size.equalToSuperview()
         }
-        stackNew.layoutMargins = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        stackNew.layoutMargins = UIEdgeInsets(top: 0, left: Constant.size.paddingView, bottom: 0, right: Constant.size.paddingView)
         stackNew.isLayoutMarginsRelativeArrangement = true
         
         let avatar = ReuseForms.btnAvatar()
+        if (actAvatar != nil) {
+            avatar.addGestureRecognizer(actAvatar!)
+        }
         stackNew.addArrangedSubview(avatar)
 
         let buttonNew = UIButton(title: "Viết gì đó cho cả lớp", font: Constant.text.font.normal, titleColor: Constant.text.color.black, backColor: .clear, action: nil)
         stackNew.addArrangedSubview(buttonNew)
+        if (actNew != nil) {
+            buttonNew.addGestureRecognizer(actNew!)
+        }
         buttonNew.snp.makeConstraints { (maker) in
             maker.height.equalToSuperview()
         }
@@ -329,6 +355,9 @@ class TNPostView {
         btnLibrary.snp.makeConstraints { (maker) in
             maker.height.equalTo(Constant.size.btnIcon)
             maker.width.equalTo(btnLibrary.snp.height)
+        }
+        if (actPic != nil) {
+            btnLibrary.addGestureRecognizer(actPic!)
         }
         btnLibrary.setImage(UIImage(named: "ic_photo")?.withRenderingMode(.alwaysTemplate), for: .normal)
         btnLibrary.imageView?.contentMode = .scaleAspectFit

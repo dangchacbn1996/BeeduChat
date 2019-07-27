@@ -17,17 +17,9 @@ class TNBaseViewController : UIViewController {
     var navigation = UIView()
     var naviSeparate = UIView()
     
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-//
-//    convenience init() {
-//        self.init()
-//    }
-    
-//    init() {
-//        super.init()
-//    }
+    override func viewDidLoad() {
+        self.view.backgroundColor = .white
+    }
     
     func setNavigation(image : UIImage?, leftAction : UITapGestureRecognizer?){
         self.view.addSubview(navigation)
@@ -52,7 +44,7 @@ class TNBaseViewController : UIViewController {
             naviBtnLeft.addGestureRecognizer(leftAction!)
         }
         naviBtnLeft.snp.makeConstraints { (maker) in
-            maker.left.equalToSuperview().offset(Constant.size.padding)
+            maker.left.equalToSuperview().offset(Constant.size.paddingView)
             maker.centerY.equalToSuperview()
             maker.height.width.equalTo(Constant.size.btnIcon)
         }
@@ -62,7 +54,7 @@ class TNBaseViewController : UIViewController {
             naviBtnRight?.tintColor = Constant.color.iconColor
             naviContent.addSubview(naviBtnRight!)
             naviBtnRight!.snp.makeConstraints({ (maker) in
-                maker.right.equalToSuperview().offset(-Constant.size.padding)
+                maker.right.equalToSuperview().offset(-Constant.size.paddingView)
                 maker.centerY.equalToSuperview()
                 maker.height.width.equalTo(Constant.size.btnIcon)
             })

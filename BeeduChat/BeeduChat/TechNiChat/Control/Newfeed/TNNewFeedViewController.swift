@@ -21,6 +21,7 @@ class TNNewFeedViewController : TNBaseViewController {
     let lbSubTitle = UILabel(text: "@fox.class", textColor: Constant.text.color.black, font: nil)
     var userInfoView : UIView!
     var tablePost = UITableView()
+    var pinList : [Int] = []
     
     override func viewDidLoad() {
         setupUI()
@@ -30,47 +31,52 @@ class TNNewFeedViewController : TNBaseViewController {
         tablePost.setContentOffset(.zero, animated: true)
     }
     
-    @objc func openMessenge(){
-        let viewInfo = TNChatManagerViewController()
-        viewInfo.modalPresentationStyle = .overFullScreen
-        self.view.window!.layer.add(Constant.rightToLeftTrans(), forKey: kCATransition)
-        self.present(viewInfo, animated: false, completion: nil)
+    @objc func newPost(){
+        let vc = TNNewPostViewController()
+        vc.delegate = self
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
-extension TNNewFeedViewController : UIScrollViewDelegate {
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        naviLastOffset = scrollView.contentOffset.y
-        naviLastHeight = naviConstraint.constant
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
-        
-        var newHeight = naviLastHeight + distance
-        print("Scroll----------------")
-        print("ScrollHeight: \(naviConstraint.constant)")
-        print("ScrollDistance  : \(distance)")
-        print("ScrollNewHeight: \(newHeight)")
-        if (newHeight > Constant.size.naviHeight) {
-            newHeight = Constant.size.naviHeight + UIApplication.shared.statusBarFrame.height
-        } else if (newHeight < UIApplication.shared.statusBarFrame.height + 1) {
-            newHeight = UIApplication.shared.statusBarFrame.height + 1
-        }
-        naviConstraint.constant = newHeight
-        var alpha = (newHeight - UIApplication.shared.statusBarFrame.height) / Constant.size.naviHeight
-        if (alpha < 0) {
-            alpha = 0
-        }
-        if (alpha > 1) {
-            alpha = 1
-        }
-        print("Alpha: \(alpha)")
-        navigation.subviews[0].alpha = alpha
-        naviSeparate.alpha = 1 - alpha
+extension TNNewFeedViewController : TNNewPostViewDelegate {
+    func refreshData() {
+        tablePost.reloadData()
     }
 }
+
+//extension TNNewFeedViewController : UIScrollViewDelegate {
+//
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        naviLastOffset = scrollView.contentOffset.y
+//        naviLastHeight = naviConstraint.constant
+//    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
+//
+//        var newHeight = naviLastHeight + distance
+//        print("Scroll----------------")
+//        print("ScrollHeight: \(naviConstraint.constant)")
+//        print("ScrollDistance  : \(distance)")
+//        print("ScrollNewHeight: \(newHeight)")
+//        if (newHeight > Constant.size.naviHeight) {
+//            newHeight = Constant.size.naviHeight + UIApplication.shared.statusBarFrame.height
+//        } else if (newHeight < UIApplication.shared.statusBarFrame.height + 1) {
+//            newHeight = UIApplication.shared.statusBarFrame.height + 1
+//        }
+//        naviConstraint.constant = newHeight
+//        var alpha = (newHeight - UIApplication.shared.statusBarFrame.height) / Constant.size.naviHeight
+//        if (alpha < 0) {
+//            alpha = 0
+//        }
+//        if (alpha > 1) {
+//            alpha = 1
+//        }
+//        print("Alpha: \(alpha)")
+//        navigation.subviews[0].alpha = alpha
+//        naviSeparate.alpha = 1 - alpha
+//    }
+//}
 
 extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,7 +85,9 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TNNewPostCell.identify, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: TNNewPostCell.identify, for: indexPath) as! TNNewPostCell
+            cell.actNew = UITapGestureRecognizer(target: self, action: #selector(newPost))
+            cell.setupUI()
             cell.selectionStyle = .none
             return cell
         }
@@ -88,6 +96,8 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
         cell.actAvatar = UITapGestureRecognizer(target: self, action: #selector(avatarTap(_:)))
         cell.actLike = UITapGestureRecognizer(target: self, action: #selector(tapLike(_:)))
         cell.actEmoji = UITapGestureRecognizer(target: self, action: #selector(tapEmoji(_:)))
+        cell.actPin = UITapGestureRecognizer(target: self, action: #selector(pinCell(_:)))
+        cell.isPin = pinList.contains(indexPath.row)
         cell.data = FixedData.newFeedData[indexPath.row - 1]
         return cell
     }
@@ -133,6 +143,25 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
             view.data = FixedData.newFeedData[indexPath.row - 1].emotion
         }
     }
+    
+    @objc func pinCell(_ gesture : UITapGestureRecognizer) {
+        let pos = gesture.location(in: self.tablePost)
+        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            var target = -1
+            for index in 0..<pinList.count {
+                if (pinList[index] == indexPath.row) {
+                    target = index
+                    break
+                }
+            }
+            if (target == -1) {
+                pinList.append(indexPath.row)
+            } else {
+                pinList.remove(at: target)
+            }
+        }
+        tablePost.reloadData()
+    }
 }
 
 extension TNNewFeedViewController {
@@ -142,8 +171,7 @@ extension TNNewFeedViewController {
         self.tabBarItem.title = "Bảng tin"
 //        self.tabBarItem.image = UIImage(named: "ic_library")
         naviBtnRight = UIButton(frame: .zero)
-        naviBtnRight!.setImage(UIImage(named: "ic_mess")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        naviBtnRight?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openMessenge)))
+        naviBtnRight!.setImage(UIImage(named: "ic_notification")?.withRenderingMode(.alwaysTemplate), for: .normal)
         naviLbTitle = UILabel(text: "Bảng tin",
                               textColor: Constant.text.color.black,
                               font: Constant.text.font.customFont(
@@ -156,7 +184,7 @@ extension TNNewFeedViewController {
         
         naviConstraint = navigation.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
         naviConstraint.isActive = true
-        naviSeparate.alpha = 0
+        naviSeparate.alpha = 1
         
         self.view.addSubview(tablePost)
         tablePost.snp.makeConstraints { (maker) in

@@ -12,10 +12,12 @@ import SnapKit
 class TNNewPostCell : UITableViewCell {
     
     static let identify = "TNNewPostCell"
+    var actAvatar : UIGestureRecognizer?
+    var actNew : UIGestureRecognizer?
+    var actPic : UIGestureRecognizer?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,7 +32,7 @@ class TNNewPostCell : UITableViewCell {
                 maker.top.centerX.width.equalToSuperview()
                 maker.height.equalToSuperview().offset(-8)
             })
-            contentBack.addSubview(TNPostView.newPost(), design: { (post) -> (Void) in
+            contentBack.addSubview(TNPostView.newPost(actAvatar: self.actAvatar, actNew: self.actNew, actPic: self.actPic), design: { (post) -> (Void) in
                 post.snp.makeConstraints({ (maker) in
                     maker.center.size.equalToSuperview()
                 })

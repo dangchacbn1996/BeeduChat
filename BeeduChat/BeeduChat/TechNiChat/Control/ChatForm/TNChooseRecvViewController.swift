@@ -119,7 +119,7 @@ extension TNChooseRecvViewController{
             self.btnSearch.snp.makeConstraints({ (maker) in
                 //                maker.left.equalToSuperview()
                 maker.height.equalTo(self.btnSearch.snp.width)
-                maker.height.equalToSuperview().multipliedBy(0.7)
+                maker.height.equalTo(Constant.size.btnIcon)
                 maker.centerY.equalToSuperview()
                 maker.left.equalToSuperview().offset(8)
                 
@@ -127,7 +127,7 @@ extension TNChooseRecvViewController{
 //            self.btnSearch.backgroundColor = UIColor.red
             self.btnSearch.setImage(UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
             self.btnSearch.tintColor = Constant.color.iconColor
-            self.btnSearch.contentMode = .scaleToFill
+            self.btnSearch.imageView?.contentMode = .scaleAspectFit
             //add text field
             srcView.addSubview(self.txtSearch)
             self.txtSearch.snp.makeConstraints({ (maker) in

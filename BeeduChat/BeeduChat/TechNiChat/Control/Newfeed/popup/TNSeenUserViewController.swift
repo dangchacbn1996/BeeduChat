@@ -111,26 +111,26 @@ extension TNSeenUserViewController : UIScrollViewDelegate {
 //            if yOffset >= contentPos[0] && isScrollUp
 //        }
         
-//        if scrollView == self.scrollView {
-//            if yOffset >= contentPos[0] && tableSeen.contentOffset.y <= 0 {
-//                scrollView.isScrollEnabled = false
-//                tableSeen.isScrollEnabled = true
-//            }
-//            contentView.subviews[0].alpha = scrollView.contentOffset.y / (scrollView.contentSize.height / contentRatio)
-//            if (scrollView.contentOffset.y <= 0) {
-//                self.dismiss(animated: false, completion: nil)
-//            }
-//        }
-//
-//        if scrollView == self.tableSeen {
-//            print("tableOffset: \(isScrollUp)")
-//            print("tableOffset: \(yOffset)")
-//            print("tableOffset:-------------")
-//            if yOffset <= 0 && isScrollUp == false {
-//                self.scrollView.isScrollEnabled = true
-//                self.tableSeen.isScrollEnabled = false
-//            }
-//        }
+        if scrollView == self.scrollView {
+            if yOffset >= contentPos[0] && tableSeen.contentOffset.y <= 0 {
+                scrollView.isScrollEnabled = false
+                tableSeen.isScrollEnabled = true
+            }
+            contentView.subviews[0].alpha = scrollView.contentOffset.y / (scrollView.contentSize.height / contentRatio)
+            if (scrollView.contentOffset.y <= 0) {
+                self.dismiss(animated: false, completion: nil)
+            }
+        }
+
+        if scrollView == self.tableSeen {
+            print("tableOffset: \(isScrollUp)")
+            print("tableOffset: \(yOffset)")
+            print("tableOffset:-------------")
+            if yOffset <= 0 && isScrollUp == false {
+                self.scrollView.isScrollEnabled = true
+                self.tableSeen.isScrollEnabled = false
+            }
+        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

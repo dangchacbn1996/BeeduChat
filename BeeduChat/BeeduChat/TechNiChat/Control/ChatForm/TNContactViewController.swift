@@ -11,7 +11,7 @@ import SnapKit
 
 class TNContactViewController: UIViewController {
     var navigationView = UIView()
-    var stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 5, design: nil)
+    var stackView = UIStackView(axis: .horizontal, distribution: .equalCentering, alignment: .center, spacing: 5, design: nil)
     var lblTitle = UILabel()
     var btnBack = UIButton()
     var searchView = UIView()
@@ -76,7 +76,7 @@ extension TNContactViewController{
             maker.right.equalToSuperview()
         }
         self.btnBack.setImage(UIImage(named: "ic_cancel")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.btnBack.contentMode = .scaleAspectFit
+        self.btnBack.imageView?.contentMode = .scaleAspectFit
         self.btnBack.tintColor = Constant.color.iconColor
         self.btnBack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goBack)))
     }
@@ -99,7 +99,7 @@ extension TNContactViewController{
             self.btnSearch.snp.makeConstraints({ (maker) in
                 //                maker.left.equalToSuperview()
                 maker.height.equalTo(self.btnSearch.snp.width)
-                maker.height.equalToSuperview().multipliedBy(0.7)
+                maker.height.equalTo(Constant.size.btnIcon)
                 maker.centerY.equalToSuperview()
                 maker.left.equalToSuperview().offset(8)
                 
@@ -107,7 +107,7 @@ extension TNContactViewController{
 //            self.btnSearch.backgroundColor = UIColor.red
             self.btnSearch.setImage(UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
             self.btnSearch.tintColor = Constant.color.iconColor
-            self.btnSearch.contentMode = .scaleToFill
+            self.btnSearch.imageView?.contentMode = .scaleAspectFit
             //add text field
             srcView.addSubview(self.txtSearch)
             self.txtSearch.snp.makeConstraints({ (maker) in

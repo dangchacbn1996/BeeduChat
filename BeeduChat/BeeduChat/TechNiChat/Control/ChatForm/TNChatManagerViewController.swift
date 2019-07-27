@@ -88,6 +88,10 @@ extension TNChatManagerViewController : UITableViewDataSource, UITableViewDelega
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constant.size.rowHeightChat
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -118,17 +122,13 @@ extension TNChatManagerViewController : UITableViewDataSource, UITableViewDelega
 
 extension TNChatManagerViewController : UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 15
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = collectionView.dequeueReusableCell(withReuseIdentifier: TNUserChatCVC.identify, for: indexPath) as! TNUserChatCVC
         item.backgroundColor = UIColor.white
         return item
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constant.size.rowHeightChat
     }
 }
 
@@ -158,7 +158,7 @@ extension TNChatManagerViewController{
                                 size: Constant.text.size.large,
                                 weight: .Bold
         ))
-        setNavigation(image: UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), leftAction: UITapGestureRecognizer(target: self, action: #selector(goBack)))
+        setNavigation(image: UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), leftAction: nil)
     }
     func addCeparate(){
         self.view.addSubview(ceparateView)
@@ -189,14 +189,14 @@ extension TNChatManagerViewController{
             srcView.addSubview(self.btnSearch)
             self.btnSearch.snp.makeConstraints({ (maker) in
                 maker.width.equalTo(self.btnSearch.snp.height)
-                maker.height.equalToSuperview()
+                maker.height.equalTo(Constant.size.btnIcon)
                 maker.centerY.equalToSuperview()
                 maker.left.equalToSuperview().offset(8)
                 
             })
             self.btnSearch.setImage(UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
             self.btnSearch.tintColor = Constant.color.iconColor
-            self.btnSearch.contentMode = .scaleToFill
+            self.btnSearch.imageView?.contentMode = .scaleAspectFit
             
             //add text field
             srcView.addSubview(self.txtSearch)
@@ -212,6 +212,7 @@ extension TNChatManagerViewController{
     
     func UIHisContactBar(){
         self.view.addSubview(historyView)
+        historyView.backgroundColor = .white
         historyView.snp.makeConstraints { (maker) in
             maker.height.equalTo(TNUserChatCVC.cellSize.height)
             maker.width.equalTo(searchView.snp.width)
@@ -227,11 +228,11 @@ extension TNChatManagerViewController{
                 collection.snp.makeConstraints({ (maker) in
                     maker.top.leading.trailing.bottom.equalToSuperview()
                     maker.height.equalToSuperview()
-                    maker.width.equalTo(30 * TNUserChatCVC.cellSize.width)
+                    maker.width.equalTo(15 * TNUserChatCVC.cellSize.width)
                 })
                 (collection as! UICollectionView).delegate = self
                 (collection as! UICollectionView).dataSource = self
-                (collection as! UICollectionView).collectionViewLayout = UICollectionViewFlowLayout()
+                (collection as! UICollectionView).collectionViewLayout = TNCustomCollectionLayout()
                 (collection as! UICollectionView).register(TNUserChatCVC.self, forCellWithReuseIdentifier: TNUserChatCVC.identify)
             })
         }

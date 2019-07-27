@@ -11,7 +11,7 @@ import UIKit
 class TNUserChatCVC: UICollectionViewCell {
     
     static let identify = "TNUserChatCVC"
-    static let cellSize = CGSize(width: Constant.size.avatarBig + 16, height: Constant.size.avatarBig + 16)
+    static let cellSize = CGSize(width: Constant.size.avatarNormal + 16, height: Constant.size.avatarNormal + 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,9 +32,9 @@ extension TNUserChatCVC {
                 maker.center.height.equalToSuperview()
                 maker.width.equalToSuperview().offset(-16)
             })
-            (stackMain as! UIStackView).addArrangedSubview(ReuseForms.imageBig(), design: { (avatar) -> (Void) in
+            (stackMain as! UIStackView).addArrangedSubview(ReuseForms.btnAvatar(), design: { (avatar) -> (Void) in
                 avatar.snp.makeConstraints({ (maker) in
-                    maker.height.width.equalTo(Constant.size.avatarBig)
+                    maker.height.width.equalTo(Constant.size.avatarNormal)
                 })
             })
             (stackMain as! UIStackView).addArrangedSubview(UILabel(text: "User", textColor: Constant.text.color.black, font: Constant.text.font.normal))

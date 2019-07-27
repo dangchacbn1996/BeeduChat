@@ -12,8 +12,11 @@ class TNCustomCollectionLayout : UICollectionViewFlowLayout {
     override init() {
         super.init()
         itemSize = TNUserChatCVC.cellSize
-        minimumLineSpacing = 10
+        estimatedItemSize = TNUserChatCVC.cellSize
+        minimumInteritemSpacing = 0
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
