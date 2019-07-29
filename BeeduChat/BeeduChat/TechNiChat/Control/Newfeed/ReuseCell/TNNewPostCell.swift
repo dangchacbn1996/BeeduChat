@@ -25,12 +25,11 @@ class TNNewPostCell : UITableViewCell {
     }
     
     func setupUI(){
-        self.backgroundColor = Constant.color.separateNewFeed
         self.addSubview(UIView()) { (contentBack) -> (Void) in
             contentBack.backgroundColor = Constant.color.postBack
             contentBack.snp.makeConstraints({ (maker) in
                 maker.top.centerX.width.equalToSuperview()
-                maker.height.equalToSuperview().offset(-8)
+                maker.height.equalToSuperview()
             })
             contentBack.addSubview(TNPostView.newPost(actAvatar: self.actAvatar, actNew: self.actNew, actPic: self.actPic), design: { (post) -> (Void) in
                 post.snp.makeConstraints({ (maker) in

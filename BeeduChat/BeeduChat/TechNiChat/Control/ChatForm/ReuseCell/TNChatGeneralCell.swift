@@ -65,7 +65,19 @@ extension TNChatGeneralCell {
             maker.centerY.equalToSuperview()
             maker.height.equalToSuperview().offset(-16)
         })
-        
+        self.addSubview(UIView()) { (noti) -> (Void) in
+            noti.snp.makeConstraints({ (maker) in
+                maker.width.equalTo(noti.snp.height)
+                maker.width.equalTo(16)
+                maker.bottom.equalTo(self.imAvatar.snp.top).offset(Constant.size.avatarBig * 3 / 4 + 12)
+                maker.trailing.equalTo(self.imAvatar.snp.leading).offset(Constant.size.avatarBig * 3 / 4 + 12)
+            })
+            noti.backgroundColor = Constant.color.btnStartGradient
+            noti.layer.cornerRadius = 8
+            noti.clipsToBounds = true
+            noti.layer.borderWidth = 2
+            noti.layer.borderColor = UIColor.white.cgColor
+        }
         
         self.addSubview(lbTime)
         lbTime.snp.makeConstraints({ (maker) in

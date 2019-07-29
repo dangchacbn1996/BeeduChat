@@ -38,9 +38,20 @@ class TNContactViewController: UIViewController {
         edgeGes.edges = .left
         self.view.addGestureRecognizer(edgeGes)
     }
+    
     @objc func goBack(){
         Constant.animationTo(view: self, type: .dismiss)
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    @objc func addFunction(){
+        let view = TNActionSheetViewController()
+        view.modalPresentationStyle = .overCurrentContext
+        view.data = [TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1")]
+        self.present(view, animated: false, completion: nil)
     }
 }
 extension TNContactViewController{
@@ -148,6 +159,8 @@ extension TNContactViewController{
         lblAdd.textColor = UIColorFromRGB(rgbValue: 0x4a658d)
         lblAdd.text = "Thêm"
         lblAdd.font = UIFont(name:"HelveticaNeue", size: 14)
+        lblAdd.isUserInteractionEnabled = true
+        lblAdd.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addFunction)))
         contentView.addSubview(tbvContent)
         tbvContent.snp.makeConstraints { (maker) in
             maker.top.equalTo(lblContent.snp.bottom).offset(8)

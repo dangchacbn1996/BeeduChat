@@ -44,40 +44,6 @@ extension TNNewFeedViewController : TNNewPostViewDelegate {
     }
 }
 
-//extension TNNewFeedViewController : UIScrollViewDelegate {
-//
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        naviLastOffset = scrollView.contentOffset.y
-//        naviLastHeight = naviConstraint.constant
-//    }
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let distance : CGFloat = naviLastOffset - scrollView.contentOffset.y
-//
-//        var newHeight = naviLastHeight + distance
-//        print("Scroll----------------")
-//        print("ScrollHeight: \(naviConstraint.constant)")
-//        print("ScrollDistance  : \(distance)")
-//        print("ScrollNewHeight: \(newHeight)")
-//        if (newHeight > Constant.size.naviHeight) {
-//            newHeight = Constant.size.naviHeight + UIApplication.shared.statusBarFrame.height
-//        } else if (newHeight < UIApplication.shared.statusBarFrame.height + 1) {
-//            newHeight = UIApplication.shared.statusBarFrame.height + 1
-//        }
-//        naviConstraint.constant = newHeight
-//        var alpha = (newHeight - UIApplication.shared.statusBarFrame.height) / Constant.size.naviHeight
-//        if (alpha < 0) {
-//            alpha = 0
-//        }
-//        if (alpha > 1) {
-//            alpha = 1
-//        }
-//        print("Alpha: \(alpha)")
-//        navigation.subviews[0].alpha = alpha
-//        naviSeparate.alpha = 1 - alpha
-//    }
-//}
-
 extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return FixedData.newFeedData.count + 1
@@ -93,11 +59,6 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: TNPostInfoCell.identify, for: indexPath) as! TNPostInfoCell
         cell.selectionStyle = .none
-//        cell.ivAvatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarTap(_:))))
-//        cell.actAvatar =
-//        cell.actLike = UITapGestureRecognizer(target: self, action: #selector(tapLike(_:)))
-//        cell.actEmoji = UITapGestureRecognizer(target: self, action: #selector(tapEmoji(_:)))
-//        cell.actPin = UITapGestureRecognizer(target: self, action: #selector(pinCell(_:)))
         cell.isPin = pinList.contains(indexPath.row)
         cell.data = FixedData.newFeedData[indexPath.row - 1]
         cell.delegate = self
@@ -106,7 +67,7 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row != 0){
-            let viewInfo = TNPostInfoViewController.createInstance(index : indexPath.row - 1)
+            let viewInfo = TNInfoViewController.createInstance(index : indexPath.row - 1)
             Constant.animationTo(view: self, type: .push)
             self.present(viewInfo, animated: false, completion: nil)
         }
@@ -114,6 +75,27 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
 }
 
 extension TNNewFeedViewController : TNPostInfoDelegate {
+    func actPostMore(_ gesture: UIGestureRecognizer) {
+        let view = TNActionSheetViewController()
+        view.modalPresentationStyle = .overCurrentContext
+        view.data = [TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1")]
+        self.present(view, animated: false, completion: nil)
+        
+    }
+    
+    func actPostImageView(_ gesture: UIGestureRecognizer) {
+        let pos = gesture.location(in: self.tablePost)
+        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            let view = TNLibraryImageViewController()
+            view.modalPresentationStyle = .overCurrentContext
+            self.present(view, animated: false, completion: nil)
+            view.data = FixedData.newFeedData[indexPath.row - 1].image
+        }
+    }
+    
     func actPostPin(_ gesture: UIGestureRecognizer) {
         let pos = gesture.location(in: self.tablePost)
         if let indexPath = self.tablePost.indexPathForRow(at: pos) {
@@ -164,13 +146,6 @@ extension TNNewFeedViewController : TNPostInfoDelegate {
     
     func actPostAvatar(_ gesture: UIGestureRecognizer) {
         print("Pin avatar")
-//        let pos = gesture.location(in: self.tablePost)
-//        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
-//            let view = TNSeenUserViewController()
-//            view.modalPresentationStyle = .overCurrentContext
-//            self.present(view, animated: false, completion: nil)
-//            view.data = FixedData.newFeedData[indexPath.row - 1].emotion
-//        }
     }
 }
 
@@ -179,7 +154,6 @@ extension TNNewFeedViewController {
         self.view.backgroundColor = Constant.color.naviBack
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarItem.title = "Bảng tin"
-//        self.tabBarItem.image = UIImage(named: "ic_library")
         naviBtnRight = UIButton(frame: .zero)
         naviBtnRight!.setImage(UIImage(named: "ic_notification")?.withRenderingMode(.alwaysTemplate), for: .normal)
         naviLbTitle = UILabel(text: "Bảng tin",
@@ -191,6 +165,20 @@ extension TNNewFeedViewController {
         naviLbTitle?.isUserInteractionEnabled = true
         naviLbTitle?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scrollNew)))
         setNavigation(image: UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), leftAction: nil)
+        
+        self.view.addSubview(UIView()) { (noti) -> (Void) in
+            noti.snp.makeConstraints({ (maker) in
+                maker.width.equalTo(noti.snp.height)
+                maker.width.equalTo(12)
+                maker.bottom.equalTo(self.naviBtnLeft.snp.top).offset(Constant.size.btnIcon * 3 / 4 + 8)
+                maker.trailing.equalTo(self.naviBtnLeft.snp.leading).offset(Constant.size.btnIcon * 3 / 4 + 8)
+            })
+            noti.backgroundColor = UIColor(255,138,101)
+            noti.layer.cornerRadius = 6
+            noti.clipsToBounds = true
+            noti.layer.borderWidth = 2
+            noti.layer.borderColor = UIColor.white.cgColor
+        }
         
         naviConstraint = navigation.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
         naviConstraint.isActive = true

@@ -76,7 +76,7 @@ extension TNChooseRecvCell{
             maker.width.equalTo(24)
             maker.height.equalTo(btnAction.snp.width)
         })
-        btnAction.tintColor = UIColor.green
+        btnAction.tintColor = Constant.color.btnStartGradient
         btnAction.stateChangeAnimation = .bounce(.fill)
         btnAction.secondaryCheckmarkTintColor = .white
         btnAction.checkmarkLineWidth = 2

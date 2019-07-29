@@ -9,6 +9,11 @@
 import UIKit
 import SnapKit
 
+@objc protocol TNCommentCellDelegate {
+    @objc func actCommentLike(_ gesture : UIGestureRecognizer)
+    @objc func actCommentAnswer(_ gesture : UIGestureRecognizer)
+}
+
 struct TNCommentGeneralModel {
     var avatar : UIImage? = nil
     var name : String = ""
@@ -30,13 +35,24 @@ class TNCommentCell : UITableViewCell {
                             textColor: Constant.text.color.black,
                             font: Constant.text.font.normal)
     var btnLike = UIButton(title: "Thích",
-                           font: Constant.text.font.customFont(size: Constant.text.size.small, weight: .Bold),
+                           font: Constant.text.font.normal,
                            titleColor: Constant.color.btnTitle,
                            backColor: .clear, action: nil)
     var btnComment = UIButton(title: "Bình luận",
-                              font: Constant.text.font.customFont(size: Constant.text.size.small, weight: .Bold),
+                              font: Constant.text.font.normal,
                               titleColor: Constant.color.btnTitle,
                               backColor: .clear, action: nil)
+    var hasLike = false {
+        didSet{
+            btnLike.titleLabel?.font = self.hasLike ? Constant.text.font.customFont(size: Constant.text.size.normal, weight: .Bold) : Constant.text.font.normal
+        }
+    }
+    var delegate : TNCommentCellDelegate? = nil {
+        didSet {
+            btnLike.addGestureRecognizer(UITapGestureRecognizer(target: delegate!, action: #selector(self.delegate?.actCommentLike(_:))))
+            btnComment.addGestureRecognizer(UITapGestureRecognizer(target: delegate!, action: #selector(self.delegate?.actCommentAnswer(_:))))
+        }
+    }
     var stackMain = UIStackView(axis: .vertical, distribution: .equalSpacing, alignment: .leading, spacing: 4, design: nil)
     var data : TNCommentGeneralModel = TNCommentGeneralModel() {
         didSet {
@@ -48,11 +64,11 @@ class TNCommentCell : UITableViewCell {
             lbContent.text = self.data.content
             if (self.data.isAnswer) {
                 imAvatar.snp.makeConstraints { (maker) in
-                    maker.leading.equalToSuperview().offset(Constant.size.btnIcon + 16)
+                    maker.leading.equalToSuperview().offset(Constant.size.paddingView + Constant.size.btnIcon + 16)
                 }
             } else {
                 imAvatar.snp.makeConstraints { (maker) in
-                    maker.leading.equalToSuperview()
+                    maker.leading.equalToSuperview().offset(Constant.size.paddingView)
                 }
             }
             if (self.data.content.count > self.data.name.count) {

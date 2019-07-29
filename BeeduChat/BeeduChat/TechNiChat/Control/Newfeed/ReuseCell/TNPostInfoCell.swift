@@ -12,8 +12,8 @@ import SnapKit
 @objc protocol TNPostInfoDelegate {
     @objc func actPostAvatar(_ gesture : UIGestureRecognizer)
     @objc func actPostPin(_ gesture : UIGestureRecognizer)
-//    @objc func actPostMore(_ gesture : UIGestureRecognizer)
-//    @objc func actPostImageView(_ gesture : UIGestureRecognizer)
+    @objc func actPostMore(_ gesture : UIGestureRecognizer)
+    @objc func actPostImageView(_ gesture : UIGestureRecognizer)
     @objc func actPostEmoji(_ gesture : UIGestureRecognizer)
     @objc func actPostEmotion(_ gesture : UIGestureRecognizer)
     
@@ -45,12 +45,22 @@ class TNPostInfoCell : UITableViewCell {
     private let lbEmotion = UILabel(text: "Thích", textColor: Constant.text.color.black, font: nil)
     private let ivEmotion = UIImageView(image: UIImage(named: "ic_like"))
     private let viewEmotion = UIView()
+    private var vSeparate = UIView()
+    var hideSeparate = false {
+        didSet{
+            vSeparate.snp.makeConstraints { (maker) in
+                maker.height.equalTo(self.hideSeparate ? 0 : Constant.size.paddingView)
+            }
+        }
+    }
     var delegate : TNPostInfoDelegate? = nil {
         didSet{
             ivAvatar.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostAvatar(_:))))
             btnPin.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostPin(_:))))
             viewEmoji.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostEmoji(_:))))
             viewEmotion.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostEmotion(_:))))
+            ivContent.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostImageView(_:))))
+            btnMore.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostMore(_:))))
         }
     }
     
@@ -76,9 +86,6 @@ class TNPostInfoCell : UITableViewCell {
                 ivContent.image = image
             } else {
                 ivContent.isHidden = true
-//                ivContent.snp.makeConstraints { (maker) in
-//                    maker.height.equalTo(0)
-//                }
             }
             ivEmotion.image = UIImage(named: TNIcon.like.rawValue)?.withRenderingMode(.alwaysTemplate)
             lbEmotion.text = "Thích"
@@ -117,82 +124,95 @@ class TNPostInfoCell : UITableViewCell {
                 }
             }
             vEmote.subviews.forEach({$0.removeFromSuperview()})
+            viewEmoji.isHidden = true
             if (data.emotion.count > 0) {
+                viewEmoji.isHidden = false
                 lbEmojiCount.text = "\(data.emotion.count)"
                 var haveLike = false
-                var curEmoji : TNEmoji? = nil
-                var nextEmoji : TNEmoji? = nil
-                var lastEmoji : TNEmoji? = nil
+                var firstEmoji : TNEmoji? = nil
+                var secondEmoji : TNEmoji? = nil
+                var thirdEmoji : TNEmoji? = nil
                 for emoji in data.emotion {
                     if (emoji.emote == .like) {
                         haveLike = true
-                    } else if (nextEmoji == nil) {
-                        nextEmoji = emoji.emote
-                    } else if emoji.emote != nextEmoji {
-                        lastEmoji = emoji.emote
-                    } else if emoji.emote != lastEmoji {
-                        curEmoji = emoji.emote
+                    } else if (secondEmoji == nil) {
+                        secondEmoji = emoji.emote
+                    } else if emoji.emote != secondEmoji {
+                        thirdEmoji = emoji.emote
+                    } else if emoji.emote != thirdEmoji {
+                        firstEmoji = emoji.emote
                         break
                     }
                 }
+                
+                var firstEmote : UIImageView? = nil
+                var secondEmote : UIImageView? = nil
+                var thirdEmote : UIImageView? = nil
+                
                 if (haveLike) {
-                    vEmote.addSubview(UIImageView(image: UIImage(named: "emoji_like")), design: { (ivLike) -> (Void) in
-                        ivLike.contentMode = .scaleAspectFit
-                        ivLike.snp.makeConstraints({ (maker) in
-                            maker.height.equalToSuperview().multipliedBy(0.7)
-                            maker.centerY.equalToSuperview()
-                            maker.width.equalTo(ivLike.snp.height)
-                            maker.leading.equalToSuperview()
-                        })
-                    })
-                } else  if (curEmoji != nil) {
-                    vEmote.addSubview(UIImageView(image: UIImage(named: curEmoji!.rawValue)), design: { (ivLike) -> (Void) in
-                        ivLike.contentMode = .scaleAspectFit
-                        ivLike.snp.makeConstraints({ (maker) in
-                            maker.height.equalToSuperview().multipliedBy(0.7)
-                            maker.centerY.equalToSuperview()
-                            maker.width.equalTo(ivLike.snp.height)
-                            maker.leading.equalToSuperview()
-                        })
+                    firstEmote = UIImageView(image: UIImage(named: "emoji_like"))
+                } else if (firstEmoji != nil) {
+                    firstEmote = UIImageView(image: UIImage(named: firstEmoji!.rawValue))
+                }
+                
+                if (thirdEmoji != nil) {
+                    thirdEmote = UIImageView(image: UIImage(named: thirdEmoji!.rawValue))
+                    thirdEmote!.contentMode = .scaleAspectFit
+                    vEmote.addSubview(thirdEmote!)
+                    thirdEmote?.layer.cornerRadius = 8
+                    thirdEmote?.clipsToBounds = true
+                    thirdEmote?.layer.borderColor = UIColor.white.cgColor
+                    thirdEmote?.layer.borderWidth = 1
+                    thirdEmote!.snp.makeConstraints({ (maker) in
+                        maker.height.equalTo(16)
+                        maker.centerY.equalToSuperview()
+                        maker.width.equalTo(thirdEmote!.snp.height)
+                        maker.trailing.equalToSuperview()
                     })
                 }
-                if (nextEmoji != nil) {
-                    let nextEmote = UIImageView(image: UIImage(named: nextEmoji!.rawValue))
-                    nextEmote.contentMode = .scaleAspectFit
-                    vEmote.addSubview(nextEmote)
-                    nextEmote.snp.makeConstraints({ (maker) in
-                        maker.height.equalToSuperview().multipliedBy(0.7)
+                
+                if (secondEmoji != nil) {
+                    secondEmote = UIImageView(image: UIImage(named: secondEmoji!.rawValue))
+                    secondEmote!.contentMode = .scaleAspectFit
+                    vEmote.addSubview(secondEmote!)
+                    secondEmote?.layer.cornerRadius = 8
+                    secondEmote?.clipsToBounds = true
+                    secondEmote?.layer.borderColor = UIColor.white.cgColor
+                    secondEmote?.layer.borderWidth = 1
+                    secondEmote!.snp.makeConstraints({ (maker) in
+                        maker.height.equalTo(16)
                         maker.centerY.equalToSuperview()
-                        maker.width.equalTo(nextEmote.snp.height)
-                        if (haveLike || curEmoji != nil) {
-                            maker.leading.equalTo(vEmote.subviews[0].snp.trailing).offset(-4)
+                        maker.width.equalTo(secondEmote!.snp.height)
+                        if (thirdEmote != nil) {
+                            maker.trailing.equalTo(thirdEmote!.snp.leading).offset(4)
                         } else {
-                            maker.leading.equalToSuperview()
-                        }
-                    })
-                    if (lastEmoji != nil) {
-                        vEmote.addSubview(UIImageView(image: UIImage(named: lastEmoji!.rawValue)), design: { (ivEmote) -> (Void) in
-                            ivEmote.contentMode = .scaleAspectFit
-                            ivEmote.snp.makeConstraints({ (maker) in
-                                maker.height.equalToSuperview().multipliedBy(0.7)
-                                maker.width.equalTo(ivEmote.snp.height)
-                                maker.centerY.equalToSuperview()
-                                maker.leading.equalTo(nextEmote.snp.trailing).offset(-4)
-                                maker.trailing.equalToSuperview()
-                            })
-                        })
-                    } else {
-                        nextEmote.snp.makeConstraints { (maker) in
                             maker.trailing.equalToSuperview()
                         }
-                    }
-                } else {
-                    vEmote.subviews[0].snp.makeConstraints { (maker) in
-                        maker.trailing.equalToSuperview()
-                    }
+                        if (firstEmote == nil) {
+                            maker.leading.equalToSuperview()
+                        }
+                    })
                 }
-            } else {
-                viewEmoji.isHidden = true
+                
+                if (firstEmote != nil) {
+                    firstEmote?.contentMode = .scaleAspectFit
+                    vEmote.addSubview(firstEmote!)
+                    firstEmote?.layer.cornerRadius = 8
+                    firstEmote?.clipsToBounds = true
+                    firstEmote?.layer.borderColor = UIColor.white.cgColor
+                    firstEmote?.layer.borderWidth = 1
+                    firstEmote!.snp.makeConstraints({ (maker) in
+                        maker.height.equalTo(16)
+                        maker.centerY.equalToSuperview()
+                        maker.width.equalTo(firstEmote!.snp.height)
+                        maker.leading.equalToSuperview()
+                        if (secondEmote != nil) {
+                            maker.trailing.equalTo(secondEmote!.snp.leading).offset(4)
+                        } else {
+                            maker.trailing.equalToSuperview()
+                        }
+                    })
+                }
             }
             var commentCount = 0
             for item in data.comment {
@@ -214,10 +234,16 @@ class TNPostInfoCell : UITableViewCell {
     }
     
     func setupUI(){
+        self.addSubview(vSeparate)
         self.addSubview(stackNew)
+        vSeparate.backgroundColor = Constant.color.separateNewFeed
+        vSeparate.snp.makeConstraints { (maker) in
+            maker.height.equalTo(Constant.size.paddingView)
+            maker.top.centerX.width.equalToSuperview()
+        }
         stackNew.snp.makeConstraints { (maker) in
             maker.bottom.centerX.width.equalToSuperview()
-            maker.top.equalToSuperview().offset(Constant.size.paddingView)
+            maker.top.equalTo(vSeparate.snp.bottom).offset(Constant.size.paddingView)
         }
         stackNew.addArrangedSubview(stackHead)
         stackHead.snp.makeConstraints { (maker) in
@@ -226,9 +252,6 @@ class TNPostInfoCell : UITableViewCell {
         }
         
         stackHead.addArrangedSubview(ivAvatar)
-//        if (actAvatar != nil) {
-//            avatar.addGestureRecognizer(actAvatar!)
-//        }
         ivAvatar.contentMode = .scaleAspectFill
 
         ivAvatar.snp.makeConstraints { (maker) in
@@ -242,7 +265,6 @@ class TNPostInfoCell : UITableViewCell {
             viewInfo.snp.makeConstraints({ (maker) in
                 maker.height.equalToSuperview()
             })
-            //0
             viewInfo.addSubview(
                 self.lbUserName,
                 design: {
@@ -253,14 +275,12 @@ class TNPostInfoCell : UITableViewCell {
                     maker.height.equalTo(Constant.size.avatarNormal / 2)
                 })
             })
-            //1
             viewInfo.addSubview(self.lbClass)
             self.lbClass.snp.makeConstraints({ (maker) in
                 maker.leading.equalTo(viewInfo.subviews[0].snp.leading)
                 maker.height.equalTo(Constant.size.avatarNormal / 2)
                 maker.top.equalTo(viewInfo.subviews[0].snp.bottom)
             })
-            //2
             viewInfo.addSubview(UIView(), design: { (separate) -> (Void) in
                 separate.backgroundColor = Constant.color.separate
                 separate.snp.makeConstraints({ (maker) in
@@ -270,7 +290,6 @@ class TNPostInfoCell : UITableViewCell {
                     maker.height.equalTo((viewInfo.subviews[1] as! UILabel).font.lineHeight)
                 })
             })
-            //3
             viewInfo.addSubview(self.lbTimePost)
             self.lbTimePost.snp.makeConstraints({ (maker) in
                 maker.leading.equalTo(viewInfo.subviews[2].snp.trailing).offset(4)
@@ -298,6 +317,8 @@ class TNPostInfoCell : UITableViewCell {
             maker.width.equalToSuperview().offset(-Constant.size.paddingView)
         }
         
+        //Content
+        //ImageContent
         stackNew.addArrangedSubview(lbContent)
         lbContent.numberOfLines = 0
         lbContent.snp.makeConstraints({ (maker) in
@@ -306,14 +327,15 @@ class TNPostInfoCell : UITableViewCell {
         
         stackNew.addArrangedSubview(ivContent)
         ivContent.contentMode = .scaleAspectFill
+        ivContent.isUserInteractionEnabled = true
         ivContent.snp.makeConstraints { (maker) in
             maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
-//            maker.height.equalTo(0)
         }
 
+        // Luot thich       Luot xem    Binh luan
         stackNew.addArrangedSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackLike) -> (Void) in
             stackLike.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(Constant.text.font.normal.lineHeight * 1.5)
+                maker.height.equalTo(24)
                 maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
             })
             
@@ -324,13 +346,13 @@ class TNPostInfoCell : UITableViewCell {
                 maker.left.centerY.equalToSuperview()
                 maker.right.height.lessThanOrEqualToSuperview()
             })
-            
             self.viewEmoji.addSubview(self.lbEmojiCount)
             self.lbEmojiCount.snp.makeConstraints({ (maker) in
                 maker.centerY.height.equalToSuperview()
                 maker.trailing.lessThanOrEqualToSuperview()
                 maker.leading.equalTo(self.vEmote.snp.trailing).offset(4)
             })
+            (stackLike as! UIStackView).addArrangedSubview(UIView())
             
             (stackLike as! UIStackView).addArrangedSubview(self.lbComment)
             (stackLike as! UIStackView).addArrangedSubview(self.lbSeenPer)

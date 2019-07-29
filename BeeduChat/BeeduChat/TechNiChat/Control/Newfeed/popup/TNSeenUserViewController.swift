@@ -18,6 +18,20 @@ class TNSeenUserViewController : TNBaseViewController {
     private let contentRatio : CGFloat = 1.8
     private var contentPos : [CGFloat] = []
     private var startScrollY : CGFloat = 0
+    private var listFilter : [TNEmotionModel] = []
+    private var filterType : [TNEmoji] = []
+    private var filter : TNEmoji? = nil {
+        didSet{
+            if (filter != nil) {
+                listFilter = []
+                for item in data {
+                    if (item.emote == self.filter) {
+                        listFilter.append(item)
+                    }
+                }
+            }
+        }
+    }
     var data : [TNEmotionModel] = [] {
         didSet{
             stackType.arrangedSubviews.forEach { (sub) in
@@ -42,21 +56,6 @@ class TNSeenUserViewController : TNBaseViewController {
                             btn.tag = self.filterType.count - 1
                             btn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.filterData(_:))))
                         }
-                    }
-                }
-            }
-        }
-    }
-    
-    private var listFilter : [TNEmotionModel] = []
-    private var filterType : [TNEmoji] = []
-    private var filter : TNEmoji? = nil {
-        didSet{
-            if (filter != nil) {
-                listFilter = []
-                for item in data {
-                    if (item.emote == self.filter) {
-                        listFilter.append(item)
                     }
                 }
             }
@@ -100,16 +99,16 @@ class TNSeenUserViewController : TNBaseViewController {
         }
         tableSeen.reloadData()
     }
+    
+    @objc func goBack(){
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
 }
 
 extension TNSeenUserViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
         let isScrollUp = yOffset > startScrollY
-        
-//        if scrollView == self.scrollView {
-//            if yOffset >= contentPos[0] && isScrollUp
-//        }
         
         if scrollView == self.scrollView {
             if yOffset >= contentPos[0] && tableSeen.contentOffset.y <= 0 {
@@ -134,14 +133,10 @@ extension TNSeenUserViewController : UIScrollViewDelegate {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        if (scrollView == self.tableSeen) {
             startScrollY = scrollView.contentOffset.y
-//        }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("EndDraging: \(scrollView.contentOffset.y)")
-//        scrollView.sc
         if (scrollView == self.scrollView) {
             if (scrollView.contentOffset.y > ((contentPos[0] + contentPos[1]) / 2)) {
                 scrollView.setContentOffset(CGPoint(x: 0, y: contentPos[0]), animated: true)
@@ -199,6 +194,8 @@ extension TNSeenUserViewController {
             })
             back.backgroundColor = UIColor.black.withAlphaComponent(0.9)
             back.alpha = 0
+            back.isUserInteractionEnabled = true
+            back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goBack)))
         }
         contentView.addSubview(viewContainer)
         viewContainer.snp.makeConstraints { (maker) in

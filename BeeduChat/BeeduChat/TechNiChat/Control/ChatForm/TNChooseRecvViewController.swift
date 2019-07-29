@@ -60,6 +60,16 @@ class TNChooseRecvViewController: UIViewController {
     @objc func actGoBack(){
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @objc func addFunction(){
+        let view = TNActionSheetViewController()
+        view.modalPresentationStyle = .overCurrentContext
+        view.data = [TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
+                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1")]
+        self.present(view, animated: false, completion: nil)
+    }
 }
 extension TNChooseRecvViewController{
     func setupUI(){
@@ -187,6 +197,8 @@ extension TNChooseRecvViewController{
         }
         lblAdd.textColor = UIColorFromRGB(rgbValue: 0x4a658d)
         lblAdd.text = "Thêm"
+        lblAdd.isUserInteractionEnabled = true
+        lblAdd.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addFunction)))
         sendGroupView.addSubview(tbvSendGroup)
         tbvSendGroup.snp.makeConstraints { (maker) in
             maker.top.equalTo(lblSendGroup.snp.bottom).offset(8)

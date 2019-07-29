@@ -56,7 +56,14 @@ struct FixedData {
                                                     time: "12:11",
                                                     content: "Tưởng đầu tiên là chú cuội với chị Hằng mà:)",
                                                     isAnswer: false), answer: [
-                                                        TNCommentGeneralModel(avatar: UIImage(named: "user3"), name: "Sky Ferreira", time: "12:12", content: "và sau ngần ấy năm chưa có ai theo đc bước chân của chu Tuân.", isAnswer: true)])]),
+                                                        TNCommentGeneralModel(avatar: UIImage(named: "user3"), name: "Sky Ferreira", time: "12:12", content: "và sau ngần ấy năm chưa có ai theo đc bước chân của chu Tuân.", isAnswer: true)]),
+                          TNCommentModel(commentUser:
+                            TNCommentGeneralModel(avatar: UIImage(named: "user2"),
+                                                  name: "Jaden Smith",
+                                                  time: "12:11",
+                                                  content: "Tưởng đầu tiên là chú cuội với chị Hằng mà:)",
+                                                  isAnswer: false), answer: [
+                                                    TNCommentGeneralModel(avatar: UIImage(named: "user3"), name: "Sky Ferreira", time: "12:12", content: "và sau ngần ấy năm chưa có ai theo đc bước chân của chu Tuân.", isAnswer: true)])]),
         TNPostInfoModel(userId: "123",
                         username: "Charlie Puth",
                         eduClass: "12A2",

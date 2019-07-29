@@ -46,8 +46,6 @@ class TNPostInfoViewController: TNBaseViewController {
     }
     
     @objc func avatarTap(_ gesture : UITapGestureRecognizer){
-//        let pos = gesture.location(in: self.tablePost)
-//        let indexPath = self.tablePost.indexPathForRow(at: pos)
         print("AvatarTap : Avatar")
     }
     

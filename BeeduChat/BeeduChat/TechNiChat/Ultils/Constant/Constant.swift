@@ -25,11 +25,12 @@ struct Constant {
     struct color {
         static let postBack = UIColor.white
         static let separate = UIColor(red: 139/255, green: 148/255, blue: 159/255, alpha: 1.0)
-        static let separateNewFeed = UIColor(144,164,174)
+        static let separateNewFeed = UIColor(224,224,224)
         static let naviBack = UIColor.white
         static let iconColor = UIColor(red: 54/255, green: 54/255, blue: 54/255, alpha: 1.0)
         static let btnTitle = UIColor(68, 138, 255)
         static let commentBack = UIColor(238,238,238)
+        static let btnStartGradient = UIColor(57,162,92)
     }
     
     struct text {
@@ -45,26 +46,27 @@ struct Constant {
         
         struct font {
 //            static let small = UIFont.systemFont(ofSize: Constant.text.size.small)
-            static let small = UIFont(name: "Helvetica", size: Constant.text.size.small)!
-            static let normal = UIFont(name: "Helvetica", size: Constant.text.size.normal)!
-            static let large = UIFont(name: "Helvetica", size: Constant.text.size.large)!
+            static let small = UIFont(name: "Montserrat", size: Constant.text.size.small)!
+            static let normal = UIFont(name: "Montserrat", size: Constant.text.size.normal)!
+            static let large = UIFont(name: "Montserrat", size: Constant.text.size.large)!
             static func customFont(size : CGFloat, weight : Constant.text.font.weight) -> (UIFont) {
-                return UIFont(name: "Helvetica-\(weight.rawValue)", size: size) ?? UIFont(name: "Helvetica", size: size)!
+                return UIFont(name: "Montserrat-\(weight.rawValue)", size: size) ?? UIFont(name: "Montserrat", size: size)!
             }
+            
             enum weight : String {
                 case Regular = "Regular"
                 case Bold = "Bold"
-                case Bold_Italic = "Bold Italic"
-                case Condensed_Black = "Condensed Black"
-                case Condensed_Bold = "Condensed Bold"
+                case Bold_Italic = "BoldItalic"
+//                case Condensed_Black = "Condensed Black"
+//                case Condensed_Bold = "Condensed Bold"
                 case Italic = "Italic"
-                case Light_Italic = "Light Italic"
+//                case Light_Italic = "LightItalic"
                 case Medium = "Medium"
-                case Medium_Italic = "Medium Italic"
-                case Thin = "Thin"
-                case Thin_Italic = "Thin Italic"
-                case UltraLight = "UltraLight"
-                case UltraLight_Italic = "UltraLight Italic"
+                case Medium_Italic = "MediumItalic"
+//                case Thin = "Thin"
+//                case Thin_Italic = "ThinItalic"
+//                case UltraLight = "UltraLight"
+//                case UltraLight_Italic = "UltraLightItalic"
             }
         }
         

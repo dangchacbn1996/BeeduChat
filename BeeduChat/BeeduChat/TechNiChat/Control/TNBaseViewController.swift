@@ -21,6 +21,16 @@ class TNBaseViewController : UIViewController {
         self.view.backgroundColor = .white
     }
     
+    func presentTrans(_ vc: UIViewController){
+        Constant.animationTo(view: self, type: .push)
+        self.present(vc, animated: false, completion: nil)
+    }
+    
+    func dismissTrans(){
+        Constant.animationTo(view : self, type : .dismiss)
+        self.dismiss(animated: false, completion: nil)
+    }
+    
     func setNavigation(image : UIImage?, leftAction : UITapGestureRecognizer?){
         self.view.addSubview(navigation)
         navigation.snp.makeConstraints { (maker) in
