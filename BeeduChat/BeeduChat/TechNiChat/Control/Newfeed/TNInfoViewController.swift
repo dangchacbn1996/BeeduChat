@@ -25,6 +25,7 @@ class TNInfoViewController : TNBaseViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupUI()
     }
     

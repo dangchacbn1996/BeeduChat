@@ -11,6 +11,7 @@
 		3C6FADE21AC9F3E9C4E28FCA /* Pods_BeeduChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DE160B549A5CC7002A01F5 /* Pods_BeeduChatTests.framework */; };
 		50D77C61D9ACD18827DF2046 /* Pods_BeeduChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFE642CAABE5E1153467201 /* Pods_BeeduChatUITests.framework */; };
 		539A8DE022EAA1DF00BD75B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */; };
+		53C329EE22F04D0000494195 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C329ED22F04D0000494195 /* ImagePickerViewController.swift */; };
 		53F35D1722EE96570036EB3B /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53F35D0B22EE96390036EB3B /* Montserrat-Black.otf */; };
 		53F35D1822EE96570036EB3B /* Montserrat-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53F35D0E22EE96390036EB3B /* Montserrat-BlackItalic.otf */; };
 		53F35D1922EE96570036EB3B /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53F35D0922EE96390036EB3B /* Montserrat-Bold.otf */; };
@@ -124,6 +125,7 @@
 		42B464B773D0231856DE8CB0 /* Pods_BeeduChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523DC3FDE4DBAAB7FE649423 /* Pods-BeeduChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeduChatTests.debug.xcconfig"; path = "Target Support Files/Pods-BeeduChatTests/Pods-BeeduChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		53C329ED22F04D0000494195 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		53F35D0522EE96390036EB3B /* Montserrat-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.otf"; sourceTree = "<group>"; };
 		53F35D0622EE96390036EB3B /* Montserrat-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.otf"; sourceTree = "<group>"; };
 		53F35D0722EE96390036EB3B /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				F0F741DC22E9B0860028AB4F /* TNCommentSubViewController.swift */,
 				F0F6C2E222EBF0DD00CDA83C /* TNNewPostViewController.swift */,
 				53F35D2922EEAC440036EB3B /* TNInfoViewController.swift */,
+				53C329ED22F04D0000494195 /* ImagePickerViewController.swift */,
 			);
 			path = Newfeed;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				F0F7423222E9B0860028AB4F /* TNCommentSubViewController.swift in Sources */,
 				F0F7425022E9B0860028AB4F /* TNContactCell.swift in Sources */,
 				F0F7424522E9B0860028AB4F /* Settings+UserDefaults.swift in Sources */,
+				53C329EE22F04D0000494195 /* ImagePickerViewController.swift in Sources */,
 				F0F7424D22E9B0860028AB4F /* TNCreateGroupCell.swift in Sources */,
 				F0F7425422E9B0860028AB4F /* CustomCollectionViewLayout.swift in Sources */,
 				F0F7425822E9B0860028AB4F /* TNContactViewController.swift in Sources */,

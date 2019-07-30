@@ -159,12 +159,12 @@ class TNPostInfoCell : UITableViewCell {
                     thirdEmote = UIImageView(image: UIImage(named: thirdEmoji!.rawValue))
                     thirdEmote!.contentMode = .scaleAspectFit
                     vEmote.addSubview(thirdEmote!)
-                    thirdEmote?.layer.cornerRadius = 8
+                    thirdEmote?.layer.cornerRadius = 10
                     thirdEmote?.clipsToBounds = true
                     thirdEmote?.layer.borderColor = UIColor.white.cgColor
                     thirdEmote?.layer.borderWidth = 1
                     thirdEmote!.snp.makeConstraints({ (maker) in
-                        maker.height.equalTo(16)
+                        maker.height.equalTo(20)
                         maker.centerY.equalToSuperview()
                         maker.width.equalTo(thirdEmote!.snp.height)
                         maker.trailing.equalToSuperview()
@@ -175,12 +175,12 @@ class TNPostInfoCell : UITableViewCell {
                     secondEmote = UIImageView(image: UIImage(named: secondEmoji!.rawValue))
                     secondEmote!.contentMode = .scaleAspectFit
                     vEmote.addSubview(secondEmote!)
-                    secondEmote?.layer.cornerRadius = 8
+                    secondEmote?.layer.cornerRadius = 10
                     secondEmote?.clipsToBounds = true
                     secondEmote?.layer.borderColor = UIColor.white.cgColor
                     secondEmote?.layer.borderWidth = 1
                     secondEmote!.snp.makeConstraints({ (maker) in
-                        maker.height.equalTo(16)
+                        maker.height.equalTo(20)
                         maker.centerY.equalToSuperview()
                         maker.width.equalTo(secondEmote!.snp.height)
                         if (thirdEmote != nil) {
@@ -197,12 +197,12 @@ class TNPostInfoCell : UITableViewCell {
                 if (firstEmote != nil) {
                     firstEmote?.contentMode = .scaleAspectFit
                     vEmote.addSubview(firstEmote!)
-                    firstEmote?.layer.cornerRadius = 8
+                    firstEmote?.layer.cornerRadius = 10
                     firstEmote?.clipsToBounds = true
                     firstEmote?.layer.borderColor = UIColor.white.cgColor
                     firstEmote?.layer.borderWidth = 1
                     firstEmote!.snp.makeConstraints({ (maker) in
-                        maker.height.equalTo(16)
+                        maker.height.equalTo(20)
                         maker.centerY.equalToSuperview()
                         maker.width.equalTo(firstEmote!.snp.height)
                         maker.leading.equalToSuperview()
@@ -335,7 +335,7 @@ class TNPostInfoCell : UITableViewCell {
         // Luot thich       Luot xem    Binh luan
         stackNew.addArrangedSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackLike) -> (Void) in
             stackLike.snp.makeConstraints({ (maker) in
-                maker.height.equalTo(24)
+                maker.height.equalTo(28)
                 maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
             })
             
@@ -353,7 +353,6 @@ class TNPostInfoCell : UITableViewCell {
                 maker.leading.equalTo(self.vEmote.snp.trailing).offset(4)
             })
             (stackLike as! UIStackView).addArrangedSubview(UIView())
-            
             (stackLike as! UIStackView).addArrangedSubview(self.lbComment)
             (stackLike as! UIStackView).addArrangedSubview(self.lbSeenPer)
         }
@@ -366,7 +365,7 @@ class TNPostInfoCell : UITableViewCell {
             separate.backgroundColor = Constant.color.separate
         }
         
-        //Thichs            Binhf luan
+        //Thich            Binh luan
         stackNew.addArrangedSubview(UIView()) { (viewAction) -> (Void) in
             viewAction.snp.makeConstraints({ (maker) in
                 maker.height.equalTo(Constant.text.font.normal.lineHeight * 1.5)

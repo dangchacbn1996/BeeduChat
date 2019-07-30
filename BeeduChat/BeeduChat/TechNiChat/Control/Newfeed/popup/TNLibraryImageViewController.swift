@@ -12,7 +12,7 @@ import SnapKit
 class TNLibraryImageViewController : TNBaseViewController {
     
     private var btnBack = UIButton()
-    private var imageView = UIImageView()
+    var imageView = UIImageView()
     var data : [String] = [] {
         didSet{
             imageView.image = UIImage(named: self.data[0])

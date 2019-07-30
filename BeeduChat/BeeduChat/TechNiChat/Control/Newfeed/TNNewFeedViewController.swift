@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class TNNewFeedViewController : TNBaseViewController {
+class TNNewFeedViewController : TNBaseViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     var naviConstraint : NSLayoutConstraint!
     var naviLastOffset : CGFloat = 0
@@ -22,6 +22,7 @@ class TNNewFeedViewController : TNBaseViewController {
     var userInfoView : UIView!
     var tablePost = UITableView()
     var pinList : [Int] = []
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         setupUI()
@@ -35,6 +36,35 @@ class TNNewFeedViewController : TNBaseViewController {
         let vc = TNNewPostViewController()
         vc.delegate = self
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func btnClicked() {
+        
+        TNImagePickerManager().pickImage(self){ image in
+            //here is the image
+            let view = TNLibraryImageViewController()
+            view.modalPresentationStyle = .overCurrentContext
+            self.present(view, animated: false, completion: nil)
+            view.imageView.image = image
+        }
+        
+//        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+//            print("Button capture")
+//
+//            imagePicker.delegate = self
+//            imagePicker.sourceType = .savedPhotosAlbum
+//            imagePicker.allowsEditing = false
+//
+//            present(imagePicker, animated: true, completion: nil)
+//        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
+        self.dismiss(animated: true, completion: { () -> Void in
+            
+        })
+        print("PickImage")
+//        imageView.image = image
     }
 }
 
@@ -52,8 +82,8 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: TNNewPostCell.identify, for: indexPath) as! TNNewPostCell
-            cell.actNew = UITapGestureRecognizer(target: self, action: #selector(newPost))
-            cell.setupUI()
+//            cell.setupUI()
+            cell.delegate = self
             cell.selectionStyle = .none
             return cell
         }
@@ -68,9 +98,23 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row != 0){
             let viewInfo = TNInfoViewController.createInstance(index : indexPath.row - 1)
-            Constant.animationTo(view: self, type: .push)
-            self.present(viewInfo, animated: false, completion: nil)
+            self.present(viewInfo, animated: true, completion: nil)
+            return
         }
+    }
+}
+
+extension TNNewFeedViewController : TNNewPostDelegate {
+    func newPostAvatarTap(_ gesture: UIGestureRecognizer) {
+        newPost()
+    }
+    
+    func newPostNewTap(_ gesture: UIGestureRecognizer) {
+        newPost()
+    }
+    
+    func newPostPickImageTap(_ gesture: UIGestureRecognizer) {
+        btnClicked()
     }
 }
 
