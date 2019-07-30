@@ -14,7 +14,7 @@ struct Constant {
         static let btnIcon : CGFloat = 24
         static let avatarNormal : CGFloat = 36
         static let avatarSmall : CGFloat = 24
-        static let naviHeight = UIApplication.shared.statusBarFrame.height + btnIcon + 2 * Constant.size.padding
+        static let naviHeight = UIApplication.shared.statusBarFrame.height + avatarNormal + Constant.size.paddingView
         static let padding : CGFloat = 8
         static let paddingView : CGFloat = 12
         static let avatarBig : CGFloat = 64

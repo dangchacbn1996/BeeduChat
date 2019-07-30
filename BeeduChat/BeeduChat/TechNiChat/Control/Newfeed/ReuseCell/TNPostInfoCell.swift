@@ -53,6 +53,11 @@ class TNPostInfoCell : UITableViewCell {
             }
         }
     }
+    var hideUserInfo = false {
+        didSet {
+            stackHead.isHidden = self.hideUserInfo
+        }
+    }
     var delegate : TNPostInfoDelegate? = nil {
         didSet{
             ivAvatar.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostAvatar(_:))))
@@ -80,10 +85,11 @@ class TNPostInfoCell : UITableViewCell {
             if (data.image.count > 0) {
                 let image = UIImage(named: data.image[0])!
                 ivContent.snp.makeConstraints({ (maker) in
-                    maker.height.equalTo(ivContent.snp.width).multipliedBy(image.size.height / image.size.width)
+                    maker.height.equalTo(ivContent.snp.width).multipliedBy(0.6)
                 })
                 ivContent.isHidden = false
-                ivContent.image = image
+                let width : Double = Double(self.frame.width - 2 * Constant.size.paddingView)
+                ivContent.image = image.crop(to: CGSize(width: width, height: width * 0.6))
             } else {
                 ivContent.isHidden = true
             }

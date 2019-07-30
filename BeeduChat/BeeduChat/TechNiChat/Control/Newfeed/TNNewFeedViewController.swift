@@ -203,12 +203,14 @@ extension TNNewFeedViewController {
         naviLbTitle = UILabel(text: "Bảng tin",
                               textColor: Constant.text.color.black,
                               font: Constant.text.font.customFont(
-                                size: Constant.text.size.large,
+                                size: Constant.text.size.large + 2,
                                 weight: .Bold
         ))
         naviLbTitle?.isUserInteractionEnabled = true
         naviLbTitle?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scrollNew)))
+        self.view.addSubview(tablePost)
         setNavigation(image: UIImage(named: "ic_menu")?.withRenderingMode(.alwaysTemplate), leftAction: nil)
+        navigation.dropShadow()
         
         self.view.addSubview(UIView()) { (noti) -> (Void) in
             noti.snp.makeConstraints({ (maker) in
@@ -226,9 +228,7 @@ extension TNNewFeedViewController {
         
         naviConstraint = navigation.heightAnchor.constraint(equalToConstant: Constant.size.naviHeight)
         naviConstraint.isActive = true
-        naviSeparate.alpha = 1
         
-        self.view.addSubview(tablePost)
         tablePost.snp.makeConstraints { (maker) in
             maker.leading.trailing.bottom.equalToSuperview()
             maker.top.equalTo(navigation.snp.bottom)

@@ -48,7 +48,7 @@ class TNBaseViewController : UIViewController {
         }
         naviContent.addSubview(naviBtnLeft)
         naviBtnLeft.setImage(image, for: .normal)
-        naviBtnLeft.imageView?.contentMode = .scaleAspectFit
+        naviBtnLeft.imageView?.contentMode = .scaleAspectFill
         naviBtnLeft.tintColor = Constant.color.iconColor
         if (leftAction != nil) {
             naviBtnLeft.addGestureRecognizer(leftAction!)
@@ -90,12 +90,12 @@ class TNBaseViewController : UIViewController {
         
         if (naviViewCenter != nil) {
             naviContent.addSubview(naviViewCenter!)
-            naviViewCenter!.snp.makeConstraints { (maker) in
-                maker.center.equalToSuperview()
-                maker.height.lessThanOrEqualToSuperview()
-                maker.left.greaterThanOrEqualTo(naviBtnLeft.snp.right).offset(Constant.size.padding)
-                maker.right.lessThanOrEqualToSuperview().offset(-Constant.size.padding)
-            }
+//            naviViewCenter!.snp.makeConstraints { (maker) in
+//                maker.center.equalToSuperview()
+//                maker.height.lessThanOrEqualToSuperview()
+//                maker.left.greaterThanOrEqualTo(naviBtnLeft.snp.right).offset(Constant.size.padding)
+//                maker.right.lessThanOrEqualToSuperview().offset(-Constant.size.padding)
+//            }
         }
         
         navigation.addSubview(naviSeparate)

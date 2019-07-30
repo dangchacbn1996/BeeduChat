@@ -112,7 +112,7 @@ extension TNCommentCell {
         stackMain.snp.makeConstraints { (maker) in
             maker.leading.equalTo(self.imAvatar.snp.trailing).offset(8)
             maker.top.equalTo(self.imAvatar.snp.top)
-            maker.trailing.equalToSuperview()
+            maker.trailing.equalToSuperview().offset(-Constant.size.paddingView)
             maker.bottom.equalToSuperview()
         }
         

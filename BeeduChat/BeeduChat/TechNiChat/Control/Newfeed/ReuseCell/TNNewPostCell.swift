@@ -49,7 +49,7 @@ class TNNewPostCell : UITableViewCell {
         stackNew.isLayoutMarginsRelativeArrangement = true
         stackNew.snp.makeConstraints { (maker) in
             maker.center.size.equalToSuperview()
-            maker.height.equalTo(Constant.size.avatarNormal + Constant.size.paddingView)
+            maker.height.equalTo(Constant.size.avatarNormal + 2 * Constant.size.paddingView)
         }
         
         stackNew.addArrangedSubview(avatar)

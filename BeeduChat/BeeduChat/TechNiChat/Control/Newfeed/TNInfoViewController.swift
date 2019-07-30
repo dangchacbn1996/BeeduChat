@@ -11,11 +11,36 @@ import SnapKit
 
 class TNInfoViewController : TNBaseViewController {
     
-    var tableMain : UITableView!
+    //Navigation
+    private let stackHead = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 4, design: nil)
+    private let ivAvatar = UIButton()
+    private let lbUserName = UILabel(text: "",
+                                     textColor: Constant.text.color.black,
+                                     font: Constant.text.font.customFont(
+                                        size: Constant.text.size.normal,
+                                        weight: .Bold))
+    private let lbClass = UILabel(text: "", textColor: Constant.text.color.gray, font: Constant.text.font.small)
+    private let lbTimePost = UILabel(text: "", textColor: Constant.text.color.gray, font: Constant.text.font.small)
+    private let btnPin = UIButton()
+    private let btnMore = UIButton()
+    //Content
+    var tableMain = UITableView()
     var commentView = UIView()
     var avatarComment = UIButton()
-    var index : Int = 0
-    var pin = false
+    var index : Int = 0 {
+        didSet {
+            ivAvatar.setImage(UIImage(named: FixedData.newFeedData[self.index].userAvatar), for: .normal)
+            lbUserName.text = FixedData.newFeedData[self.index].username
+            lbClass.text = FixedData.newFeedData[self.index].eduClass
+            lbTimePost.text = FixedData.newFeedData[self.index].timePosted
+            btnPin.setImage(UIImage(named: "ic_pin"), for: .normal)
+        }
+    }
+    var pin = false {
+        didSet {
+            btnPin.setImage(UIImage(named: self.pin ? "ic_pin_hover" : "ic_pin"), for: .normal)
+        }
+    }
     var tfComment = UITextField(text: "", placeholder: "Bình luận", textColor: Constant.text.color.black, font: nil)
     
     static func createInstance(index : Int) -> (TNInfoViewController){
@@ -27,6 +52,10 @@ class TNInfoViewController : TNBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        let edgeGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(goBack))
+        edgeGes.edges = .left
+        self.view.addGestureRecognizer(edgeGes)
     }
     
     @objc func goBack(){
@@ -65,17 +94,6 @@ extension TNInfoViewController : UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if (section == 0) {
-//            return nil
-//        }
-//        let cell = tableView.dequeueReusableCell(withIdentifier: TNCommentCell.identify) as! TNCommentCell
-//        cell.selectionStyle = .none
-//        cell.delegate = self
-//        cell.data = FixedData.newFeedData[index].comment[section - 1].commentUser
-//        return cell
-//    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1 + FixedData.newFeedData[index].comment.count
     }
@@ -86,6 +104,7 @@ extension TNInfoViewController : UITableViewDataSource {
             cell.data = FixedData.newFeedData[index]
             cell.delegate = self
             cell.hideSeparate = true
+            cell.hideUserInfo = true
             cell.isPin = pin
             return cell
         }
@@ -144,7 +163,7 @@ extension TNInfoViewController : TNPostInfoDelegate {
     
     func actPostPin(_ gesture: UIGestureRecognizer) {
         pin = !pin
-        tableMain.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+//        tableMain.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
     }
     
     func actPostEmoji(_ gesture: UIGestureRecognizer) {
@@ -176,19 +195,20 @@ extension TNInfoViewController : TNPostInfoDelegate {
 
 extension TNInfoViewController {
     func setupUI(){
-        setNavigation(image: UIImage(named: "ic_back"), leftAction: UITapGestureRecognizer(target: self, action: #selector(goBack)))
-        naviSeparate.alpha = 1
-        
-        avatarComment = ReuseForms.btnAvatar()
+        self.view.addSubview(tableMain)
+        setupUserInfo()
+        navigation.dropShadow()
         self.view.addSubview(commentView)
+        avatarComment = ReuseForms.btnAvatar()
         commentView.snp.makeConstraints { (maker) in
             maker.height.equalTo(Constant.size.avatarNormal + 16)
             maker.width.centerX.bottom.equalToSuperview()
         }
-        commentView.backgroundColor = UIColor.white
+        commentView.backgroundColor = UIColor(238,238,238)
         commentView.layer.shadowColor = UIColor.gray.cgColor
-        commentView.layer.shadowOpacity = 0.5
-        commentView.layer.shadowOffset = CGSize(width: 0, height: -1)
+        commentView.layer.shadowOpacity = 1
+        commentView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        commentView.layer.shadowRadius = 3.0
         commentView.addSubview(UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 8, design: nil)) { (stackComment) -> (Void) in
             stackComment.snp.makeConstraints({ (maker) in
                 maker.center.equalToSuperview()
@@ -198,7 +218,7 @@ extension TNInfoViewController {
             (stackComment as! UIStackView).addArrangedSubview(self.avatarComment)
             
             (stackComment as! UIStackView).addArrangedSubview(
-                UIView(background: UIColor.gray.withAlphaComponent(0.4), height: nil, ratioHW: nil, corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil),
+                UIView(background: UIColor(224,224,224), height: nil, ratioHW: nil, corner: Constant.size.avatarNormal / 2, border: 0, borderColor: nil, design: nil),
                 design: { (container) -> (Void) in
                     container.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
                     container.addSubview(self.tfComment)
@@ -216,9 +236,6 @@ extension TNInfoViewController {
                 btnSend.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.addComment)))
             })
         }
-        
-        tableMain = UITableView()
-        self.view.addSubview(tableMain)
         tableMain.snp.makeConstraints { (maker) in
             maker.top.equalTo(navigation.snp.bottom)
             maker.centerX.width.equalToSuperview()
@@ -230,5 +247,82 @@ extension TNInfoViewController {
         tableMain.register(TNCommentCell.self, forCellReuseIdentifier: TNCommentCell.identify)
         tableMain.separatorStyle = .none
         tableMain.allowsSelection = false
+    }
+    
+    func setupUserInfo(){
+        naviViewCenter = UIView()
+        setNavigation(image: UIImage(named: "ic_back"), leftAction: UITapGestureRecognizer(target: self, action: #selector(goBack)))
+        naviViewCenter!.snp.makeConstraints({ (maker) in
+            maker.centerY.height.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.leading.equalTo(naviBtnLeft.snp.trailing).offset(8)
+        })
+        naviViewCenter!.addSubview(stackHead)
+        stackHead.snp.makeConstraints { (maker) in
+            maker.height.equalTo(Constant.size.avatarNormal)
+            maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
+        }
+        stackHead.addArrangedSubview(ivAvatar)
+        ivAvatar.contentMode = .scaleAspectFill
+        
+        ivAvatar.snp.makeConstraints { (maker) in
+            maker.width.equalTo(self.ivAvatar.snp.height)
+            maker.height.equalTo(Constant.size.avatarNormal)
+        }
+        ivAvatar.clipsToBounds = true
+        ivAvatar.layer.cornerRadius = Constant.size.avatarNormal / 2
+        
+        stackHead.addArrangedSubview(UIView()) { (viewInfo) -> (Void) in
+            viewInfo.snp.makeConstraints({ (maker) in
+                maker.height.equalToSuperview()
+            })
+            viewInfo.addSubview(
+                self.lbUserName,
+                design: {
+                    (lbUser) -> (Void) in
+                    lbUser.snp.makeConstraints({ (maker) in
+                        maker.top.trailing.equalToSuperview()
+                        maker.leading.equalToSuperview().offset(4)
+                        maker.height.equalTo(Constant.size.avatarNormal / 2)
+                    })
+            })
+            viewInfo.addSubview(self.lbClass)
+            self.lbClass.snp.makeConstraints({ (maker) in
+                maker.leading.equalTo(viewInfo.subviews[0].snp.leading)
+                maker.height.equalTo(Constant.size.avatarNormal / 2)
+                maker.top.equalTo(viewInfo.subviews[0].snp.bottom)
+            })
+            viewInfo.addSubview(UIView(), design: { (separate) -> (Void) in
+                separate.backgroundColor = Constant.color.separate
+                separate.snp.makeConstraints({ (maker) in
+                    maker.width.equalTo(Constant.size.separatorHeight)
+                    maker.leading.equalTo(viewInfo.subviews[1].snp.trailing).offset(4)
+                    maker.centerY.equalTo(viewInfo.subviews[1].snp.centerY)
+                    maker.height.equalTo((viewInfo.subviews[1] as! UILabel).font.lineHeight)
+                })
+            })
+            viewInfo.addSubview(self.lbTimePost)
+            self.lbTimePost.snp.makeConstraints({ (maker) in
+                maker.leading.equalTo(viewInfo.subviews[2].snp.trailing).offset(4)
+                maker.centerY.height.equalTo(viewInfo.subviews[1])
+            })
+        }
+        
+        stackHead.addArrangedSubview(btnPin)
+        btnPin.imageView?.contentMode = .scaleAspectFit
+        btnPin.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actPostPin(_:))))
+        btnPin.snp.makeConstraints({ (maker) in
+            maker.width.equalTo(btnPin.snp.height).multipliedBy(0.5)
+            maker.width.equalTo(Constant.size.btnIcon)
+        })
+        
+        stackHead.addArrangedSubview(btnMore)
+        btnMore.setImage(UIImage(named: "ic_more_horizon"), for: .normal)
+        btnMore.imageView?.contentMode = .scaleAspectFit
+        btnMore.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actPostMore(_:))))
+        btnMore.snp.makeConstraints({ (maker) in
+            maker.width.equalTo(btnMore.snp.height).multipliedBy(0.7)
+            maker.width.equalTo(Constant.size.btnIcon)
+        })
     }
 }

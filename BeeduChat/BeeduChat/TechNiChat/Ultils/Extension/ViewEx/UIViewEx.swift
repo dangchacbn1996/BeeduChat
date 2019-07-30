@@ -47,8 +47,8 @@ extension UIView {
     
     func dropShadow(){
         layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOpacity = 0.7
-        layer.shadowOffset = CGSize(width: 4, height: 4)
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize(width: 0, height: 3)
 //        layer.shadowRadius = radius
     }
     
