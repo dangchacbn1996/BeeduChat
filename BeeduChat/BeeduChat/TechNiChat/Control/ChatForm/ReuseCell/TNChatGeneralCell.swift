@@ -25,7 +25,7 @@ class TNChatGeneralCell : UITableViewCell {
     var lbUser = UILabel(text: "",
                          textColor: Constant.text.color.black,
                          font: Constant.text.font.customFont(
-                            size: Constant.text.size.normal,
+                            size: Constant.text.size.large,
                             weight: Constant.text.font.weight.Bold))
     var lbContent = UILabel(text: "",
                             textColor: Constant.text.color.black,
@@ -41,7 +41,7 @@ class TNChatGeneralCell : UITableViewCell {
             if (self.data.isRead) {
                 lbContent.font = Constant.text.font.normal
             } else {
-                lbContent.font = lbUser.font
+                lbContent.font = Constant.text.font.customFont(size: Constant.text.size.normal, weight: Constant.text.font.weight.Bold)
             }
         }
     }

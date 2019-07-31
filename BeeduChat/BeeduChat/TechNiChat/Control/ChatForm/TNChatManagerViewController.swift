@@ -101,9 +101,9 @@ extension TNChatManagerViewController : UITableViewDataSource, UITableViewDelega
             let cell = tableView.dequeueReusableCell(withIdentifier: TNChatGeneralCell.identify, for: indexPath) as! TNChatGeneralCell
             cell.selectionStyle = .none
             if (indexPath.row % 2 == 0) {
-                cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "Lớp  ", time: "12:30", content: "Thông báo", isRead: true)
+                cell.data = ChatGeneralModel(avatar: UIImage(named: "Avatar LH 1"), name: "Lớp  ", time: "12:30", content: "Thông báo", isRead: true)
             } else {
-                cell.data = ChatGeneralModel(avatar: UIImage(named: "ic_ava"), name: "Lớp  ", time: "12:30", content: "Thông báo", isRead: true)
+                cell.data = ChatGeneralModel(avatar: UIImage(named: "Avatar LH 1"), name: "Lớp  ", time: "12:30", content: "Thông báo", isRead: true)
             }
             return cell
         }
@@ -150,7 +150,7 @@ extension TNChatManagerViewController{
     //NavBar
     func UINavBar(){
         naviBtnRight = UIButton(frame: .zero)
-        naviBtnRight!.setImage(UIImage(named: "ic_contact")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        naviBtnRight!.setImage(UIImage(named: "Header Contact")?.withRenderingMode(.alwaysTemplate), for: .normal)
         naviBtnRight?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goContact)))
         naviLbTitle = UILabel(text: "Tin nhắn",
                               textColor: Constant.text.color.black,
@@ -179,7 +179,7 @@ extension TNChatManagerViewController{
             maker.top.equalTo(navigation.snp.bottom).offset(16)
             maker.centerX.equalTo(navigation.snp.centerX)
         }
-        searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarNormal / 2, border: 0, borderColor: Constant.color.separate, design: nil)) { (srcView) -> (Void) in
+        searchView.addSubview(UIView(background: UIColorFromRGB(rgbValue: 0xf3f3f3), corner: Constant.size.avatarSmall, border: 0, borderColor: Constant.color.separate, design: nil)) { (srcView) -> (Void) in
             srcView.snp.makeConstraints({ (maker) in
                 maker.height.equalToSuperview()
                 maker.width.equalToSuperview()
@@ -191,7 +191,7 @@ extension TNChatManagerViewController{
                 maker.width.equalTo(self.btnSearch.snp.height)
                 maker.height.equalTo(Constant.size.btnIcon)
                 maker.centerY.equalToSuperview()
-                maker.left.equalToSuperview().offset(8)
+                maker.left.equalToSuperview().offset(16)
                 
             })
             self.btnSearch.setImage(UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -203,7 +203,7 @@ extension TNChatManagerViewController{
             self.txtSearch.snp.makeConstraints({ (maker) in
                 maker.height.equalToSuperview().multipliedBy(0.7)
                 maker.centerY.equalToSuperview()
-                maker.left.equalTo(self.btnSearch.snp.right)
+                maker.left.equalTo(self.btnSearch.snp.right).offset(8)
                 maker.right.equalToSuperview().offset(-8)
             })
             self.txtSearch.placeholder = "Tìm kiếm"
