@@ -63,7 +63,7 @@ extension TNCreateNotificationTableViewCell{
         titleView.addSubview(lblViewTitle)
         lblViewTitle.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
-        }
+        } 
         self.addSubview(viewContent)
         viewContent.snp.makeConstraints { (maker) in
             maker.top.equalTo(lblViewTitle.snp.bottom).offset(4)
