@@ -11,12 +11,12 @@ import UIKit
 struct Constant {
     
     struct size {
-        static let btnIcon : CGFloat = 24
+        static let btnIcon : CGFloat = 24   //Các icon bình thường
         static let avatarNormal : CGFloat = 36
         static let avatarSmall : CGFloat = 24
         static let naviHeight = UIApplication.shared.statusBarFrame.height + avatarNormal + Constant.size.paddingView
         static let padding : CGFloat = 8
-        static let paddingView : CGFloat = 12
+        static let paddingView : CGFloat = 12   //Padding 2 cạnh
         static let avatarBig : CGFloat = 64
         static let rowHeightChat : CGFloat = 77
         static let separatorHeight : CGFloat = 0.5
