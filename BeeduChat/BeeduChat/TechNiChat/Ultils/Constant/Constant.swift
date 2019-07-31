@@ -12,7 +12,7 @@ struct Constant {
     
     struct size {
         static let btnIcon : CGFloat = 24
-        static let avatarNormal : CGFloat = 36
+        static let avatarNormal : CGFloat = 40
         static let avatarSmall : CGFloat = 24
         static let naviHeight = UIApplication.shared.statusBarFrame.height + avatarNormal + Constant.size.paddingView
         static let padding : CGFloat = 8
@@ -31,6 +31,7 @@ struct Constant {
         static let btnTitle = UIColor(68, 138, 255)
         static let commentBack = UIColor(238,238,238)
         static let btnStartGradient = UIColor(57,162,92)
+        static let btnContinue = UIColor(234,98,78)
     }
     
     struct text {
@@ -63,6 +64,7 @@ struct Constant {
 //                case Light_Italic = "LightItalic"
                 case Medium = "Medium"
                 case Medium_Italic = "MediumItalic"
+                case Semi_Bold = "Semibold"
 //                case Thin = "Thin"
 //                case Thin_Italic = "ThinItalic"
 //                case UltraLight = "UltraLight"
@@ -73,7 +75,7 @@ struct Constant {
         struct size {
             static let small : CGFloat = 12
             static let normal : CGFloat = 14
-            static let large : CGFloat = 16
+            static let large : CGFloat = 18
         }
 
     }
