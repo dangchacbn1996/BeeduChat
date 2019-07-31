@@ -32,6 +32,12 @@ class TNNewFeedViewController : TNBaseViewController, UINavigationControllerDele
         tablePost.setContentOffset(.zero, animated: true)
     }
     
+    @objc func openNotifi(){
+        let vc = TNNotificationViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     @objc func newPost(){
         let vc = TNNewPostViewController()
         vc.delegate = self
@@ -47,16 +53,6 @@ class TNNewFeedViewController : TNBaseViewController, UINavigationControllerDele
             self.present(view, animated: false, completion: nil)
             view.imageView.image = image
         }
-        
-//        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-//            print("Button capture")
-//
-//            imagePicker.delegate = self
-//            imagePicker.sourceType = .savedPhotosAlbum
-//            imagePicker.allowsEditing = false
-//
-//            present(imagePicker, animated: true, completion: nil)
-//        }
     }
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
@@ -119,13 +115,25 @@ extension TNNewFeedViewController : TNNewPostDelegate {
 }
 
 extension TNNewFeedViewController : TNPostInfoDelegate {
+    func actPostComment(_ gesture: UIGestureRecognizer) {
+        let pos = gesture.location(in: self.tablePost)
+        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            let view = TNCommentedUserViewController()
+            view.modalPresentationStyle = .overCurrentContext
+            view.index = indexPath.row - 1
+            self.present(view, animated: false, completion: nil)
+//            view.data = FixedData.newFeedData[].emotion
+        }
+    }
+    
     func actPostMore(_ gesture: UIGestureRecognizer) {
         let view = TNActionSheetViewController()
         view.modalPresentationStyle = .overCurrentContext
-        view.data = [TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1")]
+        view.data = [TNActionModel(icon: UIImage(named: "ic_pin") ?? UIImage(), option: "Ghim lên đàu trang", description: nil),
+                     TNActionModel(icon: UIImage(named: "Post Edit") ?? UIImage(), option: "Chỉnh sửa bài viết", description: nil),
+                     TNActionModel(icon: UIImage(named: "Post Copy") ?? UIImage(), option: "Copy đường dẫn", description: nil),
+                     TNActionModel(icon: UIImage(named: "Post Delete") ?? UIImage(), option: "Xoá bài viết", description: nil)]
+        view.customFont = Constant.text.font.normal
         self.present(view, animated: false, completion: nil)
         
     }
@@ -200,6 +208,7 @@ extension TNNewFeedViewController {
         self.tabBarItem.title = "Bảng tin"
         naviBtnRight = UIButton(frame: .zero)
         naviBtnRight!.setImage(UIImage(named: "ic_notification")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        naviBtnRight!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openNotifi)))
         naviLbTitle = UILabel(text: "Bảng tin",
                               textColor: Constant.text.color.black,
                               font: Constant.text.font.customFont(

@@ -11,20 +11,30 @@ import UIKit
 class TNActionTVC: UITableViewCell {
 
     static let identify = "TNActionTVC"
-    static var estimateSize = Constant.size.avatarNormal + 12
+    static var estimateSize = Constant.size.avatarNormal + 16
     var ivIcon = UIImageView(frame: .zero)
+    var customFont : UIFont = Constant.text.font.customFont(size: Constant.text.size.normal, weight: .Bold) {
+        didSet {
+            lbOption.font = self.customFont
+        }
+    }
     var lbOption = UILabel(text: "",
                            font: Constant.text.font.customFont(size: Constant.text.size.normal, weight: .Bold),
                            textColor: Constant.text.color.black)
     var lbDescript = UILabel(text: "",
                              font: Constant.text.font.normal,
                              textColor: Constant.text.color.black)
-    var messable = false
+
     var data : TNActionModel = TNActionModel(icon: UIImage(), option: "", description: "") {
         didSet {
             ivIcon.image = self.data.icon.withRenderingMode(.alwaysTemplate)
             lbOption.text = self.data.option
-            lbDescript.text = self.data.description
+            if data.description != nil {
+                lbDescript.isHidden = false
+                lbDescript.text = self.data.description
+            } else {
+                lbDescript.isHidden = true
+            }
         }
     }
     
@@ -44,7 +54,7 @@ class TNActionTVC: UITableViewCell {
             maker.leading.equalToSuperview().offset(Constant.size.paddingView)
             maker.centerY.equalToSuperview()
             maker.width.equalTo(ivIcon.snp.height)
-            maker.height.equalToSuperview().offset(-18)
+            maker.height.equalTo(customFont.lineHeight * 1.1)
         }
         self.addSubview(UIStackView(axis: .vertical, distribution: .equalSpacing, alignment: .fill, spacing: 2, design: nil)) { (stack) -> (Void) in
             stack.snp.makeConstraints({ (maker) in

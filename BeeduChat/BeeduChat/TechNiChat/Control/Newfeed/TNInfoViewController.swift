@@ -144,13 +144,18 @@ extension TNInfoViewController : TNCommentCellDelegate {
 }
 
 extension TNInfoViewController : TNPostInfoDelegate {
+    func actPostComment(_ gesture: UIGestureRecognizer) {
+        tfComment.becomeFirstResponder()
+    }
+    
     func actPostMore(_ gesture: UIGestureRecognizer) {
         let view = TNActionSheetViewController()
         view.modalPresentationStyle = .overCurrentContext
-        view.data = [TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1")]
+        view.data = [TNActionModel(icon: UIImage(named: "ic_pin") ?? UIImage(), option: "Ghim lên đàu trang", description: nil),
+                     TNActionModel(icon: UIImage(named: "Post Edit") ?? UIImage(), option: "Chỉnh sửa bài viết", description: nil),
+                     TNActionModel(icon: UIImage(named: "Post Copy") ?? UIImage(), option: "Copy đường dẫn", description: nil),
+                     TNActionModel(icon: UIImage(named: "Post Delete") ?? UIImage(), option: "Xoá bài viết", description: nil)]
+        view.customFont = Constant.text.font.normal
         self.present(view, animated: false, completion: nil)
     }
     
@@ -260,7 +265,7 @@ extension TNInfoViewController {
         naviViewCenter!.addSubview(stackHead)
         stackHead.snp.makeConstraints { (maker) in
             maker.height.equalTo(Constant.size.avatarNormal)
-            maker.width.equalToSuperview().offset(-2 * Constant.size.paddingView)
+            maker.width.equalToSuperview().offset(-Constant.size.paddingView)
         }
         stackHead.addArrangedSubview(ivAvatar)
         ivAvatar.contentMode = .scaleAspectFill

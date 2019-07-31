@@ -16,7 +16,7 @@ import SnapKit
     @objc func actPostImageView(_ gesture : UIGestureRecognizer)
     @objc func actPostEmoji(_ gesture : UIGestureRecognizer)
     @objc func actPostEmotion(_ gesture : UIGestureRecognizer)
-    
+    @objc func actPostComment(_ gesture : UIGestureRecognizer)
 }
 
 class TNPostInfoCell : UITableViewCell {
@@ -45,6 +45,7 @@ class TNPostInfoCell : UITableViewCell {
     private let lbEmotion = UILabel(text: "Thích", textColor: Constant.text.color.black, font: nil)
     private let ivEmotion = UIImageView(image: UIImage(named: "ic_like"))
     private let viewEmotion = UIView()
+    private let viewComment = UIView()
     private var vSeparate = UIView()
     var hideSeparate = false {
         didSet{
@@ -66,6 +67,8 @@ class TNPostInfoCell : UITableViewCell {
             viewEmotion.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostEmotion(_:))))
             ivContent.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostImageView(_:))))
             btnMore.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostMore(_:))))
+//            viewCom
+            viewComment.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostComment(_:))))
         }
     }
     
@@ -400,28 +403,30 @@ class TNPostInfoCell : UITableViewCell {
                 (stackLike as! UIStackView).addArrangedSubview(self.lbEmotion)
                 stackLike.isUserInteractionEnabled = true
             })
-            viewAction.addSubview(UIView(), design: { (viewLike) -> (Void) in
-                viewLike.snp.makeConstraints({ (maker) in
-                    maker.trailing.top.bottom.equalToSuperview()
-                    maker.width.equalToSuperview().multipliedBy(0.5)
+            
+            viewAction.addSubview(self.viewComment)
+            self.viewComment.snp.makeConstraints({ (maker) in
+                maker.trailing.top.bottom.equalToSuperview()
+                maker.width.equalToSuperview().multipliedBy(0.5)
+            })
+            self.viewComment.isUserInteractionEnabled = true
+            self.viewComment.addSubview(UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .center, spacing: 4, design: nil), design: { (stackLike) -> (Void) in
+                stackLike.snp.makeConstraints({ (maker) in
+                    maker.center.equalToSuperview()
+                    maker.height.lessThanOrEqualToSuperview()
                 })
-                viewLike.addSubview(UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .center, spacing: 4, design: nil), design: { (stackLike) -> (Void) in
-                    stackLike.snp.makeConstraints({ (maker) in
-                        maker.center.equalToSuperview()
-                        maker.height.lessThanOrEqualToSuperview()
+                (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_comment")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
+                    imgLike.snp.makeConstraints({ (maker) in
+                        maker.width.equalTo(imgLike.snp.height)
+                        maker.height.equalTo(Constant.text.font.normal.lineHeight)
                     })
-                    (stackLike as! UIStackView).addArrangedSubview(UIImageView(image: UIImage(named: "ic_comment")?.withRenderingMode(.alwaysTemplate)), design: { (imgLike) -> (Void) in
-                        imgLike.snp.makeConstraints({ (maker) in
-                            maker.width.equalTo(imgLike.snp.height)
-                            maker.height.equalTo(Constant.text.font.normal.lineHeight)
-                        })
-                        imgLike.tintColor = Constant.text.color.gray
-                        imgLike.contentMode = .scaleAspectFit
-                    })
-                    (stackLike as! UIStackView).addArrangedSubview(UILabel(text: "Bình luận", textColor: Constant.text.color.gray, font: Constant.text.font.customFont(size: Constant.text.size.normal, weight: .Medium)))
+                    imgLike.tintColor = Constant.text.color.gray
+                    imgLike.contentMode = .scaleAspectFit
                 })
+                (stackLike as! UIStackView).addArrangedSubview(UILabel(text: "Bình luận", textColor: Constant.text.color.gray, font: Constant.text.font.customFont(size: Constant.text.size.normal, weight: .Medium)))
             })
         }
+    
         stackNew.addArrangedSubview(UIView()) { (separator) -> (Void) in
             separator.snp.makeConstraints({ (maker) in
                 maker.height.equalTo(Constant.size.separatorHeight)

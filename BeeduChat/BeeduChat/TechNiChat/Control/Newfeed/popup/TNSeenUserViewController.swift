@@ -186,8 +186,6 @@ extension TNSeenUserViewController {
             maker.width.equalToSuperview()
             maker.height.equalTo(self.view.snp.height).multipliedBy(1.8)
         }
-        viewContainer = UIView()
-        viewContainer.backgroundColor = .white
         contentView.addSubview(UIView()) { (back) -> (Void) in
             back.snp.makeConstraints({ (maker) in
                 maker.top.centerX.width.equalToSuperview()
@@ -197,6 +195,11 @@ extension TNSeenUserViewController {
             back.isUserInteractionEnabled = true
             back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.goBack)))
         }
+        
+        viewContainer = UIView()
+        viewContainer.backgroundColor = .white
+//        viewContainer.clipsToBounds = true
+        viewContainer.layer.cornerRadius = 8
         contentView.addSubview(viewContainer)
         viewContainer.snp.makeConstraints { (maker) in
             maker.height.equalToSuperview().multipliedBy(0.5)

@@ -11,7 +11,7 @@ import UIKit
 struct TNActionModel {
     var icon : UIImage
     var option : String
-    var description : String
+    var description : String? = nil
 }
 
 class TNActionSheetViewController : TNBaseViewController {
@@ -21,9 +21,9 @@ class TNActionSheetViewController : TNBaseViewController {
     private var scrollView : UIScrollView!
     private var tableSeen : UITableView!
     private var stackType = UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .fill, spacing: 2, design: nil)
-//    private let contentRatio : CGFloat = 1.8
     private var contentPos : [CGFloat] = []
     private var startScrollY : CGFloat = 0
+    var customFont : UIFont? = nil
     var data : [TNActionModel] = []
     
     override func viewDidLoad() {
@@ -105,16 +105,22 @@ extension TNActionSheetViewController : UITableViewDelegate, UITableViewDataSour
         return data.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        goBack()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableSeen.dequeueReusableCell(withIdentifier: TNActionTVC.identify, for: indexPath) as! TNActionTVC
         cell.data = data[indexPath.row]
+        if (customFont != nil) {
+            cell.customFont = customFont!
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TNActionTVC.estimateSize
     }
-    
     
 }
 
