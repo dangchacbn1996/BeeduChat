@@ -118,7 +118,7 @@ extension TNCreateGroupViewController{
                               textColor: Constant.text.color.black,
                               font: Constant.text.font.customFont(
                                 size: Constant.text.size.large,
-                                weight: .Bold
+                                weight: .Semi_Bold
         ))
         setNavigation(image: UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), leftAction: UITapGestureRecognizer(target: self, action: #selector(goBack)))
         naviSeparate.alpha = 1

@@ -40,6 +40,7 @@
 		53F35D3022EEECB50036EB3B /* TNActionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F35D2F22EEECB50036EB3B /* TNActionTVC.swift */; };
 		B8DB7B6C22F1838A00FDB0DD /* TNCreateNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB7B6B22F1838A00FDB0DD /* TNCreateNotificationViewController.swift */; };
 		B8DB7B6E22F18BF000FDB0DD /* TNCreateNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB7B6D22F18BF000FDB0DD /* TNCreateNotificationTableViewCell.swift */; };
+		B8E1FB7222F2CB6D009B0D0B /* TNMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1FB7122F2CB6D009B0D0B /* TNMessageViewController.swift */; };
 		F0ACB26C22E9FE8700DFE793 /* TNSeenUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */; };
 		F0EAF6B722F0A23D002E5556 /* TNImageEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF6B622F0A23D002E5556 /* TNImageEx.swift */; };
 		F0F6C2E122EB775600CDA83C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6C2E022EB775600CDA83C /* MainViewController.swift */; };
@@ -167,6 +168,7 @@
 		AEFE642CAABE5E1153467201 /* Pods_BeeduChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DB7B6B22F1838A00FDB0DD /* TNCreateNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNCreateNotificationViewController.swift; sourceTree = "<group>"; };
 		B8DB7B6D22F18BF000FDB0DD /* TNCreateNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNCreateNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		B8E1FB7122F2CB6D009B0D0B /* TNMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMessageViewController.swift; sourceTree = "<group>"; };
 		C5DE160B549A5CC7002A01F5 /* Pods_BeeduChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSeenUserTVC.swift; sourceTree = "<group>"; };
 		F0EAF6B622F0A23D002E5556 /* TNImageEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNImageEx.swift; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 				F0F7421022E9B0860028AB4F /* TNReportViewController.swift */,
 				F0F7421122E9B0860028AB4F /* TNCreateGroupViewController.swift */,
 				B8DB7B6B22F1838A00FDB0DD /* TNCreateNotificationViewController.swift */,
+				B8E1FB7122F2CB6D009B0D0B /* TNMessageViewController.swift */,
 			);
 			path = ChatForm;
 			sourceTree = "<group>";
@@ -934,6 +937,7 @@
 				F0F7423322E9B0860028AB4F /* TNBaseViewController.swift in Sources */,
 				F0F7423422E9B0860028AB4F /* BasicAudioController.swift in Sources */,
 				F0F7422E22E9B0860028AB4F /* TNPostInfoCell.swift in Sources */,
+				B8E1FB7222F2CB6D009B0D0B /* TNMessageViewController.swift in Sources */,
 				F0F7422522E9B0860028AB4F /* StackViewEx.swift in Sources */,
 				F0F7425B22E9B0860028AB4F /* TNNewFeedViewController.swift in Sources */,
 				F0F7422622E9B0860028AB4F /* UIButtonEx.swift in Sources */,

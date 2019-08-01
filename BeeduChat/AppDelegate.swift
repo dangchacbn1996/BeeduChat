@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.makeKeyAndVisible()
 //        window?.rootViewController = UINavigationController(rootViewController: TNNewFeedViewController())
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [TNNewFeedViewController(), TNChatManagerViewController()]
+        tabBarController.viewControllers = [TNNewFeedViewController(), TNMessageViewController()]
         
         // Make the Tab Bar Controller the root view controller
         window?.rootViewController = tabBarController
