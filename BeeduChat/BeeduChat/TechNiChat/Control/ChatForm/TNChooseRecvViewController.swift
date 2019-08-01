@@ -355,7 +355,7 @@ extension TNChooseRecvViewController{
         }
         btnContinue.backgroundColor = Constant.color.btnContinue
         btnContinue.setTitle("Tiếp tục", for: .normal)
-//        btnContinue.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goAddNotify)))
+        btnContinue.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goAddNotify)))
     }
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(

@@ -21,7 +21,7 @@ class TNCreateNotificationTableViewCell: UITableViewCell {
     var ceparateView = UIView()
     var stackView = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 5, design: nil)
     var titleView = UIView()
-    var lblViewTitle = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.normal)
+    var lblDatetime = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.normal)
     var lblTitle = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.customFont(size: Constant.text.size.large, weight: Constant.text.font.weight.Bold))
     var lblContent = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.normal)
     var btnRight = UIButton()
@@ -30,7 +30,7 @@ class TNCreateNotificationTableViewCell: UITableViewCell {
         didSet{
             lblContent.text = self.data.content
             lblTitle.text = self.data.title
-            lblViewTitle.text = self.data.datetime
+            lblDatetime.text = self.data.datetime
         }
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -59,14 +59,15 @@ extension TNCreateNotificationTableViewCell{
         self.addSubview(titleView)
         titleView.snp.makeConstraints { (maker) in
             maker.width.equalToSuperview()
+            maker.center.equalToSuperview()
         }
-        titleView.addSubview(lblViewTitle)
-        lblViewTitle.snp.makeConstraints { (maker) in
+        titleView.addSubview(lblDatetime)
+        lblDatetime.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
         } 
         self.addSubview(viewContent)
         viewContent.snp.makeConstraints { (maker) in
-            maker.top.equalTo(lblViewTitle.snp.bottom).offset(4)
+            maker.top.equalTo(lblDatetime.snp.bottom).offset(4)
             maker.left.equalToSuperview().offset(40)
             maker.right.equalToSuperview().offset(-12)
         }

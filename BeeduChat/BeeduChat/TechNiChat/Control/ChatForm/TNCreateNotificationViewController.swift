@@ -64,9 +64,9 @@ extension TNCreateNotificationViewController{
         self.navigationController?.navigationBar.isHidden = true
         UINavBar()
         addCeparate()
-        UIContent()
-        CeparateFooter()
-        UIAction()
+//        UIContent()
+//        CeparateFooter()
+//        UIAction()
     }
     func UINavBar(){
         self.view.addSubview(navigationView)
