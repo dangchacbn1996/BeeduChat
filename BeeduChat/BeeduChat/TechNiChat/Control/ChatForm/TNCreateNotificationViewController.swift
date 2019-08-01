@@ -12,7 +12,7 @@ import SnapKit
 class TNCreateNotificationViewController: TNBaseViewController {
 
     var navigationView = UIView()
-    var stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 5, design: nil)
+    var stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 0, design: nil)
     var stackviewTitle = UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .center, spacing: 0, design: nil)
     var btnBack = UIButton()
     var lblClass = UILabel(text: "Lớp Fox", textColor: Constant.text.color.black, font: nil)
@@ -29,9 +29,12 @@ class TNCreateNotificationViewController: TNBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-//        tbvContent.delegate = self
-//        tbvContent.dataSource = self
-//        tbvContent.register(TNCreateNotificationTableViewCell.self, forCellReuseIdentifier: TNCreateNotificationTableViewCell.identify)
+        tbvContent.delegate = self
+        tbvContent.dataSource = self
+        tbvContent.register(TNCreateNotificationTableViewCell.self, forCellReuseIdentifier: TNCreateNotificationTableViewCell.identify)
+        tbvContent.tableFooterView = UIView()
+        tbvContent.tableHeaderView = UIView()
+        tbvContent.separatorStyle = .none
         // Do any additional setup after loading the view.
         let edgeGes = UIScreenEdgePanGestureRecognizer(target: setupUI(), action: #selector(goBack))
         edgeGes.edges = .left
@@ -47,13 +50,13 @@ extension TNCreateNotificationViewController : UITableViewDelegate, UITableViewD
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 10
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TNCreateNotificationTableViewCell.identify, for: indexPath) as! TNCreateNotificationTableViewCell
         cell.selectionStyle = .none
         if (indexPath.row % 2 == 0) {
-            cell.data = CreateNotifyModel(datetime: "Thứ 5, ngày 09/06/2019", title: "Lớp Fox: Thông báo", content: "Tuần sau học sinh thi học kỳ")
+            cell.data = CreateNotifyModel(datetime: "Thứ 5, ngày 09/06/2019", title: "Lớp Fox: Thông báo >", content: "Tuần sau học sinh thi học kỳf dvbhjdgjijhiuhiugigjhgjhghj")
         }
         return cell
     }
@@ -64,14 +67,14 @@ extension TNCreateNotificationViewController{
         self.navigationController?.navigationBar.isHidden = true
         UINavBar()
         addCeparate()
-//        UIContent()
+        UIContent()
 //        CeparateFooter()
 //        UIAction()
     }
     func UINavBar(){
         self.view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(self.view.safeAreaLayoutGuide)
+            maker.top.equalToSuperview()
             maker.centerX.equalToSuperview()
             maker.width.equalToSuperview().offset(-32)
             maker.height.equalTo(Constant.size.naviHeight)
@@ -114,14 +117,14 @@ extension TNCreateNotificationViewController{
     func UIContent(){
         self.view.addSubview(contentView)
         contentView.snp.makeConstraints { (maker) in
-        maker.height.equalToSuperview().offset(-Constant.size.avatarNormal)
-            maker.width.equalTo(navigationView.snp.width)
+            maker.height.equalToSuperview()
+            maker.width.equalToSuperview()
             maker.top.equalTo(navigationView.snp.bottom).offset(4)
-            maker.centerX.equalTo(navigationView.snp.centerX)
+//            maker.centerX.equalTo(navigationView.snp.centerX)
         }
         contentView.addSubview(tbvContent)
         tbvContent.snp.makeConstraints { (maker) in
-            maker.height.width.centerX.equalToSuperview()
+            maker.height.width.equalToSuperview()
         }
     }
     func CeparateFooter(){

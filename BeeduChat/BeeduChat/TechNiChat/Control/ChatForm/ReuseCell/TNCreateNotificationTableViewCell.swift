@@ -19,8 +19,8 @@ class TNCreateNotificationTableViewCell: UITableViewCell {
     static let identify = "TNCreateNotificationCell"
     var viewContent = UIStackView(axis: .horizontal, distribution: .fill, alignment: .fill, spacing: 0, design: nil)
     var ceparateView = UIView()
-    var stackView = UIStackView(axis: .vertical, distribution: .fill, alignment: .fill, spacing: 5, design: nil)
-    var titleView = UIView()
+    var stackView = UIStackView(axis: .vertical, distribution: .equalSpacing, alignment: .fill, spacing: 8, design: nil)
+    var DateTimeView = UIView()
     var lblDatetime = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.normal)
     var lblTitle = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.customFont(size: Constant.text.size.large, weight: Constant.text.font.weight.Bold))
     var lblContent = UILabel(text: "", textColor: Constant.text.color.black, font: Constant.text.font.normal)
@@ -56,40 +56,45 @@ class TNCreateNotificationTableViewCell: UITableViewCell {
 }
 extension TNCreateNotificationTableViewCell{
     func setupUI(){
-        self.addSubview(titleView)
-        titleView.snp.makeConstraints { (maker) in
+        self.addSubview(DateTimeView)
+        DateTimeView.snp.makeConstraints { (maker) in
             maker.width.equalToSuperview()
             maker.center.equalToSuperview()
         }
-        titleView.addSubview(lblDatetime)
+        DateTimeView.addSubview(lblDatetime)
         lblDatetime.snp.makeConstraints { (maker) in
-            maker.centerY.equalToSuperview()
+            maker.center.equalToSuperview()
         } 
         self.addSubview(viewContent)
         viewContent.snp.makeConstraints { (maker) in
-            maker.top.equalTo(lblDatetime.snp.bottom).offset(4)
-            maker.left.equalToSuperview().offset(40)
-            maker.right.equalToSuperview().offset(-12)
+            maker.top.equalTo(lblDatetime.snp.bottom).offset(8)
+            maker.left.equalToSuperview().offset(80)
+            maker.right.equalToSuperview().offset(-4)
+//            maker.bottom.equalToSuperview()
         }
         viewContent.addArrangedSubview(ceparateView)
         ceparateView.snp.makeConstraints { (maker) in
-            maker.width.equalTo(Constant.size.separatorHeight)
+            maker.width.equalTo(4)
             maker.height.equalToSuperview()
             maker.left.equalToSuperview()
         }
+        ceparateView.backgroundColor = Constant.color.btnContinue
         viewContent.addArrangedSubview(stackView)
         stackView.snp.makeConstraints { (maker) in
-            maker.top.right.bottom.left.equalToSuperview().offset(4)
+//            maker.top.right.bottom.left.equalToSuperview().offset(4)
+            maker.left.equalTo(ceparateView.snp.right).offset(4)
+            maker.right.equalToSuperview().offset(4)
         }
         stackView.addArrangedSubview(lblTitle)
-        lblTitle.addSubview(btnRight)
-        btnRight.snp.makeConstraints { (maker) in
-            maker.left.equalTo(lblTitle.snp.right).offset(4)
-            maker.height.equalTo(Constant.size.btnIcon)
-            maker.width.equalTo(btnRight.snp.height)
+        lblTitle.snp.makeConstraints { (maker) in
+            maker.top.equalToSuperview().offset(8)
+            maker.right.equalToSuperview().offset(8)
+            maker.left.equalToSuperview().offset(8)
         }
-        btnRight.setImage(UIImage(named: "ic_right")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        btnRight.imageView?.contentMode = .scaleAspectFit
         stackView.addArrangedSubview(lblContent)
+        lblContent.snp.makeConstraints { (maker) in
+            maker.left.bottom.right.equalToSuperview().offset(8)
+        }
+        lblContent.numberOfLines = 0
     }
 }
