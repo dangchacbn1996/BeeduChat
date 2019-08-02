@@ -101,9 +101,9 @@ extension TNChatManagerViewController : UITableViewDataSource, UITableViewDelega
             let cell = tableView.dequeueReusableCell(withIdentifier: TNChatGeneralCell.identify, for: indexPath) as! TNChatGeneralCell
             cell.selectionStyle = .none
             if (indexPath.row % 2 == 0) {
-                cell.data = ChatGeneralModel(avatar: UIImage(named: "Avatar LH 1"), name: "Lớp  ", time: "12:30", content: "Thông báo", isRead: true)
+                cell.data = ChatGeneralModel(avatar: UIImage(named: "Avatar LH 1"), name: "Lớp  Fox", time: "12:30", content: "Thông báo", isRead: true)
             } else {
-                cell.data = ChatGeneralModel(avatar: UIImage(named: "Avatar LH 1"), name: "Lớp  ", time: "12:30", content: "Thông báo", isRead: true)
+                cell.data = ChatGeneralModel(avatar: UIImage(named: "Avatar LH 1"), name: "Lớp  Bambi", time: "12:30", content: "Thông báo", isRead: true)
             }
             return cell
         }
