@@ -63,10 +63,11 @@ class TNChooseRecvViewController: UIViewController {
     }
     
     @objc func goAddNotify(){
-        let viewNotify = TNCreateNotificationViewController()
-        viewNotify.modalPresentationStyle = .overFullScreen
+//        let viewNotify = TNCreateNotificationViewController()
+        let viewMess = TNMessageViewController()
+        viewMess.modalPresentationStyle = .overFullScreen
         self.view.window?.layer.add(Constant.rightToLeftTrans(),forKey: kCATransition)
-        self.present(viewNotify,animated: false,completion: nil)
+        self.present(viewMess,animated: false,completion: nil)
     }
     
     @objc func addFunction(){
