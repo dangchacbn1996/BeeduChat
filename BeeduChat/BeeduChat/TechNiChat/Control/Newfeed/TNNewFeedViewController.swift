@@ -178,22 +178,25 @@ extension TNNewFeedViewController : TNPostInfoDelegate {
     }
     
     func actPostEmotion(_ gesture: UIGestureRecognizer) {
-        let pos = gesture.location(in: self.tablePost)
-        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
-            print("Post: \(indexPath.row)")
-            var isActed = false
-            for index in 0..<FixedData.newFeedData[indexPath.row - 1].emotion.count {
-                if (FixedData.newFeedData[indexPath.row - 1].emotion[index].userName == FixedData.user) {
-                    FixedData.newFeedData[indexPath.row - 1].emotion.remove(at: index)
-                    isActed = true
-                    break
-                }
-            }
-            if (!isActed) {
-                FixedData.newFeedData[indexPath.row - 1].emotion.append(TNEmotionModel(emote: .like, userName: FixedData.user, userAvatar: FixedData.userAvatar))
-            }
-            tablePost.reloadRows(at: [indexPath], with: .none)
-        }
+//        let pos = gesture.location(in: self.tablePost)
+//        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+//            print("Post: \(indexPath.row)")
+//            var isActed = false
+//            for index in 0..<FixedData.newFeedData[indexPath.row - 1].emotion.count {
+//                if (FixedData.newFeedData[indexPath.row - 1].emotion[index].userName == FixedData.user) {
+//                    FixedData.newFeedData[indexPath.row - 1].emotion.remove(at: index)
+//                    isActed = true
+//                    break
+//                }
+//            }
+//            if (!isActed) {
+//                FixedData.newFeedData[indexPath.row - 1].emotion.append(TNEmotionModel(emote: .like, userName: FixedData.user, userAvatar: FixedData.userAvatar))
+//            }
+//            tablePost.reloadRows(at: [indexPath], with: .none)
+//        }
+        let vc = PopupChooseeEmojiViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false, completion: nil)
     }
     
     func actPostAvatar(_ gesture: UIGestureRecognizer) {

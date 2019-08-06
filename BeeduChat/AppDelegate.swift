@@ -19,15 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Enable Text Messages
             UserDefaults.standard.set(true, forKey: "Text Messages")
         }
-        window = UIWindow(frame: UIScreen.main.bounds)
+//        window = UIWindow(frame: UIScreen.main.bounds)
+////        window?.makeKeyAndVisible()
+////        window?.rootViewController = UINavigationController(rootViewController: TNNewFeedViewController())
+//        let tabBarController = UITabBarController()
+//        tabBarController.viewControllers = [TNNewFeedViewController(), TNChatManagerViewController()]
+//        
+//        // Make the Tab Bar Controller the root view controller
+//        window?.rootViewController = tabBarController
 //        window?.makeKeyAndVisible()
-//        window?.rootViewController = UINavigationController(rootViewController: TNNewFeedViewController())
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [TNNewFeedViewController(), TNChatManagerViewController()]
-        
-        // Make the Tab Bar Controller the root view controller
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
         return true
     }
 

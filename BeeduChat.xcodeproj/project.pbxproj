@@ -15,6 +15,7 @@
 		530F2A2022F1ADD80007B1BD /* TNNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530F2A1F22F1ADD80007B1BD /* TNNotificationViewController.swift */; };
 		530F2A2222F1B0800007B1BD /* TNNotifiTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530F2A2122F1B0800007B1BD /* TNNotifiTVCell.swift */; };
 		539A8DE022EAA1DF00BD75B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */; };
+		53A7B8AD22F82F7100158742 /* PopupChooseEmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A7B8AC22F82F7100158742 /* PopupChooseEmotionViewController.swift */; };
 		53C329EE22F04D0000494195 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C329ED22F04D0000494195 /* ImagePickerViewController.swift */; };
 		53F35D1722EE96570036EB3B /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53F35D0B22EE96390036EB3B /* Montserrat-Black.otf */; };
 		53F35D1822EE96570036EB3B /* Montserrat-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53F35D0E22EE96390036EB3B /* Montserrat-BlackItalic.otf */; };
@@ -137,6 +138,7 @@
 		530F2A1F22F1ADD80007B1BD /* TNNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNNotificationViewController.swift; sourceTree = "<group>"; };
 		530F2A2122F1B0800007B1BD /* TNNotifiTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNNotifiTVCell.swift; sourceTree = "<group>"; };
 		539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		53A7B8AC22F82F7100158742 /* PopupChooseEmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChooseEmotionViewController.swift; sourceTree = "<group>"; };
 		53C329ED22F04D0000494195 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		53F35D0522EE96390036EB3B /* Montserrat-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.otf"; sourceTree = "<group>"; };
 		53F35D0622EE96390036EB3B /* Montserrat-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.otf"; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 				53F35D2D22EED6A60036EB3B /* TNActionSheetViewController.swift */,
 				530F2A1B22F151ED0007B1BD /* TNCommentedUserViewController.swift */,
 				530F2A1D22F1771E0007B1BD /* TNBasePopupViewController.swift */,
+				53A7B8AC22F82F7100158742 /* PopupChooseEmotionViewController.swift */,
 			);
 			path = popup;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				F0F7424222E9B0860028AB4F /* UIColor+Extensions.swift in Sources */,
 				F0F7423C22E9B0860028AB4F /* NavigationController.swift in Sources */,
 				F0F7423322E9B0860028AB4F /* TNBaseViewController.swift in Sources */,
+				53A7B8AD22F82F7100158742 /* PopupChooseEmotionViewController.swift in Sources */,
 				F0F7423422E9B0860028AB4F /* BasicAudioController.swift in Sources */,
 				F0F7422E22E9B0860028AB4F /* TNPostInfoCell.swift in Sources */,
 				B8E1FB7222F2CB6D009B0D0B /* TNMessageViewController.swift in Sources */,
