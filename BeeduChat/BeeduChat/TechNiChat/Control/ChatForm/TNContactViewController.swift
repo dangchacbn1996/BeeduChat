@@ -47,10 +47,10 @@ class TNContactViewController: UIViewController {
     @objc func addFunction(){
         let view = TNActionSheetViewController()
         view.modalPresentationStyle = .overCurrentContext
-        view.data = [TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1"),
-                     TNActionModel(icon: UIImage(named: "ic_porfolio") ?? UIImage(), option: "Hành động 1", description: "Description 1")]
+        view.data = [TNActionModel(icon: UIImage(named: "Class Add User") ?? UIImage(), option: "Nhập email, số điện thoại", description: nil),
+                     TNActionModel(icon: UIImage(named: "Header Contact") ?? UIImage(), option: "Thêm từ danh bạ điện thoại", description: nil),
+                     TNActionModel(icon: UIImage(named: "Class Link") ?? UIImage(), option: "Chia sẻ link mời", description: nil),
+                     TNActionModel(icon: UIImage(named: "Post Add Group") ?? UIImage(), option: "Tạo nhóm mới", description: nil)]
         self.present(view, animated: false, completion: nil)
     }
 }
