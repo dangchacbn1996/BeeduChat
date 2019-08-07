@@ -27,6 +27,7 @@ class TNInfoViewController : TNBaseViewController {
     var tableMain = UITableView()
     var commentView = UIView()
     var avatarComment = UIButton()
+    var refreshDelegate : TNRefreshDelegate? = nil
     var index : Int = 0 {
         didSet {
             ivAvatar.setImage(UIImage(named: FixedData.newFeedData[self.index].userAvatar), for: .normal)
@@ -59,6 +60,7 @@ class TNInfoViewController : TNBaseViewController {
     }
     
     @objc func goBack(){
+        refreshDelegate?.refreshData()
         self.dismissTrans()
     }
     
@@ -105,6 +107,7 @@ extension TNInfoViewController : UITableViewDataSource {
             cell.delegate = self
             cell.hideSeparate = true
             cell.hideUserInfo = true
+            cell.viewEmotion.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(holeOpenEmoji)))
             cell.isPin = pin
             return cell
         }
@@ -119,6 +122,36 @@ extension TNInfoViewController : UITableViewDataSource {
         cell.delegate = self
         cell.layoutMargins = UIEdgeInsets(top: 0, left: Constant.size.paddingView, bottom: 0, right: Constant.size.paddingView)
         return cell
+    }
+}
+
+extension TNInfoViewController : PopupEmojiDelegate {
+    func selectPos(_ emoji: TNEmoji, indexPath: IndexPath) {
+        var isActed = false
+        for index in 0..<FixedData.newFeedData[self.index].emotion.count {
+            if (FixedData.newFeedData[self.index].emotion[index].userName == FixedData.user) {
+                if (FixedData.newFeedData[self.index].emotion[index].emote == emoji) {
+                    isActed = true
+                }
+                FixedData.newFeedData[self.index].emotion.remove(at: index)
+                break
+            }
+        }
+        if (!isActed) {
+            FixedData.newFeedData[self.index].emotion.append(TNEmotionModel(emote: emoji, userName: FixedData.user, userAvatar: FixedData.userAvatar))
+        }
+        tableMain.reloadRows(at: [indexPath], with: .none)
+    }
+    
+    @objc func holeOpenEmoji(_ gesture: UIGestureRecognizer){
+        let indexPath = IndexPath(row: 0, section: 0)
+        let frame = tableMain.rectForRow(at: indexPath)
+        let vc = PopupChooseEmotionViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.delegate = self
+        vc.origin = CGPoint(x: frame.origin.x + 2, y: gesture.location(in: self.view).y)
+        vc.indexPath = indexPath
+        self.present(vc, animated: false, completion: nil)
     }
 }
 

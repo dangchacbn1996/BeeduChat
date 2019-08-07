@@ -64,7 +64,7 @@ class TNNewFeedViewController : TNBaseViewController, UINavigationControllerDele
     }
 }
 
-extension TNNewFeedViewController : TNNewPostViewDelegate {
+extension TNNewFeedViewController : TNRefreshDelegate {
     func refreshData() {
         tablePost.reloadData()
     }
@@ -78,7 +78,6 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: TNNewPostCell.identify, for: indexPath) as! TNNewPostCell
-//            cell.setupUI()
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
@@ -88,12 +87,14 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
         cell.isPin = pinList.contains(indexPath.row)
         cell.data = FixedData.newFeedData[indexPath.row - 1]
         cell.delegate = self
+        cell.viewEmotion.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(holeOpenEmoji)))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row != 0){
             let viewInfo = TNInfoViewController.createInstance(index : indexPath.row - 1)
+            viewInfo.refreshDelegate = self
             self.present(viewInfo, animated: true, completion: nil)
             return
         }
@@ -101,6 +102,20 @@ extension TNNewFeedViewController : UITableViewDataSource, UITableViewDelegate {
 }
 
 extension TNNewFeedViewController : TNNewPostDelegate {
+    
+    @objc func holeOpenEmoji(_ gesture: UIGestureRecognizer){
+        let pos = gesture.location(in: self.tablePost)
+        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            let frame = tablePost.rectForRow(at: indexPath)
+            let vc = PopupChooseEmotionViewController()
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.delegate = self
+            vc.origin = CGPoint(x: frame.origin.x + 2, y: gesture.location(in: self.view).y)
+            vc.indexPath = indexPath
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
+    
     func newPostAvatarTap(_ gesture: UIGestureRecognizer) {
         newPost()
     }
@@ -178,30 +193,47 @@ extension TNNewFeedViewController : TNPostInfoDelegate {
     }
     
     func actPostEmotion(_ gesture: UIGestureRecognizer) {
-//        let pos = gesture.location(in: self.tablePost)
-//        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
-//            print("Post: \(indexPath.row)")
-//            var isActed = false
-//            for index in 0..<FixedData.newFeedData[indexPath.row - 1].emotion.count {
-//                if (FixedData.newFeedData[indexPath.row - 1].emotion[index].userName == FixedData.user) {
-//                    FixedData.newFeedData[indexPath.row - 1].emotion.remove(at: index)
-//                    isActed = true
-//                    break
-//                }
-//            }
-//            if (!isActed) {
-//                FixedData.newFeedData[indexPath.row - 1].emotion.append(TNEmotionModel(emote: .like, userName: FixedData.user, userAvatar: FixedData.userAvatar))
-//            }
-//            tablePost.reloadRows(at: [indexPath], with: .none)
-//        }
-        let vc = PopupChooseeEmojiViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: false, completion: nil)
+        let pos = gesture.location(in: self.tablePost)
+        if let indexPath = self.tablePost.indexPathForRow(at: pos) {
+            print("Post: \(indexPath.row)")
+            var isActed = false
+            for index in 0..<FixedData.newFeedData[indexPath.row - 1].emotion.count {
+                if (FixedData.newFeedData[indexPath.row - 1].emotion[index].userName == FixedData.user) {
+                    FixedData.newFeedData[indexPath.row - 1].emotion.remove(at: index)
+                    isActed = true
+                    break
+                }
+            }
+            if (!isActed) {
+                FixedData.newFeedData[indexPath.row - 1].emotion.append(TNEmotionModel(emote: .like, userName: FixedData.user, userAvatar: FixedData.userAvatar))
+            }
+            tablePost.reloadRows(at: [indexPath], with: .none)
+        }
     }
     
     func actPostAvatar(_ gesture: UIGestureRecognizer) {
         print("Pin avatar")
     }
+}
+
+extension TNNewFeedViewController : PopupEmojiDelegate {
+    func selectPos(_ emoji: TNEmoji, indexPath : IndexPath) {
+        var isActed = false
+        for index in 0..<FixedData.newFeedData[indexPath.row - 1].emotion.count {
+            if (FixedData.newFeedData[indexPath.row - 1].emotion[index].userName == FixedData.user) {
+                if (FixedData.newFeedData[indexPath.row - 1].emotion[index].emote == emoji) {
+                    isActed = true
+                }
+                FixedData.newFeedData[indexPath.row - 1].emotion.remove(at: index)
+                break
+            }
+        }
+        if (!isActed) {
+            FixedData.newFeedData[indexPath.row - 1].emotion.append(TNEmotionModel(emote: emoji, userName: FixedData.user, userAvatar: FixedData.userAvatar))
+        }
+        tablePost.reloadRows(at: [indexPath], with: .none)
+    }
+    
 }
 
 extension TNNewFeedViewController {

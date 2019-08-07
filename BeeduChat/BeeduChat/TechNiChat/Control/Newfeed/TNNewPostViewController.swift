@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol TNNewPostViewDelegate {
+protocol TNRefreshDelegate {
     func refreshData()
 }
 
 class TNNewPostViewController : TNBaseViewController {
     
     var tfNew = UITextField()
-    var delegate : TNNewPostViewDelegate!
+    var delegate : TNRefreshDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

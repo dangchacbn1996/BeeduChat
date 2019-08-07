@@ -36,7 +36,6 @@ class TNPostInfoCell : UITableViewCell {
     private let btnMore = UIButton()
     private let lbContent = UILabel(text: "", textColor: Constant.text.color.black, font: nil)
     private let ivContent = UIImageView()
-//    private let stackEmoji = UIStackView(axis: .horizontal, distribution: .equalSpacing, alignment: .center, spacing: -4, design: nil)
     private let vEmote = UIView()
     private let lbEmojiCount = UILabel(text: "", textColor: Constant.text.color.black, font: nil)
     private let lbComment = UILabel(text: "", textColor: Constant.text.color.black, font: nil)
@@ -44,7 +43,7 @@ class TNPostInfoCell : UITableViewCell {
     private let viewEmoji = UIView()
     private let lbEmotion = UILabel(text: "Thích", textColor: Constant.text.color.black, font: nil)
     private let ivEmotion = UIImageView(image: UIImage(named: "ic_like"))
-    private let viewEmotion = UIView()
+    let viewEmotion = UIView()
     private let viewComment = UIView()
     private var vSeparate = UIView()
     var hideSeparate = false {
