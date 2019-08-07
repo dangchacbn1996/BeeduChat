@@ -107,7 +107,7 @@ extension TNNewFeedViewController : TNNewPostDelegate {
         let pos = gesture.location(in: self.tablePost)
         if let indexPath = self.tablePost.indexPathForRow(at: pos) {
             let frame = tablePost.rectForRow(at: indexPath)
-            let vc = PopupChooseEmotionViewController()
+            let vc = TNPopupChooseEmotionViewController()
             vc.modalPresentationStyle = .overCurrentContext
             vc.delegate = self
             vc.origin = CGPoint(x: frame.origin.x + 2, y: gesture.location(in: self.view).y)
@@ -130,6 +130,12 @@ extension TNNewFeedViewController : TNNewPostDelegate {
 }
 
 extension TNNewFeedViewController : TNPostInfoDelegate {
+    func actPostSeenUser(_ gesture: UIGestureRecognizer) {
+        let view = TNSeenUserViewController()
+        view.modalPresentationStyle = .overCurrentContext
+        self.present(view, animated: false, completion: nil)
+    }
+    
     func actPostComment(_ gesture: UIGestureRecognizer) {
         let pos = gesture.location(in: self.tablePost)
         if let indexPath = self.tablePost.indexPathForRow(at: pos) {
@@ -185,7 +191,7 @@ extension TNNewFeedViewController : TNPostInfoDelegate {
     func actPostEmoji(_ gesture: UIGestureRecognizer) {
         let pos = gesture.location(in: self.tablePost)
         if let indexPath = self.tablePost.indexPathForRow(at: pos) {
-            let view = TNSeenUserViewController()
+            let view = TNEmojiListViewController()
             view.modalPresentationStyle = .overCurrentContext
             self.present(view, animated: false, completion: nil)
             view.data = FixedData.newFeedData[indexPath.row - 1].emotion

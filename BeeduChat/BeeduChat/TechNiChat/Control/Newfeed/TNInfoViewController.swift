@@ -146,7 +146,7 @@ extension TNInfoViewController : PopupEmojiDelegate {
     @objc func holeOpenEmoji(_ gesture: UIGestureRecognizer){
         let indexPath = IndexPath(row: 0, section: 0)
         let frame = tableMain.rectForRow(at: indexPath)
-        let vc = PopupChooseEmotionViewController()
+        let vc = TNPopupChooseEmotionViewController()
         vc.modalPresentationStyle = .overCurrentContext
         vc.delegate = self
         vc.origin = CGPoint(x: frame.origin.x + 2, y: gesture.location(in: self.view).y)
@@ -177,6 +177,13 @@ extension TNInfoViewController : TNCommentCellDelegate {
 }
 
 extension TNInfoViewController : TNPostInfoDelegate {
+    func actPostSeenUser(_ gesture: UIGestureRecognizer) {
+        let view = TNSeenUserViewController()
+        view.modalPresentationStyle = .overCurrentContext
+        self.present(view, animated: false, completion: nil)
+//        view.data = FixedData.newFeedData[index].emotion
+    }
+    
     func actPostComment(_ gesture: UIGestureRecognizer) {
         tfComment.becomeFirstResponder()
     }
@@ -205,7 +212,7 @@ extension TNInfoViewController : TNPostInfoDelegate {
     }
     
     func actPostEmoji(_ gesture: UIGestureRecognizer) {
-        let view = TNSeenUserViewController()
+        let view = TNEmojiListViewController()
         view.modalPresentationStyle = .overCurrentContext
         self.present(view, animated: false, completion: nil)
         view.data = FixedData.newFeedData[index].emotion

@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class TNSeenUserViewController : TNBaseViewController {
+class TNEmojiListViewController : TNBaseViewController {
     
     private var contentView : UIView!
     private var viewContainer : UIView!
@@ -19,56 +19,50 @@ class TNSeenUserViewController : TNBaseViewController {
     private let contentRatio : CGFloat = 1.8
     private var contentPos : [CGFloat] = []
     private var startScrollY : CGFloat = 0
-    var dataDaXem : [TNUserInfoModel] = [TNUserInfoModel(id: "0", name: "Charlie Puth", avatar: "user9"),
-                                         TNUserInfoModel(id: "1", name: "Beyoncé", avatar: "user1"),
-                                         TNUserInfoModel(id: "2", name: "Jaden Smith", avatar: "user2"),
-                                         TNUserInfoModel(id: "3", name: "Sky Ferreira", avatar: "user3"),]
-    var dataChuaXem : [TNUserInfoModel] = [TNUserInfoModel(id: "0", name: "Zendaya", avatar: "user5")]
-    var filter : [TNUserInfoModel] = []
-    //    var data = [TNEmotionModel(emote: <#T##TNEmoji#>, userName: <#T##String#>, userAvatar: <#T##String#>)]
-//    private var listFilter : [TNEmotionModel] = []
-//    private var filterType : [TNEmoji] = []
-//    private var filter : TNEmoji? = nil {
-//        didSet{
-//            if (filter != nil) {
-//                listFilter = []
-//                for item in data {
-//                    if (item.emote == self.filter) {
-//                        listFilter.append(item)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    var data : [TNEmotionModel] = [] {
-//        didSet{
-//            stackType.arrangedSubviews.forEach { (sub) in
-//                sub.removeFromSuperview()
-//            }
-//            if (data.count > 0) {
-//                stackType.addArrangedSubview(btnFilterType(text: "Tất cả", emoji: nil, count: data.count)) { (btn) -> (Void) in
-//                    btn.tag = -1
-//                    btn.subviews[1].isHidden = false
-//                    btn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.filterData(_:))))
-//                }
-//                for type in [TNEmoji.like, .haha, .cry, .angry, .heart] {
-//                    var count = 0
-//                    for item in data {
-//                        if (item.emote == type) {
-//                            count += 1
-//                        }
-//                    }
-//                    if (count != 0) {
-//                        filterType.append(type)
-//                        stackType.addArrangedSubview(btnFilterType(text: nil, emoji: type, count: count)) { (btn) -> (Void) in
-//                            btn.tag = self.filterType.count - 1
-//                            btn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.filterData(_:))))
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+//    var data = [TNEmotionModel(emote: <#T##TNEmoji#>, userName: <#T##String#>, userAvatar: <#T##String#>)]
+    private var listFilter : [TNEmotionModel] = []
+    private var filterType : [TNEmoji] = []
+    private var filter : TNEmoji? = nil {
+        didSet{
+            if (filter != nil) {
+                listFilter = []
+                for item in data {
+                    if (item.emote == self.filter) {
+                        listFilter.append(item)
+                    }
+                }
+            }
+        }
+    }
+    var data : [TNEmotionModel] = [] {
+        didSet{
+            stackType.arrangedSubviews.forEach { (sub) in
+                sub.removeFromSuperview()
+            }
+            if (data.count > 0) {
+                stackType.addArrangedSubview(btnFilterType(text: "Tất cả", emoji: nil, count: data.count)) { (btn) -> (Void) in
+                    btn.tag = -1
+                    btn.subviews[1].isHidden = false
+                    btn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.filterData(_:))))
+                }
+                for type in [TNEmoji.like, .haha, .cry, .angry, .heart] {
+                    var count = 0
+                    for item in data {
+                        if (item.emote == type) {
+                            count += 1
+                        }
+                    }
+                    if (count != 0) {
+                        filterType.append(type)
+                        stackType.addArrangedSubview(btnFilterType(text: nil, emoji: type, count: count)) { (btn) -> (Void) in
+                            btn.tag = self.filterType.count - 1
+                            btn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.filterData(_:))))
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         setupUI()
@@ -82,18 +76,6 @@ class TNSeenUserViewController : TNBaseViewController {
         tableSeen.register(TNSeenUserTVC.self, forCellReuseIdentifier: TNSeenUserTVC.identify)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        reloadData()
-    }
-    
-    func reloadData(){
-        stackType.arrangedSubviews.forEach({$0.removeFromSuperview()})
-        stackType.addArrangedSubview(UIButton(title: "Đã xem \(dataDaXem.count)", font: Constant.text.font.normal, titleColor: Constant.text.color.black, backColor: .clear, action: UITapGestureRecognizer(target: self, action: #selector(filterDaXem))))
-        stackType.addArrangedSubview(UIButton(title: "Chưa xem \(dataChuaXem.count)", font: Constant.text.font.normal, titleColor: Constant.text.color.black, backColor: .clear, action: UITapGestureRecognizer(target: self, action: #selector(filterChuaXem))))
-        filterDaXem()
-        tableSeen.reloadData()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         contentPos = [scrollView.contentSize.height * (contentRatio - 1) / contentRatio,
                       scrollView.contentSize.height * ((contentRatio - 1) / 2) / contentRatio,
@@ -104,38 +86,28 @@ class TNSeenUserViewController : TNBaseViewController {
         scrollView.setContentOffset(CGPoint(x: 0, y: contentPos[1]), animated: true)
     }
     
-    @objc func filterDaXem(){
-        filter = dataDaXem
+    @objc func filterData(_ gesture : UIGestureRecognizer) {
+        stackType.arrangedSubviews.forEach { (sub) in
+            sub.subviews[1].isHidden = true
+        }
+        if let btn = gesture.view {
+            if (btn.tag != -1) {
+                filter = filterType[btn.tag]
+                stackType.arrangedSubviews[btn.tag + 1].subviews[1].isHidden = false
+            } else {
+                filter = nil
+                stackType.arrangedSubviews[0].subviews[1].isHidden = false
+            }
+        }
         tableSeen.reloadData()
     }
-    
-    @objc func filterChuaXem(){
-        filter = dataChuaXem
-        tableSeen.reloadData()
-    }
-    
-//    @objc func filterData(_ gesture : UIGestureRecognizer) {
-//        stackType.arrangedSubviews.forEach { (sub) in
-//            sub.subviews[1].isHidden = true
-//        }
-//        if let btn = gesture.view {
-//            if (btn.tag != -1) {
-//                filter = filterType[btn.tag]
-//                stackType.arrangedSubviews[btn.tag + 1].subviews[1].isHidden = false
-//            } else {
-//                filter = nil
-//                stackType.arrangedSubviews[0].subviews[1].isHidden = false
-//            }
-//        }
-//        tableSeen.reloadData()
-//    }
     
     @objc func goBack(){
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 }
 
-extension TNSeenUserViewController : UIScrollViewDelegate {
+extension TNEmojiListViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
         let isScrollUp = yOffset > startScrollY
@@ -150,7 +122,7 @@ extension TNSeenUserViewController : UIScrollViewDelegate {
                 self.dismiss(animated: false, completion: nil)
             }
         }
-        
+
         if scrollView == self.tableSeen {
             print("tableOffset: \(isScrollUp)")
             print("tableOffset: \(yOffset)")
@@ -163,7 +135,7 @@ extension TNSeenUserViewController : UIScrollViewDelegate {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        startScrollY = scrollView.contentOffset.y
+            startScrollY = scrollView.contentOffset.y
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -179,34 +151,31 @@ extension TNSeenUserViewController : UIScrollViewDelegate {
     }
 }
 
-extension TNSeenUserViewController : UITableViewDataSource, UITableViewDelegate{
+extension TNEmojiListViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if (filter == nil) {
-//            print("table: \(data.count)")
-//            return data.count
-//        }
-//        print("table: \(listFilter.count)")
-//        return listFilter.count
-        return filter.count
+        if (filter == nil) {
+            print("table: \(data.count)")
+            return data.count
+        }
+        print("table: \(listFilter.count)")
+        return listFilter.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("table: cellForRow")
         let cell = tableView.dequeueReusableCell(withIdentifier: TNSeenUserTVC.identify, for: indexPath) as! TNSeenUserTVC
-//        if (filter == nil) {
-//            cell.data = TNUserInfoModel(id: "0", name: data[indexPath.row].userName, avatar: data[indexPath.row].userAvatar)
-//            //            cell.data = data[indexPath.row]
-//        } else {
-//            cell.data = TNUserInfoModel(id: "0", name: listFilter[indexPath.row].userName, avatar: listFilter[indexPath.row].userAvatar)
-            //            cell.data = listFilter[indexPath.row]
-//        }
-        cell.data = filter[indexPath.row]
-        cell.messable = true
+        if (filter == nil) {
+            cell.data = TNUserInfoModel(id: "0", name: data[indexPath.row].userName, avatar: data[indexPath.row].userAvatar)
+//            cell.data = data[indexPath.row]
+        } else {
+            cell.data = TNUserInfoModel(id: "0", name: listFilter[indexPath.row].userName, avatar: listFilter[indexPath.row].userAvatar)
+//            cell.data = listFilter[indexPath.row]
+        }
         return cell
     }
 }
 
-extension TNSeenUserViewController {
+extension TNEmojiListViewController {
     func setupUI(){
         self.view.backgroundColor = .clear
         scrollView = UIScrollView()
@@ -233,7 +202,7 @@ extension TNSeenUserViewController {
         
         viewContainer = UIView()
         viewContainer.backgroundColor = .white
-        //        viewContainer.clipsToBounds = true
+//        viewContainer.clipsToBounds = true
         viewContainer.layer.cornerRadius = 8
         contentView.addSubview(viewContainer)
         viewContainer.snp.makeConstraints { (maker) in
@@ -293,7 +262,7 @@ extension TNSeenUserViewController {
                     ivEmoji.snp.makeConstraints({ (maker) in
                         maker.width.height.equalTo(Constant.size.btnIcon)
                     })
-                    
+
                 })
             }
             (stack as! UIStackView).addArrangedSubview(UILabel(text: "\(count)", textColor: Constant.text.color.black, font: nil))

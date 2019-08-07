@@ -15,7 +15,7 @@
 		530F2A2022F1ADD80007B1BD /* TNNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530F2A1F22F1ADD80007B1BD /* TNNotificationViewController.swift */; };
 		530F2A2222F1B0800007B1BD /* TNNotifiTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530F2A2122F1B0800007B1BD /* TNNotifiTVCell.swift */; };
 		539A8DE022EAA1DF00BD75B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */; };
-		53A7B8AD22F82F7100158742 /* PopupChooseEmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A7B8AC22F82F7100158742 /* PopupChooseEmotionViewController.swift */; };
+		53A7B8AD22F82F7100158742 /* TNPopupChooseEmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A7B8AC22F82F7100158742 /* TNPopupChooseEmotionViewController.swift */; };
 		53C329EE22F04D0000494195 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C329ED22F04D0000494195 /* ImagePickerViewController.swift */; };
 		53F35D1722EE96570036EB3B /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53F35D0B22EE96390036EB3B /* Montserrat-Black.otf */; };
 		53F35D1822EE96570036EB3B /* Montserrat-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 53F35D0E22EE96390036EB3B /* Montserrat-BlackItalic.otf */; };
@@ -43,6 +43,8 @@
 		B8DB7B6E22F18BF000FDB0DD /* TNCreateNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DB7B6D22F18BF000FDB0DD /* TNCreateNotificationTableViewCell.swift */; };
 		B8E1FB7222F2CB6D009B0D0B /* TNMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1FB7122F2CB6D009B0D0B /* TNMessageViewController.swift */; };
 		F0ACB26C22E9FE8700DFE793 /* TNSeenUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */; };
+		F0BCA9B622FB3D6100032924 /* TNUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BCA9B522FB3D6100032924 /* TNUserInfoModel.swift */; };
+		F0BCA9B822FB3F7200032924 /* TNSeenUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BCA9B722FB3F7200032924 /* TNSeenUserViewController.swift */; };
 		F0EAF6B722F0A23D002E5556 /* TNImageEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF6B622F0A23D002E5556 /* TNImageEx.swift */; };
 		F0F6C2E122EB775600CDA83C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6C2E022EB775600CDA83C /* MainViewController.swift */; };
 		F0F6C2E322EBF0DD00CDA83C /* TNNewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6C2E222EBF0DD00CDA83C /* TNNewPostViewController.swift */; };
@@ -110,7 +112,7 @@
 		F0F7425B22E9B0860028AB4F /* TNNewFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7421322E9B0860028AB4F /* TNNewFeedViewController.swift */; };
 		F0F7425E22E9B0860028AB4F /* LabelEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7421A22E9B0860028AB4F /* LabelEx.swift */; };
 		F0F7426A22E9CC7B0028AB4F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0F7426722E9CA190028AB4F /* Info.plist */; };
-		F0F7426F22E9FD5B0028AB4F /* TNSeenUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7426E22E9FD5B0028AB4F /* TNSeenUserViewController.swift */; };
+		F0F7426F22E9FD5B0028AB4F /* TNEmojiListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7426E22E9FD5B0028AB4F /* TNEmojiListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,7 +140,7 @@
 		530F2A1F22F1ADD80007B1BD /* TNNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNNotificationViewController.swift; sourceTree = "<group>"; };
 		530F2A2122F1B0800007B1BD /* TNNotifiTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNNotifiTVCell.swift; sourceTree = "<group>"; };
 		539A8DDF22EAA1DF00BD75B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		53A7B8AC22F82F7100158742 /* PopupChooseEmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupChooseEmotionViewController.swift; sourceTree = "<group>"; };
+		53A7B8AC22F82F7100158742 /* TNPopupChooseEmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNPopupChooseEmotionViewController.swift; sourceTree = "<group>"; };
 		53C329ED22F04D0000494195 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		53F35D0522EE96390036EB3B /* Montserrat-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.otf"; sourceTree = "<group>"; };
 		53F35D0622EE96390036EB3B /* Montserrat-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.otf"; sourceTree = "<group>"; };
@@ -173,6 +175,8 @@
 		B8E1FB7122F2CB6D009B0D0B /* TNMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNMessageViewController.swift; sourceTree = "<group>"; };
 		C5DE160B549A5CC7002A01F5 /* Pods_BeeduChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeduChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0ACB26B22E9FE8700DFE793 /* TNSeenUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSeenUserTVC.swift; sourceTree = "<group>"; };
+		F0BCA9B522FB3D6100032924 /* TNUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNUserInfoModel.swift; sourceTree = "<group>"; };
+		F0BCA9B722FB3F7200032924 /* TNSeenUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSeenUserViewController.swift; sourceTree = "<group>"; };
 		F0EAF6B622F0A23D002E5556 /* TNImageEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNImageEx.swift; sourceTree = "<group>"; };
 		F0F6C2E022EB775600CDA83C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F0F6C2E222EBF0DD00CDA83C /* TNNewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNNewPostViewController.swift; sourceTree = "<group>"; };
@@ -246,7 +250,7 @@
 		F0F7421A22E9B0860028AB4F /* LabelEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelEx.swift; sourceTree = "<group>"; };
 		F0F7426722E9CA190028AB4F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0F7426922E9CA4E0028AB4F /* BeeduChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeeduChat.entitlements; sourceTree = "<group>"; };
-		F0F7426E22E9FD5B0028AB4F /* TNSeenUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSeenUserViewController.swift; sourceTree = "<group>"; };
+		F0F7426E22E9FD5B0028AB4F /* TNEmojiListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNEmojiListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +324,14 @@
 				530F2A2122F1B0800007B1BD /* TNNotifiTVCell.swift */,
 			);
 			path = ReuseCell;
+			sourceTree = "<group>";
+		};
+		F0BCA9B422FB3D5300032924 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0BCA9B522FB3D6100032924 /* TNUserInfoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F0F7418322E9B05A0028AB4F = {
@@ -458,6 +470,7 @@
 		F0F741D322E9B0860028AB4F /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				F0BCA9B422FB3D5300032924 /* Model */,
 				F0F741D422E9B0860028AB4F /* Newfeed */,
 				F0F741DD22E9B0860028AB4F /* TNBaseViewController.swift */,
 				F0F741DE22E9B0860028AB4F /* Messenger */,
@@ -647,13 +660,14 @@
 			isa = PBXGroup;
 			children = (
 				F0ACB26A22E9FE7800DFE793 /* ReuseCell */,
-				F0F7426E22E9FD5B0028AB4F /* TNSeenUserViewController.swift */,
+				F0F7426E22E9FD5B0028AB4F /* TNEmojiListViewController.swift */,
 				530F2A1F22F1ADD80007B1BD /* TNNotificationViewController.swift */,
 				53F35D2B22EECE9F0036EB3B /* TNLibraryImageViewController.swift */,
 				53F35D2D22EED6A60036EB3B /* TNActionSheetViewController.swift */,
 				530F2A1B22F151ED0007B1BD /* TNCommentedUserViewController.swift */,
 				530F2A1D22F1771E0007B1BD /* TNBasePopupViewController.swift */,
-				53A7B8AC22F82F7100158742 /* PopupChooseEmotionViewController.swift */,
+				53A7B8AC22F82F7100158742 /* TNPopupChooseEmotionViewController.swift */,
+				F0BCA9B722FB3F7200032924 /* TNSeenUserViewController.swift */,
 			);
 			path = popup;
 			sourceTree = "<group>";
@@ -938,7 +952,7 @@
 				F0F7424222E9B0860028AB4F /* UIColor+Extensions.swift in Sources */,
 				F0F7423C22E9B0860028AB4F /* NavigationController.swift in Sources */,
 				F0F7423322E9B0860028AB4F /* TNBaseViewController.swift in Sources */,
-				53A7B8AD22F82F7100158742 /* PopupChooseEmotionViewController.swift in Sources */,
+				53A7B8AD22F82F7100158742 /* TNPopupChooseEmotionViewController.swift in Sources */,
 				F0F7423422E9B0860028AB4F /* BasicAudioController.swift in Sources */,
 				F0F7422E22E9B0860028AB4F /* TNPostInfoCell.swift in Sources */,
 				B8E1FB7222F2CB6D009B0D0B /* TNMessageViewController.swift in Sources */,
@@ -954,10 +968,12 @@
 				53F35D2E22EED6A60036EB3B /* TNActionSheetViewController.swift in Sources */,
 				F0F7419222E9B05A0028AB4F /* ViewController.swift in Sources */,
 				B8DB7B6C22F1838A00FDB0DD /* TNCreateNotificationViewController.swift in Sources */,
-				F0F7426F22E9FD5B0028AB4F /* TNSeenUserViewController.swift in Sources */,
+				F0F7426F22E9FD5B0028AB4F /* TNEmojiListViewController.swift in Sources */,
 				F0F7424122E9B0860028AB4F /* UIViewController+Extensions.swift in Sources */,
+				F0BCA9B622FB3D6100032924 /* TNUserInfoModel.swift in Sources */,
 				F0F7422422E9B0860028AB4F /* UILabelEx.swift in Sources */,
 				F0F7419022E9B05A0028AB4F /* AppDelegate.swift in Sources */,
+				F0BCA9B822FB3F7200032924 /* TNSeenUserViewController.swift in Sources */,
 				F0F7424922E9B0860028AB4F /* TableViewCells.swift in Sources */,
 				53F35D2C22EECE9F0036EB3B /* TNLibraryImageViewController.swift in Sources */,
 				530F2A1E22F1771E0007B1BD /* TNBasePopupViewController.swift in Sources */,

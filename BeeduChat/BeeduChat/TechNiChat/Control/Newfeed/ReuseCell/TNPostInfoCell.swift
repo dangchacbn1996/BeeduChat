@@ -15,6 +15,7 @@ import SnapKit
     @objc func actPostMore(_ gesture : UIGestureRecognizer)
     @objc func actPostImageView(_ gesture : UIGestureRecognizer)
     @objc func actPostEmoji(_ gesture : UIGestureRecognizer)
+    @objc func actPostSeenUser(_ gesture : UIGestureRecognizer)
     @objc func actPostEmotion(_ gesture : UIGestureRecognizer)
     @objc func actPostComment(_ gesture : UIGestureRecognizer)
 }
@@ -66,7 +67,9 @@ class TNPostInfoCell : UITableViewCell {
             viewEmotion.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostEmotion(_:))))
             ivContent.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostImageView(_:))))
             btnMore.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostMore(_:))))
-//            viewCom
+            lbSeenPer.isUserInteractionEnabled = true
+            lbSeenPer.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostSeenUser(_:))))
+            
             viewComment.addGestureRecognizer(UITapGestureRecognizer(target: delegate, action: #selector(self.delegate?.actPostComment(_:))))
         }
     }

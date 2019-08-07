@@ -13,7 +13,7 @@ protocol PopupEmojiDelegate {
     func selectPos(_ emoji : TNEmoji, indexPath : IndexPath)
 }
 
-class PopupChooseEmotionViewController: UIViewController {
+class TNPopupChooseEmotionViewController: TNBaseViewController {
     
     private var viewContainer = UIView()
     private var viewIcon = UIView()
@@ -137,7 +137,7 @@ class PopupChooseEmotionViewController: UIViewController {
     }
 }
 
-extension PopupChooseEmotionViewController {
+extension TNPopupChooseEmotionViewController {
     func setupUI(){
         normalCenter = []
         for index in 0..<6 {

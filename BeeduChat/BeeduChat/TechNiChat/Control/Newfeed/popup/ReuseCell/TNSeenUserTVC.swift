@@ -14,12 +14,16 @@ class TNSeenUserTVC : UITableViewCell {
     var ivUser = UIImageView(frame: .zero)
     var lbUser = UILabel(text: "", font: Constant.text.font.normal, textColor: Constant.text.color.black)
     var btnMess = UIButton(frame: .zero)
-    var messable = false
-    var data : TNEmotionModel = TNEmotionModel(){
+    var messable = false {
+        didSet {
+            btnMess.isHidden = !self.messable
+        }
+    }
+    var data : TNUserInfoModel = TNUserInfoModel(){
         didSet{
-            btnMess.isHidden = messable ? false : true
-            ivUser.image = UIImage(named: data.userAvatar)
-            lbUser.text = data.userName
+            btnMess.isHidden = !messable
+            ivUser.image = UIImage(named: data.avatar)
+            lbUser.text = data.name
         }
     }
     
@@ -54,6 +58,7 @@ class TNSeenUserTVC : UITableViewCell {
             maker.width.equalTo(btnMess.snp.height)
             maker.height.equalTo(Constant.size.avatarNormal * 0.7)
         }
+        btnMess.setImage(UIImage(named: "Header Messenger Blue"), for: .normal)
         btnMess.imageView?.contentMode = .scaleAspectFit
     }
 }
